@@ -24,7 +24,10 @@ Route::group(['namespace' => 'Guest', 'middleware'=>['guest']], function (){
     Route::get('/', 'WelcomeController@index')->name('welcome');
     Route::post('/guest/get/upazila-of-a-district', 'AjaxController@getUpazilaOfDistrict');
     Route::post('/guest/submit/customer-register', 'AjaxController@submitCustomerRegister');
-    Route::get('/worker-register', 'RegisterController@getWorkerRegisterForm')->name('welcome');
+
+    Route::get('/worker-register', 'RegisterController@getWorkerRegisterForm')->name('getWorkerRegisterForm');
+    Route::post('/guest/get/services-of-a-category', 'AjaxController@getServicesOfCategory');
+    Route::post('/guest/submit/worker-register', 'AjaxController@submitWorkerRegister');
 });
 
 Route::get('/admin', function (){

@@ -47,7 +47,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $setting = Setting::find(1);
-        $districts = District::orderBy('id', 'desc')->get();
+        $districts = District::all();
         return view('auth.register',compact('setting', 'districts'));
     }
 

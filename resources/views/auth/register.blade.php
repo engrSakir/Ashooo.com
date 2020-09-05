@@ -118,7 +118,7 @@
 
                 <p class="mt-4 d-block text-secondary">
                     By clicking register your are agree to the
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">Worker Registration</a>
+                    <a href="{{ route('getWorkerRegisterForm') }}">Worker Registration</a>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">Membership Registration</a>
                 </p>
             </form>

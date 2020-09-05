@@ -10,7 +10,7 @@
     <meta name="author" content="Maxartkiller">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Register-Customer | {{ $setting->name }}</title>
+    <title>Register-Worker | {{ $setting->name }}</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css')}}">
@@ -85,6 +85,7 @@
                 <div class="form-group">
                     <input type="text" minlength="6" maxlength="6" id="referral" class="form-control form-control-lg text-center" placeholder="Referral code">
                 </div>
+                <!-- Start district -->
                 <div class="form-group">
                     <select class="form-control form-control-lg" id="district-id">
                         <option selected disabled> Chose district</option>
@@ -93,6 +94,8 @@
                         @endforeach
                     </select>
                 </div>
+                <!-- End district -->
+                <!-- Start upazila -->
                 <div class="form-group">
                     <select class="form-control form-control-lg" id="upazila-id">
                         <option selected disabled value="" id="upazila-loader">
@@ -101,6 +104,28 @@
                         <!-- Insert by ajax -->
                     </select>
                 </div>
+                <!-- End upazila -->
+                <!-- Start category -->
+                <div class="form-group">
+                    <select class="form-control form-control-lg" id="category-id">
+                        <option selected disabled> Chose category</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <!-- End category -->
+                <!-- Start services -->
+                <div class="form-group">
+                    <select multiple="" class="form-control form-control-lg text-center" id="services-id">
+                        <option selected disabled value="" id="services-loader">
+                            <span class="badge badge-warning mb-1">Loading ...</span>
+                        </option>
+                        <!-- Insert by ajax -->
+                    </select>
+                </div>
+                <!-- End services -->
+                <!-- Start gender -->
                 <div class="row mx-0">
                     <div class="col-6 col-md-6 col-lg-4">
                         <div class="custom-control custom-radio">
@@ -115,7 +140,22 @@
                         </div>
                     </div>
                 </div>
+                <!-- End gender -->
+                <!-- Start NID  -->
+                <div class="form-group">
+                    <label>NID front side</label>
+                    <input type="file" id="nid-front" class="form-control form-control-lg">
+                </div>
+                <div class="form-group">
+                    <label>NID back side</label>
+                    <input type="file" id="nid-back" class="form-control form-control-lg">
+                </div>
+                <div class="form-group">
+                    <input type="text" minlength="" maxlength="" id="nid-number" class="form-control form-control-lg text-center" placeholder="NID Number">
+                </div>
+                <!-- End NID  -->
 
+                <!-- Another register -->
                 <p class="mt-4 d-block text-secondary">
                     By clicking register your are agree to the
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">Worker Registration</a>
@@ -128,7 +168,7 @@
     <!-- login buttons -->
     <div class="row mx-0 bottom-button-container">
         <div class="col">
-            <a href="#" id="customer-register" class="btn btn-default btn-lg btn-rounded shadow btn-block">Register</a>
+            <a href="#" id="worker-register" class="btn btn-default btn-lg btn-rounded shadow btn-block">Register</a>
         </div>
     </div>
     <!-- login buttons -->
@@ -181,8 +221,12 @@
 <!-- page level script -->
 <script>
     $(document).ready(function(){
-        //Hide upazila first
+        //Hide upazila & service first
         $("#upazila-id").hide()
+        $("#services-id").hide()
+        // Material Select Initialization
+
+
         //Get upazila after click on district
         $("#district-id").change(function(){
             var districtId = $(this).val();
@@ -225,6 +269,48 @@
                 },
             })
         });
+        //Get service after click on category
+        $("#category-id").change(function(){
+            var categoryId = $(this).val();
+            $("#services-id").show() //now show district
+            $.ajax({
+                method: 'POST',
+                url: '/guest/get/services-of-a-category',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: { categoryId: categoryId},
+                dataType: 'JSON',
+                beforeSend: function (){
+                    $("#services-loader").show()
+                },
+                complete: function (){
+                    $("#services-loader").hide()
+                },
+                success: function (response) {
+                    //console.log(response)
+                    var serviceOption='<option selected disabled> Chose service</option>';
+                    response.forEach(function(service){
+                        serviceOption += '<option class="servicesClass" value='+service.id+'>'+service.name+'</option>';
+                    })
+                    $("#services-id").html(serviceOption)
+                },
+                error: function (xhr) {
+                    var errorMessage = '<div class="card bg-danger">\n' +
+                        '                        <div class="card-body text-center p-5">\n' +
+                        '                            <span class="text-white">';
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        errorMessage +=(''+value+'<br>');
+                    });
+                    errorMessage +='</span>\n' +
+                        '                        </div>\n' +
+                        '                    </div>';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        footer: errorMessage
+                    })
+                },
+            })
+        });
         //Profile image upload preview
         $("#profile-image").change(function (event){
             if(event.target.files.length > 0) {
@@ -235,8 +321,13 @@
             }
         })
         //Customer register submit
-        $("#customer-register").click(function (){
+        $("#worker-register").click(function (){
 
+            var servicesId = [];
+            $('#services-id :selected').each(function(i, selectedElement) {
+                servicesId[i] = $(selectedElement).val();
+            });
+            servicesId.shift();
             //console.log(getInput());
             var userName = $('#user-name').val();
             var fullName = $('#full-name').val();
@@ -248,6 +339,9 @@
             var upazilaId = $('#upazila-id').val();
             var gender = $('.gender:checked').val();
             var image = $('#profile-image')[0].files[0];
+            var nidNumber = $('#nid-number').val();
+            var nidFrontImage = $('#nid-front')[0].files[0];
+            var nidBackImage = $('#nid-back')[0].files[0];
 
             var formData = new FormData();
             formData.append('userName', userName)
@@ -258,17 +352,22 @@
             formData.append('referralCode', referralCode)
             formData.append('district', districtId)
             formData.append('upazila', upazilaId)
+            formData.append('services', servicesId)
             formData.append('gender', gender)
             formData.append('profilePicture', image)
+            formData.append('nidNumber', nidNumber)
+            formData.append('nidFrontImage', nidFrontImage)
+            formData.append('nidBackImage', nidBackImage)
 
             $.ajax({
                 method: 'POST',
-                url: '/guest/submit/customer-register',
+                url: '/guest/submit/worker-register',
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function (data) {
+                    console.log(data)
                     if (data.type == 'success'){
                         Swal.fire({
                             position: 'top-end',
