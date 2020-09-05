@@ -6,9 +6,11 @@ use App\AdminAds;
 use App\AdminNotice;
 use App\Http\Controllers\Controller;
 use App\Setting;
+use App\WorkerService;
 use App\WorkerServiceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
@@ -60,7 +62,13 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $setting = Setting::find(1);
+        $category = WorkerServiceCategory::find(Crypt::decryptString($id));
+        $adminAds = AdminAds::where('status', '1')
+            ->whereDate('starting', '<', Carbon::today()->addDays(1))
+            ->whereDate('ending', '>', Carbon::today()->addDays(-1))
+            ->get();
+        return view('customer.home.show',compact('setting', 'category','adminAds'));
     }
 
     /**
@@ -95,5 +103,22 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Show worker's gig to customer.
+     * Only worker's upazila
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showGigs($id)
+    {
+        $setting = Setting::find(1);
+        $service = WorkerService::find(Crypt::decryptString($id));
+        $adminAds = AdminAds::where('status', '1')
+            ->whereDate('starting', '<', Carbon::today()->addDays(1))
+            ->whereDate('ending', '>', Carbon::today()->addDays(-1))
+            ->get();
+        return view('customer.home.gigs',compact('setting', 'service','adminAds'));
     }
 }

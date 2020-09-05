@@ -13,8 +13,8 @@ class WorkerServiceCategory extends Model
         'name',
     ];
 
-    //Service
-    public function service(){
+    //Services
+    public function services(){
         return $this->hasMany(WorkerService::class,'category_id','id')->orderBy('id','desc');
     }
 }

@@ -141,21 +141,21 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/customer/job" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/auth" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\auth" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\home" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\customer\job" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\customer" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\customer\job" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\customer" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\admin" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\admin\worker-service-category" />
     </key>
   </component>
   <component name="RunManager">
@@ -193,6 +193,7 @@
       <workItem from="1599109371517" duration="14779000" />
       <workItem from="1599278515021" duration="378000" />
       <workItem from="1599283546266" duration="404000" />
+      <workItem from="1599292897092" duration="7117000" />
     </task>
     <servers />
   </component>
@@ -225,9 +226,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598954492025" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1599057751006">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1599293805213">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599057751006" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599293805213" />
   </component>
 </project>

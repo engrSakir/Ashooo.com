@@ -40,7 +40,7 @@
                                         <option disabled selected>Category</option>
                                         @foreach($categories as $category)
                                             <optgroup label="{{ $category->name }}">
-                                                @foreach($category->service as $service)
+                                                @foreach($category->services as $service)
                                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                 @endforeach
                                             </optgroup>
@@ -137,7 +137,7 @@
                                 <div class="overlay bg-template"></div>
                                 <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                             </div>
-                            <a href="#"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                            <a href="{{ route('customer.home.show',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
                         </div>
                     </div>
                 </div>
@@ -191,27 +191,27 @@
             <div class="col-auto mx-auto">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-auto">
-                        <a href="index.html" class="btn btn-link-default active">
+                        <a href="{{ route('customer.home.index') }}" class="btn btn-link-default active">
                             <i class="material-icons">home</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="statistics.html" class="btn btn-link-default">
+                        <a href="#" class="btn btn-link-default">
                             <i class="material-icons">insert_chart_outline</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="wallet.html" class="btn btn-link-default">
+                        <a href="#" class="btn btn-link-default">
                             <i class="material-icons">account_balance_wallet</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="transactions.html" class="btn btn-link-default">
+                        <a href="#" class="btn btn-link-default">
                             <i class="material-icons">widgets</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="profile.html" class="btn btn-link-default">
+                        <a href="#" class="btn btn-link-default">
                             <i class="material-icons">account_circle</i>
                         </a>
                     </div>

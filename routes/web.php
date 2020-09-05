@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Guest', 'middleware'=>['guest']], function (){
     Route::get('/', 'WelcomeController@index')->name('welcome');
     Route::post('/guest/get/upazila-of-a-district', 'AjaxController@getUpazilaOfDistrict');
     Route::post('/guest/submit/customer-register', 'AjaxController@submitCustomerRegister');
+    Route::get('/worker-register', 'RegisterController@getWorkerRegisterForm')->name('welcome');
 });
 
 Route::get('/admin', function (){
@@ -88,6 +89,7 @@ Route::get('/customer', function (){
 });
 //Customer Routes
 Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'customer', 'middleware'=>'customer'], function (){
-    Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
+    Route::resource('home', 'HomeController')->except(['create','store', 'edit', 'update', 'destroy']);
+    Route::get('/gigs/{id}','HomeController@showGigs')->name('showGigs');
     Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
 });
