@@ -1,528 +1,391 @@
-
 @extends('customer.layout.app')
+@push('title') Home @endpush
+@push('head')
+
+@endpush
 @section('content')
-<div class="wrapper homepage">
-    <!-- header -->
-    <div class="header">
-        <div class="row no-gutters">
-            <div class="col-auto">
-                <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-            </div>
-            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-            <div class="col-auto">
-                <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
-            </div>
-        </div>
-    </div>
-    <!-- header ends -->
-
-    <div class="container">
-        <div class="card bg-template shadow mt-4 h-190">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto">
-                        <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/user1.png') }}" alt=""></figure>
-                    </div>
-                    <div class="col pl-0 align-self-center">
-                        <h5 class="mb-1">Ammy Jahnson</h5>
-                        <p class="text-mute small">Work, London, UK</p>
-                    </div>
+    <div class="wrapper homepage">
+        <!-- header -->
+        <div class="header">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
+                </div>
+                <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
+                <div class="col-auto">
+                    <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container top-100">
-        <div class="card mb-4 shadow">
-            <div class="card-body border-bottom">
-                <div class="row">
-                    <div class="col">
-                        <h3 class="mb-0 font-weight-normal">$ 1548.00</h3>
-                        <p class="text-mute">My Balance</p>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"><i class="material-icons">add</i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-none">
-                <div class="row">
-                    <div class="col">
-                        <p>71.00 <i class="material-icons text-danger vm small">arrow_downward</i><br><small class="text-mute">INR</small></p>
-                    </div>
-                    <div class="col text-center">
-                        <p>1.00 <i class="material-icons text-success vm small">arrow_upward</i><br><small class="text-mute">USD</small></p>
-                    </div>
-                    <div class="col text-right">
-                        <p><i class="material-icons text-success vm small mr-1">arrow_upward</i>0.78<br><small class="text-mute">GBP</small></p>
-                    </div>
-                </div>
-            </div>
+        <!-- header ends -->
+        <!-- Start title -->
+        <div class="alert alert-success text-center" role="alert">
+            <hr>
+            <b>Job Offer</b>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="swiper-container icon-slide mb-4">
-                <div class="swiper-wrapper">
-                    <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#paymodal">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">local_atm</i>
-                        </div>
-                        <p class="small mt-2">Pay</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#sendmoney">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">send</i>
-                        </div>
-                        <p class="small mt-2">Send</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#bookmodal">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">directions_railway</i>
-                        </div>
-                        <p class="small mt-2">Book</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">assignment</i>
-                        </div>
-                        <p class="small mt-2">Bills</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">camera</i>
-                        </div>
-                        <p class="small mt-2">Scan</p>
-                    </a>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="container px-0">
-                <!-- Swiper -->
-                <div class="swiper-container two-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Home Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Cash Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Car Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Business Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Edu Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Home Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="container px-0">
-                <!-- Swiper -->
-                <div class="swiper-container offer-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0 bg-template">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-auto pr-0">
-                                            <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100">
-                                        </div>
-                                        <div class="col align-self-center">
-                                            <h5 class="mb-2 font-weight-normal">Gold loan scheme</h5>
-                                            <p class="text-mute">Get all money at market rate of gold</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0 bg-template">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col pr-0 align-self-center">
-                                            <h5 class="mb-2 font-weight-normal">Gold loan scheme</h5>
-                                            <p class="text-mute">Get all money at market rate of gold</p>
-                                        </div>
-                                        <div class="col-auto">
-                                            <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">Upcoming Payments <a href="allpayment.html" class="float-right small">View All</a></h6>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <h5 class="font-weight-normal mb-1">$ 1548.00 </h5>
-                        <p class="text-mute small text-secondary mb-2">20d to pay electricity bill</p>
-                        <div class="progress h-4">
-                            <div class="progress-bar bg-success" role="progressbar" style="width:35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="col-auto pl-0">
-                        <button class="avatar avatar-50 no-shadow border-0 bg-template">
-                            <i class="material-icons">local_atm</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <h5 class="font-weight-normal mb-1">$ 106.00 <span class="badge badge-danger small vm text-white">Prior</span></h5>
-                        <p class="text-mute small text-secondary mb-2">33 days to pay gas bill</p>
-                        <div class="progress h-4">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 65%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="col-auto pl-0">
-                        <button class="avatar avatar-50 no-shadow border-0 bg-template">
-                            <i class="material-icons">local_atm</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">Recent Messages</h6>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <img src="img/user1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h6 class="font-weight-normal mb-1">Mrs. Magon Johnson </h6>
-                        <p class="text-mute small text-secondary">"Thank you for your purchase with our shop and making online payment."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer border-top bg-none">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Quick reply" aria-describedby="button-addon4">
-                    <div class="input-group-append">
-                        <button class="btn btn-default btn-rounded-36 shadow-sm" type="button" id="button-addon4"><i class="material-icons md-18">send</i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <img src="img/user2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h6 class="font-weight-normal mb-1">Ms. Shivani Dilux</h6>
-                        <p class="text-mute small text-secondary">"Thank you for your purchase with our shop and making online payment."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">Loan Status </h6>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-50 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm text-template">local_atm</i>
-                        </div>
-                    </div>
-                    <div class="col-auto align-self-center">
-                        <h6 class="font-weight-normal mb-1">EMI</h6>
-                        <p class="text-mute small text-secondary">Home Loan</p>
-                    </div>
-                    <div class="col-auto align-self-center border-left">
-                        <h6 class="font-weight-normal mb-1">$ 1548.00</h6>
-                        <p class="text-mute small text-secondary">Due: 15-12-2019</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-50 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm text-template">local_atm</i>
-                        </div>
-                    </div>
-                    <div class="col-auto align-self-center">
-                        <h6 class="font-weight-normal mb-1">EMI</h6>
-                        <p class="text-mute small text-secondary">Car Loan</p>
-                    </div>
-                    <div class="col-auto align-self-center border-left">
-                        <h6 class="font-weight-normal mb-1">$ 658.00</h6>
-                        <p class="text-mute small text-secondary">Due: 18-12-2019</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">News Updates</h6>
-        <div class="row">
-            <!-- Swiper -->
-            <div class="swiper-container news-slide">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product2.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product3.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product2.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product3.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product2.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product3.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h5 class="subtitle mb-1">Most Exciting Feature</h5>
-                <p class="text-secondary">Take a look at our services</p>
-            </div>
-        </div>
-        <div class="row text-center mt-4">
-            <div class="col-6 col-md-3">
+        <!-- End title -->
+        @php $isAdsAndNoticeShow = ""; $isCategoryShow = ""; @endphp
+        <!-- Start Active job -->
+        <div class="container" id="active-job">
+            @foreach(auth()->user()->upazila->customers as $customer)
+            @foreach($customer->job->where('status', 'active') as $job)
                 <div class="card shadow border-0 mb-3">
                     <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">card_giftcard</i>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->description, 27) }}</b></h5>
+                                <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($job->description, 70) }}</p>
+                                <div class="row text-center">
+                                    <div class="col-4 text-center color-border">
+                                        <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                        <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($job->created_at)) }}</p>
+                                    </div>
+                                    <div class="col-4 text-center color-border">
+                                        <p class="text text-success mb-2">{{ 'Budget' }}</p>
+                                        <p class="text-mute small text-secondary mb-2">{{ $job->budget }}</p>
+                                    </div>
+                                    <div class="col-4 text-center color-border">
+                                        <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
+                                        <p class="text-mute small text-secondary mb-2">{{ '10' }}</p>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.job.show', $job->id) }}'">
+                                            <b>Bid Now</b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">2546</h3>
-                        <p class="text-secondary text-mute small">Gift it out</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">subscriptions</i>
+                <!-- Job equal or => 5 notice and top ads. show as up -->
+                @if( $loop->iteration == 5)
+                        @php $isAdsAndNoticeShow = "yes" @endphp
+                    <!-- Start admin notice box -->
+                        @foreach($adminNotice as $adminNotice)
+                            <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                                <div class="container">
+                                    <p class="lead">{{ $adminNotice->title }}</p>
+                                    <p class="text-secondary text-mute small"> {{ $adminNotice->detail }} </p>
+                                </div>
+                            </section>
+                        @endforeach
+                    <!-- End admin notice box -->
+                        <!-- Start controller notice box -->
+                        @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                            @foreach($controller->controllerNotice as $controllerNotice)
+                                <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                                    <div class="container">
+                                        <div class="container">
+                                            <p class="lead">{{ $controllerNotice->title }}</p>
+                                            <p class="text-secondary text-mute small">{{ $controllerNotice->detail }}</p>
+                                        </div>
+                                    </div>
+                                </section>
+                            @endforeach
+                        @endforeach
+                        <!-- End controller notice box -->
+                        <!-- Start top ads. by controller this upazila -->
+                        <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                                    @foreach($controller->controllerAds as $controllerAds)
+                                        <div class="swiper-slide swiper-slide-active">
+                                            <div class="card shadow border-0 bg-template">
+                                                <div class="card-body">
+                                                    <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
+                                                        <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">635</h3>
-                        <p class="text-secondary text-mute small">Monthly Billed</p>
+                        <!-- End top ads.  by controller this upazila -->
+                        <br>
+                @endif
+                <!-- Job equal or => 10 category and bottom ads. show as up -->
+                @if( $loop->iteration == 10)
+                        @php $isCategoryShow = "yes" @endphp
+                    <!-- Start title -->
+                        <div class="alert alert-primary text-center" role="alert">
+                            <b>Find your service by category</b>
+                        </div>
+                        <!-- End title -->
+                        <!-- Start worker service category -->
+                        <div class="container">
+                            <div class="row text-center mt-4">
+                                @foreach($categories as $category)
+                                    <div class="col-6 col-md-3">
+                                        <div class="card shadow border-0 mb-3">
+                                            <div class="card-body">
+                                                <div class="avatar avatar-60 no-shadow border-0">
+                                                    <div class="overlay bg-template"></div>
+                                                    <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
+                                                </div>
+                                                <a href="{{ route('customer.home.show',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <!-- End worker service category -->
+
+                        <!-- Start middle ads. by admin for all-->
+                        <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                @foreach($adminAds as $adminAds)
+                                    <div class="swiper-slide swiper-slide-active">
+                                        <div class="card shadow border-0 bg-template">
+                                            <div class="card-body">
+                                                <a  @if($adminAds->url) href="{{ $adminAds->url }}" target="_blank" @endif >
+                                                    <img src="{{ asset('uploads/images/ads/admin/'.$adminAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                        </div>
+                        <!-- End middle ads. by admin for all-->
+                        <hr>
+                        <!-- Start bottom ads. by controller this upazila  -->
+                        <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                                    @foreach($controller->controllerAds as $controllerAds)
+                                        <div class="swiper-slide swiper-slide-active">
+                                            <div class="card shadow border-0 bg-template">
+                                                <div class="card-body">
+                                                    <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
+                                                        <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                        </div>
+                        <br>
+                        <!-- End bottom ads.  by controller this upazila -->
+                    @endif
+            @endforeach
+            @endforeach
+        </div>
+        <!-- End Active job -->
+        <!--If job offer smaller than 5 show notice and top ads. as last -->
+        @if($isAdsAndNoticeShow!='yes')
+            <!-- Start admin notice box -->
+                @foreach($adminNotice as $adminNotice)
+                    <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                        <div class="container">
+                            <p class="lead">{{ $adminNotice->title }}</p>
+                            <p class="text-secondary text-mute small"> {{ $adminNotice->detail }} </p>
+                        </div>
+                    </section>
+                @endforeach
+            <!-- End admin notice box -->
+                <!-- Start controller notice box -->
+                @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                    @foreach($controller->controllerNotice as $controllerNotice)
+                        <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                            <div class="container">
+                                <div class="container">
+                                    <p class="lead">{{ $controllerNotice->title }}</p>
+                                    <p class="text-secondary text-mute small">{{ $controllerNotice->detail }}</p>
+                                </div>
+                            </div>
+                        </section>
+                    @endforeach
+                @endforeach
+            <!-- End controller notice box -->
+
+                <!-- Start top ads. by controller this upazila -->
+                <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                        @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                            @foreach($controller->controllerAds as $controllerAds)
+                                <div class="swiper-slide swiper-slide-active">
+                                    <div class="card shadow border-0 bg-template">
+                                        <div class="card-body">
+                                            <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
+                                                <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+                    </div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+                <!-- End top ads.  by controller this upazila -->
+        @endif
+        <hr>
+        <!--If job offer smaller than 10 show category & bottom ads. as last -->
+        @if($isCategoryShow!='yes')
+            <!-- Start title -->
+                <div class="alert alert-primary text-center" role="alert">
+                    <b>Find your service by category</b>
+                </div>
+                <!-- End title -->
+                <!-- Start worker service category -->
+                <div class="container">
+                    <div class="row text-center mt-4">
+                        @foreach($categories as $category)
+                            <div class="col-6 col-md-3">
+                                <div class="card shadow border-0 mb-3">
+                                    <div class="card-body">
+                                        <div class="avatar avatar-60 no-shadow border-0">
+                                            <div class="overlay bg-template"></div>
+                                            <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
+                                        </div>
+                                        <a href="{{ route('customer.home.show',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">local_florist</i>
-                        </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">1542</h3>
-                        <p class="text-secondary text-mute small">Eco environment</p>
+                <!-- End worker service category -->
+
+                <!-- Start middle ads. by admin for all-->
+                <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                        @foreach($adminAds as $adminAds)
+                            <div class="swiper-slide swiper-slide-active">
+                                <div class="card shadow border-0 bg-template">
+                                    <div class="card-body">
+                                        <a  @if($adminAds->url) href="{{ $adminAds->url }}" target="_blank" @endif >
+                                            <img src="{{ asset('uploads/images/ads/admin/'.$adminAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">location_city</i>
+                <!-- End middle ads. by admin for all-->
+                <hr>
+                <!-- Start bottom ads. by controller this upazila  -->
+                <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                        @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                            @foreach($controller->controllerAds as $controllerAds)
+                                <div class="swiper-slide swiper-slide-active">
+                                    <div class="card shadow border-0 bg-template">
+                                        <div class="card-body">
+                                            <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
+                                                <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+                    </div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+                <!-- End bottom ads.  by controller this upazila -->
+        @endif
+
+        <!-- footer-->
+        <div class="footer">
+            <div class="no-gutters">
+                <div class="col-auto mx-auto">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-auto">
+                            <a href="{{ route('worker.home.index') }}" class="btn btn-link-default active">
+                                <i class="material-icons">home</i>
+                            </a>
                         </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">154</h3>
-                        <p class="text-secondary text-mute small">Four Offices</p>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-link-default">
+                                <i class="material-icons">insert_chart_outline</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-link-default">
+                                <i class="material-icons">account_balance_wallet</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-link-default">
+                                <i class="material-icons">widgets</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-link-default">
+                                <i class="material-icons">account_circle</i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- footer ends-->
     </div>
 
-    <!-- footer-->
-    <div class="footer">
-        <div class="no-gutters">
-            <div class="col-auto mx-auto">
-                <div class="row no-gutters justify-content-center">
-                    <div class="col-auto">
-                        <a href="index.html" class="btn btn-link-default active">
-                            <i class="material-icons">home</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="statistics.html" class="btn btn-link-default">
-                            <i class="material-icons">insert_chart_outline</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="wallet.html" class="btn btn-link-default">
-                            <i class="material-icons">account_balance_wallet</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="transactions.html" class="btn btn-link-default">
-                            <i class="material-icons">widgets</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="profile.html" class="btn btn-link-default">
-                            <i class="material-icons">account_circle</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer ends-->
+    <script>
+        $(document).ready(function() {
+            //Submit new Job
+            $('#job-submit-button').click(function(){
+                var formData = new FormData();
+                formData.append('title', $('#title').val())
+                formData.append('description', $('#description').val())
+                formData.append('address', $('#address').val())
+                formData.append('service', $('#service').val())
+                formData.append('day', $('#day').val())
+                formData.append('budget', $('#budget').val())
 
-</div>
+                $.ajax({
+                    method: 'POST',
+                    url: '/customer/job',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#title').val('');
+                        $('#description').val('');
+                        $('#address').val('');
+                        //$('#service').val('');
+                        $('#day').val('');
+                        $('#budget').val('');
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Successfully add new job.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    },
+                    error: function (xhr) {
+                        var errorMessage = '<div class="card bg-danger">\n' +
+                            '                        <div class="card-body text-center p-5">\n' +
+                            '                            <span class="text-white">';
+                        $.each(xhr.responseJSON.errors, function(key,value) {
+                            errorMessage +=(''+value+'<br>');
+                        });
+                        errorMessage +='</span>\n' +
+                            '                        </div>\n' +
+                            '                    </div>';
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            footer: errorMessage
+                        })
+                    },
+                })
+            });
+        });
+    </script>
 @endsection

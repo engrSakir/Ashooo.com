@@ -23,4 +23,9 @@ class Upazila extends Model
     public function user(){
         return $this->hasMany(User::class,'upazila_id','id')->orderBy('id','desc');
     }
+
+    //Customers
+    public function customers(){
+        return $this->hasMany(User::class,'upazila_id','id')->orderBy('id','desc');
+    }
 }
