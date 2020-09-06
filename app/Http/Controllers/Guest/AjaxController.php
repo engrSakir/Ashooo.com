@@ -103,6 +103,8 @@ class AjaxController extends Controller
 
     //Submit worker register
     public function submitWorkerRegister(Request $request){
+
+
         $request->validate([
             'profilePicture'=> 'required|image|max:5000',
             'userName'      => 'required|string|max:20|unique:users,user_name',
@@ -121,16 +123,31 @@ class AjaxController extends Controller
             'referralCode'  => 'nullable|exists:referrals,own',
         ]);
 
+        /*
+         * Custom password check
+         */
         if ($request->input('password') != $request->input('confirmPassword')){
             return response()->json([
                 'type' => 'warning',
                 'message' => 'Password not match',
             ]);
         }
+        /**
+         * Custom service id check
+         */
+        foreach(explode(",",$request->input('services')) as $service_id){
+            if(!WorkerService::where('id', $service_id)->exists()) {
+                return response()->json([
+                    'type' => 'warning',
+                    'message' => 'Invalid services',
+                ]);
+            }
+        }
 
         /**
          * Worker store with basic information
-         */
+         * */
+
         $worker = new User();
         $worker->role         =   'worker';
         $worker->full_name    =   $request->input('fullName');
@@ -158,7 +175,8 @@ class AjaxController extends Controller
         /**
          * +Referral
          * Referral own ID generate & referral by code store in refferal table
-         */
+         * */
+
         // Need more generate referral code max -1 10 laks
         do {
             $referral_code = mt_rand( 000001, 999999 );
@@ -172,7 +190,8 @@ class AjaxController extends Controller
         /**
          * +NID
          * NID number, front image, back image store in NID table
-         */
+         * */
+
         //NID store
         $nid = new Nid();
         $nid->user_id   = $worker->id;
@@ -208,22 +227,19 @@ class AjaxController extends Controller
         /**
          * +Services
          * Worker ID & Service ID linked store in WorkerAndService Table
-         */
-        //return $request->input('services');
+         * */
 
-        foreach($request->input('services') as $service_id){
-            if(WorkerService::where('id', $service_id)->exists()) {
-                $service = new WorkerAndService();
-                $service->worker_id    = $worker->id;
-                $service->service_id   = $service_id;
-                $service->save();
-            }
+        foreach(explode(",",$request->input('services')) as $service_id){
+            $service = new WorkerAndService();
+            $service->worker_id    = $worker->id;
+            $service->service_id   = $service_id;
+            $service->save();
         }
-
 
         /**
          * After all success auto login
-         */
+         * */
+
         if(Auth::attempt(['phone' => $worker->phone, 'password' => $request->input('password'), 'status' => 1])) {
             Auth::user()->last_login_at = Carbon::now();
             Auth::user()->save();

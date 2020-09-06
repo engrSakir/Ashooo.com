@@ -287,7 +287,7 @@
                 },
                 success: function (response) {
                     //console.log(response)
-                    var serviceOption='<option selected disabled> Chose service</option>';
+                    var serviceOption='<option disabled> Chose service</option>';
                     response.forEach(function(service){
                         serviceOption += '<option class="servicesClass" value='+service.id+'>'+service.name+'</option>';
                     })
@@ -327,7 +327,7 @@
             $('#services-id :selected').each(function(i, selectedElement) {
                 servicesId[i] = $(selectedElement).val();
             });
-            servicesId.shift();
+            //servicesId.shift();
             //console.log(getInput());
             var userName = $('#user-name').val();
             var fullName = $('#full-name').val();
@@ -367,7 +367,7 @@
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    console.log(data)
+                    //console.log(data)
                     if (data.type == 'success'){
                         Swal.fire({
                             position: 'top-end',
