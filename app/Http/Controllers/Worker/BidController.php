@@ -55,9 +55,7 @@ class BidController extends Controller
 
         $bid->save();
 
-        return response()->json([
-            'id' => Crypt::encryptString($bid->id),
-        ]);
+        return $bid;
 
     }
 
@@ -88,7 +86,7 @@ class BidController extends Controller
         if ($bid->worker_id == Auth::user()->id){
             $bid->is_cancelled = '1';
             $bid->save();
-            return redirect()->route('worker.bid.show',$id);
+            return redirect()->route('worker.bid.show',Crypt::encryptString($bid->job_id));
         }else{
             return redirect()->back();
         }

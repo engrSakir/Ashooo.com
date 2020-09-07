@@ -190,7 +190,7 @@
                     })
                     setTimeout(function() {
                         //your code to be executed after 1 second
-                        location.replace("/worker/bid/"+data.id)
+                        location.replace("/worker/bid/"+$('#job-id').val())
                     }, 1000);//2 second
                 },
                 error: function (xhr) {

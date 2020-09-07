@@ -110,7 +110,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($ob->title, 27) }}</b></h5>
+                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
                             <div class="row">
                                 <div class="col-5 text-center color-border">
                                     <p class="text text-success mb-2">{{ 'Created' }}</p>
