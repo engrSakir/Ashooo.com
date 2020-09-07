@@ -9,6 +9,7 @@ use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class JobController extends Controller
 {
@@ -77,7 +78,7 @@ class JobController extends Controller
     public function show($id)
     {
         $setting = Setting::find(1);
-        $job = Job::find($id);
+        $job = Job::find(Crypt::decryptString($id));
         if ($job->customer_id == Auth::user()->id){
             return view('customer.job.show', compact('setting', 'job'));
         }else{
@@ -91,10 +92,11 @@ class JobController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * By this edit actually job will be updated by cancel status
      */
     public function edit($id)
     {
-        $job = Job::find($id);
+        $job = Job::find(Crypt::decryptString($id));
         if ($job->customer_id == Auth::user()->id){
             $job->status = 'cancelled';
             $job->save();
@@ -103,7 +105,7 @@ class JobController extends Controller
             $cancelJob->canceller_id = Auth::user()->id;
             $cancelJob->job_id = $job->id;
             $cancelJob->save();
-            return redirect()->route('customer.job.show', $job->id);
+            return redirect()->route('customer.job.show', $id);
         }else{
             return redirect()->back();
         }

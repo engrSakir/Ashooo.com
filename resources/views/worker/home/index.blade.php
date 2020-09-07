@@ -1,4 +1,4 @@
-@extends('customer.layout.app')
+@extends('worker.layout.app')
 @push('title') Home @endpush
 @push('head')
 
@@ -24,42 +24,46 @@
             <b>Job Offer</b>
         </div>
         <!-- End title -->
-        @php $isAdsAndNoticeShow = ""; $isCategoryShow = ""; @endphp
+        @php $isAdsAndNoticeShow = ""; $isCategoryShow = ""; $loopCount = 0; @endphp
         <!-- Start Active job -->
         <div class="container" id="active-job">
             @foreach(auth()->user()->upazila->customers as $customer)
             @foreach($customer->job->where('status', 'active') as $job)
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->description, 27) }}</b></h5>
-                                <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($job->description, 70) }}</p>
-                                <div class="row text-center">
-                                    <div class="col-4 text-center color-border">
-                                        <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                        <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($job->created_at)) }}</p>
-                                    </div>
-                                    <div class="col-4 text-center color-border">
-                                        <p class="text text-success mb-2">{{ 'Budget' }}</p>
-                                        <p class="text-mute small text-secondary mb-2">{{ $job->budget }}</p>
-                                    </div>
-                                    <div class="col-4 text-center color-border">
-                                        <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
-                                        <p class="text-mute small text-secondary mb-2">{{ '10' }}</p>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.job.show', $job->id) }}'">
-                                            <b>Bid Now</b>
-                                        </button>
+                <!-- Check already bid or not -->
+                @if(!auth()->user()->bid()->where('job_id', $job->id)->exists())
+                    @php $loopCount++; @endphp
+                    <div class="card shadow border-0 mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
+                                    <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($job->description, 70) }}</p>
+                                    <div class="row text-center">
+                                        <div class="col-4 text-center color-border">
+                                            <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                            <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($job->created_at)) }}</p>
+                                        </div>
+                                        <div class="col-4 text-center color-border">
+                                            <p class="text text-success mb-2">{{ 'Budget' }}</p>
+                                            <p class="text-mute small text-secondary mb-2">{{ $job->budget }}</p>
+                                        </div>
+                                        <div class="col-4 text-center color-border">
+                                            <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
+                                            <p class="text-mute small text-secondary mb-2">{{ '10' }}</p>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($job->id) ) }}'">
+                                                <b>Bid Now</b>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 <!-- Job equal or => 5 notice and top ads. show as up -->
-                @if( $loop->iteration == 5)
+                @if( $loopCount == 5)
                         @php $isAdsAndNoticeShow = "yes" @endphp
                     <!-- Start admin notice box -->
                         @foreach($adminNotice as $adminNotice)
@@ -108,15 +112,15 @@
                         <br>
                 @endif
                 <!-- Job equal or => 10 category and bottom ads. show as up -->
-                @if( $loop->iteration == 10)
-                        @php $isCategoryShow = "yes" @endphp
+                @if( $loopCount == 10)
+                    @php $isCategoryShow = "yes" @endphp
                     <!-- Start title -->
-                        <div class="alert alert-primary text-center" role="alert">
+                    <div class="alert alert-primary text-center" role="alert">
                             <b>Find your service by category</b>
                         </div>
-                        <!-- End title -->
-                        <!-- Start worker service category -->
-                        <div class="container">
+                    <!-- End title -->
+                    <!-- Start worker service category -->
+                    <div class="container">
                             <div class="row text-center mt-4">
                                 @foreach($categories as $category)
                                     <div class="col-6 col-md-3">
@@ -126,17 +130,16 @@
                                                     <div class="overlay bg-template"></div>
                                                     <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                                                 </div>
-                                                <a href="{{ route('customer.home.show',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                                                <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
-                        <!-- End worker service category -->
-
-                        <!-- Start middle ads. by admin for all-->
-                        <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                    <!-- End worker service category -->
+                    <!-- Start middle ads. by admin for all-->
+                    <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
                                 @foreach($adminAds as $adminAds)
                                     <div class="swiper-slide swiper-slide-active">
@@ -152,10 +155,10 @@
                             </div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
-                        <!-- End middle ads. by admin for all-->
-                        <hr>
-                        <!-- Start bottom ads. by controller this upazila  -->
-                        <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                    <!-- End middle ads. by admin for all-->
+                    <hr>
+                    <!-- Start bottom ads. by controller this upazila  -->
+                    <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
                                 @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
                                     @foreach($controller->controllerAds as $controllerAds)
@@ -173,9 +176,9 @@
                             </div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
-                        <br>
-                        <!-- End bottom ads.  by controller this upazila -->
-                    @endif
+                    <br>
+                    <!-- End bottom ads.  by controller this upazila -->
+                @endif
             @endforeach
             @endforeach
         </div>
@@ -247,7 +250,7 @@
                                             <div class="overlay bg-template"></div>
                                             <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                                         </div>
-                                        <a href="{{ route('customer.home.show',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                                        <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
                                     </div>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="Maxartkiller">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@stack('title')</title>
 
     <!-- Material design icons CSS -->
@@ -26,6 +26,8 @@
 
     <!--SweetAlert 2-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--====== AJAX ======-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @stack('head')
 </head>
 

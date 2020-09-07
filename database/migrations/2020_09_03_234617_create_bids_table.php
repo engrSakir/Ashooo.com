@@ -17,7 +17,10 @@ class CreateBidsTable extends Migration
             $table->id();
             $table->foreignId('job_id');
             $table->foreignId('worker_id');
+            $table->double('budget');
+            $table->text('description');
             $table->boolean('is_selected')->default(0);
+            $table->boolean('is_cancelled')->default(0);
             $table->timestamps();
         });
     }

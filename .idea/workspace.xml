@@ -141,19 +141,20 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/worker" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\home" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\auth" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\home" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\customer\job" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo-01-09-2020\resources\views\customer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
       <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
     </key>
@@ -197,7 +198,10 @@
       <workItem from="1599322777168" duration="7427000" />
       <workItem from="1599365875620" duration="8157000" />
       <workItem from="1599389916906" duration="599000" />
-      <workItem from="1599390877235" duration="2684000" />
+      <workItem from="1599390877235" duration="11348000" />
+      <workItem from="1599413489189" duration="9440000" />
+      <workItem from="1599445424394" duration="98000" />
+      <workItem from="1599445542590" duration="12896000" />
     </task>
     <servers />
   </component>
@@ -214,10 +218,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599278823259" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599372619973">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599447886186">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599372619973" />
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599447886186" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -230,9 +234,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598954492025" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1599293805213">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1599448027370">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599293805213" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599448027370" />
   </component>
 </project>

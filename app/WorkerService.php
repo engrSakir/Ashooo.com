@@ -18,4 +18,9 @@ class WorkerService extends Model
     public function category(){
         return $this->belongsTo(WorkerServiceCategory::class,'category_id','id');
     }
+
+    //Worker Service
+    public function worker(){
+        return $this->hasMany(WorkerAndService::class,'service_id','id');
+    }
 }

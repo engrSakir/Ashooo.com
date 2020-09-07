@@ -9,7 +9,10 @@ class Bid extends Model
     protected $fillable = [
         'job_id',
         'worker_id',
+        'budget',
+        'description',
         'is_selected',
+        'is_cancelled',
     ];
 
     //Job

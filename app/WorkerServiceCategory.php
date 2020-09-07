@@ -15,6 +15,6 @@ class WorkerServiceCategory extends Model
 
     //Services
     public function services(){
-        return $this->hasMany(WorkerService::class,'category_id','id')->orderBy('id','desc');
+        return $this->hasMany(WorkerService::class,'category_id','id');
     }
 }

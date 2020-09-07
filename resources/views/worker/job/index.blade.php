@@ -1,4 +1,4 @@
-@extends('customer.layout.app')
+@extends('worker.layout.app')
 @push('title') Job @endpush
 @push('head')
     <style>
@@ -70,7 +70,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center" role="alert">
-        <b id="bid-job">BID JOB</b>
+        <b id="gig-job">GIG JOB</b>
     </div>
     <!-- End title -->
     <!-- Start Active job -->
@@ -80,7 +80,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
+                        <h5 class="font-weight-normal mb-1"><b>{{ $job->title }}</b></h5>
                         <div class="row text-center">
                             <div class="col-5 text-center color-border">
                                 <p class="text text-success mb-2">{{ 'Created' }}</p>
@@ -91,7 +91,7 @@
                                 <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
                             </div>
                             <div class="col-3 text-center">
-                                <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.job.show', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
+                                <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.gig.show', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
                                     <i class="material-icons">visibility</i>
                                 </button>
                             </div>
@@ -110,7 +110,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($ob->title, 27) }}</b></h5>
+                            <h5 class="font-weight-normal mb-1"><b>{{ $job->title }}</b></h5>
                             <div class="row">
                                 <div class="col-5 text-center color-border">
                                     <p class="text text-success mb-2">{{ 'Created' }}</p>
@@ -121,7 +121,7 @@
                                     <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.job.show', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.gig.show', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
                                         <i class="material-icons">visibility</i>
                                     </button>
                                 </div>
@@ -141,7 +141,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
+                            <h5 class="font-weight-normal mb-1"><b>{{ $job->title }}</b></h5>
                             <div class="row">
                                 <div class="col-5 text-center color-border">
                                     <p class="text text-success mb-2">{{ 'Created' }}</p>
@@ -152,7 +152,7 @@
                                     <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.job.show',\Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.gig.show',\Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
                                         <i class="material-icons">visibility</i>
                                     </button>
                                 </div>
@@ -172,7 +172,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
+                            <h5 class="font-weight-normal mb-1"><b>{{ $job->title }}</b></h5>
                             <div class="row">
                                 <div class="col-5 text-center color-border">
                                     <p class="text text-success mb-2">{{ 'Created' }}</p>
@@ -183,7 +183,7 @@
                                     <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.job.show', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.gig.show', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'">
                                         <i class="material-icons">visibility</i>
                                     </button>
                                 </div>
@@ -218,10 +218,130 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center" role="alert">
-        <b id="gig-job"> GIG JOB</b>
+        <b id="bid-job"> BID JOB</b>
     </div>
     <!-- End title -->
-    <h1><b>Under dev ...</b></h1>
+    <!-- Start Bid jobs -->
+        @foreach(auth()->user()->bid->where('is_selected', '0') as $bid)
+            @if($bid->job->status == 'active' && $bid->is_cancelled == 0)
+            <!-- Start Active job -->
+            <div class="container active-bid-job" id="">
+            <div class="card shadow border-0 mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->job->title, 27)  }}</b></h5>
+                            <div class="row text-center">
+                                <div class="col-5 text-center color-border">
+                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->job->created_at)) }}</p>
+                                </div>
+                                <div class="col-3 text-center color-border">
+                                    <p class="text text-success mb-2">{{ '16' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.bid.show', \Illuminate\Support\Facades\Crypt::encryptString($bid->job->id)) }}'">
+                                        <i class="material-icons">visibility</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- End Active job -->
+            @elseif($bid->job->status == 'completed' && $bid->is_cancelled == 0)
+            <!-- Start Complete job -->
+            <div class="container completed-bid-job" id="">
+                        <div class="card shadow border-0 mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->job->title, 27)  }}</b></h5>
+                                        <div class="row text-center">
+                                            <div class="col-5 text-center color-border">
+                                                <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                                <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->job->created_at)) }}</p>
+                                            </div>
+                                            <div class="col-3 text-center color-border">
+                                                <p class="text text-success mb-2">{{ '16' }}</p>
+                                                <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
+                                            </div>
+                                            <div class="col-3 text-center">
+                                                <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.bid.show', \Illuminate\Support\Facades\Crypt::encryptString($bid->job->id)) }}'">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <!-- End Completed job -->
+            @elseif($bid->job->status == 'running' && $bid->is_cancelled == 0)
+            <!-- Start Running job -->
+            <div class="container running-bid-job" id="">
+                        <div class="card shadow border-0 mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->job->title, 27)  }}</b></h5>
+                                        <div class="row text-center">
+                                            <div class="col-5 text-center color-border">
+                                                <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                                <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->job->created_at)) }}</p>
+                                            </div>
+                                            <div class="col-3 text-center color-border">
+                                                <p class="text text-success mb-2">{{ '16' }}</p>
+                                                <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
+                                            </div>
+                                            <div class="col-3 text-center">
+                                                <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.bid.show', \Illuminate\Support\Facades\Crypt::encryptString($bid->job->id)) }}'">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <!-- End Running job -->
+            @elseif($bid->job->status == 'cancelled' || $bid->is_cancelled == 1)
+            <!-- Start Cancelled job -->
+            <div class="container cancelled-bid-job" id="">
+                <div class="card shadow border-0 mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->job->title, 27)  }}</b></h5>
+                                        <div class="row text-center">
+                                            <div class="col-5 text-center color-border">
+                                                <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                                <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->job->created_at)) }}</p>
+                                            </div>
+                                            <div class="col-3 text-center color-border">
+                                                <p class="text text-success mb-2">{{ '16' }}</p>
+                                                <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
+                                            </div>
+                                            <div class="col-3 text-center">
+                                                <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.bid.show', \Illuminate\Support\Facades\Crypt::encryptString($bid->job->id)) }}'">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <!-- End Cancelled job -->
+            @endif
+        @endforeach
+    <!-- End Bid jobs -->
     <!-- Start middle ads. by admin for all-->
     <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
@@ -301,45 +421,46 @@
     $(document).ready(function() {
         //Show only active
         $('#bid-job').html('ACTIVE | BID JOB');
-        $('#active-job').show();
-        $('#completed-job').hide();
-        $('#running-job').hide();
-        $('#cancelled-job').hide();
+        $('.active-bid-job').show();
+        $('.completed-bid-job').hide();
+        $('.running-bid-job').hide();
+        $('.cancelled-bid-job').hide();
+
 
         //Active job show
         $('#active-job-btn').click(function (){
             $('#bid-job').html('ACTIVE | BID JOB');
-            $('#active-job').show();
-            $('#completed-job').hide();
-            $('#running-job').hide();
-            $('#cancelled-job').hide();
+            $('.active-bid-job').show();
+            $('.completed-bid-job').hide();
+            $('.running-bid-job').hide();
+            $('.cancelled-bid-job').hide();
         })
 
         //Complete job show
         $('#completed-job-btn').click(function (){
             $('#bid-job').html('COMPLETED | BID JOB');
-            $('#active-job').hide();
-            $('#completed-job').show();
-            $('#running-job').hide();
-            $('#cancelled-job').hide();
+            $('.active-bid-job').hide();
+            $('.completed-bid-job').show();
+            $('.running-bid-job').hide();
+            $('.cancelled-bid-job').hide();
         })
 
         //Running job show
         $('#running-job-btn').click(function (){
             $('#bid-job').html('RUNNING | BID JOB');
-            $('#active-job').hide();
-            $('#completed-job').hide();
-            $('#running-job').show();
-            $('#cancelled-job').hide();
+            $('.active-bid-job').hide();
+            $('.completed-bid-job').hide();
+            $('.running-bid-job').show();
+            $('.cancelled-bid-job').hide();
         })
 
         //Cancelled job show
         $('#cancelled-job-btn').click(function (){
             $('#bid-job').html('CANCELLED | BID JOB');
-            $('#active-job').hide();
-            $('#completed-job').hide();
-            $('#running-job').hide();
-            $('#cancelled-job').show();
+            $('.active-bid-job').hide();
+            $('.completed-bid-job').hide();
+            $('.running-bid-job').hide();
+            $('.cancelled-bid-job').show();
         })
 
     });

@@ -77,6 +77,12 @@ Route::get('/worker', function (){
 //Worker Routes
 Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'middleware'=>'worker'], function (){
     Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
+    Route::get('/show-job/{id}', 'HomeController@showJob')->name('showJob');
+    Route::get('/show-services/{id}', 'HomeController@showServices')->name('showServices');
+
+    Route::resource('bid', 'BidController')->except(['index', 'create', 'update', 'destroy']);
+    Route::resource('gig', 'GigController')->except(['create', 'edit', 'update', 'destroy']);
+    Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
 });
 
 Route::get('/membership', function (){
@@ -95,4 +101,5 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
     Route::resource('home', 'HomeController')->except(['create','store', 'edit', 'update', 'destroy']);
     Route::get('/gigs/{id}','HomeController@showGigs')->name('showGigs');
     Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
+
 });

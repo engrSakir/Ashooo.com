@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Worker;
 use App\AdminAds;
 use App\AdminNotice;
 use App\Http\Controllers\Controller;
+use App\Job;
 use App\Setting;
 use App\WorkerServiceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
@@ -31,69 +33,26 @@ class HomeController extends Controller
         return view('worker.home.index', compact('setting', 'categories', 'adminNotice', 'adminAds'));
     }
 
+
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * showJob
      */
-    public function create()
-    {
-        //
+    public function showJob($id){
+        $setting = Setting::find(1);
+        $job = Job::find(Crypt::decryptString($id));
+        return view('worker.home.show-job',compact('setting', 'job'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * showServices
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function showServices($id){
+        $setting = Setting::find(1);
+        $category = WorkerServiceCategory::find(Crypt::decryptString($id));
+        $adminAds = AdminAds::where('status', '1')
+            ->whereDate('starting', '<', Carbon::today()->addDays(1))
+            ->whereDate('ending', '>', Carbon::today()->addDays(-1))
+            ->get();
+        return view('worker.home.show-service',compact('setting', 'category','adminAds'));
     }
 }

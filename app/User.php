@@ -97,4 +97,15 @@ class User extends Authenticatable
     public function bid(){
         return $this->hasMany(Bid::class,'worker_id','id');
     }
+
+    //Nid
+    public function nid(){
+        return $this->hasOne(Nid::class,'user_id','id');
+    }
+
+    //Worker Service
+    public function workerService(){
+        return $this->hasMany(WorkerAndService::class,'worker_id','id');
+    }
+
 }

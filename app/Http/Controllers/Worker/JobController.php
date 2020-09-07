@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Worker;
 
 use App\AdminAds;
-use App\AdminNotice;
 use App\Http\Controllers\Controller;
+use App\Job;
 use App\Setting;
-use App\WorkerService;
-use App\WorkerServiceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
-class HomeController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,15 +21,12 @@ class HomeController extends Controller
     public function index()
     {
         $setting = Setting::find(1);
-        $categories = WorkerServiceCategory::all();
-        $adminNotice = AdminNotice::orderBy('id', 'desc')
-            ->take(1)
-            ->get();
+
         $adminAds = AdminAds::where('status', '1')
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('customer.home.index', compact('setting', 'categories', 'adminNotice', 'adminAds'));
+        return view('worker.job.index', compact('setting', 'adminAds'));
     }
 
     /**
@@ -56,20 +52,13 @@ class HomeController extends Controller
 
     /**
      * Display the specified resource.
-     * Display services of this category
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $setting = Setting::find(1);
-        $category = WorkerServiceCategory::find(Crypt::decryptString($id));
-        $adminAds = AdminAds::where('status', '1')
-            ->whereDate('starting', '<', Carbon::today()->addDays(1))
-            ->whereDate('ending', '>', Carbon::today()->addDays(-1))
-            ->get();
-        return view('customer.home.show',compact('setting', 'category','adminAds'));
+
     }
 
     /**
@@ -104,22 +93,5 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Show worker's gig to customer.
-     * Only worker's upazila
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showGigs($id)
-    {
-        $setting = Setting::find(1);
-        $service = WorkerService::find(Crypt::decryptString($id));
-        $adminAds = AdminAds::where('status', '1')
-            ->whereDate('starting', '<', Carbon::today()->addDays(1))
-            ->whereDate('ending', '>', Carbon::today()->addDays(-1))
-            ->get();
-        return view('customer.home.gigs',compact('setting', 'service','adminAds'));
     }
 }

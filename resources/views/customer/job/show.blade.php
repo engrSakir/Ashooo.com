@@ -86,7 +86,7 @@
             <p>{{ $job->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                 <button disabled type="button" class="btn btn-outline-success active"><small>Time </small>{{ $job->day }}<small> Days</small></button>
-                <button id="job-cancel" onclick="window.location.href='{{ route('customer.job.edit', $job->id) }}'" type="button" class="btn btn-danger">Cancel</button>
+                <button id="job-cancel" onclick="window.location.href='{{ route('customer.job.edit', \Illuminate\Support\Facades\Crypt::encryptString($job->id)) }}'" type="button" class="btn btn-danger">Cancel</button>
             </div>
         </div>
         <!--End work detail , address, day-->
