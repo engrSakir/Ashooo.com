@@ -38,7 +38,7 @@
                 <div class="alert alert-info text-center" role="alert">
                     <b id=""> BID JOB</b>
                 </div>
-        </div>
+            </div>
         <!-- End title -->
         <!--Start owner info & price-->
         <div class="container">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
         </div>
         <div class="container top-100">
                 <div class="card mb-4 shadow">

@@ -18,31 +18,50 @@
         </div>
     </div>
     <!-- header ends -->
-    <div class="container bg-template">
-        <div class="row">
-            <div class="col text-center">
-                <h5 class="subtitle mb-1">{{ $service->name }}</h5>
-                <p class=""></p>
-            </div>
-        </div>
-        <div class="row text-center mt-4">
-
-            <h1>Under Dev...</h1>
-                <div class="col-6 col-md-3" hidden>
-                    <div class="card shadow border-0 mb-3">
-                        <div class="card-body">
-                            <div class="avatar avatar-60 no-shadow border-0">
-                                <div class="overlay bg-template"></div>
-                                <img src="{{ asset('uploads/images/worker/service/'.$service->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
-                            </div>
-                            <a href="{{ route('customer.showGigs',\Illuminate\Support\Facades\Crypt::encryptString($service->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $service->name }}</p></a>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Start title -->
+    <div>
+        <div class="alert alert-primary text-center" role="alert">
+            <b>{{ $service->name }}</b>
         </div>
     </div>
-    <hr>
+
+
+    <!-- Start worker's bid of this area-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 px-0">
+                <div class="list-group list-group-flush ">
+
+                    @foreach($service->gigs as $gig)
+                        <a class="list-group-item border-top text-dark" href="{{ route('customer.showGigDetail',\Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}">
+                            <div class="row">
+                                <div class="col-auto align-self-center">
+                                    <i class="material-icons text-template-primary">
+                                        <figure class="avatar avatar-60 border-0">
+                                            <img src="{{ asset('uploads/images/users/'.$gig->worker->image) }}" alt="">
+                                        </figure>
+                                    </i>
+                                </div>
+                                <div class="col pl-0">
+                                    <div class="row mb-1">
+                                        <div class="col">
+                                            <p class="mb-0">{{ $gig->worker->full_name }}</p>
+                                        </div>
+                                        <div class="col-auto pl-0">
+                                            <p class="small text-mute text-trucated mt-1">****</p>
+                                        </div>
+                                    </div>
+                                    <p class="small text-mute">{{ \Illuminate\Support\Str::limit($gig->title, 25) }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End worker's bid of this area-->
     <!-- footer-->
     <div class="footer">
         <div class="no-gutters">

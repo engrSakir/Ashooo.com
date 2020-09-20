@@ -51,6 +51,18 @@ class UserSeeder extends Seeder
             $user->upazila_id = '1';
             $user->password = Hash::make('password');
             $user->save();
+
+            for ($gigCount = 0; $gigCount < 5; $gigCount ++) {
+                $gig = new \App\Gig();
+                $gig->worker_id    = $user->id;
+                $gig->service_id    = 1;
+                $gig->title         = 'Gig title -'.$gigCount;
+                $gig->description   = 'Gig description -'.$gigCount;
+                $gig->tags          = 'Gig tag -'.$gigCount;
+                $gig->price         = '250';
+                $gig->day           = '10';
+                $gig->save();
+            }
         }
 
         // 10 Membership

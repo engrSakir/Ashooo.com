@@ -31,42 +31,38 @@
         </div>
     </div>
     <!-- header ends -->
-    <!-- Start job selection area-->
+    <!-- Start worker's bid of this area-->
     <div class="container">
-        <div class="card bg-template shadow mt-4 h-500">
-            <div class="card-body">
-                <div class="row">
-                    <div class="container">
+        <div class="row">
+            <div class="col-12 px-0">
+                <div class="list-group list-group-flush ">
+                    @foreach(auth()->user->upazila->workers->bid as $bid)
+                    <a class="list-group-item border-top active text-dark" href="#">
                         <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">Active Job ({{ count(auth()->user()->job->where('status', 'active')) }})</button>
-                                </div>
+                            <div class="col-auto align-self-center">
+                                <i class="material-icons text-template-primary">local_mall</i>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <button id="completed-job-btn" type="button" class="mb-2 btn btn-success">Completed ({{ count(auth()->user()->job->where('status', 'completed')) }})</button>
+                            <div class="col pl-0">
+                                <div class="row mb-1">
+                                    <div class="col">
+                                        <p class="mb-0">{{ $bid->worker->name }}</p>
+                                    </div>
+                                    <div class="col-auto pl-0">
+                                        <p class="small text-mute text-trucated mt-1">2/12/2019</p>
+                                    </div>
                                 </div>
+                                <p class="small text-mute">Order from Anand Mhatva recieved for Electronics with 6 quanity.</p>
                             </div>
+
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <button id="running-job-btn" type="button" class="mb-2 btn btn-success">Running &nbsp; ({{ count(auth()->user()->job->where('status', 'running')) }})  &nbsp;</button>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <button id="cancelled-job-btn" type="button" class="mb-2 btn btn-success">Cancelled ({{ count(auth()->user()->job->where('status', 'cancelled')) }})</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- End job selection area-->
+    <!-- End worker's bid of this area-->
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center" role="alert">
@@ -74,7 +70,7 @@
     </div>
     <!-- End title -->
     <!-- Start Active job -->
-    <div class="container active-job">
+    <div class="container" id="active-job">
         @foreach(auth()->user()->job->where('status', 'active') as $job)
         <div class="card shadow border-0 mb-3">
             <div class="card-body">
@@ -104,7 +100,7 @@
     </div>
     <!-- End Active job -->
     <!-- Start Complete job -->
-    <div class="container completed-job" id="">
+    <div class="container" id="completed-job">
         @foreach(auth()->user()->job->where('status', 'completed') as $job)
             <div class="card shadow border-0 mb-3">
                 <div class="card-body">
@@ -135,7 +131,7 @@
     <!-- End Completed job -->
 
     <!-- Start Running job -->
-    <div class="container running-job" id="">
+    <div class="container" id="running-job">
         @foreach(auth()->user()->job->where('status', 'running') as $job)
             <div class="card shadow border-0 mb-3">
                 <div class="card-body">
@@ -166,7 +162,7 @@
     <!-- End Running job -->
 
     <!-- Start Cancelled job -->
-    <div class="container cancelled-job" id="">
+    <div class="container" id="cancelled-job">
         @foreach(auth()->user()->job->where('status', 'cancelled') as $job)
             <div class="card shadow border-0 mb-3">
                 <div class="card-body">
@@ -198,7 +194,7 @@
     <!-- Start top ads. by controller this upazila -->
     <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-            @foreach(auth()->user()->upazila->controllers as $controller)
+            @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
                 @foreach($controller->controllerAds as $controllerAds)
                     <div class="swiper-slide swiper-slide-active">
                         <div class="card shadow border-0 bg-template">
@@ -221,132 +217,7 @@
         <b id="gig-job"> GIG JOB</b>
     </div>
     <!-- End title -->
-    <!-- Start Active job -->
-    <div class="container active-job">
-        @foreach(auth()->user()->gigOrders->where('status', 'active') as $order)
-            <div class="card shadow border-0 mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($order->gig->title, 27) }}</b></h5>
-                            <div class="row text-center">
-                                <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($order->created_at)) }}</p>
-                                </div>
-                                <div class="col-3 text-center color-border">
-                                    <p class="text text-success mb-2">{{ '16' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
-                                            onclick="window.location.href='{{ route('customer.showGigOrder', \Illuminate\Support\Facades\Crypt::encryptString($order->id)) }}'">
-                                        <i class="material-icons">visibility</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <!-- End Active job -->
-    <!-- Start Complete job -->
-    <div class="container completed-job" id="">
-        @foreach(auth()->user()->gigOrders->where('status', 'completed') as $order)
-            <div class="card shadow border-0 mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($order->gig->title, 27) }}</b></h5>
-                            <div class="row">
-                                <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{  date('h:i a m/d/y', strtotime($order->created_at))  }}</p>
-                                </div>
-                                <div class="col-3 text-center color-border">
-                                    <p class="text text-success mb-2">{{ '16' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
-                                            onclick="window.location.href='{{ route('customer.showGigOrder', \Illuminate\Support\Facades\Crypt::encryptString($order->id)) }}'">
-                                        <i class="material-icons">visibility</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <!-- End Completed job -->
-
-    <!-- Start Running job -->
-    <div class="container running-job" id="">
-        @foreach(auth()->user()->gigOrders->where('status', 'running') as $order)
-            <div class="card shadow border-0 mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($order->gig->title, 27) }}</b></h5>
-                            <div class="row">
-                                <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{  date('h:i a m/d/y', strtotime($order->created_at))  }}</p>
-                                </div>
-                                <div class="col-3 text-center color-border">
-                                    <p class="text text-success mb-2">{{ '16' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
-                                            onclick="window.location.href='{{ route('customer.showGigOrder',\Illuminate\Support\Facades\Crypt::encryptString($order->id)) }}'">
-                                        <i class="material-icons">visibility</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <!-- End Running job -->
-
-    <!-- Start Cancelled job -->
-    <div class="container cancelled-job" id="">
-        @foreach(auth()->user()->gigOrders->where('status', 'cancelled') as $order)
-            <div class="card shadow border-0 mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($order->gig->title, 27) }}</b></h5>
-                            <div class="row">
-                                <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{  date('h:i a m/d/y', strtotime($order->created_at))  }}</p>
-                                </div>
-                                <div class="col-3 text-center color-border">
-                                    <p class="text text-success mb-2">{{ '16' }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
-                                            onclick="window.location.href='{{ route('customer.showGigOrder', \Illuminate\Support\Facades\Crypt::encryptString($order->id)) }}'">
-                                        <i class="material-icons">visibility</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <!-- End Cancelled job -->
+    <h1><b>Under dev ...</b></h1>
     <!-- Start middle ads. by admin for all-->
     <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
@@ -369,7 +240,7 @@
     <!-- Start bottom ads. by controller this upazila  -->
     <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-            @foreach(auth()->user()->upazila->controllers as $controller)
+            @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
                 @foreach($controller->controllerAds as $controllerAds)
                     <div class="swiper-slide swiper-slide-active">
                         <div class="card shadow border-0 bg-template">
@@ -426,50 +297,45 @@
     $(document).ready(function() {
         //Show only active
         $('#bid-job').html('ACTIVE | BID JOB');
-        $('#gig-job').html('ACTIVE | GIG JOB');
-        $('.active-job').show();
-        $('.completed-job').hide();
-        $('.running-job').hide();
-        $('.cancelled-job').hide();
+        $('#active-job').show();
+        $('#completed-job').hide();
+        $('#running-job').hide();
+        $('#cancelled-job').hide();
 
         //Active job show
         $('#active-job-btn').click(function (){
             $('#bid-job').html('ACTIVE | BID JOB');
-            $('#gig-job').html('ACTIVE | GIG JOB');
-            $('.active-job').show();
-            $('.completed-job').hide();
-            $('.running-job').hide();
-            $('.cancelled-job').hide();
+            $('#active-job').show();
+            $('#completed-job').hide();
+            $('#running-job').hide();
+            $('#cancelled-job').hide();
         })
 
         //Complete job show
         $('#completed-job-btn').click(function (){
             $('#bid-job').html('COMPLETED | BID JOB');
-            $('#gig-job').html('COMPLETED | GIG JOB');
-            $('.active-job').hide();
-            $('.completed-job').show();
-            $('.running-job').hide();
-            $('.cancelled-job').hide();
+            $('#active-job').hide();
+            $('#completed-job').show();
+            $('#running-job').hide();
+            $('#cancelled-job').hide();
         })
 
         //Running job show
         $('#running-job-btn').click(function (){
             $('#bid-job').html('RUNNING | BID JOB');
-            $('#gig-job').html('RUNNING | GIG JOB');
-            $('.active-job').hide();
-            $('.completed-job').hide();
-            $('.running-job').show();
-            $('.cancelled-job').hide();
+            $('#active-job').hide();
+            $('#completed-job').hide();
+            $('#running-job').show();
+            $('#cancelled-job').hide();
         })
 
         //Cancelled job show
         $('#cancelled-job-btn').click(function (){
             $('#bid-job').html('CANCELLED | BID JOB');
-            $('#gig-job').html('CANCELLED | GIG JOB');
-            $('.active-job').hide();
-            $('.completed-job').hide();
-            $('.running-job').hide();
-            $('.cancelled-job').show();
+            $('#active-job').hide();
+            $('#completed-job').hide();
+            $('#running-job').hide();
+            $('#cancelled-job').show();
         })
 
     });

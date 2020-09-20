@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CancelJob extends Model
 {
     protected $fillable = [
+        'type',
         'job_id',
         'canceller_id',
     ];

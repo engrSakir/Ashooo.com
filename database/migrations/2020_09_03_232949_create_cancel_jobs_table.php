@@ -15,7 +15,8 @@ class CreateCancelJobsTable extends Migration
     {
         Schema::create('cancel_jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->unique();
+            $table->string('type')->comment('bid|gig');
+            $table->foreignId('job_id');
             $table->foreignId('canceller_id');
             $table->timestamps();
         });

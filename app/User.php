@@ -98,6 +98,16 @@ class User extends Authenticatable
         return $this->hasMany(Bid::class,'worker_id','id');
     }
 
+    //Gigs
+    public function gigs(){
+        return $this->hasMany(Gig::class,'worker_id','id');
+    }
+
+    //GigOrders
+    public function gigOrders(){
+        return $this->hasMany(GigOrder::class,'customer_id','id');
+    }
+
     //Nid
     public function nid(){
         return $this->hasOne(Nid::class,'user_id','id');

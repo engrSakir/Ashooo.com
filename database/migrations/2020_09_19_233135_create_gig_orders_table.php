@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGigsTable extends Migration
+class CreateGigOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateGigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gigs', function (Blueprint $table) {
+        Schema::create('gig_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('worker_id');
-            $table->foreignId('service_id');
-            $table->string('title');
+            $table->foreignId('gig_id');
+            $table->foreignId('customer_id');
+            $table->string('status')->default('active')->comment('active|complete|running|cancelled');
+            $table->double('budget');
             $table->text('description');
-            $table->string('tags');
-            $table->double('price');
-            $table->string('day');
+            $table->string('address');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateGigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gigs');
+        Schema::dropIfExists('gig_orders');
     }
 }

@@ -19,13 +19,27 @@ class Upazila extends Model
         return $this->belongsTo(District::class,'district_id','id');
     }
 
-    //User
-    public function user(){
+    //Users
+    public function users(){
         return $this->hasMany(User::class,'upazila_id','id')->orderBy('id','desc');
     }
 
     //Customers
-    public function customers(){
-        return $this->hasMany(User::class,'upazila_id','id')->orderBy('id','desc');
+    public function controllers(){
+        return $this->hasMany(User::class,'upazila_id','id')->where('role','controller')->orderBy('id','desc');
     }
+
+    //Customers
+    public function customers(){
+        return $this->hasMany(User::class,'upazila_id','id')->where('role','customer')->orderBy('id','desc');
+    }
+
+    //Workers
+    public function workers(){
+        return $this->hasMany(User::class,'upazila_id','id')->where('role','worker')->orderBy('id','desc');
+    }
+
+
+
+
 }

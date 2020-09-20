@@ -98,8 +98,18 @@ Route::get('/customer', function (){
 });
 //Customer Routes
 Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'customer', 'middleware'=>'customer'], function (){
-    Route::resource('home', 'HomeController')->except(['create','store', 'edit', 'update', 'destroy']);
+    //Route::resource('home', 'HomeController')->except(['create','store', 'edit', 'update', 'destroy']);
+    Route::get('/','HomeController@index')->name('home.index');
+    Route::get('/services/{id}','HomeController@showServices')->name('showServices');
     Route::get('/gigs/{id}','HomeController@showGigs')->name('showGigs');
+    Route::get('/gig-detail/{id}','HomeController@showGigDetail')->name('showGigDetail');
+    Route::get('/order/{id}','HomeController@showOrderForm')->name('showOrderForm');
+    Route::post('/order','HomeController@submitOrderForm')->name('submitOrderForm');
+
+
     Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
+    Route::get('/job/gig-order/{id}', 'JobController@showGigOrder')->name('showGigOrder');
+    Route::post('/job/gig-order', 'JobController@updateBudgetGigOrder')->name('updateBudgetGigOrder');
+    Route::get('/job/cancel-order/{id}','JobController@cancelGigOrder')->name('cancelGigOrder');
 
 });

@@ -17,7 +17,7 @@ class JobSeeder extends Seeder
             for ($jobCount = 1; $jobCount<=25; $jobCount++){
                 $job = new Job();
                 $job->customer_id   = 47; //phone 01304734666
-                $job->title         = 'I need to repair my AC model number Walton 5566. #title-'.$jobCount;
+                $job->title         = $statusCount.$jobCount.'.- I need to repair my AC model number Walton 5566. #title-'.$jobCount;
                 $job->description   = 'A job description or JD is a written narrative that describes the general tasks, or other related duties, and responsibilities of a position. ... A job usually includes several roles. According to Hall, the job description might be broadened to form a person specification or may be known as "terms of reference. #Job description-". '.$jobCount;
                 $job->address       = 'Address '.$jobCount;
                 $job->service_id    = $jobCount;
@@ -36,6 +36,7 @@ class JobSeeder extends Seeder
                     $job->status     = 'cancelled';
                     $job->save();
                     $cancelJob = new \App\CancelJob();
+                    $cancelJob->type = 'bid';
                     $cancelJob->canceller_id = 47;
                     $cancelJob->job_id = $job->id;
                     $cancelJob->save();

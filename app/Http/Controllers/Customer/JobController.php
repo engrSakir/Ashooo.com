@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\AdminAds;
+use App\GigOrder;
 use App\Http\Controllers\Controller;
 use App\Job;
 use App\Setting;
@@ -27,16 +28,6 @@ class JobController extends Controller
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
         return view('customer.job.index', compact('setting', 'adminAds'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -102,6 +93,7 @@ class JobController extends Controller
             $job->save();
             //Add in canceller list
             $cancelJob = new \App\CancelJob();
+            $cancelJob->type = 'bid';
             $cancelJob->canceller_id = Auth::user()->id;
             $cancelJob->job_id = $job->id;
             $cancelJob->save();
@@ -112,25 +104,63 @@ class JobController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function showGigOrder($id){
+        $setting = Setting::find(1);
+        $gigOrder = GigOrder::find(Crypt::decryptString($id));
+        if ($gigOrder->customer_id == Auth::user()->id){
+            return view('customer.job.gig-order', compact('setting', 'gigOrder'));
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
-    {
-        //
+    public function cancelGigOrder($id){
+        $gigOrder = GigOrder::find(Crypt::decryptString($id));
+        if ($gigOrder->customer_id == Auth::user()->id){
+            $gigOrder->status = 'cancelled';
+            $gigOrder->save();
+            //Add in canceller list
+            $cancelJob = new \App\CancelJob();
+            $cancelJob->type = 'gig';
+            $cancelJob->canceller_id = Auth::user()->id;
+            $cancelJob->job_id = $gigOrder->id;
+            $cancelJob->save();
+            return redirect()->route('customer.showGigOrder', $id);
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $budget
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateBudgetGigOrder (Request $request){
+        $request->validate([
+            'gig'    => 'required|exists:gig_orders,id',
+            'budget' => 'required|numeric|min:1',
+        ]);
+        $gigOrder = GigOrder::find($request->input('gig'));
+        if ($gigOrder->customer_id == Auth::user()->id){
+            $gigOrder->budget = $request->input('budget');
+            $gigOrder->save();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully budget updated',
+            ]);
+        }else{
+            return response()->json([
+                'type' => 'warning',
+                'message' => 'Illegal operation',
+            ]);
+        }
     }
 }

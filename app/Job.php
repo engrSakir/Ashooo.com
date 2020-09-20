@@ -27,7 +27,7 @@ class Job extends Model
 
     //cancelInfo
     public function cancelInfo(){
-        return $this->hasOne(CancelJob::class,'job_id','id');
+        return $this->hasOne(CancelJob::class,'job_id','id')->where('type', 'bid');
     }
 
     //Bid
