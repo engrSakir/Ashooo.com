@@ -14,7 +14,8 @@
         <div class="col">
             <div class="list-group main-menu">
                 <a href="{{ route('customer.home.index') }}" class="list-group-item list-group-item-action @if(Route::is('customer.home.index')) active @endif"><i class="material-icons icons-raised">home</i>Home</a>
-                <a href="{{ route('customer.job.index') }}" class="list-group-item list-group-item-action @if(Route::is('customer.job.index')) active @endif"><i class="material-icons icons-raised">work</i>My Job</a>
+                <a href="{{ route('customer.myJob') }}" class="list-group-item list-group-item-action @if(Route::is('customer.myJob')) active @endif"><i class="material-icons icons-raised">work</i>My Order</a>
+                <a href="{{ route('customer.showGeneralServiceCategory') }}" class="list-group-item list-group-item-action @if(Route::is('customer.showGeneralServiceCategory')) active @endif"><i class="material-icons icons-raised">blur_linear</i>Others</a>
 
 
                 <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>Color scheme</a>

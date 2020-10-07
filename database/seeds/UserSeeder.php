@@ -1,5 +1,7 @@
 <?php
 
+use App\Balance;
+use App\Rating;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,6 +27,16 @@ class UserSeeder extends Seeder
             $user->upazila_id = '1';
             $user->password = Hash::make('password');
             $user->save();
+
+            //Rating
+            $rating = new Rating();
+            $rating->user_id  = $user->id;
+            $rating->save();
+
+            //Balance
+            $rating = new Balance();
+            $rating->user_id  = $user->id;
+            $rating->save();
         }
 
         // 10 Controller
@@ -38,6 +50,17 @@ class UserSeeder extends Seeder
             $user->upazila_id = '1';
             $user->password = Hash::make('password');
             $user->save();
+
+            //Rating
+            $rating = new Rating();
+            $rating->user_id  = $user->id;
+            $rating->save();
+
+            //Balance
+            $rating = new Balance();
+            $rating->user_id  = $user->id;
+            $rating->save();
+
         }
 
         // 10 Worker
@@ -51,6 +74,16 @@ class UserSeeder extends Seeder
             $user->upazila_id = '1';
             $user->password = Hash::make('password');
             $user->save();
+
+            //Rating
+            $rating = new Rating();
+            $rating->user_id  = $user->id;
+            $rating->save();
+
+            //Balance
+            $rating = new Balance();
+            $rating->user_id  = $user->id;
+            $rating->save();
 
             for ($gigCount = 0; $gigCount < 5; $gigCount ++) {
                 $gig = new \App\Gig();
@@ -76,6 +109,16 @@ class UserSeeder extends Seeder
             $user->upazila_id = '1';
             $user->password = Hash::make('password');
             $user->save();
+
+            //Rating
+            $rating = new Rating();
+            $rating->user_id  = $user->id;
+            $rating->save();
+
+            //Balance
+            $rating = new Balance();
+            $rating->user_id  = $user->id;
+            $rating->save();
         }
 
         // 10 Customer
@@ -89,6 +132,16 @@ class UserSeeder extends Seeder
             $user->upazila_id = '1';
             $user->password = Hash::make('password');
             $user->save();
+
+            //Rating
+            $rating = new Rating();
+            $rating->user_id  = $user->id;
+            $rating->save();
+
+            //Balance
+            $rating = new Balance();
+            $rating->user_id  = $user->id;
+            $rating->save();
         }
     }
 }

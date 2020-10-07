@@ -14,7 +14,7 @@ class MembershipServiceCategory extends Model
     ];
 
     //Service
-    public function service(){
-        return $this->hasMany(MembershipService::class,'category_id','id')->orderBy('id','desc');
+    public function services(){
+        return $this->hasMany(MembershipService::class,'category_id','id');
     }
 }

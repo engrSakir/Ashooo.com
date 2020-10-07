@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Worker;
 
 use App\AdminAds;
 use App\AdminNotice;
+use App\CustomerGig;
 use App\Http\Controllers\Controller;
 use App\Job;
 use App\Setting;
@@ -39,8 +40,8 @@ class HomeController extends Controller
      */
     public function showJob($id){
         $setting = Setting::find(1);
-        $job = Job::find(Crypt::decryptString($id));
-        return view('worker.home.show-job',compact('setting', 'job'));
+        $customerGig = CustomerGig::find(Crypt::decryptString($id));
+        return view('worker.home.show-job',compact('setting', 'customerGig'));
     }
 
     /**

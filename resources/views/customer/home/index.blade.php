@@ -236,7 +236,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: '/customer/job',
+                url: "{{ route('customer.storeCustomerGig') }}",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 data: formData,
                 processData: false,

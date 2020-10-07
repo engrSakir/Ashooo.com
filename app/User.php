@@ -83,9 +83,9 @@ class User extends Authenticatable
         return $this->hasMany(ControllerAds::class,'controller_id','id');
     }
 
-    //Job
-    public function job(){
-        return $this->hasMany(Job::class,'customer_id','id');
+    //customerGigs
+    public function customerGigs(){
+        return $this->hasMany(CustomerGig::class,'customer_id','id');
     }
 
     //cancelInfo
@@ -93,19 +93,29 @@ class User extends Authenticatable
         return $this->hasMany(CancelJob::class,'canceller_id','id');
     }
 
-    //Bid
-    public function bid(){
-        return $this->hasMany(Bid::class,'worker_id','id');
+    //workerBids
+    public function workerBids(){
+        return $this->hasMany(WorkerBid::class,'worker_id','id');
     }
 
-    //Gigs
-    public function gigs(){
-        return $this->hasMany(Gig::class,'worker_id','id');
+    //workerGigs
+    public function workerGigs(){
+        return $this->hasMany(WorkerGig::class,'worker_id','id');
     }
 
-    //GigOrders
-    public function gigOrders(){
-        return $this->hasMany(GigOrder::class,'customer_id','id');
+    //customerBids
+    public function customerBids(){
+        return $this->hasMany(CustomerBid::class,'customer_id','id');
+    }
+
+    //jobsOfCustomer
+    public function jobsOfCustomer(){
+        return $this->hasMany(Job::class,'customer_id','id');
+    }
+
+    //jobsOfWorker
+    public function jobsOfWorker(){
+        return $this->hasMany(Job::class,'worker_id','id');
     }
 
     //Nid
@@ -118,4 +128,18 @@ class User extends Authenticatable
         return $this->hasMany(WorkerAndService::class,'worker_id','id');
     }
 
+    //Membership Service
+    public function membershipService(){
+        return $this->hasMany(MembershipAndService::class,'membership_id','id');
+    }
+
+    //Rating
+    public function rating(){
+        return $this->hasOne(Rating::class,'user_id','id');
+    }
+
+    //Balance
+    public function balance(){
+        return $this->hasOne(Rating::class,'user_id','id');
+    }
 }

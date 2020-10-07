@@ -50,7 +50,28 @@
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">{{ $gig->worker->full_name }}</h5>
-                                <p class="text-mute small">{{ '*****' }}</p>
+                                <div class="col-auto pl-0">
+                                    <p class="small text-mute text-trucated mt-1">
+                                        @php
+                                            $percent = 100 - (($gig->worker->rating->max_rate - $gig->worker->rating->rate)/$gig->worker->rating->max_rate)*100;
+                                            if ($percent>80)
+                                                $star = 5;
+                                            else if ($percent>60)
+                                                $star = 4;
+                                            else if ($percent>40)
+                                                $star = 3;
+                                            else if ($percent>20)
+                                                $star = 2;
+                                            else if ($percent>1)
+                                                $star = 1;
+                                            else
+                                                $star = 0;
+                                        @endphp
+                                        @for ($starCounter = 1; $starCounter <= $star; $starCounter++)
+                                            <i class="material-icons btn-outline-warning">star</i>
+                                        @endfor
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +112,7 @@
 
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                     <button disabled type="button" class="btn btn-outline-success active"><small>Time </small>{{ $gig->day }}<small> Days</small></button>
-                    <button id="" onclick="window.location.href='{{ route('customer.showOrderForm', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'" type="button" class="btn btn-success">Order Now</button>
+                    <button id="" onclick="window.location.href='{{ route('customer.showGigOrderForm', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'" type="button" class="btn btn-success">Order Now</button>
                 </div>
             </div>
             <!--End work detail , address, day-->
@@ -132,117 +153,4 @@
         </div>
         <!-- footer ends-->
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-            <div class="modal-content shadow">
-                <div class="modal-header">
-                    <h5 class="header-title mb-0" id="modal-title">Title</h5>
-                </div>
-                <div class="modal-body text-center pr-4 pl-4">
-                    <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
-                        <img id="worker-image" src="{{ asset('assets/mobile/img/order-now.png') }}" alt="user image">
-                    </figure>
-                    <h5 class="my-3">Ananya Johnsons</h5>
-                    <div class="form-group text-left float-label">
-                        <input type="password" class="form-control text-center" placeholder="Password">
-                        <button class="overlay btn btn-sm btn-link text-success">
-                            <i class="fa fa-eye"></i>
-                        </button>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-default btn-rounded btn-block col">Another register</button>
-                        <br>
-                        <a href="#">Not you? Sign in as different user</a>
-                    </div>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- page level script -->
-
-    <script>
-        $(document).ready(function(){
-            //Show modal
-            $("#order-now").click(function (){
-                $('#modal').modal('show');
-                $('#modal-title').html( $('.gig-title').text() );
-                $('#worker-image').attr("src", $('.worker-profile-image').attr("src"));
-                //$('#worker-image').attr("src", $(this).parent().parent().parent().find('[class*="worker-profile-image"]').attr("src"));
-            });
-            $("#order-bhjnow").click(function (){
-                //console.log(getInput());
-                var userName = $('#user-name').val();
-                var fullName = $('#full-name').val();
-                var phone = $('#phone').val();
-                var password = $('#password').val();
-                var confirmPassword = $('#confirm-password').val();
-                var referralCode = $('#referral').val();
-                var districtId = $('#district-id').val();
-                var upazilaId = $('#upazila-id').val();
-                var gender = $('.gender:checked').val();
-                var image = $('#profile-image')[0].files[0];
-
-                var formData = new FormData();
-                formData.append('userName', userName)
-                formData.append('fullName', fullName)
-                formData.append('phone', phone)
-                formData.append('password', password)
-                formData.append('confirmPassword', confirmPassword)
-                formData.append('referralCode', referralCode)
-                formData.append('district', districtId)
-                formData.append('upazila', upazilaId)
-                formData.append('gender', gender)
-                formData.append('profilePicture', image)
-
-                $.ajax({
-                    method: 'POST',
-                    url: '/guest/submit/customer-register',
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        if (data.type == 'success'){
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: data.type,
-                                title: data.message,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            setTimeout(function() {
-                                //your code to be executed after 1 second
-                                window.location = "{{ route('customer.home.index') }}";
-                            }, 1000); //1 second
-                        }else{
-                            Swal.fire({
-                                icon: data.type,
-                                title: 'Oops...',
-                                text: data.message,
-                                footer: ''
-                            })
-                        }
-                    },
-                    error: function (xhr) {
-                        var errorMessage = '<div class="card bg-danger">\n' +
-                            '                        <div class="card-body text-center p-5">\n' +
-                            '                            <span class="text-white">';
-                        $.each(xhr.responseJSON.errors, function(key,value) {
-                            errorMessage +=(''+value+'<br>');
-                        });
-                        errorMessage +='</span>\n' +
-                            '                        </div>\n' +
-                            '                    </div>';
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            footer: errorMessage
-                        })
-                    },
-                })
-            });
-        });
-    </script>
 @endsection

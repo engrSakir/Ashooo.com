@@ -22,12 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Guest Routes //,
 Route::group(['namespace' => 'Guest', 'middleware'=>['guest']], function (){
     Route::get('/', 'WelcomeController@index')->name('welcome');
-    Route::post('/guest/get/upazila-of-a-district', 'AjaxController@getUpazilaOfDistrict');
-    Route::post('/guest/submit/customer-register', 'AjaxController@submitCustomerRegister');
+    Route::post('/guest/get/upazila-of-a-district', 'AjaxController@getUpazilaOfDistrict')->name('getUpazilaOfDistrict');
+    Route::post('/guest/submit/customer-register', 'RegisterController@submitCustomerRegister')->name('submitCustomerRegister');
 
     Route::get('/worker-register', 'RegisterController@getWorkerRegisterForm')->name('getWorkerRegisterForm');
-    Route::post('/guest/get/services-of-a-category', 'AjaxController@getServicesOfCategory');
-    Route::post('/guest/submit/worker-register', 'AjaxController@submitWorkerRegister');
+    Route::post('/guest/get/services-of-a-category', 'AjaxController@getServicesOfCategory')->name('getWorkerServicesOfCategory');
+    Route::post('/guest/submit/worker-register', 'RegisterController@submitWorkerRegister')->name('submitWorkerRegister');
+
+    Route::get('/membership-register', 'RegisterController@getMembershipRegisterForm')->name('getMembershipRegisterForm');
+    Route::post('/guest/get/membership-services-of-a-category', 'AjaxController@getMembershipServicesOfCategory')->name('getMembershipServicesOfCategory');
+    Route::post('/guest/submit/membership-register', 'RegisterController@submitMembershipRegister')->name('submitMembershipRegister');
 });
 
 Route::get('/admin', function (){
@@ -80,9 +84,31 @@ Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'm
     Route::get('/show-job/{id}', 'HomeController@showJob')->name('showJob');
     Route::get('/show-services/{id}', 'HomeController@showServices')->name('showServices');
 
-    Route::resource('bid', 'BidController')->except(['index', 'create', 'update', 'destroy']);
-    Route::resource('gig', 'GigController')->except(['create', 'edit', 'update', 'destroy']);
+    //Route::resource('bid', 'BidController')->except(['index', 'create', 'update', 'destroy']);
+
+    //Worker bid on customer gig
+    Route::post('/bid','WorkerBidController@store')->name('storeWorkerBid');
+    Route::get('/bid/{id}','WorkerBidController@show')->name('showWorkerBid');
+    Route::post('/bid/cancel/','WorkerBidController@cancel')->name('cancelWorkerBid');
+    Route::post('/bid/change-budget/','WorkerBidController@changePriceForMoreWork')->name('changePriceForMoreWork');
+
+    //Customer bid on worker gig
+    Route::get('/customer/bid/{id}', 'CustomerBidController@show')->name('showCustomerBid');
+
+    //Worker created gig
+    Route::get('/gig', 'WorkerGigController@index')->name('gig.index');
+    Route::post('/gig', 'WorkerGigController@store')->name('gig.store');
+    Route::get('/gig/{id}', 'WorkerGigController@show')->name('showCustomerBid');
+    Route::get('/gig/edit/{id}', 'WorkerGigController@edit')->name('editWorkerGig');
+    Route::post('/gig/edit', 'WorkerGigController@update')->name('updateWorkerGig');
+
+
+
+    //Route::resource('gig', 'GigController')->except(['create', 'edit', 'update', 'destroy']);
+
     Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
+
+
 });
 
 Route::get('/membership', function (){
@@ -98,18 +124,41 @@ Route::get('/customer', function (){
 });
 //Customer Routes
 Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'customer', 'middleware'=>'customer'], function (){
-    //Route::resource('home', 'HomeController')->except(['create','store', 'edit', 'update', 'destroy']);
     Route::get('/','HomeController@index')->name('home.index');
+    Route::post('/','CustomerGigController@store')->name('storeCustomerGig');
     Route::get('/services/{id}','HomeController@showServices')->name('showServices');
-    Route::get('/gigs/{id}','HomeController@showGigs')->name('showGigs');
-    Route::get('/gig-detail/{id}','HomeController@showGigDetail')->name('showGigDetail');
-    Route::get('/order/{id}','HomeController@showOrderForm')->name('showOrderForm');
-    Route::post('/order','HomeController@submitOrderForm')->name('submitOrderForm');
+    //Home
+    Route::get('/gig/{id}','GigController@show')->name('showGigs');
+    Route::get('/gig-detail/{id}','GigController@showGigDetail')->name('showGigDetail');
+    Route::get('/gig-detail/order/{id}','GigController@showOrderForm')->name('showGigOrderForm');
+    Route::post('/gig-detail/order','GigController@submitOrderForm')->name('submitGigOrderForm');
+
+    //My Order
+    //Customer gig | Worker Bids
+    Route::get('/jobs','JobController@index')->name('myJob');
+
+    Route::get('/jobs/customer-gig/{id}','CustomerGigController@show')->name('showCustomerGig');
+    Route::post('/jobs/customer-gig','CustomerGigController@selectWorker')->name('selectWorkerForCustomerGig');
+    Route::get('/jobs/customer-gig/cancel/{id}','CustomerGigController@cancel')->name('cancelCustomerGig');
+    Route::post('/jobs/customer-gig/price-change','CustomerGigController@changePriceForMoreWork')->name('changePriceForMoreWork');
+    Route::post('/jobs/customer-gig/image-upload','CustomerGigController@imageUploadToJob')->name('imageUploadToCustomerGig');
+    Route::post('/jobs/customer-gig/complete-rating','CustomerGigController@completedJobAndRating')->name('completedCustomerGigJobAndRating');
 
 
-    Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
-    Route::get('/job/gig-order/{id}', 'JobController@showGigOrder')->name('showGigOrder');
-    Route::post('/job/gig-order', 'JobController@updateBudgetGigOrder')->name('updateBudgetGigOrder');
-    Route::get('/job/cancel-order/{id}','JobController@cancelGigOrder')->name('cancelGigOrder');
+    //Route::get('/jobs/customer-gig/cancel/{id}','JobController@cancel')->name('cancelMyJob');
+    //Route::post('/jobs/customer-gig/','JobController@selectWorker')->name('selectWorkerForCustomerGig');
+    //Route::post('/jobs/customer-gig/price-change','JobController@changePriceForMoreWork')->name('changePriceForMoreWork');
+    //Route::post('/jobs/customer-gig/image-upload','JobController@imageUploadToJob')->name('imageUploadToCustomerGig');
+    //Route::post('/jobs/customer-gig/complete-rating','JobController@completedJobAndRating')->name('completedCustomerGigJobAndRating');
+
+    //2
+    Route::get('/jobs/my-bid/{id}','BidController@show')->name('showMyBidOrder');
+    Route::get('/job/my-bid/cancel{id}','BidController@cancel')->name('cancelMyBid');
+    Route::post('/job/my-bid/budget','BidController@updateBudget')->name('updateMyBidBudget');
+
+    //General
+    Route::get('/general-services', 'GeneralServiceController@showGeneralServiceCategory')->name('showGeneralServiceCategory');
+    Route::get('/general-services/{id}','GeneralServiceController@showMembershipServices')->name('showMembershipServices');
+    Route::get('/members/{id}','GeneralServiceController@showMembers')->name('showMembers');
 
 });

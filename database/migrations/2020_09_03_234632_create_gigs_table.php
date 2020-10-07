@@ -19,9 +19,10 @@ class CreateGigsTable extends Migration
             $table->foreignId('service_id');
             $table->string('title');
             $table->text('description');
-            $table->string('tags');
+            $table->string('tags')->nullable();
             $table->double('price');
             $table->string('day');
+            $table->integer('click')->default(0);
             $table->timestamps();
         });
     }

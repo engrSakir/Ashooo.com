@@ -50,7 +50,28 @@
                         </div>
                         <div class="col pl-0 align-self-center">
                             <h5 class="mb-1">{{ $gig->worker->full_name }}</h5>
-                            <p class="text-mute small">{{ '*****' }}</p>
+                            <div class="col-auto pl-0">
+                                <p class="small text-mute text-trucated mt-1">
+                                    @php
+                                        $percent = 100 - (($gig->worker->rating->max_rate - $gig->worker->rating->rate)/$gig->worker->rating->max_rate)*100;
+                                        if ($percent>80)
+                                            $star = 5;
+                                        else if ($percent>60)
+                                            $star = 4;
+                                        else if ($percent>40)
+                                            $star = 3;
+                                        else if ($percent>20)
+                                            $star = 2;
+                                        else if ($percent>1)
+                                            $star = 1;
+                                        else
+                                            $star = 0;
+                                    @endphp
+                                    @for ($starCounter = 1; $starCounter <= $star; $starCounter++)
+                                        <i class="material-icons btn-outline-warning">star</i>
+                                    @endfor
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,7 +165,6 @@
         <!-- footer ends-->
     </div>
 
-
     <!-- page level script -->
     <script>
         $(document).ready(function(){
@@ -157,7 +177,7 @@
 
                 $.ajax({
                     method: 'POST',
-                    url: "{{ route('customer.submitOrderForm') }}",
+                    url: "{{ route('customer.submitGigOrderForm') }}",
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data: formData,
                     processData: false,
@@ -171,7 +191,7 @@
                             timer: 1500
                         })
                         setTimeout(function() {
-                            window.location = "{{ route('customer.job.index') }}";
+                            window.location = "{{ route('customer.myJob') }}";
                         }, 1000); //1 second
                     },
                     error: function (xhr) {

@@ -158,8 +158,8 @@
                 <!-- Another register -->
                 <p class="mt-4 d-block text-secondary">
                     By clicking register your are agree to the
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">Worker Registration</a>
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">Membership Registration</a>
+                    <a href="{{ route('register') }}">Customer Registration</a>
+                    <a href="{{ route('getMembershipRegisterForm') }}">Membership Registration</a>
                 </p>
             </form>
         </div>
@@ -173,36 +173,6 @@
     </div>
     <!-- login buttons -->
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content shadow">
-            <div class="modal-header">
-                <h5 class="header-title mb-0">Login</h5>
-            </div>
-            <div class="modal-body text-center pr-4 pl-4">
-                <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
-                    <img src="{{ asset('assets/mobile/img/user1.png') }}" alt="user image">
-                </figure>
-                <h5 class="my-3">Ananya Johnsons</h5>
-                <div class="form-group text-left float-label">
-                    <input type="password" class="form-control text-center" placeholder="Password">
-                    <button class="overlay btn btn-sm btn-link text-success">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-default btn-rounded btn-block col">Another register</button>
-                    <br>
-                    <a href="#">Not you? Sign in as different user</a>
-                </div>
-                <br>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- jquery, popper and bootstrap js -->
 <script src="{{ asset('assets/mobile/js/jquery-3.3.1.min.js') }}"></script>
@@ -348,7 +318,7 @@
             formData.append('fullName', fullName)
             formData.append('phone', phone)
             formData.append('password', password)
-            formData.append('confirmPassword', confirmPassword)
+            formData.append('password_confirmation', confirmPassword)
             formData.append('referralCode', referralCode)
             formData.append('district', districtId)
             formData.append('upazila', upazilaId)
@@ -361,7 +331,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: '/guest/submit/worker-register',
+                url: "{{ route('submitWorkerRegister') }}",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 data: formData,
                 processData: false,
@@ -378,7 +348,7 @@
                         })
                         setTimeout(function() {
                             //your code to be executed after 1 second
-                            window.location = "{{ route('customer.home.index') }}";
+                            window.location = "{{ route('membership.home.index') }}";
                         }, 1000); //1 second
                     }else{
                         Swal.fire({

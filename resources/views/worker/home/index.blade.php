@@ -19,40 +19,41 @@
         </div>
         <!-- header ends -->
         <!-- Start title -->
-        <div class="alert alert-success text-center" role="alert">
-            <hr>
-            <b>Job Offer</b>
+        <div>
+            <div class="alert alert-success text-center" role="alert">
+                <b>Job Offer</b>
+            </div>
         </div>
         <!-- End title -->
         @php $isAdsAndNoticeShow = ""; $isCategoryShow = ""; $loopCount = 0; @endphp
         <!-- Start Active job -->
         <div class="container" id="active-job">
             @foreach(auth()->user()->upazila->customers as $customer)
-            @foreach($customer->job->where('status', 'active') as $job)
+            @foreach($customer->customerGigs->where('status', 'active') as $customerGig)
                 <!-- Check already bid or not -->
-                @if(!auth()->user()->bid()->where('job_id', $job->id)->exists())
+                @if(!auth()->user()->workerBids()->where('customer_gig_id', $customerGig->id)->exists())
                     @php $loopCount++; @endphp
                     <div class="card shadow border-0 mb-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
-                                    <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($job->description, 70) }}</p>
+                                    <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($customerGig->title, 27) }}</b></h5>
+                                    <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($customerGig->description, 70) }}</p>
                                     <div class="row text-center">
                                         <div class="col-4 text-center color-border">
                                             <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                            <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($job->created_at)) }}</p>
+                                            <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($customerGig->created_at)) }}</p>
                                         </div>
                                         <div class="col-4 text-center color-border">
                                             <p class="text text-success mb-2">{{ 'Budget' }}</p>
-                                            <p class="text-mute small text-secondary mb-2">{{ $job->budget }}</p>
+                                            <p class="text-mute small text-secondary mb-2">{{ $customerGig->budget }}</p>
                                         </div>
                                         <div class="col-4 text-center color-border">
                                             <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
                                             <p class="text-mute small text-secondary mb-2">{{ '10' }}</p>
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($job->id) ) }}'">
+                                            <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) ) }}'">
                                                 <b>Bid Now</b>
                                             </button>
                                         </div>
@@ -76,7 +77,7 @@
                         @endforeach
                     <!-- End admin notice box -->
                         <!-- Start controller notice box -->
-                        @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                        @foreach(auth()->user()->upazila->controllers as $controller)
                             @foreach($controller->controllerNotice as $controllerNotice)
                                 <section class="jumbotron text-center mt-3 bg-white shadow-sm">
                                     <div class="container">
@@ -92,7 +93,7 @@
                         <!-- Start top ads. by controller this upazila -->
                         <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                                @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                                @foreach(auth()->user()->upazila->controllers as $controller)
                                     @foreach($controller->controllerAds as $controllerAds)
                                         <div class="swiper-slide swiper-slide-active">
                                             <div class="card shadow border-0 bg-template">
@@ -160,7 +161,7 @@
                     <!-- Start bottom ads. by controller this upazila  -->
                     <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                             <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                                @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                                @foreach(auth()->user()->upazila->controllers as $controller)
                                     @foreach($controller->controllerAds as $controllerAds)
                                         <div class="swiper-slide swiper-slide-active">
                                             <div class="card shadow border-0 bg-template">
