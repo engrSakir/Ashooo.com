@@ -15,7 +15,9 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.1"
+        "laravel/ui": "^2.1",
+        "mckenziearts/laravel-notify": "^2.1",
+        "pusher/pusher-php-server": "~4.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",

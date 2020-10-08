@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Worker;
 
 use App\CustomerGig;
 use App\Http\Controllers\Controller;
+use App\Notifications\WorkerBidNotification;
 use App\Setting;
 use App\WorkerBid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+
 
 class WorkerBidController extends Controller
 {
@@ -27,16 +29,15 @@ class WorkerBidController extends Controller
             'description'       => 'required|string|min:15|max:5000',
             'jobId'            => 'required',
         ]);
-        $bid = new WorkerBid();
+        $workerBid = new WorkerBid();
 
-        $bid->customer_gig_id   = Crypt::decryptString($request->input('jobId'));
-        $bid->worker_id   = Auth::user()->id;
-        $bid->description   = $request->input('description');
-        $bid->budget        = $request->input('budget');
-
-        $bid->save();
-
-        return $bid;
+        $workerBid->customer_gig_id   = Crypt::decryptString($request->input('jobId'));
+        $workerBid->worker_id   = Auth::user()->id;
+        $workerBid->description   = $request->input('description');
+        $workerBid->budget        = $request->input('budget');
+        $workerBid->save();
+        $workerBid->customerGig->customer->notify(new WorkerBidNotification($workerBid)); //notification send to customer
+        return $workerBid;
 
     }
 

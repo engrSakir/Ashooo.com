@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('full_name');
             $table->string('user_name')->unique();
             $table->string('phone')->unique();
+            $table->string('email')->nullable();
             $table->string('image')->default('default.png');
             $table->string('gender')->comment('male|female');
             $table->foreignId('upazila_id');

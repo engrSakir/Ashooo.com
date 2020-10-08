@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             $user->full_name = $faker->name;
             $user->user_name = $faker->unique()->userName;
             $user->phone = '0130473462'.$admin;
+            $user->email = 'm.sakirahmed@gmail.com';
             $user->gender = 'male';
             $user->role = 'admin';
             $user->upazila_id = '1';
@@ -45,6 +46,7 @@ class UserSeeder extends Seeder
             $user->full_name = $faker->name;
             $user->user_name = $faker->unique()->userName;
             $user->phone = '0130473463'.$controller;
+            $user->email = 'm.sakirahmed@gmail.com';
             $user->gender = 'male';
             $user->role = 'controller';
             $user->upazila_id = '1';
@@ -69,6 +71,7 @@ class UserSeeder extends Seeder
             $user->full_name = $faker->name;
             $user->user_name = $faker->unique()->userName;
             $user->phone = '0130473464'.$worker;
+            $user->email = 'm.sakirahmed@gmail.com';
             $user->gender = 'male';
             $user->role = 'worker';
             $user->upazila_id = '1';
@@ -85,17 +88,6 @@ class UserSeeder extends Seeder
             $rating->user_id  = $user->id;
             $rating->save();
 
-            for ($gigCount = 0; $gigCount < 5; $gigCount ++) {
-                $gig = new \App\Gig();
-                $gig->worker_id    = $user->id;
-                $gig->service_id    = 1;
-                $gig->title         = 'Gig title -'.$gigCount;
-                $gig->description   = 'Gig description -'.$gigCount;
-                $gig->tags          = 'Gig tag -'.$gigCount;
-                $gig->price         = '250';
-                $gig->day           = '10';
-                $gig->save();
-            }
         }
 
         // 10 Membership
@@ -104,6 +96,7 @@ class UserSeeder extends Seeder
             $user->full_name = $faker->name;
             $user->user_name = $faker->unique()->userName;
             $user->phone = '0130473465'.$membership;
+            $user->email = 'm.sakirahmed@gmail.com';
             $user->gender = 'male';
             $user->role = 'membership';
             $user->upazila_id = '1';
@@ -127,6 +120,7 @@ class UserSeeder extends Seeder
             $user->full_name = $faker->name;
             $user->user_name = $faker->unique()->userName;
             $user->phone = '0130473466'.$customer;
+            $user->email = 'm.sakirahmed@gmail.com';
             $user->gender = 'male';
             $user->role = 'customer';
             $user->upazila_id = '1';

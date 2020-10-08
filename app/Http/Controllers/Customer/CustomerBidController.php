@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Customer;
 
 use App\CustomerBid;
 use App\Http\Controllers\Controller;
+use App\Notifications\CustomerBidNotification;
 use App\Setting;
-use App\WorkerBid;
+use App\WorkerGig;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,27 @@ use Image;
 
 class CustomerBidController extends Controller
 {
+    public function store(Request $request)
+    {
+        $request->validate([
+            'gig'               => 'required|string|exists:worker_gigs,id',
+            'description'       => 'required|string|min:15|max:5000',
+            'address'           => 'required|string|min:3|max:200',
+        ]);
+
+        $customerBid = new CustomerBid();
+        $customerBid->customer_id = auth()->user()->id;
+        $customerBid->worker_gig_id = $request->input('gig');
+        $customerBid->budget = WorkerGig::find($request->input('gig'))->budget;
+        $customerBid->description = $request->input('description');
+        $customerBid->address = $request->input('address');
+        $customerBid->save();
+
+        $customerBid->workerGig->worker->notify(new CustomerBidNotification($customerBid)); //Notification send to worker
+
+        return $customerBid;
+    }
+
     public function show($id){
         $setting = Setting::find(1);
         $customerBid = CustomerBid::find(Crypt::decryptString($id));
@@ -24,9 +46,12 @@ class CustomerBidController extends Controller
         }
     }
 
-    public function cancel($id){
-        $customerBid = CustomerBid::find(Crypt::decryptString($id));
-        if ($customerBid->customer_id == Auth::user()->id){
+    public function cancel(Request $request){
+        $request->validate([
+            'bid'    => 'required|exists:customer_bids,id',
+        ]);
+        $customerBid = CustomerBid::find($request->input('bid'));
+        if ($customerBid->customer->id == Auth::user()->id){
             $customerBid->status = 'cancelled';
             $customerBid->save();
             //Add in canceller list
@@ -35,9 +60,15 @@ class CustomerBidController extends Controller
             $cancelJob->canceller_id = Auth::user()->id;
             $cancelJob->job_id = $customerBid->id;
             $cancelJob->save();
-            return redirect()->route('customer.showMyBidOrder', $id);
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully bid cancelled',
+            ]);
         }else{
-            return redirect()->back();
+            return response()->json([
+                'type' => 'danger',
+                'message' => 'operation denied',
+            ]);
         }
     }
 

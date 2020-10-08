@@ -32,6 +32,7 @@ class HomeController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
+        notify()->success('Laravel Notify is awesome!');
         return view('customer.home.index', compact('setting', 'categories', 'adminNotice', 'adminAds'));
     }
 

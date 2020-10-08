@@ -60,15 +60,15 @@ class CustomerGigController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     * By this edit actually job will be updated by cancel status
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function cancel($id)
+    public function cancel(Request $request)
     {
-        $gig = CustomerGig::find(Crypt::decryptString($id));
+        $request->validate([
+            'gig'    => 'required|exists:customer_gigs,id',
+        ]);
+        $gig = CustomerGig::find($request->input('gig'));
         if ($gig->customer_id == Auth::user()->id){
             //Gig status change
             $gig->status = 'cancelled';
@@ -79,10 +79,15 @@ class CustomerGigController extends Controller
             $cancelJob->canceller_id = Auth::user()->id;
             $cancelJob->job_id = $gig->id;
             $cancelJob->save();
-
-            return redirect()->route('customer.showCustomerGig', $id);
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully cancel this gig',
+            ]);
         }else{
-            return redirect()->back();
+            return response()->json([
+                'type' => 'danger',
+                'message' => 'Not permitted',
+            ]);
         }
     }
 

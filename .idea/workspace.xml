@@ -132,6 +132,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/mckenziearts/laravel-notify" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gUY4lz6VioPifuGncHBEX8MPrs" />
@@ -144,22 +147,23 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/worker/gig" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/worker/layout" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\gig" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\job" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\auth" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\others" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
       <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\layout" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\notification" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\gig" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\job" />
     </key>
   </component>
   <component name="RunManager">
@@ -232,7 +236,8 @@
       <workItem from="1602039499807" duration="10423000" />
       <workItem from="1602064181522" duration="2721000" />
       <workItem from="1602083544288" duration="7772000" />
-      <workItem from="1602127279336" duration="8470000" />
+      <workItem from="1602127279336" duration="19961000" />
+      <workItem from="1602163612095" duration="12538000" />
     </task>
     <servers />
   </component>
@@ -249,10 +254,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599278823259" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602134827392">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602180820401">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602134827392" />
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602180820401" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -265,9 +270,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598954492025" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602134386091">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602180835163">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602134386091" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602180835163" />
   </component>
 </project>

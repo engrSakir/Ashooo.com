@@ -17,20 +17,6 @@
     </style>
 @endpush
 @section('content')
-<div class="wrapper homepage">
-    <!-- header -->
-    <div class="header">
-        <div class="row no-gutters">
-            <div class="col-auto">
-                <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-            </div>
-            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-            <div class="col-auto">
-                <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
-            </div>
-        </div>
-    </div>
-    <!-- header ends -->
     <!--Start active job detail view -->
     @if($gig->status == 'active')
         <!-- Start title -->
@@ -85,8 +71,9 @@
             <h4 class="mb-3"><b>Address:</b></h4>
             <p>{{ $gig->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
+                <input type="hidden" id="gig-id" value="{{ $gig->id }}">
                 <button disabled type="button" class="btn btn-outline-success active"><small>Time </small>{{ $gig->day }}<small> Days</small></button>
-                <button id="job-cancel" onclick="window.location.href='{{ route('customer.cancelCustomerGig', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'" type="button" class="btn btn-danger">Cancel</button>
+                <button id="job-cancel" type="button" class="btn btn-danger">Cancel</button>
             </div>
         </div>
         <!--End work detail , address, day-->
@@ -122,7 +109,7 @@
                                             <div class="row">
                                                 &nbsp;
                                                 <button type="button" class="mb-2 btn btn-sm btn-success order-now">ORDER</button>
-                                                <input type="hidden" class="hidden-id" value="{{ $bid->id }}">
+                                                <input type="hidden" class="worker-bid-id" value="{{ $bid->id }}">
                                             </div>
                                         </div>
                                         <div class="col pl-0">
@@ -462,42 +449,7 @@
                 </div>
             </div>
     @endif
-    <!-- footer-->
-    <div class="footer">
-        <div class="no-gutters">
-            <div class="col-auto mx-auto">
-                <div class="row no-gutters justify-content-center">
-                    <div class="col-auto">
-                        <a href="{{ route('customer.home.index') }}" class="btn btn-link-default active">
-                            <i class="material-icons">home</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="#" class="btn btn-link-default">
-                            <i class="material-icons">insert_chart_outline</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="#" class="btn btn-link-default">
-                            <i class="material-icons">account_balance_wallet</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="#" class="btn btn-link-default">
-                            <i class="material-icons">widgets</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="#" class="btn btn-link-default">
-                            <i class="material-icons">account_circle</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer ends-->
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="complete-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -778,7 +730,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     var formData = new FormData();
-                    formData.append('bid', $(this).parent().find('.hidden-id').val())
+                    formData.append('bid', $(this).parent().find('.worker-bid-id').val())
                     $.ajax({
                         method: 'POST',
                         url: "{{ route('customer.selectWorkerForCustomerGig') }}",
@@ -796,6 +748,60 @@
                             })
                             setTimeout(function() {
                                location.reload()
+                            }, 1000); //1 second
+                        },
+                        error: function (xhr) {
+                            var errorMessage = '<div class="card bg-danger">\n' +
+                                '                        <div class="card-body text-center p-5">\n' +
+                                '                            <span class="text-white">';
+                            $.each(xhr.responseJSON.errors, function(key,value) {
+                                errorMessage +=(''+value+'<br>');
+                            });
+                            errorMessage +='</span>\n' +
+                                '                        </div>\n' +
+                                '                    </div>';
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                footer: errorMessage
+                            })
+                        },
+                    })
+                }
+            })
+        });
+
+        //Job Cancel with confirm alert
+        $("#job-cancel").click(function (){
+            Swal.fire({
+                title: 'Cancel this gig ?',
+                text: "",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var formData = new FormData();
+                    formData.append('gig', $('#gig-id').val())
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('customer.cancelCustomerGig') }}",
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: data.type,
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            setTimeout(function() {
+                                location.reload()
                             }, 1000); //1 second
                         },
                         error: function (xhr) {

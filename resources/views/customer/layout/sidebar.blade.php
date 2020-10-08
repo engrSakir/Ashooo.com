@@ -24,4 +24,5 @@
         </div>
     </div>
 </div>
+<!---->
 <a href="javascript:void(0)" class="closesidemenu"><i class="material-icons icons-raised bg-dark ">close</i></a>

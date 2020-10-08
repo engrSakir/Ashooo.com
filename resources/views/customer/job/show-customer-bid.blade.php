@@ -17,20 +17,6 @@
     </style>
 @endpush
 @section('content')
-    <div class="wrapper homepage">
-        <!-- header -->
-        <div class="header">
-            <div class="row no-gutters">
-                <div class="col-auto">
-                    <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-                </div>
-                <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-                <div class="col-auto">
-                    <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
-                </div>
-            </div>
-        </div>
-        <!-- header ends -->
         <!--Start active job detail view -->
     @if($customerBid->status == 'active')
         <!-- Start title -->
@@ -46,15 +32,15 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerBid->workerGig->worker->image) }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerBid->customer->image) }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
-                                <h5 class="mb-1">{{ $customerBid->workerGig->worker->full_name }}</h5>
+                                <h5 class="mb-1">{{ $customerBid->customer->full_name }}</h5>
                                 <div class="col-auto pl-0">
 
                                     <p class="small text-mute text-trucated mt-1">
                                         @php
-                                            $percent = 100 - (($customerBid->workerGig->worker->rating->max_rate - $customerBid->workerGig->worker->rating->rate)/$customerBid->workerGig->worker->rating->max_rate)*100;
+                                            $percent = 100 - (($customerBid->customer->rating->max_rate - $customerBid->customer->rating->rate)/$customerBid->customer->rating->max_rate)*100;
                                             if ($percent>80)
                                                 $star = 5;
                                             else if ($percent>60)
@@ -112,6 +98,7 @@
                 </div>
             </div>
             <!--End owner info & price-->
+
             <!--Start work detail , address, day-->
             <div class="container">
                 <h5 class="mb-3"><b> {{ $customerBid->workerGig->title }} </b></h5>
@@ -121,13 +108,7 @@
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $customerBid->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-success active"><small>Delivery Time</small>
-                        <br> <small> {{ $customerBid->workerGig->day }}  Days </small>  </button>
-                    <button id="job-accept" type="button" class="btn btn-success">&nbsp; Accept &nbsp;</button>
-                </div>
-                <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-success active">{{ $customerBid->workerGig->created_at->format('h-m a') }}
-                        <br> <small> {{ $customerBid->workerGig->created_at->format('d-m-Y') }}</small></button>
+                    <button disabled type="button" class="btn btn-outline-success active"><small>Time </small>{{ $customerBid->workerGig->day }}<small> Days</small></button>
                     <button id="job-cancel" type="button" class="btn btn-danger">Cancel</button>
                 </div>
             </div>
@@ -419,42 +400,6 @@
 
     @endif
     <!-- footer-->
-        <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-auto">
-                            <a href="{{ route('customer.home.index') }}" class="btn btn-link-default active">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">account_balance_wallet</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">widgets</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer ends-->
-    </div>
-
     <!-- Modal -->
     <div class="modal fade" id="complete-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -740,6 +685,60 @@
                         $.ajax({
                             method: 'POST',
                             url: "{{ route('customer.updateCustomerBidBudget') }}",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: data.type,
+                                    title: data.message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(function() {
+                                    location.reload()
+                                }, 1000); //1 second
+                            },
+                            error: function (xhr) {
+                                var errorMessage = '<div class="card bg-danger">\n' +
+                                    '                        <div class="card-body text-center p-5">\n' +
+                                    '                            <span class="text-white">';
+                                $.each(xhr.responseJSON.errors, function(key,value) {
+                                    errorMessage +=(''+value+'<br>');
+                                });
+                                errorMessage +='</span>\n' +
+                                    '                        </div>\n' +
+                                    '                    </div>';
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    footer: errorMessage
+                                })
+                            },
+                        })
+                    }
+                })
+            });
+
+            //Job Cancel with confirm alert
+            $("#job-cancel").click(function (){
+                Swal.fire({
+                    title: 'Cancel this bid ?',
+                    text: "",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var formData = new FormData();
+                        formData.append('bid', $('#bid-id').val())
+                        $.ajax({
+                            method: 'POST',
+                            url: "{{ route('customer.cancelCustomerBid') }}",
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: formData,
                             processData: false,

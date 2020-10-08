@@ -17,20 +17,7 @@
     </style>
 @endpush
 @section('content')
-    <div class="wrapper homepage">
-        <!-- header -->
-        <div class="header">
-            <div class="row no-gutters">
-                <div class="col-auto">
-                    <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-                </div>
-                <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-                <div class="col-auto">
-                    <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
-                </div>
-            </div>
-        </div>
-        <!-- header ends -->
+
         <!--Start active job detail view -->
 
         <!-- Start title -->
@@ -85,7 +72,7 @@
                             <h3 class="mb-0 font-weight-normal">Price ৳ </h3>
                         </div>
                         <div class="col-auto">
-                            <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->price }}</b> </button>
+                            <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
                         </div>
                     </div>
                 </div>
@@ -128,42 +115,8 @@
             </div>
         </div>
         <hr>
-        <!-- footer-->
-        <div class="footer">
-            <div class="no-gutters">
-                <div class="col-auto mx-auto">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-auto">
-                            <a href="{{ route('customer.home.index') }}" class="btn btn-link-default active">
-                                <i class="material-icons">home</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">insert_chart_outline</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">account_balance_wallet</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">widgets</i>
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer ends-->
-    </div>
+
+
 
     <!-- page level script -->
     <script>

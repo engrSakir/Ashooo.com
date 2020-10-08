@@ -43,8 +43,23 @@
 <!-- Sidebar -->
 @include('customer.layout.sidebar')
 <!-- Sidebar ends -->
-
-@yield('content')
+<div class="wrapper homepage">
+    <!-- header -->
+    <div class="header">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
+            </div>
+            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
+            <div class="col-auto">
+                <a href="{{ route('customer.notifications') }}" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">{{ auth()->user()->notifications->count() }}</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    @yield('content')
+    @include('customer.layout.footer')
+</div>
 
 <!-- notification -->
 @include('customer.layout.notification')
