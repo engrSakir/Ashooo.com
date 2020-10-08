@@ -94,11 +94,11 @@
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($gig->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
-                                    <p class="text text-success mb-2">{{ $gig->customerBids->where('status', 'complete')->count() }}</p>
+                                    <p class="text text-success mb-2">{{ $gig->customerBids->where('status', '!=', 'cancelled')->count() }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ 'Orders' }}</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showWorkerGig', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'">
                                         <i class="material-icons">visibility</i>
                                     </button>
                                 </div>
@@ -159,9 +159,8 @@
                 formData.append('description', $('#description').val())
                 formData.append('service', $('#service').val())
                 formData.append('day', $('#day').val())
-                formData.append('address', $('#tags').val())
+                formData.append('tags', $('#tags').val())
                 formData.append('price', $('#price').val())
-
                 $.ajax({
                     method: 'POST',
                     url: "{{ route('worker.gig.store') }}",

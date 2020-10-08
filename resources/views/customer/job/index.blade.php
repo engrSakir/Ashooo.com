@@ -254,7 +254,7 @@
                                     <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showMyBidOrder', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
                                         <i class="material-icons">visibility</i>
                                     </button>
                                 </div>
@@ -266,6 +266,99 @@
         @endforeach
     </div>
     <!-- End Active job -->
+    <!-- Start Running job -->
+    <div class="container running-job">
+        @foreach(auth()->user()->customerBids->where('status', 'running') as $bid)
+            <div class="card shadow border-0 mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
+                            <div class="row text-center">
+                                <div class="col-5 text-center color-border">
+                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
+                                </div>
+                                <div class="col-3 text-center color-border">
+                                    <p class="text text-success mb-2">{{ $bid->budget }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
+                                        <i class="material-icons">visibility</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- End Running job -->
+
+    <!-- Start Completed job -->
+    <div class="container completed-job">
+        @foreach(auth()->user()->customerBids->where('status', 'completed') as $bid)
+            <div class="card shadow border-0 mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
+                            <div class="row text-center">
+                                <div class="col-5 text-center color-border">
+                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
+                                </div>
+                                <div class="col-3 text-center color-border">
+                                    <p class="text text-success mb-2">{{ $bid->budget }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
+                                        <i class="material-icons">visibility</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- End Completed job -->
+
+    <!-- Start Cancelled job -->
+    <div class="container cancelled-job">
+        @foreach(auth()->user()->customerBids->where('status', 'cancelled') as $bid)
+            <div class="card shadow border-0 mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
+                            <div class="row text-center">
+                                <div class="col-5 text-center color-border">
+                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
+                                </div>
+                                <div class="col-3 text-center color-border">
+                                    <p class="text text-success mb-2">{{ $bid->budget }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
+                                        <i class="material-icons">visibility</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- End Cancelled job -->
+
     <!-- Start middle ads. by admin for all-->
     <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">

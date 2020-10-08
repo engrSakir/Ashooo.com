@@ -373,7 +373,7 @@
                                     <br>
                                     <hr>
                                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                                        <button disabled type="button" class="btn btn-outline-success active"><b>Delivery Date</b> <br> <small> {{ date('h:i:s a m/d/y', strtotime($gig->updated_at)) }}</small></button>
+                                        <button disabled type="button" class="btn btn-outline-success active"><b>Delivery Date</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
                                     </div>
 
                                 </div>
@@ -458,7 +458,7 @@
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $gig->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-danger active"><b>Cancelled Date</b> <br> <small> {{ date('h:i:s a m/d/y', strtotime($gig->updated_at)) }}</small></button>
+                    <button disabled type="button" class="btn btn-outline-danger active"><b>Cancelled Date</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
                 </div>
             </div>
     @endif

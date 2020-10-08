@@ -94,13 +94,17 @@ Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'm
 
     //Customer bid on worker gig
     Route::get('/customer/bid/{id}', 'CustomerBidController@show')->name('showCustomerBid');
+    Route::post('/customer/bid/price-change', 'CustomerBidController@updateCustomerBidBudget')->name('updateCustomerBidBudget');
+    Route::post('/customer/bid/accept', 'CustomerBidController@acceptCustomerBid')->name('acceptCustomerBid');
+    Route::post('/customer/bid/reject', 'CustomerBidController@rejectCustomerBid')->name('rejectCustomerBid');
 
     //Worker created gig
     Route::get('/gig', 'WorkerGigController@index')->name('gig.index');
     Route::post('/gig', 'WorkerGigController@store')->name('gig.store');
-    Route::get('/gig/{id}', 'WorkerGigController@show')->name('showCustomerBid');
+    Route::get('/gig/{id}', 'WorkerGigController@show')->name('showWorkerGig');
     Route::get('/gig/edit/{id}', 'WorkerGigController@edit')->name('editWorkerGig');
     Route::post('/gig/edit', 'WorkerGigController@update')->name('updateWorkerGig');
+    Route::post('/gig/delete', 'WorkerGigController@delete')->name('deleteWorkerGig');
 
 
 
@@ -137,12 +141,12 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
     //Customer gig | Worker Bids
     Route::get('/jobs','JobController@index')->name('myJob');
 
-    Route::get('/jobs/customer-gig/{id}','CustomerGigController@show')->name('showCustomerGig');
-    Route::post('/jobs/customer-gig','CustomerGigController@selectWorker')->name('selectWorkerForCustomerGig');
-    Route::get('/jobs/customer-gig/cancel/{id}','CustomerGigController@cancel')->name('cancelCustomerGig');
-    Route::post('/jobs/customer-gig/price-change','CustomerGigController@changePriceForMoreWork')->name('changePriceForMoreWork');
-    Route::post('/jobs/customer-gig/image-upload','CustomerGigController@imageUploadToJob')->name('imageUploadToCustomerGig');
-    Route::post('/jobs/customer-gig/complete-rating','CustomerGigController@completedJobAndRating')->name('completedCustomerGigJobAndRating');
+    Route::get('/job/customer-gig/{id}','CustomerGigController@show')->name('showCustomerGig');
+    Route::post('/job/customer-gig','CustomerGigController@selectWorker')->name('selectWorkerForCustomerGig');
+    Route::get('/job/customer-gig/cancel/{id}','CustomerGigController@cancel')->name('cancelCustomerGig');
+    Route::post('/job/customer-gig/price-change','CustomerGigController@changePriceForMoreWork')->name('changePriceForMoreWork');
+    Route::post('/job/customer-gig/image-upload','CustomerGigController@imageUploadToJob')->name('imageUploadToCustomerGig');
+    Route::post('/job/customer-gig/complete-rating','CustomerGigController@completedJobAndRating')->name('completedCustomerGigJobAndRating');
 
 
     //Route::get('/jobs/customer-gig/cancel/{id}','JobController@cancel')->name('cancelMyJob');
@@ -151,10 +155,13 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
     //Route::post('/jobs/customer-gig/image-upload','JobController@imageUploadToJob')->name('imageUploadToCustomerGig');
     //Route::post('/jobs/customer-gig/complete-rating','JobController@completedJobAndRating')->name('completedCustomerGigJobAndRating');
 
-    //2
-    Route::get('/jobs/my-bid/{id}','BidController@show')->name('showMyBidOrder');
-    Route::get('/job/my-bid/cancel{id}','BidController@cancel')->name('cancelMyBid');
-    Route::post('/job/my-bid/budget','BidController@updateBudget')->name('updateMyBidBudget');
+    //Customer's Bid
+    Route::get('/job/bid/{id}','CustomerBidController@show')->name('showCustomerBid');
+    Route::get('/job/bid/cancel/{id}','CustomerBidController@cancel')->name('cancelCustomerBid');
+    Route::post('/job/bid/budget','CustomerBidController@updateBudget')->name('updateCustomerBidBudget');
+    Route::post('/job/customer-bid/image-upload','CustomerBidController@imageUploadToJob')->name('imageUploadToCustomerBid');
+    Route::post('/job/customer-bid/complete-rating','CustomerBidController@completedJobAndRating')->name('completedCustomerBidJobAndRating');
+
 
     //General
     Route::get('/general-services', 'GeneralServiceController@showGeneralServiceCategory')->name('showGeneralServiceCategory');

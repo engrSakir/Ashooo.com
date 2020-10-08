@@ -66,6 +66,7 @@ class WorkerGigController extends Controller
             return redirect()->back();
         }
     }
+
     public function update(Request $request)
     {
         $request->validate([
@@ -97,5 +98,25 @@ class WorkerGigController extends Controller
                 'message' => 'Permission denied',
             ]);
         }
+    }
+
+    public function delete(Request $request){
+        $request->validate([
+           'gig' => 'required|exists:worker_gigs,id'
+        ]);
+        $gig = WorkerGig::find($request->input('gig'));
+        if ($gig->worker->id == Auth::user()->id){
+            $gig->delete();
+            return response()->json([
+                'type' => 'success',
+                'message' => 'Successfully gig deleted',
+            ]);
+        }else{
+            return response()->json([
+                'type' => 'danger',
+                'message' => 'Permission denied',
+            ]);
+        }
+
     }
 }

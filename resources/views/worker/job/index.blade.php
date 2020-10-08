@@ -110,7 +110,6 @@
     <!-- End title -->
     <!-- Start WorkerBids -->
     @foreach(auth()->user()->workerBids as $workerBid)
-
         @if($workerBid->customerGig->status == 'cancelled' || $workerBid->is_cancelled == 1)
             <!-- Start Active job -->
                 <div class="container cancelled-job" id="">
@@ -253,14 +252,13 @@
     <!-- End top ads.  by controller this upazila -->
     <hr>
     <!-- Start title -->
-    <div class="alert alert-primary text-center" role="alert">
+    <div class="alert alert-primary text-center active-job" role="alert">
         <b id=""> BID JOB</b>
     </div>
     <!-- End title -->
     <!-- Start Active job -->
-    <div class="container" id="active-job">
+    <div class="container active-job" id="active-job">
         @foreach(auth()->user()->workerGigs as $workerGigs)
-
             @foreach($workerGigs->customerBids->where('status', 'active') as $customerBids)
                 <div class="card shadow border-0 mb-3">
                     <div class="card-body">
@@ -291,7 +289,7 @@
     </div>
     <!-- End Active job -->
     <!-- Start Complete job -->
-    <div class="container" id="completed-job">
+    <div class="container completed-job" id="completed-job">
         @foreach(auth()->user()->workerGigs as $workerGigs)
             @foreach($workerGigs->customerBids->where('status', 'completed') as $customerBids)
                 <div class="card shadow border-0 mb-3">
@@ -324,7 +322,7 @@
     <!-- End Completed job -->
 
     <!-- Start Running job -->
-    <div class="container" id="running-job">
+    <div class="container running-job" id="running-job">
         @foreach(auth()->user()->workerGigs as $workerGigs)
             @foreach($workerGigs->customerBids->where('status', 'running') as $customerBids)
                 <div class="card shadow border-0 mb-3">
@@ -357,7 +355,7 @@
     <!-- End Running job -->
 
     <!-- Start Cancelled job -->
-    <div class="container" id="cancelled-job">
+    <div class="container cancelled-job" id="cancelled-job">
         @foreach(auth()->user()->workerGigs as $workerGigs)
             @foreach($workerGigs->customerBids->where('status', 'cancelled') as $customerBids)
                 <div class="card shadow border-0 mb-3">

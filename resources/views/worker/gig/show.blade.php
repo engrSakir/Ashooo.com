@@ -66,20 +66,18 @@
                 <div class="col">
                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                         <button disabled type="button" class="btn btn-outline-success active"><b>{{ $workerGig->day }}</b> <br> <small>  Day </small></button>
-                        <button disabled type="button" class="btn btn-outline-success active"><b>{{ '$workerGig->' }}</b> <br> <small> Click </small></button>
+                        <button disabled type="button" class="btn btn-outline-success active"><b>{{ $workerGig->customerBids->where('status', '!=', 'cancelled')->count() }}</b> <br> <small> Click </small></button>
                     </div>
                 </div>
                 <div class="col">
                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                         <button type="button" onclick="window.location.href='{{ route('worker.editWorkerGig', \Illuminate\Support\Facades\Crypt::encryptString($workerGig->id)) }}'" class="btn btn-success edit-btn"><b>Edit &nbsp;</b></button>
-                        <button type="button" class="btn btn-danger delete-btn"><b>Delete</b></button>
+                        <button type="button" value="{{ $workerGig->id }}" class="btn btn-danger delete-btn"><b>Delete</b></button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End My Gigs -->
-
-
 
         <!-- footer-->
         <div class="footer">
@@ -120,63 +118,58 @@
 
     <script>
         $(document).ready(function() {
-            //Submit new Job
-            $('#gig-submit-button').click(function(){
-                var formData = new FormData();
-                formData.append('title', $('#title').val())
-                formData.append('description', $('#description').val())
-                formData.append('service', $('#service').val())
-                formData.append('day', $('#day').val())
-                formData.append('address', $('#tags').val())
-                formData.append('price', $('#price').val())
-
-                $.ajax({
-                    method: 'POST',
-                    url: "{{ route('worker.gig.store') }}",
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        $('#title').val('');
-                        $('#description').val('');
-                        $('#tags').val('');
-                        //$('#service').val('');
-                        $('#day').val('');
-                        $('#price').val('');
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Successfully add new gig.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        setTimeout(function() {
-                            location.reload();
-                        }, 1000); //1 second
-                    },
-                    error: function (xhr) {
-                        var errorMessage = '<div class="card bg-danger">\n' +
-                            '                        <div class="card-body text-center p-5">\n' +
-                            '                            <span class="text-white">';
-                        $.each(xhr.responseJSON.errors, function(key,value) {
-                            errorMessage +=(''+value+'<br>');
-                        });
-                        errorMessage +='</span>\n' +
-                            '                        </div>\n' +
-                            '                    </div>';
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            footer: errorMessage
-                        })
-                    },
-                })
-            });
-
             //Delete
             $('.delete-btn').click(function(){
-
+                Swal.fire({
+                    title: 'Delete this gig ?',
+                    text: "",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Delete now!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var formData = new FormData();
+                        formData.append('gig', $(this).val())
+                        $.ajax({
+                            method: 'POST',
+                            url: "{{ route('worker.deleteWorkerGig') }}",
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: data.type,
+                                    title: data.message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(function() {
+                                    location.replace("{{ route('worker.gig.index') }}")
+                                }, 1000); //1 second
+                            },
+                            error: function (xhr) {
+                                var errorMessage = '<div class="card bg-danger">\n' +
+                                    '                        <div class="card-body text-center p-5">\n' +
+                                    '                            <span class="text-white">';
+                                $.each(xhr.responseJSON.errors, function(key,value) {
+                                    errorMessage +=(''+value+'<br>');
+                                });
+                                errorMessage +='</span>\n' +
+                                    '                        </div>\n' +
+                                    '                    </div>';
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    footer: errorMessage
+                                })
+                            },
+                        })
+                    }
+                })
             });
         });
     </script>

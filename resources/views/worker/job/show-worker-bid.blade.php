@@ -278,7 +278,7 @@
                                                                 <input type="number" class="form-control text-center" id="price" placeholder="550">
                                                             </div>
                                                             <input type="hidden" id="bid-id" value="{{ $bid->id }}">
-                                                            <button type="button" class="btn btn-success mb-2" id="new-price"><b>Submit</b></button>
+                                                            <button type="button" class="btn btn-success mb-2" id="update-budget"><b>Submit</b></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -459,7 +459,7 @@
                         <button disabled type="button" class="btn btn-outline-danger active">
                             <b>Cancelled Date</b> <br>
                             <small>
-                                    {{ date('h:i:s a m/d/y', strtotime($customerGig->workerBids->where('worker_id', auth()->user()->id)->first()->updated_at)) }}
+                                    {{ date('h:i:s a m/d/Y', strtotime($customerGig->workerBids->where('worker_id', auth()->user()->id)->first()->updated_at)) }}
                             </small>
                         </button>
                     </div>
@@ -506,7 +506,7 @@
 
 <script>
     $(document).ready(function() {
-        //Submit new Job
+        //Cancel worker bid with confirm alert
         $('#canceller-btn').click(function(){
             Swal.fire({
                 title: 'Are you sure?',
@@ -561,9 +561,8 @@
             })
         });
 
-        //Price update by worker
-        //new-price
-        $("#new-price").click(function (){
+        //Price update by worker with confirm alert
+        $("#update-budget").click(function (){
             Swal.fire({
                 title: 'Price update ?',
                 text: "",

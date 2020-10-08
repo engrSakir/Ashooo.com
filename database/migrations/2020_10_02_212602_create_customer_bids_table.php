@@ -21,6 +21,7 @@ class CreateCustomerBidsTable extends Migration
             $table->double('budget');
             $table->text('description');
             $table->string('address');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

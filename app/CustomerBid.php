@@ -13,6 +13,7 @@ class CustomerBid extends Model
         'budget',
         'description',
         'address',
+        'image',
     ];
 
     //Customer
