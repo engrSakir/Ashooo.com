@@ -16,8 +16,7 @@
                 <a href="{{ route('customer.home.index') }}" class="list-group-item list-group-item-action @if(Route::is('customer.home.index')) active @endif"><i class="material-icons icons-raised">home</i>Home</a>
                 <a href="{{ route('customer.myJob') }}" class="list-group-item list-group-item-action @if(Route::is('customer.myJob')) active @endif"><i class="material-icons icons-raised">work</i>My Order</a>
                 <a href="{{ route('customer.showGeneralServiceCategory') }}" class="list-group-item list-group-item-action @if(Route::is('customer.showGeneralServiceCategory')) active @endif"><i class="material-icons icons-raised">blur_linear</i>Others</a>
-
-
+                <a href="{{ route('customer.profile.index') }}" class="list-group-item list-group-item-action @if(Route::is('customer.profile.index')) active @endif"><i class="material-icons icons-raised">face</i>Profile</a>
                 <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>Color scheme</a>
                 <a href="#" onclick="logout()" class="list-group-item list-group-item-action"><i class="material-icons icons-raised bg-danger">power_settings_new</i>Logout</a>
             </div>

@@ -29,7 +29,6 @@
 <!-- Loader -->
 @include('includes.loader')
 <!-- Loader ends -->
-
 <div class="wrapper">
     <!-- Swiper intro -->
     <div class="swiper-container introduction pt-5">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\CustomerBid;
 use App\Http\Controllers\Controller;
 use App\Notifications\CustomerBidNotification;
+use App\Referral;
 use App\Setting;
 use App\WorkerGig;
 use Carbon\Carbon;
@@ -39,7 +40,7 @@ class CustomerBidController extends Controller
     public function show($id){
         $setting = Setting::find(1);
         $customerBid = CustomerBid::find(Crypt::decryptString($id));
-        if ($customerBid->customer_id == Auth::user()->id){
+        if ($customerBid->customer->id == Auth::user()->id){
             return view('customer.job.show-customer-bid', compact('setting', 'customerBid'));
         }else{
             return redirect()->back();
@@ -145,6 +146,17 @@ class CustomerBidController extends Controller
             $bid->workerGig->worker->rating->max_rate +=  5;
             $bid->workerGig->worker->rating->save();
 
+            //Worker balance update
+            $bid->workerGig->worker->balance->job_income += $bid->budget;
+            $bid->workerGig->worker->balance->due += (Setting::find(1)->admin_percent_on_worker_job/100) * $bid->budget;
+            $bid->workerGig->worker->balance->save();
+
+            /*
+            //Balance updated of referral owner
+            if (\auth()->user()->referral->by){
+                $selectedReferralOwnerBalance = Referral::where('own', auth()->user()->referral->by)->first()->user->balance;
+            }
+            */
             if ($request->input('rate') > 0){
                 $bid->workerGig->worker->rating->rate +=  $request->input('rate');
                 $bid->workerGig->worker->rating->save();

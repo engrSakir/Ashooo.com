@@ -8,7 +8,7 @@
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@stack('title')</title>
+  <title>@stack('title') | Ashooo</title>
   <!--favicon-->
   <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
     <!-- simplebar CSS-->

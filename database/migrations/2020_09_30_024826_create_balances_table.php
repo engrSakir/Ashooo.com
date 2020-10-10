@@ -16,8 +16,10 @@ class CreateBalancesTable extends Migration
         Schema::create('balances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique();
-            $table->double('balance')->default(0);
+            $table->double('job_income')->default(0);
             $table->double('due')->default(0);
+            $table->double('referral_income')->default(0);
+            $table->double('withdrawn')->default(0);
             $table->timestamps();
         });
     }

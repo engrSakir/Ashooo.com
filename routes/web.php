@@ -55,15 +55,39 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix'=>'admin', 'midd
     Route::post('membership-service/update','MembershipServiceController@update');
 
     Route::resource('admin-notice', 'AdminNoticeController')->except(['create','show', 'edit', 'update', 'destroy']);
-    Route::post('admin-notice/update','AdminNoticeController@update');
+    Route::post('admin-notice/update','AdminNoticeController@update')->name('updateAdminNotice');
     Route::resource('controller-notice', 'ControllerNoticeController')->except(['store', 'create','show', 'edit', 'update', 'destroy']);
-    Route::post('controller-notice/update','ControllerNoticeController@update');
+    Route::post('controller-notice/update','ControllerNoticeController@update')->name('updateControllerNotice');
 
     Route::resource('admin-ads', 'AdminAdsController')->except(['create','show', 'edit', 'update', 'destroy']);
     Route::post('admin-ads/update','AdminAdsController@update');
     Route::resource('controller-ads', 'ControllerAdsController')->except(['store', 'create','show', 'edit', 'update', 'destroy']);
     Route::post('controller-ads/update','ControllerAdsController@update');
 
+    //Setting
+    Route::get('/setting/offer','SettingController@showOffer')->name('showOffer');
+    Route::post('/setting/offer','SettingController@updateOffer')->name('updateOffer');
+
+    Route::get('/setting/referral-income','SettingController@showReferralIncome')->name('showReferralIncome');
+    Route::post('/setting/referral-income','SettingController@updateReferralIncome')->name('updateReferralIncome');
+
+    Route::get('/setting/video-training','SettingController@showVideoTraining')->name('showVideoTraining');
+    Route::post('/setting/video-training','SettingController@updateVideoTraining')->name('updateVideoTraining');
+
+    Route::get('/setting/help-line','SettingController@showHelpLine')->name('showHelpLine');
+    Route::post('/setting/help-line','SettingController@updateHelpLine')->name('updateHelpLine');
+
+    Route::get('/setting/about','SettingController@showAbout')->name('showAbout');
+    Route::post('/setting/about','SettingController@updateAbout')->name('updateAbout');
+
+    Route::get('/setting/faq','SettingController@showFaq')->name('showFaq');
+    Route::post('/setting/faq','SettingController@updateFaq')->name('updateFaq');
+
+    Route::get('/setting/terms-and-condition','SettingController@showTermsAndCondition')->name('showTermsAndCondition');
+    Route::post('/setting/terms-and-condition','SettingController@updateTermsAndCondition')->name('updateTermsAndCondition');
+
+    Route::get('/setting/privacy-policy','SettingController@showPrivacyPolicy')->name('showPrivacyPolicy');
+    Route::post('/setting/privacy-policy','SettingController@updatePrivacyPolicy')->name('updatePrivacyPolicy');
 
 });
 
@@ -86,7 +110,8 @@ Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'm
     Route::get('/show-job/{id}', 'HomeController@showJob')->name('showJob');
     Route::get('/show-services/{id}', 'HomeController@showServices')->name('showServices');
 
-    //Route::resource('bid', 'BidController')->except(['index', 'create', 'update', 'destroy']);
+    //Profile
+    Route::get('/profile','ProfileController@index')->name('profile.index');
 
     //Worker bid on customer gig
     Route::post('/bid','WorkerBidController@store')->name('storeWorkerBid');
@@ -132,15 +157,18 @@ Route::get('/customer', function (){
 Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'customer', 'middleware'=>'customer'], function (){
 
     Route::get('/notifications','NotificationController@index')->name('notifications');
-
+    //Home
     Route::get('/','HomeController@index')->name('home.index');
     Route::post('/','CustomerGigController@store')->name('storeCustomerGig');
     Route::get('/services/{id}','HomeController@showServices')->name('showServices');
 
-    //Home
+    //Home>Next
     Route::get('/gig/{id}','WorkerGigController@show')->name('showGigs');
     Route::get('/gig-detail/{id}','WorkerGigController@showGigDetail')->name('showGigDetail');
     Route::get('/gig-detail/order/{id}','WorkerGigController@showOrderForm')->name('showGigOrderForm');
+
+    //Profile
+    Route::get('/profile','ProfileController@index')->name('profile.index');
 
     //My Order
     //Customer gig | Worker Bids

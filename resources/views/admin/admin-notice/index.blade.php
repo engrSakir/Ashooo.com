@@ -26,34 +26,22 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Admin notices table</h5>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="thead-success shadow-success">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Detail</th>
-                                        <th scope="col">Created At</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($notices as $notice)
-                                    <tr>
-                                        <td scope="row">{{ $loop->iteration }}</td>
-                                        <td>{{ $notice->title }}</td>
-                                        <td> <pre> {{ $notice->detail }} </pre></td>
-                                        <td> {{ date('d/m/Y h-m-s', strtotime($notice->created_at)) }} </td>
-                                        <td>
-                                            <input type="hidden" class="hidden-id" value="{{ $notice->id }}">
-                                            <button type="button" id="edit" class="edit-button btn btn-outline-warning waves-effect waves-light m-1"> <i class="fa fa-edit"></i> </button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                           <div class="row">
+                               @foreach($notices as $notice)
+                                   <div class="col-lg-6">
+                                       <div class="card border @if($loop->iteration == 1) border-success @else border-danger bg-dark @endif">
+                                           <div class="card-body">
+                                               <h5 class="card-title text-success notice-title">{{ $notice->title }}</h5>
+                                               <p class="card-text notice-detail">{{ $notice->detail }}</p>
+                                               <hr>
+                                               <input type="hidden" class="hidden-id" value="{{ $notice->id }}">
+                                               <a href="javascript:void();" class="btn btn-inverse-success waves-effect waves-light m-1"><i class="fa fa-globe mr-1"></i> {{ $notice->created_at->format('d/m/Y h-m-s') }}</a>
+                                               <a href="javascript:void();" class="btn btn-success waves-effect waves-light m-1 edit-button" ><i class="fa fa-edit"></i> Edit Now</a>
+                                           </div>
+                                       </div>
+                                   </div>
+                               @endforeach
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -103,6 +91,7 @@
                $('#add-submit-button').show();
                $('#modal-title').html('Add a new notice');
                $('#title').val('');
+               $('#detail').val('');
            });
 
            //Submit new category
@@ -158,9 +147,9 @@
                 $('#modal-title').html('Edit notice');
                 $('#add-submit-button').hide();
                 $('#edit-submit-button').show();
-                $('#title').val($(this).parent().parent().find('td').eq(1).text());
-                $('#detail').val($(this).parent().parent().find('td').eq(2).text());
-                $('#notice-id').val($(this).parent().parent().find('.hidden-id').val());
+                $('#title').val($(this).parent().find('.notice-title').text());
+                $('#detail').val($(this).parent().find('.notice-detail').text());
+                $('#notice-id').val($(this).parent().find('.hidden-id').val());
             });
 
             //Submit edited category
@@ -172,14 +161,15 @@
                 formData.append('detail', $('#detail').val())
                 $.ajax({
                     method: 'POST',
-                    url: '/admin/admin-notice/update',
+                    url: "{{ route('admin.updateAdminNotice') }}",
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function (data) {
                         $('#modal').modal('hide');
-                        $('#category-name').val('');
+                        $('#title').val('');
+                        $('#detail').val('');
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',

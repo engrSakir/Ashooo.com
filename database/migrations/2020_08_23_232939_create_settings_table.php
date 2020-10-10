@@ -32,6 +32,27 @@ class CreateSettingsTable extends Migration
             $table->string('reset_sms_template')->nullable()->default('আপনার নতুন পাসওয়ার্ডঃ ')->comment('Password sms template');
             $table->string('welcome_sms_template')->nullable()->default('স্বাগতম')->comment('Welcome sms template');
 
+            $table->double('worker_activation_price')->default('50');
+            $table->double('per_user_referral_price')->default('50');
+            $table->double('admin_percent_on_worker_job')->default('10');
+
+            $table->text('en_about')->default('About description ....');
+            $table->text('bn_about')->default('এবাউট বিবরণ ....');
+            $table->text('en_terms_and_condition')->default('Terms and conditions description ....');
+            $table->text('bn_terms_and_condition')->default('টারমস অ্যান্ড কন্ডিটিওন বিবরণ ....');
+            $table->text('en_privacy_policy')->default('Privacy and policy description ....');
+            $table->text('bn_privacy_policy')->default('প্রাইভেসি এন্ড পলিসি বিবরণ ....');
+            $table->text('en_faq')->default('FAQ description ....');
+            $table->text('bn_faq')->default('এফ এ কিউ বিবরণ ....');
+            $table->text('en_offer')->default('Offer description .....');
+            $table->text('bn_offer')->default('অফারের বিবরণ .....');
+            $table->text('en_referral_income_system')->default('Referral income description ....');
+            $table->text('bn_referral_income_system')->default('রেফারেল ইনকাম বিবরণ ....');
+            $table->string('customer_video_training_url')->default('Customer video training url ....');
+            $table->string('worker_video_training_url')->default('Worker video training url ....');
+            $table->string('membership_video_training_url')->default('Membership video training url ....');
+            $table->text('en_help_line')->default('Help line description .....');
+            $table->text('bn_help_line')->default('হেল্প লাইন বিবরণ .....');
             $table->timestamps();
         });
     }

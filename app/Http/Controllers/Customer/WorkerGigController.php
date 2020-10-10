@@ -20,6 +20,7 @@ class WorkerGigController extends Controller
     /**
      * Show worker's gig to customer.
      * Only worker's upazila
+     * Specify by service
      * @param  int  $id
      * @return \Illuminate\View\View
      */
@@ -35,6 +36,7 @@ class WorkerGigController extends Controller
     }
 
     /**
+     * Customer home>service>worker gigs> details
      * @param $id
      * @return \Illuminate\View\View
      */

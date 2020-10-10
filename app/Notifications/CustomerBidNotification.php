@@ -60,7 +60,7 @@ class CustomerBidNotification extends Notification
         return [
             'message' => Str::limit($this->customerBid->workerGig->title, '40'),
             'title' => 'New hire request by- '.$this->customerBid->customer->full_name,
-            'url' => url(route('worker.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($this->customerBid->workerGig->id))),
+            'url' => url(route('worker.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($this->customerBid->id))),
         ];
     }
 }

@@ -22,43 +22,33 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Controller Ads. Table</h5>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="thead-success shadow-success">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Ads. Image</th>
-                                        <th scope="col">Controller</th>
-                                        <th scope="col">Upazila</th>
-                                        <th scope="col">Starting Date</th>
-                                        <th scope="col">Ending Date</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($ads as $ads)
-                                        <tr @if($ads->status == 0) style="background-color: #450707"
-                                            @elseif($ads->starting < \Carbon\Carbon::today()->addDays(1) && $ads->ending > \Carbon\Carbon::today()->addDays(-1)) style="background-image: linear-gradient(#fcfcfc, yellow, green);"  @endif>
-                                            <td scope="row">{{ $loop->iteration }}</td>
-                                        <td>
-                                            <a @if($ads->url) href="{{ $ads->url }}" target="_blank" @else  href="#" @endif >
-                                                <img src="{{ asset('uploads/images/ads/controller/'.$ads->image) }}" width="300px" height="100px" alt="lightbox" class="">
-                                            </a>
-                                        </td>
-                                        <td>{{ $ads->controller->full_name  }}</td>
-                                        <td>{{ $ads->controller->upazila->name  }}</td>
-                                        <td>{{ $ads->starting  }}</td>
-                                        <td>{{ $ads->ending }}</td>
-                                        <td>
-                                            <input type="hidden" class="hidden-url" value="{{ $ads->url }}">
-                                            <input type="hidden" class="hidden-id" value="{{ $ads->id }}">
-                                            <button type="button" id="edit" class="edit-button btn btn-danger waves-effect waves-light m-1"> <i class="fa fa-edit"></i> </button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                            <div class="row">
+                                @foreach($ads as $ads)
+                                    <div class="col-lg-4">
+                                        <div class="card">
+                                            <img src="{{ asset('uploads/images/ads/controller/'.$ads->image) }}" class="card-img-top" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-dark">Card Sample title</h5>
+                                            </div>
+                                            <ul class="list-group list-group-flush list shadow-none">
+                                                @if($ads->status == 0)
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-danger badge-pill"> Inactive </span></li>
+                                                @elseif($ads->starting < \Carbon\Carbon::today()->addDays(1) && $ads->ending > \Carbon\Carbon::today()->addDays(-1))
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-success badge-pill"> Running </span></li>
+                                                @endif
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">Starting <span class="badge badge-success badge-pill start">{{ $ads->starting  }}</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">Ending <span class="badge badge-danger badge-pill end">{{ $ads->ending }}</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">Created at <span class="badge badge-dark badge-pill">{{ date('d/m/Y h-m-s', strtotime($ads->created_at)) }}</span></li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <input type="hidden" class="hidden-url" value="{{ $ads->url }}">
+                                                <input type="hidden" class="hidden-id" value="{{ $ads->id }}">
+                                                <a @if($ads->url) href="{{ $ads->url }}" target="_blank" @else  href="#" @endif  class="card-link">Ads. Link</a>
+                                                <a href="javascript:void();" class="card-link edit-button">Edit Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -135,8 +125,8 @@
                 $('#add-submit-button').hide();
                 $('#edit-submit-button').show();
                 $('#url').val($(this).parent().parent().find('.hidden-url').val());
-                $('#starting-date').val($(this).parent().parent().find('td').eq(4).text());
-                $('#ending-date').val($(this).parent().parent().find('td').eq(5).text());
+                $('#starting-date').val($(this).parent().parent().find('.start').text());
+                $('#ending-date').val($(this).parent().parent().find('.end').text());
                 $('#ads-id').val($(this).parent().parent().find('.hidden-id').val());
             });
 

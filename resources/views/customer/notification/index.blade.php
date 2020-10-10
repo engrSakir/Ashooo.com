@@ -16,10 +16,10 @@
             <div class="col-12 px-0">
                 <div class="list-group list-group-flush ">
                     @foreach(auth()->user()->notifications as $notification)
-                    <a class="list-group-item border-top active text-dark" href="{{ url($notification->data['url']) }}">
+                    <a class="list-group-item border-top @if(!$notification->read_at) active @endif text-dark" href="{{ url($notification->data['url']) }}">
                         <div class="row">
                             <div class="col-auto align-self-center">
-                                <i class="material-icons text-template-primary">notifications_active</i>
+                                <i class="material-icons text-template-primary">@if($notification->read_at) notifications @else notifications_active @endif</i>
                             </div>
                             <div class="col pl-0">
                                 <div class="row mb-1">

@@ -147,7 +147,7 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/worker/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/customer" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -159,11 +159,11 @@
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\admin\setting" />
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\profile" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\layout" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\notification" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\gig" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\job" />
     </key>
   </component>
   <component name="RunManager">
@@ -237,7 +237,13 @@
       <workItem from="1602064181522" duration="2721000" />
       <workItem from="1602083544288" duration="7772000" />
       <workItem from="1602127279336" duration="19961000" />
-      <workItem from="1602163612095" duration="12538000" />
+      <workItem from="1602163612095" duration="14516000" />
+      <workItem from="1602229889140" duration="6694000" />
+      <workItem from="1602247561426" duration="21489000" />
+      <workItem from="1602303494445" duration="2472000" />
+      <workItem from="1602311559734" duration="6385000" />
+      <workItem from="1602342075149" duration="491000" />
+      <workItem from="1602342686326" duration="6070000" />
     </task>
     <servers />
   </component>
@@ -254,10 +260,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599278823259" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602180820401">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602348565029">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602180820401" />
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602348565029" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -270,9 +276,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598954492025" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602180835163">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602271026033">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602180835163" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602271026033" />
   </component>
 </project>

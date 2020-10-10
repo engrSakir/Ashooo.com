@@ -183,7 +183,7 @@
                 @endforeach
             <!-- End admin notice box -->
                 <!-- Start controller notice box -->
-                @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                @foreach(auth()->user()->upazila->controllers as $controller)
                     @foreach($controller->controllerNotice as $controllerNotice)
                         <section class="jumbotron text-center mt-3 bg-white shadow-sm">
                             <div class="container">
@@ -200,7 +200,7 @@
                 <!-- Start top ads. by controller this upazila -->
                 <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                        @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                        @foreach(auth()->user()->upazila->controllers as $controller)
                             @foreach($controller->controllerAds as $controllerAds)
                                 <div class="swiper-slide swiper-slide-active">
                                     <div class="card shadow border-0 bg-template">
@@ -268,7 +268,7 @@
                 <!-- Start bottom ads. by controller this upazila  -->
                 <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                        @foreach(auth()->user()->upazila->user->where('role', 'controller') as $controller)
+                        @foreach(auth()->user()->upazila->controllers as $controller)
                             @foreach($controller->controllerAds as $controllerAds)
                                 <div class="swiper-slide swiper-slide-active">
                                     <div class="card shadow border-0 bg-template">

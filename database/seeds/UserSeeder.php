@@ -2,6 +2,7 @@
 
 use App\Balance;
 use App\Rating;
+use App\Referral;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,6 +39,17 @@ class UserSeeder extends Seeder
             $rating = new Balance();
             $rating->user_id  = $user->id;
             $rating->save();
+
+            //Referral
+            do {
+                $referral_code = mt_rand( 000001, 999999 );
+            } while ( Referral::where( 'own', $referral_code )->exists() );
+
+            $referral= new \App\Referral();
+            $referral->user_id  = $user->id;
+            $referral->own  = $referral_code;
+            $referral->save();
+
         }
 
         // 10 Controller
@@ -62,6 +74,16 @@ class UserSeeder extends Seeder
             $rating = new Balance();
             $rating->user_id  = $user->id;
             $rating->save();
+
+            //Referral
+            do {
+                $referral_code = mt_rand( 000001, 999999 );
+            } while ( Referral::where( 'own', $referral_code )->exists() );
+
+            $referral= new \App\Referral();
+            $referral->user_id  = $user->id;
+            $referral->own  = $referral_code;
+            $referral->save();
 
         }
 
@@ -88,6 +110,16 @@ class UserSeeder extends Seeder
             $rating->user_id  = $user->id;
             $rating->save();
 
+            //Referral
+            do {
+                $referral_code = mt_rand( 000001, 999999 );
+            } while ( Referral::where( 'own', $referral_code )->exists() );
+
+            $referral= new \App\Referral();
+            $referral->user_id  = $user->id;
+            $referral->own  = $referral_code;
+            $referral->save();
+
         }
 
         // 10 Membership
@@ -112,6 +144,16 @@ class UserSeeder extends Seeder
             $rating = new Balance();
             $rating->user_id  = $user->id;
             $rating->save();
+
+            //Referral
+            do {
+                $referral_code = mt_rand( 000001, 999999 );
+            } while ( Referral::where( 'own', $referral_code )->exists() );
+
+            $referral= new \App\Referral();
+            $referral->user_id  = $user->id;
+            $referral->own  = $referral_code;
+            $referral->save();
         }
 
         // 10 Customer
@@ -136,6 +178,16 @@ class UserSeeder extends Seeder
             $rating = new Balance();
             $rating->user_id  = $user->id;
             $rating->save();
+
+            //Referral
+            do {
+                $referral_code = mt_rand( 000001, 999999 );
+            } while ( Referral::where( 'own', $referral_code )->exists() );
+
+            $referral= new \App\Referral();
+            $referral->user_id  = $user->id;
+            $referral->own  = $referral_code;
+            $referral->save();
         }
     }
 }

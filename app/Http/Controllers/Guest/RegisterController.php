@@ -77,7 +77,7 @@ class RegisterController extends Controller
         // Need more generate referral code max -1 10 laks
         do {
             $referral_code = mt_rand( 000001, 999999 );
-        } while ( Referral::where( 'own', $referral_code )->exists() );
+        } while (Referral::where( 'own', $referral_code )->exists());
 
         $referral = new Referral();
         $referral->user_id  = $customer->id;
@@ -94,6 +94,13 @@ class RegisterController extends Controller
         $rating = new Balance();
         $rating->user_id  = $customer->id;
         $rating->save();
+
+        //Balance updated of referral owner
+        if ($request->input('referralCode')){
+            $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
+            $selectedReferralOwnerBalance->referral_income += Setting::find(1)->per_user_referral_price;
+            $selectedReferralOwnerBalance->save();
+        }
 
         if(Auth::attempt(['phone' => $customer->phone, 'password' => $request->input('password'), 'status' => 1])) {
             Auth::user()->last_login_at = Carbon::now();
@@ -121,8 +128,6 @@ class RegisterController extends Controller
 
     //Submit worker register
     public function submitWorkerRegister(Request $request){
-
-
         $request->validate([
             'profilePicture'=> 'required|image|max:5000',
             'userName'      => 'required|string|max:20|unique:users,user_name',
@@ -264,10 +269,16 @@ class RegisterController extends Controller
         $rating->user_id  = $worker->id;
         $rating->save();
 
+        //Balance updated of referral owner
+        if ($request->input('referralCode')){
+            $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
+            $selectedReferralOwnerBalance->referral_income += Setting::find(1)->per_user_referral_price;
+            $selectedReferralOwnerBalance->save();
+        }
+
         /**
          * After all success auto login
          * */
-
         if(Auth::attempt(['phone' => $worker->phone, 'password' => $request->input('password'), 'status' => 1])) {
             Auth::user()->last_login_at = Carbon::now();
             Auth::user()->save();
@@ -380,7 +391,6 @@ class RegisterController extends Controller
          * +NID
          * NID number, front image, back image store in NID table
          * */
-
         //NID store
         $nid = new Nid();
         $nid->user_id   = $membership->id;
@@ -417,7 +427,6 @@ class RegisterController extends Controller
          * +Services
          * Worker ID & Service ID linked store in WorkerAndService Table
          * */
-
         foreach(explode(",",$request->input('services')) as $service_id){
             $service = new MembershipAndService();
             $service->membership_id    = $membership->id;
@@ -435,10 +444,16 @@ class RegisterController extends Controller
         $rating->user_id  = $membership->id;
         $rating->save();
 
+        //Balance updated of referral owner
+        if ($request->input('referralCode')){
+            $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
+            $selectedReferralOwnerBalance->referral_income += Setting::find(1)->per_user_referral_price;
+            $selectedReferralOwnerBalance->save();
+        }
+
         /**
          * After all success auto login
          * */
-
         if(Auth::attempt(['phone' => $membership->phone, 'password' => $request->input('password'), 'status' => 1])) {
             Auth::user()->last_login_at = Carbon::now();
             Auth::user()->save();

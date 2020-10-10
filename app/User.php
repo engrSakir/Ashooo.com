@@ -140,6 +140,6 @@ class User extends Authenticatable
 
     //Balance
     public function balance(){
-        return $this->hasOne(Rating::class,'user_id','id');
+        return $this->hasOne(Balance::class,'user_id','id');
     }
 }

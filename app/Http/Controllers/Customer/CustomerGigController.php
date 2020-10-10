@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\CustomerGig;
 use App\Http\Controllers\Controller;
 use App\Job;
+use App\Referral;
 use App\Setting;
 use App\WorkerBid;
 use Carbon\Carbon;
@@ -184,6 +185,12 @@ class CustomerGigController extends Controller
             if ($request->input('rate') > 0){
                 $bid->worker->rating->rate +=  $request->input('rate');
                 $bid->worker->rating->save();
+
+                //Worker balance update
+                $bid->worker->balance->job_income += $bid->budget;
+                $bid->worker->balance->due += (Setting::find(1)->admin_percent_on_worker_job/100) * $bid->budget;
+                $bid->worker->balance->save();
+
                 return response()->json([
                     'type' => 'success',
                     'message' => 'Successfully job completed with star-'.$request->input('rate'),

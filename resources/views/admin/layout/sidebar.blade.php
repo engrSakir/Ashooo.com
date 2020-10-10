@@ -67,10 +67,29 @@
             </ul>
         </li>
 
-        <li class="sidebar-header">LABELS</li>
-        <li><a href="javaScript:void();" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="javaScript:void();" class="waves-effect"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="javaScript:void();" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-    </ul>
 
+        <li class="sidebar-header">SETTING</li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="icon-briefcase"></i>
+                <span>More</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('admin.showOffer') }}"><i class="fa fa-circle-o"></i>Offer</a></li>
+            </ul>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('admin.showReferralIncome') }}"><i class="fa fa-circle-o"></i> Referral Income System</a></li>
+            </ul>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('admin.showVideoTraining') }}"><i class="fa fa-circle-o"></i> Video Training</a></li>
+            </ul>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('admin.showHelpLine') }}"><i class="fa fa-circle-o"></i> Help Line</a></li>
+            </ul>
+        </li>
+        <li><a href="{{ route('admin.showAbout') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>About</span></a></li>
+        <li><a href="{{ route('admin.showFaq') }}" class="waves-effect"><i class="fa fa-circle-o text-yellow"></i> <span>FAQ</span></a></li>
+        <li><a href="{{ route('admin.showTermsAndCondition') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i> <span>Terms & Conditions</span></a></li>
+        <li><a href="{{ route('admin.showPrivacyPolicy') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i> <span>Privacy Policy</span></a></li>
+    </ul>
 </div>

@@ -52,7 +52,7 @@
             </div>
             <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
             <div class="col-auto">
-                <a href="{{ route('customer.notifications') }}" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">{{ auth()->user()->notifications->count() }}</span></a>
+                <a href="{{ route('customer.notifications') }}" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">{{ auth()->user()->unreadNotifications->count() }}</span></a>
             </div>
         </div>
     </div>
