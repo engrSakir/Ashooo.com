@@ -115,14 +115,14 @@
         <div class="row">
             <div class="swiper-container icon-slide mb-4 swiper-container-horizontal">
                 <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                    <a href="#" class="swiper-slide text-center swiper-slide-prev" data-toggle="modal" data-target="#paymodal">
+                    <a href="javaScript:void();" class="swiper-slide text-center swiper-slide-prev payment-modal-btn">
                         <div class="avatar avatar-60 no-shadow border-0">
                             <div class="overlay bg-template"></div>
                             <i class="material-icons text-template">local_atm</i>
                         </div>
                         <p class="small mt-2">Due Pay</p>
                     </a>
-                    <a href="#" class="swiper-slide text-center swiper-slide-active" data-toggle="modal" data-target="#sendmoney">
+                    <a href="javaScript:void();" class="swiper-slide text-center swiper-slide-active" data-toggle="modal" data-target="#sendmoney">
                         <div class="avatar avatar-60 no-shadow border-0">
                             <div class="overlay bg-template"></div>
                             <i class="material-icons text-template">send</i>
@@ -172,7 +172,6 @@
     $(document).ready(function() {
 
     });
-
 </script>
 @endsection
 

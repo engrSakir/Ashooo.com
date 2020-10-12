@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use smasif\ShurjopayLaravelPackage\ShurjopayService;
 
 /*
 |--------------------------------------------------------------------------
@@ -194,4 +195,11 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
     Route::get('/general-services/{id}','GeneralServiceController@showMembershipServices')->name('showMembershipServices');
     Route::get('/members/{id}','GeneralServiceController@showMembers')->name('showMembers');
 
+});
+
+//Payment gateway
+Route::group(['namespace' => 'PaymentGateway', 'as' => '', 'prefix'=>'', 'middleware'=>['auth']], function (){
+    Route::get('/payment/{amount}', 'ShurjoPayController@getPaymentView')->name('shurjopay.getPaymentView');
+    Route::get('/payment-success', 'ShurjoPayController@getPaymentSuccessView')->name('shurjopay.getPaymentSuccessView');
+    Route::post('/response', 'smasif\ShurjopayLaravelPackage\ShurjopayController@response')->name('shurjopay.response');
 });

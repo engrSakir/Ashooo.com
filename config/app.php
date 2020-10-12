@@ -168,6 +168,7 @@ return [
          */
         Barryvdh\Debugbar\ServiceProvider::class,
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+        smasif\ShurjopayLaravelPackage\ShurjopayServiceProvider::class,
         /*
          * Application Service Providers...
          */

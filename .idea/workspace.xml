@@ -135,6 +135,7 @@
       <path value="$PROJECT_DIR$/vendor/mckenziearts/laravel-notify" />
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/vendor/smasif/shurjopay-laravel-package" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gUY4lz6VioPifuGncHBEX8MPrs" />
@@ -244,6 +245,8 @@
       <workItem from="1602311559734" duration="6385000" />
       <workItem from="1602342075149" duration="491000" />
       <workItem from="1602342686326" duration="8419000" />
+      <workItem from="1602433621644" duration="8974000" />
+      <workItem from="1602487904351" duration="2578000" />
     </task>
     <servers />
   </component>
@@ -260,10 +263,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599278823259" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602348565029">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602436231545">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602348565029" />
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602436231545" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
