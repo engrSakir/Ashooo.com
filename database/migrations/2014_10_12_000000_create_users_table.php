@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('last_login_at')->nullable();
             $table->timestamp('last_logout_at')->nullable();
             $table->string('password');
+            $table->string('reset_date')->nullable()->comment('Password reset code sending date');
+            $table->integer('reset_count')->nullable()->comment('In a day how many time reset message available');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

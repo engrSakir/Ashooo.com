@@ -282,7 +282,7 @@
                 </div>
             </div>
             <div class="modal-footer border-0">
-                @if(auth()->user()->balance->due > -1)
+                @if(auth()->user()->balance->due > 0)
                     <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block payment">Pay Now</button>
                 @endif
             </div>

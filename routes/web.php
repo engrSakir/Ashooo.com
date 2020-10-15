@@ -33,6 +33,8 @@ Route::group(['namespace' => 'Guest', 'middleware'=>['guest']], function (){
     Route::get('/membership-register', 'RegisterController@getMembershipRegisterForm')->name('getMembershipRegisterForm');
     Route::post('/guest/get/membership-services-of-a-category', 'AjaxController@getMembershipServicesOfCategory')->name('getMembershipServicesOfCategory');
     Route::post('/guest/submit/membership-register', 'RegisterController@submitMembershipRegister')->name('submitMembershipRegister');
+
+    Route::post('/reset-password', 'PasswordController@resetPassword')->name('resetPassword');
 });
 
 Route::get('/admin', function (){

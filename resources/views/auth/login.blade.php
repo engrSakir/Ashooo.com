@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Ashooo">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Login | {{ $setting->name }}</title>
 
@@ -139,25 +140,26 @@
             </div>
             <div class="modal-body text-center pr-4 pl-4">
                 <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
-                    <img src="img/user1.png" alt="user image">
+                    <img src="{{ asset('assets/mobile/img/change-password.png') }}" alt="user image">
                 </figure>
-                <h5 class="my-3">Ananya Johnsons</h5>
+                <h5 class="my-3">Type your phone number</h5>
+
                 <div class="form-group text-left float-label">
-                    <input type="password" class="form-control text-center" placeholder="Password">
-                    <button class="overlay btn btn-sm btn-link text-success">
-                        <i class="fa fa-eye"></i>
-                    </button>
+                    <div class="error"></div>
+                    <input type="number" class="form-control text-center" id="phone-number" placeholder="Phone number">
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-default btn-rounded btn-block col">Login</button>
+                    <button class="btn btn-default btn-rounded btn-block col" id="reset-btn">Reset Password</button>
                     <br>
-                    <a href="#">Not you? Sign in as different user</a>
+                    <a href="#" data-dismiss="modal">Remember your password? Sign in</a>
                 </div>
                 <br>
             </div>
         </div>
     </div>
 </div>
+
+
 
 
 <!-- jquery, popper and bootstrap js -->
@@ -174,6 +176,50 @@
 <!-- template custom js -->
 <script src="{{ asset('assets/mobile/js/main.js') }}"></script>
 
+<script>
+    $(document).ready(function(){
+        $('#reset-btn').click(function (){
+            var formData = new FormData();
+            formData.append('phone', $('#phone-number').val())
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('resetPassword') }}",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    console.log(data)
+                   var successMessage =
+                   '<div class="alert alert-'+data.type+'" role="alert">\n' +
+                   data.message+
+                   '                <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                   '                    <span aria-hidden="true">×</span>\n' +
+                   '                </button>\n' +
+                   '            </div>'
+
+                    $('.error').html(successMessage)
+                },
+                error: function (xhr) {
+                    var errorMessage = '' +
+                        '<div class="alert alert-danger" role="alert">';
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        errorMessage +=(''+value+'<br>');
+                    });
+                    errorMessage +='<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                        '                    <span aria-hidden="true">×</span>\n' +
+                        '                </button>\n' +
+                        '            </div>';
+
+                    $('.error').html(errorMessage)
+
+                    //console.log(errorMessage)
+                },
+            })
+        });
+
+    });
+</script>
 </body>
 <!-- This system developed by DataTech BD ltd. Phone: 01304734623-25 | info@datatechbd.com | 23-08-2020-->
 </html>

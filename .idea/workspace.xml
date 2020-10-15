@@ -154,17 +154,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
-      <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\Ashooo" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\admin\setting" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\profile" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker\layout" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\worker" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
+      <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
+      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -246,7 +246,10 @@
       <workItem from="1602342075149" duration="491000" />
       <workItem from="1602342686326" duration="8419000" />
       <workItem from="1602433621644" duration="8974000" />
-      <workItem from="1602487904351" duration="6118000" />
+      <workItem from="1602487904351" duration="6741000" />
+      <workItem from="1602644994773" duration="6396000" />
+      <workItem from="1602689230771" duration="4529000" />
+      <workItem from="1602740562713" duration="1284000" />
     </task>
     <servers />
   </component>
@@ -263,14 +266,18 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599278823259" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602436231545">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602647656777">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602436231545" />
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602647656777" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599283710311" />
+    <state x="794" y="448" key="NewPhpFileDialog" timestamp="1602646285829">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602646285829" />
     <state x="461" y="169" key="SettingsEditor" timestamp="1598932714781">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -279,9 +286,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598954492025" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602271026033">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602652940028">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602271026033" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602652940028" />
   </component>
 </project>
