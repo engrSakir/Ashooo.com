@@ -253,7 +253,7 @@
       <workItem from="1602820234218" duration="11354000" />
       <workItem from="1602846743907" duration="981000" />
       <workItem from="1602859607191" duration="6551000" />
-      <workItem from="1602904367526" duration="16907000" />
+      <workItem from="1602904367526" duration="22307000" />
     </task>
     <servers />
   </component>
@@ -274,6 +274,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="711" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602745218389" />
+    <state x="640" y="260" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602943461158">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="640" y="260" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602943461158" />
     <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602936117457">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
