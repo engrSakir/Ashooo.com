@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PaymentGateway;
 
 use App\Http\Controllers\Controller;
+use App\Setting;
 use Illuminate\Http\Request;
 use smasif\ShurjopayLaravelPackage\ShurjopayService;
 
@@ -13,17 +14,24 @@ class ShurjoPayController extends Controller
 
         $tx_id = $shurjopay_service->generateTxId(); // Get transaction id. You can use custom id like: $shurjopay_service->generateTxId('123456');
 
-        $success_route = url('/payment-success'); // optional.
+        //$success_route = route('shurjopay.response'); // optional.
 
-        $shurjopay_service->sendPayment($amount, $success_route); // You can call simply $shurjopay_service->sendPayment(2) without success route
+        $shurjopay_service->sendPayment($amount); // You can call simply $shurjopay_service->sendPayment(2) without success route
     }
 
     public function getPaymentSuccessView(){
-       return view('payment-success');
+        $setting = Setting::find(1);
+       return view('payment-response', compact('setting'));
     }
 
     public function response(Request $request)
     {
+        $setting = Setting::find(1);
+        return view('payment-response', compact('setting'))->with('status', $request->all()['status']);
+
+        /**
+        dd($request->all());
+
         $server_url = config('shurjopay.server_url');
         $response_encrypted = $request->spdata;
         $response_decrypted = file_get_contents($server_url . "/merchant/decrypt.php?data=" . $response_encrypted);
@@ -47,6 +55,10 @@ class ShurjoPayController extends Controller
                 break;
         }
 
+        $setting = Setting::find(1);
+        return view('payment-response', compact('setting'))->with('status', $status);;
+
+        /*
         $success_url = $request->get('success_url');
 
         if ($success_url) {
@@ -61,5 +73,6 @@ class ShurjoPayController extends Controller
             echo "Fail";
             die();
         }
+        */
     }
 }

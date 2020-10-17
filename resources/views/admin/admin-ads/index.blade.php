@@ -40,6 +40,8 @@
                                                     <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-danger badge-pill"> Inactive </span></li>
                                                 @elseif($ads->starting < \Carbon\Carbon::today()->addDays(1) && $ads->ending > \Carbon\Carbon::today()->addDays(-1))
                                                     <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-success badge-pill"> Running </span></li>
+                                                @else
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-info badge-pill"> Completed </span></li>
                                                 @endif
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">Starting <span class="badge badge-success badge-pill start">{{ $ads->starting  }}</span></li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">Ending <span class="badge badge-danger badge-pill end">{{ $ads->ending }}</span></li>

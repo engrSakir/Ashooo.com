@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Membership;
+namespace App\Http\Controllers\Admin;
 
-use App\AdminAds;
-use App\AdminNotice;
 use App\Http\Controllers\Controller;
+use App\Membership;
 use App\MembershipPackage;
 use App\Setting;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class MembershipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
-        $packages = MembershipPackage::all();
-        $adminAds = AdminAds::where('status', '1')
-            ->whereDate('starting', '<', Carbon::today()->addDays(1))
-            ->whereDate('ending', '>', Carbon::today()->addDays(-1))
-            ->get();
-        $adminNotice = AdminNotice::orderBy('id', 'desc')
-            ->take(1)
-            ->get();
-        return view('membership.home.index', compact('setting', 'packages', 'adminAds', 'adminNotice'));
+
     }
 
     /**
@@ -49,7 +38,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

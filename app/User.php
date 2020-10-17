@@ -133,6 +133,11 @@ class User extends Authenticatable
         return $this->hasMany(MembershipAndService::class,'membership_id','id');
     }
 
+    //Membership
+    public function membership(){
+        return $this->hasOne(Membership::class,'user_id','id')->whereDate('ending_at', '>', \Carbon\Carbon::today()->addDays(-1))->orderBy('id', 'desc');
+    }
+
     //Rating
     public function rating(){
         return $this->hasOne(Rating::class,'user_id','id');

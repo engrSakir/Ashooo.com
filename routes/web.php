@@ -63,9 +63,13 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix'=>'admin', 'midd
     Route::post('controller-notice/update','ControllerNoticeController@update')->name('updateControllerNotice');
 
     Route::resource('admin-ads', 'AdminAdsController')->except(['create','show', 'edit', 'update', 'destroy']);
-    Route::post('admin-ads/update','AdminAdsController@update');
+    Route::post('admin-ads/update','AdminAdsController@update')->name('updateAdminAds');
     Route::resource('controller-ads', 'ControllerAdsController')->except(['store', 'create','show', 'edit', 'update', 'destroy']);
-    Route::post('controller-ads/update','ControllerAdsController@update');
+    Route::post('controller-ads/update','ControllerAdsController@update')->name('updateControllerAds');
+
+    //Membership Package
+    Route::resource('membership-package', 'MembershipPackageController')->except(['create','show', 'edit', 'update', 'destroy']);
+    Route::post('membership-package/update','MembershipPackageController@update')->name('updateMembershipPackage');
 
     //Setting
     Route::get('/setting/offer','SettingController@showOffer')->name('showOffer');
@@ -122,6 +126,9 @@ Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'm
     Route::post('/bid/cancel/','WorkerBidController@cancel')->name('cancelWorkerBid');
     Route::post('/bid/change-budget/','WorkerBidController@changePriceForMoreWork')->name('changePriceForMoreWork');
 
+    //All job
+    Route::get('/job','JobController@index')->name('job.index');
+
     //Customer bid on worker gig
     Route::get('/customer/bid/{id}', 'CustomerBidController@show')->name('showCustomerBid');
     Route::post('/customer/bid/price-change', 'CustomerBidController@updateCustomerBidBudget')->name('updateCustomerBidBudget');
@@ -136,13 +143,9 @@ Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'm
     Route::post('/gig/edit', 'WorkerGigController@update')->name('updateWorkerGig');
     Route::post('/gig/delete', 'WorkerGigController@delete')->name('deleteWorkerGig');
 
-
-
-    //Route::resource('gig', 'GigController')->except(['create', 'edit', 'update', 'destroy']);
-
-    Route::resource('job', 'JobController')->except(['create', 'update', 'destroy']);
-
-
+    //Payment
+    Route::get('/payment','PaymentController@pay')->name('duePay');
+    Route::get('/response','PaymentController@response')->name('paymentResponse');
 });
 
 Route::get('/membership', function (){
@@ -151,6 +154,8 @@ Route::get('/membership', function (){
 //Membership Routes
 Route::group(['namespace' => 'Membership', 'as' => 'membership.', 'prefix'=>'membership', 'middleware'=>['membership', 'auth']], function (){
     Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
+    Route::post('/buy-membership', 'MembershipController@buy')->name('buyMembership');
+    Route::get('/response/{membership}/{duration}', 'PaymentController@response')->name('paymentResponse');
 });
 
 Route::get('/customer', function (){
@@ -203,5 +208,5 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
 Route::group(['namespace' => 'PaymentGateway', 'as' => '', 'prefix'=>'', 'middleware'=>['auth']], function (){
     Route::get('/payment/{amount}', 'ShurjoPayController@getPaymentView')->name('shurjopay.getPaymentView');
     Route::get('/payment-success', 'ShurjoPayController@getPaymentSuccessView')->name('shurjopay.getPaymentSuccessView');
-    Route::post('/response', 'smasif\ShurjopayLaravelPackage\ShurjopayController@response')->name('shurjopay.response');
+    Route::get('/response', 'ShurjoPayController@response')->name('shurjopay.response');
 });

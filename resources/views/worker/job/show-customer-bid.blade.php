@@ -110,7 +110,7 @@
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                     <button disabled type="button" class="btn btn-outline-success active"><small>Delivery Time</small>
                         <br> <small> {{ $customerBid->workerGig->day }}  Days </small>  </button>
-                    <button id="job-accept" type="button" class="btn btn-success">&nbsp; Accept &nbsp;</button>
+                    <button id="job-accept" type="button" class="btn btn-success">Accept &nbsp;</button>
                 </div>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                     <button disabled type="button" class="btn btn-outline-success active">{{ $customerBid->workerGig->created_at->format('h-m a') }}

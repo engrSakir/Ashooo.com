@@ -1,5 +1,5 @@
-<!-- Modal -->
-<div class="modal fade" id="addmoney" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Package Modal -->
+<div class="modal fade" id="package-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
@@ -7,19 +7,49 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body text-center pt-0">
-                <img src="{{ asset('assets/mobile/img/infomarmation-graphics2.png') }}" alt="logo" class="logo-small">
-                <div class="form-group mt-4">
-                    <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount" required="" autofocus="">
+            <div class="modal-body pt-0">
+                <div class="alert alert-dark shadow-dark" role="alert">
+                    <h4 class="alert-heading package_name_modal"><!--Insert by ajax--></h4>
+                    <hr>
+                    <div class="row package-detail-modal">
+                        <!--Insert by ajax-->
+                    </div>
                 </div>
-                <p class="text-mute">You will be redirected to payment gatway to procceed further. Enter amount in USD.</p>
+                <table width="100%">
+                    <form action="{{ route('membership.buyMembership') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="membership" id="hidden_package_id_modal">
+                        <tr>
+                            <td class="text-left" width="40%">3 months</td>
+                            <td class="text-center" width="30%"><span class="badge badge-danger shadow-danger m-1 three_month_modal"><!--Insert by ajax--></span></td>
+                            <td class="text-right" width="30%"><button type="submit" name="duration" class="btn badge badge-success shadow-success m-1" value="3">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="40%">6 months</td>
+                            <td class="text-center" width="30%"><span class="badge badge-danger shadow-danger m-1 six_month_modal"><!--Insert by ajax--></span></td>
+                            <td class="text-right" width="30%"><button type="submit" name="duration" class="btn badge badge-success shadow-success m-1" value="6">Buy</button></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="40%">12 months</td>
+                            <td class="text-center" width="30%"><span class="badge badge-danger shadow-danger m-1 twelve_month_modal"><!--Insert by ajax--></span></td>
+                            <td class="text-right" width="30%"><button type="submit" name="duration" class="btn badge badge-success shadow-success m-1" value="12">Buy</button></td>
+                        </tr>
+                    </form>
+
+                </table>
             </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block" class="close" data-dismiss="modal">Next</button>
-            </div>
+
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.select-package-btn').click(function(){
+            $('#package-modal').modal('show');
+        });
+    });
+</script>
 
 <!-- Modal -->
 <div class="modal fade" id="sendmoney" tabindex="-1" role="dialog" aria-hidden="true">

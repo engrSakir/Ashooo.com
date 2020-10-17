@@ -31,31 +31,53 @@
 <!-- Loader ends -->
 <div class="wrapper">
     <!-- Swiper intro -->
-    <div class="swiper-container introduction pt-5">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide overflow-hidden text-center">
+    <div class="introduction pt-5">
+        @if($status == 'Success')
+            <div class="overflow-hidden text-center">
                 <div class="row no-gutters">
                     <div class="col align-self-center px-3">
-                        <img src="{{ asset('assets/mobile/img/information-graphic1.png') }}" alt="" class="mx-100 my-5">
+                        <img width="200" src="{{ asset('assets/mobile/img/payment-success.png') }}" alt="" class="mx-100 my-5">
                         <div class="row">
                             <div class="container mb-5">
-                                <h4>Welcome to ashooo</h4>
-                                <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit. Sndisse conv allis.</p>
+                                <h4>Payment completed</h4>
+                                <p>Thank you for business with us.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        @else
+            <div class="overflow-hidden text-center">
+                <div class="row no-gutters">
+                    <div class="col align-self-center px-3">
+                        <img width="200" src="{{ asset('assets/mobile/img/payment-failed.jpg') }}" alt="" class="mx-100 my-5">
+                        <div class="row">
+                            <div class="container mb-5">
+                                <h4>Payment cancelled</h4>
+                                <p>Your payment has been cancelled</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
     <!-- Swiper intro ends -->
 
     <!-- login buttons -->
     <div class="row mx-0 bottom-button-container">
         <div class="col">
-            <a href="{{ back() }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">BACK</a>
+            @if(auth()->user()->role == 'admin')
+                <a href="{{ route('admin.dashboard.index') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">BACK to home</a>
+                @elseif(auth()->user()->role == 'controller')
+                <a href="{{ route('controller.dashboard.index') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">BACK to home</a>
+                @elseif(auth()->user()->role == 'worker')
+                <a href="{{ route('worker.home.index') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">BACK to home</a>
+                @elseif(auth()->user()->role == 'membership')
+                <a href="{{ route('membership.home.index') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">BACK to home</a>
+                @elseif(auth()->user()->role == 'customer')
+                <a href="{{ route('customer.home.index') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">BACK to home</a>
+            @endif
         </div>
     </div>
     <!-- login buttons -->

@@ -66,6 +66,15 @@
                 <li><a href="{{ route('admin.controller-ads.index') }}"><i class="fa fa-circle-o"></i> Controller ads.</a></li>
             </ul>
         </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="icon-briefcase"></i>
+                <span>Membership</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('admin.membership-package.index') }}"><i class="fa fa-circle-o"></i> Memberships</a></li>
+            </ul>
+        </li>
 
 
         <li class="sidebar-header">SETTING</li>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Ashooo">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@stack('title')</title>
 

@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Ashooo">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@stack('title')</title>
+    <title>@stack('title') | Ashooo</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css') }}">
@@ -26,6 +27,9 @@
 
     <!--SweetAlert 2-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!--====== AJAX ======-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @stack('head')
 </head>
 
@@ -41,8 +45,23 @@
 <!-- Sidebar -->
 @include('membership.layout.sidebar')
 <!-- Sidebar ends -->
-
-@yield('content')
+<div class="wrapper homepage">
+    <!-- header -->
+    <div class="header">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
+            </div>
+            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
+            <div class="col-auto">
+                <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- header ends -->
+    @yield('content')
+    @include('membership.layout.footer')
+</div>
 
 <!-- notification -->
 @include('membership.layout.notification')

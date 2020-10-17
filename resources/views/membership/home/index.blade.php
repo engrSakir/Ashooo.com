@@ -1,528 +1,235 @@
-
 @extends('membership.layout.app')
+@push('title') Home @endpush
 @section('content')
-<div class="wrapper homepage">
-    <!-- header -->
-    <div class="header">
-        <div class="row no-gutters">
-            <div class="col-auto">
-                <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-            </div>
-            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-            <div class="col-auto">
-                <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
+    @if(!auth()->user()->membership))
+        <!-- Start title -->
+        <div class="">
+            <div class="alert alert-info text-center" role="alert">
+                <b id=""> MEMBERSHIP PACKAGES </b>
             </div>
         </div>
-    </div>
-    <!-- header ends -->
-
+        <!-- End title -->
     <div class="container">
-        <div class="card bg-template shadow mt-4 h-190">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto">
-                        <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/user1.png') }}" alt=""></figure>
+        @foreach($packages as $package)
+            <div class="alert alert-dark shadow-dark" role="alert">
+                <h4 class="alert-heading name">{{ $package->name }}</h4>
+               <div class="row text-center">
+                   <div class="col-6 bg-warning "><b class="three_month_price">{{ $package->three_month_price }} ৳</b>/ <br> 3 Month</div>
+                   <input type="hidden" class="six_month_price" value="{{ $package->six_month_price }} ৳">
+                   <div class="col-6 bg-danger "><b class="twelve_month_price">{{ $package->twelve_month_price }} ৳</b>/ <br>12 Month</div>
+               </div>
+                <hr>
+                <div class="row package-detail">
+                    <div class="col-8">
+                        <li>Mobile number</li>
+                        <li>Description</li>
+                        <li>Images</li>
+                        <li>Rank</li>
                     </div>
-                    <div class="col pl-0 align-self-center">
-                        <h5 class="mb-1">Ammy Jahnson</h5>
-                        <p class="text-mute small">Work, London, UK</p>
+                    <div class="col-4">
+                        @if($package->mobile_availability == 1)
+                            <span class="badge badge-success shadow-success m-1">Yes</span>
+                        @else
+                            <span class="badge badge-danger shadow-danger m-1">No</span>
+                        @endif
+                            <br>
+                        @if($package->description_availability == 1)
+                            <span class="badge badge-success shadow-success m-1">Yes</span>
+                        @else
+                            <span class="badge badge-danger shadow-danger m-1">No</span>
+                        @endif
+                            <br>
+                        <span class="badge badge-success shadow-success m-1">{{ $package->image_count }}</span>
+                            <br>
+                        <span class="badge badge-success shadow-success m-1">{{ $package->position }}</span>
                     </div>
                 </div>
+                <hr>
+                <p class="mb-0 text-center">
+                    <button type="button" value="{{ $package->id }}" class="mb-2 btn btn-sm btn-success select-package-btn">SELECT</button>
+                </p>
             </div>
-        </div>
+        @endforeach
     </div>
-    <div class="container top-100">
-        <div class="card mb-4 shadow">
-            <div class="card-body border-bottom">
-                <div class="row">
-                    <div class="col">
-                        <h3 class="mb-0 font-weight-normal">$ 1548.00</h3>
-                        <p class="text-mute">My Balance</p>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"><i class="material-icons">add</i></button>
-                    </div>
+    @else
+        <!-- Start title -->
+        <div class="">
+            <div class="alert alert-info text-center" role="alert">
+                <b id=""> My PACKAGE </b>
+            </div>
+        </div>
+        <!-- End title -->
+        <div class="alert" role="">
+            <h4 class="alert-heading">{{ auth()->user()->membership->membershipPackage->name }}</h4>
+            <div class="row package-detail">
+                <div class="col-8">
+                    <li>Mobile number</li>
+                    <li>Description</li>
+                    <li>Images</li>
+                    <li>Rank</li>
+                </div>
+                <div class="col-4">
+                    @if(auth()->user()->membership->membershipPackage->mobile_availability == 1)
+                        <span class="badge badge-success shadow-success m-1">Yes</span>
+                    @else
+                        <span class="badge badge-danger shadow-danger m-1">No</span>
+                    @endif
+                    <br>
+                    @if(auth()->user()->membership->membershipPackage->description_availability == 1)
+                        <span class="badge badge-success shadow-success m-1">Yes</span>
+                    @else
+                        <span class="badge badge-danger shadow-danger m-1">No</span>
+                    @endif
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->membershipPackage->image_count }}</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->membershipPackage->position }}</span>
                 </div>
             </div>
-            <div class="card-footer bg-none">
-                <div class="row">
-                    <div class="col">
-                        <p>71.00 <i class="material-icons text-danger vm small">arrow_downward</i><br><small class="text-mute">INR</small></p>
-                    </div>
-                    <div class="col text-center">
-                        <p>1.00 <i class="material-icons text-success vm small">arrow_upward</i><br><small class="text-mute">USD</small></p>
-                    </div>
-                    <div class="col text-right">
-                        <p><i class="material-icons text-success vm small mr-1">arrow_upward</i>0.78<br><small class="text-mute">GBP</small></p>
-                    </div>
+            <hr>
+            <h4 class="alert-heading">{{ 'Duration' }}</h4>
+            <div class="row package-detail">
+                <div class="col-7 bg-warning">
+                    <li>Duration</li>
+                    <li>Start/Renew</li>
+                    <li>Ending Date</li>
+                </div>
+                <div class="col-5">
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} months</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
+                </div>
+            </div>
+            <hr>
+            <h4 class="alert-heading">{{ 'Update' }}</h4>
+            <div class="row package-detail">
+                <div class="col-7 bg-warning">
+                    <li>Duration</li>
+                    <li>Start/Renew</li>
+                    <li>Ending Date</li>
+                </div>
+                <div class="col-5">
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} months</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
+                </div>
+            </div>
+            <hr>
+            <h4 class="alert-heading">{{ 'Change Package' }}</h4>
+            <div class="row package-detail">
+                <div class="col-7 bg-warning">
+                    <li>Duration</li>
+                    <li>Start/Renew</li>
+                    <li>Ending Date</li>
+                </div>
+                <div class="col-5">
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} months</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
+                    <br>
+                    <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="swiper-container icon-slide mb-4">
-                <div class="swiper-wrapper">
-                    <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#paymodal">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">local_atm</i>
-                        </div>
-                        <p class="small mt-2">Pay</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#sendmoney">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">send</i>
-                        </div>
-                        <p class="small mt-2">Send</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center" data-toggle="modal" data-target="#bookmodal">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">directions_railway</i>
-                        </div>
-                        <p class="small mt-2">Book</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">assignment</i>
-                        </div>
-                        <p class="small mt-2">Bills</p>
-                    </a>
-                    <a href="#" class="swiper-slide text-center">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons text-template">camera</i>
-                        </div>
-                        <p class="small mt-2">Scan</p>
-                    </a>
+            <hr>
+        <!-- Start admin notice box -->
+        @foreach($adminNotice as $adminNotice)
+            <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                <div class="container">
+                    <p class="lead">{{ $adminNotice->title }}</p>
+                    <p class="text-secondary text-mute small"> {{ $adminNotice->detail }} </p>
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="container px-0">
-                <!-- Swiper -->
-                <div class="swiper-container two-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Home Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Cash Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Car Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Business Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Edu Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <div class="col">
-                                            <p>$ 1548.00<br><small class="text-secondary">Home Loan EMI</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            </section>
+        @endforeach
+        <!-- End admin notice box -->
+        <!-- Start controller notice box -->
+        @foreach(auth()->user()->upazila->controllers as $controller)
+            @foreach($controller->controllerNotice as $controllerNotice)
+                <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                    <div class="container">
+                        <div class="container">
+                            <p class="lead">{{ $controllerNotice->title }}</p>
+                            <p class="text-secondary text-mute small">{{ $controllerNotice->detail }}</p>
                         </div>
                     </div>
-                    <div class="swiper-pagination"></div>
+                </section>
+            @endforeach
+        @endforeach
+            <!-- Start top ads. by controller this upazila -->
+            <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                    @foreach(auth()->user()->upazila->controllers as $controller)
+                        @foreach($controller->controllerAds as $controllerAds)
+                            <div class="swiper-slide swiper-slide-active">
+                                <div class="card shadow border-0 bg-template">
+                                    <div class="card-body">
+                                        <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
+                                            <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
                 </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="container px-0">
-                <!-- Swiper -->
-                <div class="swiper-container offer-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+            <!-- End top ads.  by controller this upazila -->
+            <hr>
+            <!-- Start middle ads. by admin for all-->
+            <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                    @foreach($adminAds as $adminAds)
+                        <div class="swiper-slide swiper-slide-active">
                             <div class="card shadow border-0 bg-template">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-auto pr-0">
-                                            <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100">
-                                        </div>
-                                        <div class="col align-self-center">
-                                            <h5 class="mb-2 font-weight-normal">Gold loan scheme</h5>
-                                            <p class="text-mute">Get all money at market rate of gold</p>
-                                        </div>
-                                    </div>
+                                    <a  @if($adminAds->url) href="{{ $adminAds->url }}" target="_blank" @endif >
+                                        <img src="{{ asset('uploads/images/ads/admin/'.$adminAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="swiper-slide">
-                            <div class="card shadow border-0 bg-template">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col pr-0 align-self-center">
-                                            <h5 class="mb-2 font-weight-normal">Gold loan scheme</h5>
-                                            <p class="text-mute">Get all money at market rate of gold</p>
-                                        </div>
-                                        <div class="col-auto">
-                                            <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100">
-                                        </div>
+                    @endforeach
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+            <!-- End middle ads. by admin for all-->
+            <hr>
+            <!-- Start bottom ads. by controller this upazila  -->
+            <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
+                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                    @foreach(auth()->user()->upazila->controllers as $controller)
+                        @foreach($controller->controllerAds as $controllerAds)
+                            <div class="swiper-slide swiper-slide-active">
+                                <div class="card shadow border-0 bg-template">
+                                    <div class="card-body">
+                                        <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
+                                            <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
+                    @endforeach
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            <!-- End bottom ads.  by controller this upazila -->
+    @endif
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">Upcoming Payments <a href="allpayment.html" class="float-right small">View All</a></h6>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <h5 class="font-weight-normal mb-1">$ 1548.00 </h5>
-                        <p class="text-mute small text-secondary mb-2">20d to pay electricity bill</p>
-                        <div class="progress h-4">
-                            <div class="progress-bar bg-success" role="progressbar" style="width:35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="col-auto pl-0">
-                        <button class="avatar avatar-50 no-shadow border-0 bg-template">
-                            <i class="material-icons">local_atm</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <h5 class="font-weight-normal mb-1">$ 106.00 <span class="badge badge-danger small vm text-white">Prior</span></h5>
-                        <p class="text-mute small text-secondary mb-2">33 days to pay gas bill</p>
-                        <div class="progress h-4">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 65%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="col-auto pl-0">
-                        <button class="avatar avatar-50 no-shadow border-0 bg-template">
-                            <i class="material-icons">local_atm</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">Recent Messages</h6>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <img src="img/user1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h6 class="font-weight-normal mb-1">Mrs. Magon Johnson </h6>
-                        <p class="text-mute small text-secondary">"Thank you for your purchase with our shop and making online payment."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer border-top bg-none">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Quick reply" aria-describedby="button-addon4">
-                    <div class="input-group-append">
-                        <button class="btn btn-default btn-rounded-36 shadow-sm" type="button" id="button-addon4"><i class="material-icons md-18">send</i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <img src="img/user2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h6 class="font-weight-normal mb-1">Ms. Shivani Dilux</h6>
-                        <p class="text-mute small text-secondary">"Thank you for your purchase with our shop and making online payment."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">Loan Status </h6>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-50 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm text-template">local_atm</i>
-                        </div>
-                    </div>
-                    <div class="col-auto align-self-center">
-                        <h6 class="font-weight-normal mb-1">EMI</h6>
-                        <p class="text-mute small text-secondary">Home Loan</p>
-                    </div>
-                    <div class="col-auto align-self-center border-left">
-                        <h6 class="font-weight-normal mb-1">$ 1548.00</h6>
-                        <p class="text-mute small text-secondary">Due: 15-12-2019</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card shadow border-0 mb-3">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-auto pr-0">
-                        <div class="avatar avatar-50 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm text-template">local_atm</i>
-                        </div>
-                    </div>
-                    <div class="col-auto align-self-center">
-                        <h6 class="font-weight-normal mb-1">EMI</h6>
-                        <p class="text-mute small text-secondary">Car Loan</p>
-                    </div>
-                    <div class="col-auto align-self-center border-left">
-                        <h6 class="font-weight-normal mb-1">$ 658.00</h6>
-                        <p class="text-mute small text-secondary">Due: 18-12-2019</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <h6 class="subtitle">News Updates</h6>
-        <div class="row">
-            <!-- Swiper -->
-            <div class="swiper-container news-slide">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product2.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product3.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product2.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product3.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product2.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow-sm border-0 bg-dark text-white">
-                            <figure class="background">
-                                <img src="img/product3.jpg" alt="">
-                            </figure>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-default btn-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">arrow_forward</i></a>
-                                <h5 class="small">Multipurpose Juice allows you to grow faster</h5>
-                                <p class="text-mute small">By Anand Mangal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h5 class="subtitle mb-1">Most Exciting Feature</h5>
-                <p class="text-secondary">Take a look at our services</p>
-            </div>
-        </div>
-        <div class="row text-center mt-4">
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">card_giftcard</i>
-                        </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">2546</h3>
-                        <p class="text-secondary text-mute small">Gift it out</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">subscriptions</i>
-                        </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">635</h3>
-                        <p class="text-secondary text-mute small">Monthly Billed</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">local_florist</i>
-                        </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">1542</h3>
-                        <p class="text-secondary text-mute small">Eco environment</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card shadow border-0 mb-3">
-                    <div class="card-body">
-                        <div class="avatar avatar-60 no-shadow border-0">
-                            <div class="overlay bg-template"></div>
-                            <i class="material-icons vm md-36 text-template">location_city</i>
-                        </div>
-                        <h3 class="mt-3 mb-0 font-weight-normal">154</h3>
-                        <p class="text-secondary text-mute small">Four Offices</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- footer-->
-    <div class="footer">
-        <div class="no-gutters">
-            <div class="col-auto mx-auto">
-                <div class="row no-gutters justify-content-center">
-                    <div class="col-auto">
-                        <a href="index.html" class="btn btn-link-default active">
-                            <i class="material-icons">home</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="statistics.html" class="btn btn-link-default">
-                            <i class="material-icons">insert_chart_outline</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="wallet.html" class="btn btn-link-default">
-                            <i class="material-icons">account_balance_wallet</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="transactions.html" class="btn btn-link-default">
-                            <i class="material-icons">widgets</i>
-                        </a>
-                    </div>
-                    <div class="col-auto">
-                        <a href="profile.html" class="btn btn-link-default">
-                            <i class="material-icons">account_circle</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer ends-->
-
-</div>
+    <script>
+        $(document).ready(function (){
+           $('.select-package-btn').click(function (){
+                $('.package_name_modal').html($(this).parent().parent().find('.name').text())
+                $('.package-detail-modal').html($(this).parent().parent().find('.package-detail').html())
+                $('.three_month_modal').html($(this).parent().parent().find('.three_month_price').html())
+                $('.six_month_modal').html($(this).parent().parent().find('.six_month_price').val())
+                $('.twelve_month_modal').html($(this).parent().parent().find('.twelve_month_price').html())
+                $('#hidden_package_id_modal').val($(this).val())
+           });
+        });
+    </script>
 @endsection
