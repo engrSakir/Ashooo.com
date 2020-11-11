@@ -50,6 +50,7 @@ class RegisterController extends Controller
 
         $customer = new User();
         $customer->role         =   'customer';
+        $customer->status       =   '1';
         $customer->full_name    =   $request->input('fullName');
         $customer->user_name    =   $request->input('userName');
         $customer->phone        =   $request->input('phone');
@@ -172,6 +173,7 @@ class RegisterController extends Controller
          * */
 
         $worker = new User();
+        $worker->status       =   '0';
         $worker->role         =   'worker';
         $worker->full_name    =   $request->input('fullName');
         $worker->user_name    =   $request->input('userName');
@@ -179,6 +181,34 @@ class RegisterController extends Controller
         $worker->gender       =   $request->input('gender');
         $worker->upazila_id   =   $request->input('upazila');
         $worker->password     =   Hash::make($request->input('password'));
+        $worker->user_id   = $worker->id;
+        $worker->number    = $request->input('nidNumber');
+        //NID Front
+        if($request->hasFile('nidFrontImage')){
+            $image              = $request->file('nidFrontImage');
+            $OriginalExtension  = $image->getClientOriginalExtension();
+            $image_name         =$request->input('userName').'-nid-front-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
+            $destinationPath    = ('uploads/images/nid');
+            $resize_image       = Image::make($image->getRealPath());
+            $resize_image->resize(500, 500, function($constraint){
+                $constraint->aspectRatio();
+            });
+            $resize_image->save($destinationPath . '/' . $image_name);
+            $worker->front_image    = $image_name;
+        }
+        //NID Back
+        if($request->hasFile('nidBackImage')){
+            $image              = $request->file('nidBackImage');
+            $OriginalExtension  = $image->getClientOriginalExtension();
+            $image_name         =$request->input('userName').'-nid-back-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
+            $destinationPath    = ('uploads/images/nid');
+            $resize_image       = Image::make($image->getRealPath());
+            $resize_image->resize(500, 500, function($constraint){
+                $constraint->aspectRatio();
+            });
+            $resize_image->save($destinationPath . '/' . $image_name);
+            $worker->back_image    = $image_name;
+        }
 
         //Auto resize with 20 wide/ 20 height
         if($request->hasFile('profilePicture')){
@@ -209,43 +239,6 @@ class RegisterController extends Controller
         $referral->own      = $referral_code;
         $referral->by       = $request->input('referralCode');
         $referral->save();
-
-        /**
-         * +NID
-         * NID number, front image, back image store in NID table
-         * */
-
-        //NID store
-        $nid = new Nid();
-        $nid->user_id   = $worker->id;
-        $nid->number    = $request->input('nidNumber');
-        //NID Front
-        if($request->hasFile('nidFrontImage')){
-            $image              = $request->file('nidFrontImage');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-nid-front-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/nid');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
-                $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $nid->front_image    = $image_name;
-        }
-        //NID Back
-        if($request->hasFile('nidBackImage')){
-            $image              = $request->file('nidBackImage');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-nid-back-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/nid');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
-                $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $nid->back_image    = $image_name;
-        }
-        $nid->save();
 
         /**
          * +Services
@@ -279,19 +272,11 @@ class RegisterController extends Controller
         /**
          * After all success auto login
          * */
-        if(Auth::attempt(['phone' => $worker->phone, 'password' => $request->input('password'), 'status' => 1])) {
-            Auth::user()->last_login_at = Carbon::now();
-            Auth::user()->save();
-            return response()->json([
-                'type' => 'success',
-                'message' => 'Successfully created',
-            ]);
-        }else{
-            return response()->json([
-                'type' => 'warning',
-                'message' => 'Successfully created',
-            ]);
-        }
+        return response()->json([
+            'type' => 'warning',
+            'message' => 'Successfully created. Please contact to area controller office.',
+            'url' => route('controller-list', $request->input('upazila')),
+        ]);
     }
 
 

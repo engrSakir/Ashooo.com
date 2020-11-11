@@ -154,7 +154,7 @@
                     <li class="dropdown-divider"></li>
                     <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
                     <li class="dropdown-divider"></li>
-                    <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+                    <li class="dropdown-item"> <a onclick="logout()" style="cursor: pointer;"><i class="icon-power mr-2"></i> Logout</a> </li>
                 </ul>
             </li>
         </ul>

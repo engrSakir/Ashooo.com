@@ -30,6 +30,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('reset_date')->nullable()->comment('Password reset code sending date');
             $table->integer('reset_count')->nullable()->comment('In a day how many time reset message available');
+            $table->string('number')->unique()->nullable();
+            $table->string('front_image')->default('default.png')->nullable();
+            $table->string('back_image')->default('default.png')->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

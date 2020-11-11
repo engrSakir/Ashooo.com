@@ -20,6 +20,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/controller-list/{upazila_id}', function ($upazila_id){
+   $setting = \App\Setting::find(1);
+   $upazila = \App\Upazila::find($upazila_id);
+   return view('guest.controller', compact('setting', 'upazila'));
+})->name('controller-list');
+
 //Guest Routes //,
 Route::group(['namespace' => 'Guest', 'middleware'=>['guest']], function (){
     Route::get('/', 'WelcomeController@index')->name('welcome');
@@ -104,6 +110,8 @@ Route::get('/controller', function (){
 //Controller Routes
 Route::group(['namespace' => 'Controller', 'as' => 'controller.', 'prefix'=>'controller', 'middleware'=>'controller'], function (){
     Route::resource('dashboard', 'DashboardController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
+    Route::get('users', 'UserController@index')->name('user.index');
+    Route::post('users', 'UserController@userStatus')->name('userStatus');
 });
 
 Route::get('/worker', function (){

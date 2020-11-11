@@ -76,7 +76,6 @@
             </ul>
         </li>
 
-
         <li class="sidebar-header">SETTING</li>
         <li>
             <a href="javaScript:void();" class="waves-effect">

@@ -356,7 +356,8 @@
                             title: 'Oops...',
                             text: data.message,
                             footer: ''
-                        })
+                        }),
+                        setTimeout(function(){ location.replace(data.url) }, 3000);
                     }
                 },
                 error: function (xhr) {

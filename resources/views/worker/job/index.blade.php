@@ -409,7 +409,7 @@
                 @endforeach
             @endforeach
         </div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+    </div>
     <!-- End bottom ads.  by controller this upazila -->
 <script>
     $(document).ready(function() {

@@ -24,7 +24,7 @@ class Upazila extends Model
         return $this->hasMany(User::class,'upazila_id','id')->orderBy('id','desc');
     }
 
-    //Customers
+    //controllers
     public function controllers(){
         return $this->hasMany(User::class,'upazila_id','id')->where('role','controller')->orderBy('id','desc');
     }
@@ -37,6 +37,11 @@ class Upazila extends Model
     //Workers
     public function workers(){
         return $this->hasMany(User::class,'upazila_id','id')->where('role','worker')->orderBy('id','desc');
+    }
+
+    //Membership
+    public function memberships(){
+        return $this->hasMany(User::class,'upazila_id','id')->where('role','membership')->orderBy('id','desc');
     }
 
 

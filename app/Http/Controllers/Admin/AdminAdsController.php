@@ -13,14 +13,12 @@ use Image;
 class AdminAdsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $setting = Setting::find(1);
-        $ads = AdminAds::orderBy('id', 'desc')->get();
+        $ads = AdminAds::orderBy('id', 'desc')->take(500)->get();
         return view('admin.admin-ads.index', compact('setting', 'ads'));
     }
 

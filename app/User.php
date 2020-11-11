@@ -108,6 +108,7 @@ class User extends Authenticatable
         return $this->hasMany(CustomerBid::class,'customer_id','id');
     }
 
+  /*
     //jobsOfCustomer
     public function jobsOfCustomer(){
         return $this->hasMany(Job::class,'customer_id','id');
@@ -117,7 +118,7 @@ class User extends Authenticatable
     public function jobsOfWorker(){
         return $this->hasMany(Job::class,'worker_id','id');
     }
-
+*/
     //Nid
     public function nid(){
         return $this->hasOne(Nid::class,'user_id','id');
