@@ -85,26 +85,6 @@
             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
         </div>
         <!-- End middle ads. by admin for all-->
-        <hr>
-        <!-- Start bottom ads. by controller this upazila  -->
-        <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
-            <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                @foreach(auth()->user()->upazila->controllers as $controller)
-                    @foreach($controller->controllerAds as $controllerAds)
-                        <div class="swiper-slide swiper-slide-active">
-                            <div class="card shadow border-0 bg-template">
-                                <div class="card-body">
-                                    <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
-                                        <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endforeach
-            </div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-        <!-- End bottom ads.  by controller this upazila -->
 
         <!-- footer-->
         <div class="footer">
