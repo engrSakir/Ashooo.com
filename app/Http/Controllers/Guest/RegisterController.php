@@ -181,7 +181,6 @@ class RegisterController extends Controller
         $worker->gender       =   $request->input('gender');
         $worker->upazila_id   =   $request->input('upazila');
         $worker->password     =   Hash::make($request->input('password'));
-        $worker->user_id   = $worker->id;
         $worker->number    = $request->input('nidNumber');
         //NID Front
         if($request->hasFile('nidFrontImage')){

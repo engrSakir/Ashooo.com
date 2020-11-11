@@ -8,10 +8,14 @@ use App\CustomerGig;
 use App\Http\Controllers\Controller;
 use App\Job;
 use App\Setting;
+use App\User;
 use App\WorkerServiceCategory;
 use Carbon\Carbon;
+use CreateCustomerGigsTable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -31,6 +35,14 @@ class HomeController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
+            /*
+            $c_gigs =DB::table('customer_gigs')
+                ->join('worker_and_services', function ($join) {
+                    $join->on('customer_gigs.service_id', '=', 'worker_and_services.service_id')
+                        ->where('worker_and_services.worker_id', '=', auth()->user()->id);
+                })->get();
+            dd($c_gigs);
+            */
         return view('worker.home.index', compact('setting', 'categories', 'adminNotice', 'adminAds'));
     }
 

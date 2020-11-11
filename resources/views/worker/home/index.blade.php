@@ -18,12 +18,20 @@
             @foreach($customer->customerGigs->where('status', 'active') as $customerGig)
                 <!-- Check already bid or not -->
                 @if(!auth()->user()->workerBids()->where('customer_gig_id', $customerGig->id)->exists())
+                        @foreach(auth()->user()->workerService as $service)
+                            @if($service->service_id == $customerGig->service_id)
+                                @php $myService = 1; @endphp
+                            @else
+                                @php $myService = 0; @endphp
+                            @endif
+                        @endforeach
+                    @if($myService == 1)
                     @php $loopCount++; @endphp
-                    <div class="card shadow border-0 mb-3">
+                        <div class="card shadow border-0 mb-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($customerGig->title, 27) }}</b></h5>
+                                    <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($customerGig->title, 80) }}</b></h5>
                                     <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($customerGig->description, 70) }}</p>
                                     <div class="row text-center">
                                         <div class="col-4 text-center color-border">
@@ -36,7 +44,7 @@
                                         </div>
                                         <div class="col-4 text-center color-border">
                                             <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
-                                            <p class="text-mute small text-secondary mb-2">{{ '10' }}</p>
+                                            <p class="text-mute small text-secondary mb-2">{{  $customerGig->workerBids->count() }}</p>
                                         </div>
                                         <div class="col-12 text-center">
                                             <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) ) }}'">
@@ -48,6 +56,9 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    @php $loopCount=0; @endphp
+                    @endif
                 @endif
                 <!-- Job equal or => 5 notice and top ads. show as up -->
                 @if( $loopCount == 5)
