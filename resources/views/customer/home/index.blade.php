@@ -6,7 +6,7 @@
 @section('content')
     <!-- Start job posting area -->
     <div class="container">
-        <div class="card bg-template shadow mt-4 h-500">
+        <div class="card shadow mt-4 h-500"> <!-- use bg-template as class for multi color -->
             <div class="card-body">
                 <div class="row">
                     <div class="container">
