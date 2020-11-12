@@ -129,6 +129,10 @@ class User extends Authenticatable
         return $this->hasMany(WorkerAndService::class,'worker_id','id');
     }
 
+    public function workerServicem(){
+        return $this->hasMany(WorkerAndService::class,'worker_id','id')->pluck('service_id');
+    }
+
     //Membership Service
     public function membershipService(){
         return $this->hasMany(MembershipAndService::class,'membership_id','id');

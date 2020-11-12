@@ -28,4 +28,9 @@ class WorkerService extends Model
     public function workerGigs(){
         return $this->hasMany(WorkerGig::class,'service_id','id')->orderBy('id','desc');
     }
+
+    //customerGigs
+    public function customerGigs(){
+        return $this->hasMany(CustomerGig::class,'service_id','id');
+    }
 }
