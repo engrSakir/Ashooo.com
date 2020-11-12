@@ -21,7 +21,7 @@
                                 <div class="overlay bg-template"></div>
                                 <img src="{{ asset('uploads/images/worker/service/'.$service->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                             </div>
-                            <a href="{{ route('customer.showGigs',\Illuminate\Support\Facades\Crypt::encryptString($service->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $service->name }}</p></a>
+                            <a href="{{ route('worker.showCustomerGigs',\Illuminate\Support\Facades\Crypt::encryptString($service->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $service->name }}</p></a>
                         </div>
                     </div>
                 </div>

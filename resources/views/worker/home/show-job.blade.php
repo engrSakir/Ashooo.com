@@ -67,7 +67,7 @@
         <!--Start work detail , address, day-->
         <div class="container">
             <h4 class="mb-3"><b>Work detail:</b></h4>
-            <p>{{ $customerGig->description }}</p>
+            <pre>{{ $customerGig->description }}</pre>
             <h4 class="mb-3"><b>Address:</b></h4>
             <p>{{ $customerGig->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
@@ -151,7 +151,7 @@
                 <div class="card-footer bg-none">
                     <div class="row">
                         <div class="col">
-                            <p><b>{{ $bid->description }}</b></p>
+                            <pre><b>{{ $bid->description }}</b></pre>
                         </div>
                     </div>
                 </div>

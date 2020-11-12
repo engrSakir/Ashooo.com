@@ -120,10 +120,11 @@ Route::get('/worker', function (){
 //Worker Routes
 Route::group(['namespace' => 'Worker', 'as' => 'worker.', 'prefix'=>'worker', 'middleware'=>'worker'], function (){
     Route::get('/notifications','NotificationController@index')->name('notifications');
-
+    //Home>Next
     Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
     Route::get('/show-job/{id}', 'HomeController@showJob')->name('showJob');
     Route::get('/show-services/{id}', 'HomeController@showServices')->name('showServices');
+    Route::get('/home/category/service/{id}','HomeController@showCustomerGigs')->name('showCustomerGigs');
 
     //Profile
     Route::get('/profile','ProfileController@index')->name('profile.index');

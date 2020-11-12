@@ -90,7 +90,7 @@
                 <h4 class="mb-3">
                     <b>Work details:</b>
                 </h4>
-                <p>{{ $gig->description }}</p>
+                <pre>{{ $gig->description }}</pre>
                 <h4 class="mb-3">
                     <b>Tag:</b>
                 </h4>

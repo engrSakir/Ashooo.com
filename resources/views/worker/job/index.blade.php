@@ -62,7 +62,7 @@
                                             }
                                         }
                                     @endphp
-                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">Active Order ({{ $activeGig + $activeBid }})</button>
+                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">Active Job ({{ $activeGig + $activeBid }})</button>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="running-job-btn" type="button" class="mb-2 btn btn-success">Running &nbsp; &nbsp; &nbsp; ({{ $runningGig + $runningBid }})  &nbsp;</button>
+                                    <button id="running-job-btn" type="button" class="mb-2 btn btn-success">Running Job ({{ $runningGig + $runningBid }})  &nbsp;</button>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -92,7 +92,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center active-job" role="alert">
-        <b id="">GIG ORDER</b>
+        <b id="">ACTIVE BID JOB</b>
     </div>
     <!-- End title -->
     <!-- Start WorkerBids -->
@@ -240,7 +240,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center active-job" role="alert">
-        <b id=""> BID JOB</b>
+        <b id="">ACTIVE GIG JOB</b>
     </div>
     <!-- End title -->
     <!-- Start Active job -->

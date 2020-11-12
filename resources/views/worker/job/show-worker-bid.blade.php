@@ -66,8 +66,8 @@
             <!--End owner info & price-->
             <!--Start work detail , address, day-->
             <div class="container">
-                <h4 class="mb-3"><b>Work detail:</b></h4>
-                <p>{{ $customerGig->description }}</p>
+                <h4 class="mb-3"><b>Work details:</b></h4>
+                <pre>{{ $customerGig->description }}</pre>
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $customerGig->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
@@ -114,7 +114,7 @@
                     <div class="card-footer bg-none">
                         <div class="row">
                             <div class="col">
-                                <p><b>{{ $customerGig->workerBids->where('worker_id', auth()->user()->id)->first()->description }}</b></p>
+                                <pre><b>{{ $customerGig->workerBids->where('worker_id', auth()->user()->id)->first()->description }}</b></pre>
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                         <div class="card-footer bg-none">
                             <div class="row">
                                 <div class="col">
-                                    <p><b>{{ $bid->description }}</b></p>
+                                    <pre><b>{{ $bid->description }}</b></pre>
                                 </div>
                             </div>
                         </div>
@@ -232,10 +232,12 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="phone" placeholder="phone" readonly value="{{ $bid->customerGig->customer->phone }}">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">Call</span>
+                                                    <a href="tel:{{ $bid->customerGig->customer->phone }}">
+                                                        <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">Call</span>
+                                                    </a>
                                                 </div>
                                             </div>
-
+                                            <br>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="Order price">
                                                 <div class="input-group-prepend">
@@ -273,10 +275,10 @@
                                         </div>
                                     </div>
                                     <!-- work detail -->
-                                    <b>{{ $bid->description }}</b>
+                                    <pre><b>{{ $bid->description }}</b></pre>
                                     <hr>
                                     <b>{{ 'Details:' }}</b>
-                                    <p>{{ $bid->customerGig->description }}</p>
+                                    <pre>{{ $bid->customerGig->description }}</pre>
                                     <br>
                                     <b>{{ 'Address:' }}</b>
                                     <p>{{ $bid->customerGig->address }}</p>
@@ -366,10 +368,10 @@
                                     </div>
                                     <hr>
                                     <!-- work detail -->
-                                    <b>{{ $bid->description }}</b>
+                                    <pre><b>{{ $bid->description }}</b></pre>
                                     <hr>
                                     <b>{{ 'Details:' }}</b>
-                                    <p>{{ $bid->customerGig->description }}</p>
+                                    <pre>{{ $bid->customerGig->description }}</pre>
                                     <br>
                                     <b>{{ 'Address:' }}</b>
                                     <p>{{ $bid->customerGig->address }}</p>
@@ -439,7 +441,7 @@
                 <!--Start work detail , address, day-->
                 <div class="container">
                     <h4 class="mb-3"><b>Work detail:</b></h4>
-                    <p>{{ $customerGig->description }}</p>
+                    <pre>{{ $customerGig->description }}</pre>
                     <h4 class="mb-3"><b>Address:</b></h4>
                     <p>{{ $customerGig->address }}</p>
                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">

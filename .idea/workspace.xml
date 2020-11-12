@@ -148,23 +148,23 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/worker/home" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
-      <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\Ashooo\resources\views\worker\home" />
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
       <recent name="C:\laragon\www\Ashooo\resources\views\admin" />
       <recent name="C:\laragon\www\Ashooo" />
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer" />
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\admin\setting" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
+      <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
+      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -256,7 +256,7 @@
       <workItem from="1602904367526" duration="22307000" />
       <workItem from="1605075772580" duration="21478000" />
       <workItem from="1605118040377" duration="5062000" />
-      <workItem from="1605158435927" duration="4720000" />
+      <workItem from="1605158435927" duration="13230000" />
     </task>
     <servers />
   </component>

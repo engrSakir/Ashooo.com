@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">Active Job
+                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">Active ORDER
                                         ({{ count(auth()->user()->customerGigs->where('status', 'active')) + count(auth()->user()->customerBids->where('status', 'active')) }})
                                     </button>
                                 </div>
@@ -65,7 +65,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center active-job" role="alert">
-        <b id="bid-job">BID JOB</b>
+        <b id="bid-job">BID ORDER</b>
     </div>
     <!-- End title -->
 
@@ -219,7 +219,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center active-job" role="alert">
-        <b id="gig-job"> GIG JOB</b>
+        <b id="gig-job"> GIG ORDER</b>
     </div>
     <!-- End title -->
 
@@ -368,8 +368,8 @@
 <script>
     $(document).ready(function() {
         //Show only active
-        $('#bid-job').html('BID JOB');
-        $('#gig-job').html('GIG JOB');
+        $('#bid-job').html('BID ORDER');
+        $('#gig-job').html('GIG ORDER');
         $('.active-job').show();
         $('.completed-job').hide();
         $('.running-job').hide();
@@ -377,8 +377,8 @@
 
         //Active job show
         $('#active-job-btn').click(function (){
-            $('#bid-job').html('ACTIVE | BID JOB');
-            $('#gig-job').html('ACTIVE | GIG JOB');
+            $('#bid-job').html('ACTIVE | BID ORDER');
+            $('#gig-job').html('ACTIVE | GIG ORDER');
             $('.active-job').show();
             $('.completed-job').hide();
             $('.running-job').hide();
@@ -387,8 +387,8 @@
 
         //Complete job show
         $('#completed-job-btn').click(function (){
-            $('#bid-job').html('COMPLETED | BID JOB');
-            $('#gig-job').html('COMPLETED | GIG JOB');
+            $('#bid-job').html('COMPLETED | BID ORDER');
+            $('#gig-job').html('COMPLETED | GIG ORDER');
             $('.active-job').hide();
             $('.completed-job').show();
             $('.running-job').hide();
@@ -397,8 +397,8 @@
 
         //Running job show
         $('#running-job-btn').click(function (){
-            $('#bid-job').html('RUNNING | BID JOB');
-            $('#gig-job').html('RUNNING | GIG JOB');
+            $('#bid-job').html('RUNNING | BID ORDER');
+            $('#gig-job').html('RUNNING | GIG ORDER');
             $('.active-job').hide();
             $('.completed-job').hide();
             $('.running-job').show();
@@ -407,8 +407,8 @@
 
         //Cancelled job show
         $('#cancelled-job-btn').click(function (){
-            $('#bid-job').html('CANCELLED | BID JOB');
-            $('#gig-job').html('CANCELLED | GIG JOB');
+            $('#bid-job').html('CANCELLED | BID ORDER');
+            $('#gig-job').html('CANCELLED | GIG ORDER');
             $('.active-job').hide();
             $('.completed-job').hide();
             $('.running-job').hide();

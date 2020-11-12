@@ -29,7 +29,7 @@
                                                 <h5 class="card-title text-success notice-title">{{ $notice->title }}</h5>
                                                 <h5 class="card-title text-danger btn btn-inverse-success waves-effect waves-light m-1 controller-name">{{ $notice->controller->full_name }}</h5>
                                                 <h5 class="card-title text-danger btn btn-inverse-success waves-effect waves-light m-1 upazila-name">{{ $notice->controller->upazila->name }}</h5>
-                                                <p class="card-text notice-detail">{{ $notice->detail }}</p>
+                                                <pre class="card-text notice-detail">{{ $notice->detail }}</pre>
                                                 <hr>
                                                 <input type="hidden" class="hidden-id" value="{{ $notice->id }}">
                                                 <a href="javascript:void();" class="btn btn-inverse-success waves-effect waves-light m-1"><i class="fa fa-globe mr-1"></i> {{ $notice->created_at->format('d/m/Y h-m-s') }}</a>

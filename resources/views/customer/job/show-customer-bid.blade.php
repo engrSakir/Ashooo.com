@@ -104,7 +104,7 @@
                 <h5 class="mb-3"><b> {{ $customerBid->workerGig->title }} </b></h5>
                 <br>
                 <h4 class="mb-3"><b>Work details:</b></h4>
-                <p>{{ $customerBid->description }}</p>
+                <pre>{{ $customerBid->description }}</pre>
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $customerBid->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
@@ -170,10 +170,12 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="phone" placeholder="phone" readonly value="{{ $customerBid->workerGig->worker->phone }}">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">Call</span>
+                                                <a href="tel:{{ $customerBid->workerGig->worker->phone }}">
+                                                    <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">Call</span>
+                                                </a>
                                             </div>
                                         </div>
-
+                                        <br>
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="budget" readonly value="Order price">
                                             <div class="input-group-prepend">
@@ -213,7 +215,7 @@
                                 <b>{{ $customerBid->workerGig->description }}</b>
                                 <hr>
                                 <b>{{ 'Details:' }}</b>
-                                <p>{{ $customerBid->description }}</p>
+                                <pre>{{ $customerBid->description }}</pre>
                                 <br>
                                 <b>{{ 'Address:' }}</b>
                                 <p>{{ $customerBid->address }}</p>
@@ -313,7 +315,7 @@
                                 <b>{{ $customerBid->workerGig->description }}</b>
                                 <hr>
                                 <b>{{ 'Details:' }}</b>
-                                <p>{{ $customerBid->description }}</p>
+                                <pre>{{ $customerBid->description }}</pre>
                                 <br>
                                 <b>{{ 'Address:' }}</b>
                                 <p>{{ $customerBid->address }}</p>
@@ -382,7 +384,7 @@
             <!--Start work detail , address, day-->
             <div class="container">
                 <h4 class="mb-3"><b>Work detail:</b></h4>
-                <p>{{ $customerBid->description }}</p>
+                <pre>{{ $customerBid->description }}</pre>
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $customerBid->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">

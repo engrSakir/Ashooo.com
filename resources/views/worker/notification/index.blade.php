@@ -27,7 +27,7 @@
                                             <p class="mb-0">{{ $notification->data['title'] }}</p>
                                         </div>
                                         <div class="col-auto pl-0">
-                                            <p class="small text-mute text-trucated mt-1">{{ $notification->created_at->format('d/m/Y') }}</p>
+                                            <p class="small text-mute text-trucated mt-1">{{ $notification->created_at->format('h:m:s d/m/Y') }}</p>
                                         </div>
                                     </div>
                                     <p class="small text-mute">{{ $notification->data['message'] }}</p>

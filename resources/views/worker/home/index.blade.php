@@ -58,7 +58,7 @@
                                 <section class="jumbotron text-center mt-3 bg-white shadow-sm">
                                     <div class="container">
                                         <p class="lead">{{ $adminNotice->title }}</p>
-                                        <p class="text-secondary text-mute small"> {{ $adminNotice->detail }} </p>
+                                        <pre class="text-secondary text-mute small"> {{ $adminNotice->detail }} </pre>
                                     </div>
                                 </section>
                             @endforeach
@@ -70,7 +70,7 @@
                                         <div class="container">
                                             <div class="container">
                                                 <p class="lead">{{ $controllerNotice->title }}</p>
-                                                <p class="text-secondary text-mute small">{{ $controllerNotice->detail }}</p>
+                                                <pre class="text-secondary text-mute small">{{ $controllerNotice->detail }}</pre>
                                             </div>
                                         </div>
                                     </section>
@@ -145,7 +145,7 @@
                             </div>
                             <!-- End middle ads. by admin for all-->
                         @endif
-                        @break
+
                     @endif
                 @endforeach
             @endforeach
@@ -158,7 +158,7 @@
                     <section class="jumbotron text-center mt-3 bg-white shadow-sm">
                         <div class="container">
                             <p class="lead">{{ $adminNotice->title }}</p>
-                            <p class="text-secondary text-mute small"> {{ $adminNotice->detail }} </p>
+                            <pre class="text-secondary text-mute small"> {{ $adminNotice->detail }} </pre>
                         </div>
                     </section>
                 @endforeach
@@ -170,14 +170,13 @@
                             <div class="container">
                                 <div class="container">
                                     <p class="lead">{{ $controllerNotice->title }}</p>
-                                    <p class="text-secondary text-mute small">{{ $controllerNotice->detail }}</p>
+                                    <pre class="text-secondary text-mute small">{{ $controllerNotice->detail }}</pre>
                                 </div>
                             </div>
                         </section>
                     @endforeach
                 @endforeach
             <!-- End controller notice box -->
-
                 <!-- Start top ads. by controller this upazila -->
                 <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">

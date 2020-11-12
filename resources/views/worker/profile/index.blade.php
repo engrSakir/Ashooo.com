@@ -14,7 +14,7 @@
                     <div class="col pl-0 align-self-center">
                         <h5 class="mb-1">{{ auth()->user()->full_name }}</h5>
                         <p class="font-weight-normal">
-                            <span class="badge badge-success small">
+
                              @php
                                  $percent = 100 - ((auth()->user()->rating->max_rate - auth()->user()->rating->rate)/auth()->user()->rating->max_rate)*100;
                                  if ($percent>80)

@@ -81,7 +81,7 @@
         <!--Start work detail , address, day-->
         <div class="container">
             <h4 class="mb-3"><b>Work details:</b></h4>
-            <p>{{ $job->description }}</p>
+            <pre>{{ $job->description }}</pre>
             <h4 class="mb-3"><b>Address:</b></h4>
             <p>{{ $job->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
@@ -151,7 +151,7 @@
             <!--Start work detail , address, day-->
             <div class="container">
                 <h4 class="mb-3"><b>Work details:</b></h4>
-                <p>{{ $job->description }}</p>
+                <pre>{{ $job->description }}</pre>
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $job->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">

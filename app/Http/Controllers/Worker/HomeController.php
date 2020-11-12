@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Job;
 use App\Setting;
 use App\User;
+use App\WorkerService;
 use App\WorkerServiceCategory;
 use Carbon\Carbon;
 use CreateCustomerGigsTable;
@@ -67,5 +68,11 @@ class HomeController extends Controller
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
         return view('worker.home.show-service',compact('setting', 'category','adminAds'));
+    }
+
+    public function showCustomerGigs($service_id){
+        $setting = Setting::find(1);
+        $service = WorkerService::find(Crypt::decryptString($service_id));
+        return view('worker.home.gigs',compact('setting', 'service'));
     }
 }

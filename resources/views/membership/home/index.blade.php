@@ -141,7 +141,7 @@
             <section class="jumbotron text-center mt-3 bg-white shadow-sm">
                 <div class="container">
                     <p class="lead">{{ $adminNotice->title }}</p>
-                    <p class="text-secondary text-mute small"> {{ $adminNotice->detail }} </p>
+                    <pre class="text-secondary text-mute small"> {{ $adminNotice->detail }} </pre>
                 </div>
             </section>
         @endforeach
@@ -153,7 +153,7 @@
                     <div class="container">
                         <div class="container">
                             <p class="lead">{{ $controllerNotice->title }}</p>
-                            <p class="text-secondary text-mute small">{{ $controllerNotice->detail }}</p>
+                            <pre class="text-secondary text-mute small">{{ $controllerNotice->detail }}</pre>
                         </div>
                     </div>
                 </section>

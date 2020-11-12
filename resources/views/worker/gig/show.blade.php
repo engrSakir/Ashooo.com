@@ -45,7 +45,7 @@
         <!--Start work detail , address, day-->
         <div class="container">
             <h4 class="mb-3"><b>About this gig:</b></h4>
-            <p>{{ $workerGig->description }}</p>
+            <pre>{{ $workerGig->description }}</pre>
             <h4 class="mb-3"><b>Tags:</b></h4>
             <p>{{ $workerGig->tags }}</p>
             <div class="row">
