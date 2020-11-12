@@ -112,6 +112,10 @@ Route::group(['namespace' => 'Controller', 'as' => 'controller.', 'prefix'=>'con
     Route::resource('dashboard', 'DashboardController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
     Route::get('users', 'UserController@index')->name('user.index');
     Route::post('users', 'UserController@userStatus')->name('userStatus');
+    Route::resource('ads', 'AdsController');
+    Route::post('controller/ads/update', 'AdsController@update')->name('ads.update');
+    Route::resource('notice', 'NoticeController');
+    Route::post('controller/notice/update', 'NoticeController@update')->name('notice.update');
 });
 
 Route::get('/worker', function (){

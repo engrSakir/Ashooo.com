@@ -18,6 +18,8 @@
             </ul>
         </li>
         <li><a href="{{ route('controller.user.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Users</span></a></li>
+        <li><a href="{{ route('controller.notice.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Notice</span></a></li>
+        <li><a href="{{ route('controller.ads.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Ads.</span></a></li>
 
     </ul>
 

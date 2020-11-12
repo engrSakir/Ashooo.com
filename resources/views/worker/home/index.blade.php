@@ -145,7 +145,6 @@
                             </div>
                             <!-- End middle ads. by admin for all-->
                         @endif
-
                     @endif
                 @endforeach
             @endforeach

@@ -73,6 +73,13 @@ class User extends Authenticatable
             ->take(1);  //For latest one taking
     }
 
+    //ControllerNotice
+    public function controllerNoticeForController(){
+        return $this->hasMany(ControllerNotice::class,'controller_id','id')
+            ->orderBy('id', 'desc')
+            ->take(500);  //For latest one taking
+    }
+
     //AdminAds
     public function adminAds(){
         return $this->hasMany(AdminAds::class,'admin_id','id');

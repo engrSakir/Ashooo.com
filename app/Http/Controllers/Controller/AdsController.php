@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Controller;
 
 use App\AdminAds;
+use App\ControllerAds;
 use App\Http\Controllers\Controller;
 use App\Setting;
 use Carbon\Carbon;
@@ -10,16 +11,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
 
-class AdminAdsController extends Controller
+class AdsController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $setting = Setting::find(1);
-        $ads = AdminAds::orderBy('id', 'desc')->take(500)->get();
-        return view('admin.admin-ads.index', compact('setting', 'ads'));
+        return view('controller.ads.index', compact('setting'));
     }
 
     /**
@@ -46,8 +48,8 @@ class AdminAdsController extends Controller
             'endingDate'    => 'required',
             'image'         => 'required|image',
         ]);
-        $ads = new AdminAds();
-        $ads->admin_id = Auth::user()->id;
+        $ads = new ControllerAds();
+        $ads->controller_id = Auth::user()->id;
         $ads->url = $request->input('url');
 
         $ads->starting = $request->input('startingDate');
@@ -64,8 +66,8 @@ class AdminAdsController extends Controller
         if($request->hasFile('image')){
             $image              = $request->file('image');
             $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         ='admin-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/ads/controller');
+            $image_name         ='controller-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
+            $destinationPath    = ('uploads/images/ads/admin');
             $resize_image       = Image::make($image->getRealPath());
             $resize_image->resize(500, 500, function($constraint){
                 $constraint->aspectRatio();
@@ -115,7 +117,7 @@ class AdminAdsController extends Controller
             'endingDate'    => 'required',
             //'image'         => 'required|image',
         ]);
-        $ads = AdminAds::find($id);
+        $ads = ControllerAds::find($id);
         $ads->url = $request->input('url');
         $ads->starting = $request->input('startingDate');
         $ads->ending = $request->input('endingDate');
@@ -130,8 +132,8 @@ class AdminAdsController extends Controller
         if($request->hasFile('image')){
             $image              = $request->file('image');
             $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         ='admin-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/ads/admin');
+            $image_name         ='controller-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
+            $destinationPath    = ('uploads/images/ads/controller');
             $resize_image       = Image::make($image->getRealPath());
             $resize_image->resize(500, 500, function($constraint){
                 $constraint->aspectRatio();
@@ -141,7 +143,6 @@ class AdminAdsController extends Controller
         }
         $ads->save();
         return $ads;
-
     }
 
     /**
