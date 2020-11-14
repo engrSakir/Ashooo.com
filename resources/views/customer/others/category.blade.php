@@ -21,7 +21,7 @@
         <!-- Start title -->
        <div>
            <div class="alert alert-primary text-center" role="alert">
-               <b>General Services</b>
+               <b>{{ __('system.general_service') }}</b>
            </div>
        </div>
         <!-- End title -->

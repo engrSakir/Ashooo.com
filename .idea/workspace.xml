@@ -148,22 +148,22 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\Ashooo\resources\views\controller" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\worker\home" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
-      <recent name="C:\laragon\www\Ashooo\resources\views\admin" />
-      <recent name="C:\laragon\www\Ashooo" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
       <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
+      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\Ashooo\resources\lang\en" />
+      <recent name="D:\laragon\www\Ashooo\resources\lang\en\customer" />
+      <recent name="D:\laragon\www\Ashooo\resources\views\controller" />
+      <recent name="D:\laragon\www\Ashooo\resources\views\worker\home" />
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
     </key>
   </component>
@@ -256,7 +256,11 @@
       <workItem from="1602904367526" duration="22307000" />
       <workItem from="1605075772580" duration="21478000" />
       <workItem from="1605118040377" duration="5062000" />
-      <workItem from="1605158435927" duration="16735000" />
+      <workItem from="1605158435927" duration="19727000" />
+      <workItem from="1605217521273" duration="1307000" />
+      <workItem from="1605219388346" duration="8977000" />
+      <workItem from="1605259721681" duration="6733000" />
+      <workItem from="1605350357641" duration="121000" />
     </task>
     <servers />
   </component>
@@ -281,10 +285,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="640" y="260" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602943461158" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605186439516">
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605219071183">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1605186439516" />
+    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1605219071183" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class LanguageMiddleware
 {
@@ -15,6 +17,10 @@ class LanguageMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!Session::get('language')){
+            Session::put('language', 'en');
+        }
+        App::setLocale(Session::get('language'));
         return $next($request);
     }
 }

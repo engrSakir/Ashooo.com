@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use smasif\ShurjopayLaravelPackage\ShurjopayService;
 
 /*
@@ -25,6 +27,16 @@ Route::get('/controller-list/{upazila_id}', function ($upazila_id){
    $upazila = \App\Upazila::find($upazila_id);
    return view('guest.controller', compact('setting', 'upazila'));
 })->name('controller-list');
+
+Route::get('/language', function (){
+    if (Session::get('language') == 'en'){
+        Session::put('language', 'bn');
+    }else{
+        Session::put('language', 'en');
+    }
+    App::setLocale(Session::get('language'));
+    return redirect()->back();
+})->name('language');
 
 //Guest Routes //,
 Route::group(['namespace' => 'Guest', 'middleware'=>['guest']], function (){

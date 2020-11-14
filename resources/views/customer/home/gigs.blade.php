@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') Gigs @endpush
+@push('title')  {{ __('system.all_gig') }} @endpush
 @push('head')
 
 @endpush

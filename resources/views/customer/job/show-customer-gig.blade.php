@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') Job @endpush
+@push('title') {{ __('system.job') }} @endpush
 @push('head')
     <style>
         .color-border{
@@ -22,7 +22,7 @@
         <!-- Start title -->
         <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> BID JOB</b>
+                    <b id=""> {{ __('system.bid_job') }}</b>
                 </div>
         </div>
         <!-- End title -->
@@ -47,7 +47,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">Price ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal">{{ __('system.price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
@@ -66,14 +66,14 @@
         <!--End owner info & price-->
         <!--Start work detail , address, day-->
         <div class="container">
-            <h4 class="mb-3"><b>Work details:</b></h4>
+            <h4 class="mb-3"><b>{{ __('system.details') }}:</b></h4>
             <pre>{{ $gig->description }}</pre>
-            <h4 class="mb-3"><b>Address:</b></h4>
+            <h4 class="mb-3"><b>{{ __('system.address') }}:</b></h4>
             <p>{{ $gig->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                 <input type="hidden" id="gig-id" value="{{ $gig->id }}">
-                <button disabled type="button" class="btn btn-outline-success active"><small>Time </small>{{ $gig->day }}<small> Days</small></button>
-                <button id="job-cancel" type="button" class="btn btn-danger">Cancel</button>
+                <button disabled type="button" class="btn btn-outline-success active"><small>{{ __('system.time') }} </small>{{ $gig->day }}<small> {{ __('system.day') }}</small></button>
+                <button id="job-cancel" type="button" class="btn btn-danger">{{ __('system.cancel') }}</button>
             </div>
         </div>
         <!--End work detail , address, day-->
@@ -81,7 +81,7 @@
         <!-- Start bid title -->
         <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> ALL BIDS</b>
+                    <b id=""> {{ __('system.all_bid') }}</b>
                 </div>
             </div>
         <!-- End title -->
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="row">
                                                 &nbsp;
-                                                <button type="button" class="mb-2 btn btn-sm btn-success order-now">ORDER</button>
+                                                <button type="button" class="mb-2 btn btn-sm btn-success order-now">{{ __('system.order') }}</button>
                                                 <input type="hidden" class="worker-bid-id" value="{{ $bid->id }}">
                                             </div>
                                         </div>
@@ -214,7 +214,7 @@
                                             </div>
                                             <br>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="Order price">
+                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="{{ __('system.order_price') }}">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-info text-white" id="budget">
                                                         {{ $bid->budget }} ৳
@@ -230,19 +230,19 @@
                                             <div class="row">
                                                 <div class="container">
                                                     <div class="row container">
-                                                        New budget for more work
+                                                        {{ __('system.change_your_price') }}
                                                         <hr>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                           <b> {{ 'New budget' }} ৳</b>
+                                                           <b> {{ __('system.new_price') }} ৳</b>
                                                         </div>
                                                         <div class="col text-right">
                                                             <div class="form-group mb-2 ">
                                                                 <input type="number" class="form-control text-center" id="price" placeholder="550">
                                                             </div>
                                                             <input type="hidden" id="bid-id" value="{{ $bid->id }}">
-                                                            <button type="button" class="btn btn-success mb-2" id="new-price"><b>Submit</b></button>
+                                                            <button type="button" class="btn btn-success mb-2" id="new-price"><b>{{ __('system.submit') }}</b></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -252,30 +252,30 @@
                                     <!-- work detail -->
                                     <pre><b>{{ $bid->description }}</b></pre>
                                     <hr>
-                                    <b>{{ 'Details:' }}</b>
+                                    <b>{{ __('system.details') }}</b>
                                     <pre>{{ $bid->customerGig->description }}</pre>
                                     <br>
-                                    <b>{{ 'Address:' }}</b>
+                                    <b>{{ __('system.address') }}</b>
                                     <p>{{ $bid->customerGig->address }}</p>
                                     <br>
-                                    <b>{{ 'Image:' }}</b>
+                                    <b>{{ __('system.image') }}</b>
                                     <div class="custom-file">
                                         <input type="file" accept="image/*" class="custom-file-input" @if($bid->customerGig->image) disabled readonly @endif id="image" required="">
-                                        <label class="custom-file-label" for="image">@if($bid->customerGig->image) Image uploaded @else Choose file... @endif</label>
+                                        <label class="custom-file-label" for="image">@if($bid->customerGig->image) {{ __('system.already_uploaded') }} @else {{ __('system.chose_file') }}.. @endif</label>
                                     </div>
                                     <hr>
                                     <div class="row text-center">
                                         <div class="col-6">
-                                            <h4><b>{{ $bid->customerGig->day }} <br> <small> Days</small></b></h4>
+                                            <h4><b>{{ $bid->customerGig->day }} <br> <small> {{ __('system.day') }}</small></b></h4>
                                         </div>
                                         <div class="col-6">
-                                            <button type="button" class="btn btn-success mb-2" id="completed-btn"><b>Rating & Complete</b></button>
+                                            <button type="button" class="btn btn-success mb-2" id="completed-btn"><b>{{ __('system.rating_and_completed') }}</b></button>
                                         </div>
                                         <br>
                                         <br>
                                         <br>
                                         <br>
-                                        <button type="button" class="mb-2 w-100 btn btn-lg btn-danger">Complain</button>
+                                        <button type="button" class="mb-2 w-100 btn btn-lg btn-danger">{{ __('system.complain') }}</button>
                                     </div>
 
                                 </div>
@@ -290,7 +290,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-success text-center" role="alert">
-                    <b id=""> COMPLETED JOB</b>
+                    <b id=""> {{ __('system.completed') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -340,7 +340,7 @@
                                             </div>
 
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="Order price">
+                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="{{ __('system.order_price') }}">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-info text-white" id="budget">
                                                         {{ $bid->budget }} ৳
@@ -354,15 +354,15 @@
                                     <!-- work detail -->
                                     <pre><b>{{ $bid->description }}</b></pre>
                                     <hr>
-                                    <b>{{ 'Details:' }}</b>
+                                    <b>{{ __('system.details') }}</b>
                                     <pre>{{ $bid->customerGig->description }}</pre>
                                     <br>
-                                    <b>{{ 'Address:' }}</b>
+                                    <b>{{ __('system.address') }}</b>
                                     <p>{{ $bid->customerGig->address }}</p>
                                     <br>
                                     <hr>
                                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                                        <button disabled type="button" class="btn btn-outline-success active"><b>Delivery Date</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
+                                        <button disabled type="button" class="btn btn-outline-success active"><b> {{ __('system.delivery_date') }}</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
                                     </div>
 
                                 </div>
@@ -376,7 +376,7 @@
             <!-- Start title -->
             <div class="">
                 <div class="alert alert-danger text-center" role="alert">
-                    <b id=""> CANCELLED JOB</b>
+                    <b id=""> {{ __('system.cancelled_order') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -422,7 +422,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">Price ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal">{{ __('system.price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-danger btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
@@ -442,12 +442,12 @@
             <hr>
             <!--Start work detail , address, day-->
             <div class="container">
-                <h4 class="mb-3"><b>Work details:</b></h4>
+                <h4 class="mb-3"><b>{{ __('system.details') }}:</b></h4>
                 <pre>{{ $gig->description }}</pre>
-                <h4 class="mb-3"><b>Address:</b></h4>
+                <h4 class="mb-3"><b>{{ __('system.address') }}:</b></h4>
                 <p>{{ $gig->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-danger active"><b>Cancelled Date</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
+                    <button disabled type="button" class="btn btn-outline-danger active"><b>{{ __('system.cancelled_date') }}</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
                 </div>
             </div>
     @endif

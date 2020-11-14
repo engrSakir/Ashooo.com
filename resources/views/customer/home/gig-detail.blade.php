@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') Job @endpush
+@push('title')  {{ __('system.all_gig') }} @endpush
 @push('head')
     <style>
         .color-border{
@@ -22,7 +22,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> GIGS </b>
+                    <b id=""> {{ __('system.all_gig') }} </b>
                 </div>
             </div>
             <!-- End title -->
@@ -68,7 +68,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">Price ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal"> {{ __('system.price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
@@ -88,16 +88,16 @@
             <!--Start work detail , address, day-->
             <div class="container">
                 <h4 class="mb-3">
-                    <b>Work details:</b>
+                    <b> {{ __('system.details') }}:</b>
                 </h4>
                 <pre>{{ $gig->description }}</pre>
                 <h4 class="mb-3">
-                    <b>Tag:</b>
+                    <b> {{ __('system.tag') }}:</b>
                 </h4>
                 <p>{{ $gig->tags }}</p>
 
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-success active"><small>Time </small>{{ $gig->day }}<small> Days</small></button>
+                    <button disabled type="button" class="btn btn-outline-success active"><small>{{ __('system.time') }} </small>{{ $gig->day }}<small> {{ __('system.day') }}</small></button>
                     <button id="" onclick="window.location.href='{{ route('customer.showGigOrderForm', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'" type="button" class="btn btn-success">Order Now</button>
                 </div>
             </div>

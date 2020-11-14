@@ -6,23 +6,12 @@
 @section('content')
 <div class="wrapper homepage">
     <!-- header -->
-    <div class="header">
-        <div class="row no-gutters">
-            <div class="col-auto">
-                <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-            </div>
-            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-            <div class="col-auto">
-                <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
-            </div>
-        </div>
-    </div>
     <!-- header ends -->
     <div class="container bg-template">
         <div class="row">
             <div class="col text-center">
                 <h5 class="subtitle mb-1">{{ $category->name }}</h5>
-                <p class="">Find your service</p>
+                <p class="">{{ __('system.find_your_service') }}</p>
             </div>
         </div>
         <div class="row text-center mt-4">

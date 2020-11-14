@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00d6a41a7601a340505bc05187210f83",
+    "content-hash": "d9a9c26e6d6c84e43a5bad18e3681a35",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2338,6 +2338,59 @@
             ],
             "homepage": "https://bitbucket.org/smasif/shurjopay-laravel-package",
             "time": "2020-05-18T11:22:19+00:00"
+        },
+        {
+            "name": "stichoza/google-translate-php",
+            "version": "v4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Stichoza/google-translate-php.git",
+                "reference": "2fc76c49b5f032c4210a98ced00e344d7d9022f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/2fc76c49b5f032c4210a98ced00e344d7d9022f2",
+                "reference": "2fc76c49b5f032c4210a98ced00e344d7d9022f2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "~6.0|~7.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stichoza\\GoogleTranslate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Levan Velijanashvili",
+                    "email": "me@stichoza.com"
+                }
+            ],
+            "description": "Free Google Translate API PHP Package",
+            "homepage": "http://github.com/Stichoza/google-translate-php",
+            "keywords": [
+                "google",
+                "php",
+                "translate",
+                "translator"
+            ],
+            "support": {
+                "issues": "https://github.com/Stichoza/google-translate-php/issues",
+                "source": "https://github.com/Stichoza/google-translate-php/tree/v4.1.1"
+            },
+            "time": "2020-09-10T13:53:57+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6516,5 +6569,5 @@
         "php": "^7.2.5"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

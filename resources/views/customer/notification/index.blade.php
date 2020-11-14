@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') Notifications @endpush
+@push('title') {{ __('system.notification') }} @endpush
 @push('head')
 
 @endpush
@@ -7,7 +7,7 @@
     <!-- Start title -->
     <div class="">
         <div class="alert alert-warning text-center" role="alert">
-            <b id="bid-job">NOTIFICATIONS</b>
+            <b id="bid-job">{{ __('system.notification') }}</b>
         </div>
     </div>
     <!-- End title -->

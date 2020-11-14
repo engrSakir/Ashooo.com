@@ -1,7 +1,7 @@
 @extends('customer.layout.app')
-@push('title') More @endpush
+@push('title') Profile @endpush
 @push('head')
-    Profile
+
 @endpush
 @section('content')
     <div class="container">

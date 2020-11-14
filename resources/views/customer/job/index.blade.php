@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') Job @endpush
+@push('title') {{ __('system.order') }} @endpush
 @push('head')
     <style>
         .color-border{
@@ -27,14 +27,14 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">Active ORDER
+                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">{{ __('system.active_order') }}
                                         ({{ count(auth()->user()->customerGigs->where('status', 'active')) + count(auth()->user()->customerBids->where('status', 'active')) }})
                                     </button>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="completed-job-btn" type="button" class="mb-2 btn btn-success">Completed
+                                    <button id="completed-job-btn" type="button" class="mb-2 btn btn-success">{{ __('system.completed') }}
                                         ({{ count(auth()->user()->customerGigs->where('status', 'completed')) + count(auth()->user()->customerBids->where('status', 'completed')) }})
                                     </button>
                                 </div>
@@ -43,14 +43,14 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="running-job-btn" type="button" class="mb-2 btn btn-success">Running &nbsp;
+                                    <button id="running-job-btn" type="button" class="mb-2 btn btn-success">{{ __('system.running') }} &nbsp;
                                         ({{ count(auth()->user()->customerGigs->where('status', 'running')) + count(auth()->user()->customerBids->where('status', 'running')) }})
                                         &nbsp;</button>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="cancelled-job-btn" type="button" class="mb-2 btn btn-success">Cancelled
+                                    <button id="cancelled-job-btn" type="button" class="mb-2 btn btn-success">{{ __('system.cancelled') }}
                                         ({{ count(auth()->user()->customerGigs->where('status', 'cancelled')) + count(auth()->user()->customerBids->where('status', 'cancelled')) }})
                                     </button>
                                 </div>
@@ -65,7 +65,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center active-job" role="alert">
-        <b id="bid-job">BID ORDER</b>
+        <b id="bid-job">{{ __('system.bid_order') }}</b>
     </div>
     <!-- End title -->
 
@@ -79,12 +79,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($gig->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($gig->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $gig->workerBids->where('is_cancelled', '0')->count() }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.proposal') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
@@ -111,12 +111,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($gig->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($gig->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $gig->workerBids->count() }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Proposals' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.proposal') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
@@ -143,12 +143,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($job->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $job->budget }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.taka') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
@@ -175,12 +175,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($job->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($job->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $job->budget }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.taka') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn"
@@ -233,12 +233,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $bid->budget }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.taka') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
@@ -263,12 +263,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $bid->budget }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.taka') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
@@ -294,12 +294,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $bid->budget }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.taka') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
@@ -325,12 +325,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($bid->workerGig->title, 27) }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ __('system.created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($bid->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $bid->budget }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Taka' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ __('system.taka') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('customer.showCustomerBid', \Illuminate\Support\Facades\Crypt::encryptString($bid->id)) }}'">
@@ -368,8 +368,8 @@
 <script>
     $(document).ready(function() {
         //Show only active
-        $('#bid-job').html('BID ORDER');
-        $('#gig-job').html('GIG ORDER');
+        $('#bid-job').html('{{ __('system.bid_order') }}');
+        $('#gig-job').html('{{ __('system.gig_order') }}');
         $('.active-job').show();
         $('.completed-job').hide();
         $('.running-job').hide();

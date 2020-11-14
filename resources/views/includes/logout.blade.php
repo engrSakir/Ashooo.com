@@ -5,18 +5,18 @@
 <script>
     function logout(){
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You can login again in this system!",
+            title: '{{ __('auth.logout_confirmation') }}',
+            text: "{{ __('auth.logout_text') }}",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, logout it!'
+            confirmButtonText: '{{ __('auth.logout_confirm_btn') }}'
         }).then((result) => {
             if (result.value) {
                 Swal.fire(
-                    'Logout!',
-                    'Successfully logout from this system.',
+                    '{{ __('auth.logout_success_alert') }}',
+                    '{{ __('auth.logout_success_test') }}',
                     'success'
                 )
                 setTimeout(function() {

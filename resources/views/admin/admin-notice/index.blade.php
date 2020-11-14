@@ -29,7 +29,7 @@
                            <div class="row">
                                @foreach($notices as $notice)
                                    <div class="col-lg-6">
-                                       <div class="card border @if($loop->iteration == 1) border-success @else border-danger bg-dark @endif">
+                                       <div class="card border @if($loop->iteration == 1) border-success @else border-danger @endif">
                                            <div class="card-body">
                                                <h5 class="card-title text-success notice-title">{{ $notice->title }}</h5>
                                                <pre class="card-text notice-detail">{{ $notice->detail }}</pre>
