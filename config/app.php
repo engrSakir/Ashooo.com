@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         smasif\ShurjopayLaravelPackage\ShurjopayServiceProvider::class,
         /*

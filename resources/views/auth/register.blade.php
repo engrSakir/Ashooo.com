@@ -10,7 +10,7 @@
     <meta name="author" content="Maxartkiller">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Register-Customer | {{ $setting->name }}</title>
+    <title>{{ translate('Register-Customer') }} | {{ $setting->name }}</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css')}}">
@@ -68,35 +68,35 @@
                     <!--Image upload with preview end -->
                 </div>
                 <div class="form-group">
-                    <input type="text" id="user-name" class="form-control form-control-lg text-center" placeholder="Username" required autofocus>
+                    <input type="text" id="user-name" class="form-control form-control-lg text-center" placeholder="{{ translate('Username') }}" required autofocus>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="full-name" class="form-control form-control-lg text-center" placeholder="Full Name" required autofocus>
+                    <input type="text" id="full-name" class="form-control form-control-lg text-center" placeholder="{{ translate('Full Name') }}" required autofocus>
                 </div>
                 <div class="form-group">
-                    <input type="number" id="phone" class="form-control form-control-lg text-center" placeholder="Phone Number" required>
+                    <input type="number" id="phone" class="form-control form-control-lg text-center" placeholder="{{ translate('Phone Number') }}" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="password" class="form-control form-control-lg text-center" placeholder="Password" required>
+                    <input type="password" id="password" class="form-control form-control-lg text-center" placeholder="{{ translate('Password') }}" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="confirm-password" class="form-control form-control-lg text-center" placeholder="Confirm Password" required>
+                    <input type="password" id="confirm-password" class="form-control form-control-lg text-center" placeholder="{{ translate('Confirm Password') }}" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" minlength="6" maxlength="6" id="referral" class="form-control form-control-lg text-center" placeholder="Referral code">
+                    <input type="text" minlength="6" maxlength="6" id="referral" class="form-control form-control-lg text-center" placeholder="{{ translate('Referral code') }}">
                 </div>
                 <div class="form-group">
                     <select class="form-control form-control-lg" id="district-id">
-                        <option selected disabled> Chose district</option>
+                        <option selected disabled> {{ translate('Chose district') }}</option>
                         @foreach($districts as $district)
-                            <option value="{{ $district->id }}">{{ $district->name }}</option>
+                            <option value="{{ $district->id }}">{{ translate($district->name) }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <select class="form-control form-control-lg" id="upazila-id">
                         <option selected disabled value="" id="upazila-loader">
-                            <span class="badge badge-warning mb-1">Loading ...</span>
+                            <span class="badge badge-warning mb-1">{{ translate('Loading ...') }}</span>
                         </option>
                         <!-- Insert by ajax -->
                     </select>
@@ -105,21 +105,21 @@
                     <div class="col-6 col-md-6 col-lg-4">
                         <div class="custom-control custom-radio">
                             <input type="radio" name="gender" class="custom-control-input gender" id="male" value="male">
-                            <label class="custom-control-label" for="male">Male</label>
+                            <label class="custom-control-label" for="male">{{ translate('Male') }}</label>
                         </div>
                     </div>
                     <div class="col-6 col-md-6 col-lg-4">
                         <div class="custom-control custom-radio">
                             <input type="radio" name="gender" class="custom-control-input gender" id="female" value="female">
-                            <label class="custom-control-label" for="female">Female</label>
+                            <label class="custom-control-label" for="female">{{ translate('Female') }}</label>
                         </div>
                     </div>
                 </div>
 
                 <p class="mt-4 d-block text-secondary">
-                    By clicking register your are agree to the
-                    <a href="{{ route('getWorkerRegisterForm') }}">Worker Registration</a>
-                    <a href="{{ route('getMembershipRegisterForm') }}">Membership Registration</a>
+                    {{ translate('By clicking register your are agree to the') }}
+                    <a href="{{ route('getWorkerRegisterForm') }}">{{ translate('Worker Registration') }}</a>
+                    <a href="{{ route('getMembershipRegisterForm') }}">{{ translate('Membership Registration') }}</a>
                 </p>
             </form>
         </div>
@@ -128,7 +128,7 @@
     <!-- login buttons -->
     <div class="row mx-0 bottom-button-container">
         <div class="col">
-            <a href="#" id="customer-register" class="btn btn-default btn-lg btn-rounded shadow btn-block">Register</a>
+            <a href="#" id="customer-register" class="btn btn-default btn-lg btn-rounded shadow btn-block">{{ translate('Register') }}</a>
         </div>
     </div>
     <!-- login buttons -->

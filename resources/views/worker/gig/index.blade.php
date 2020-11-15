@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') Gigs @endpush
+@push('title') {{ translate('Gigs') }} @endpush
 @push('head')
 
 @endpush
@@ -12,17 +12,17 @@
                     <div class="row">
                         <div class="container">
                             <div class="form-group">
-                                <input type="text" id="title" class="form-control form-control-lg" placeholder="Title here...">
+                                <input type="text" id="title" class="form-control form-control-lg" placeholder="{{ translate('Title here...') }}">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control form-control-lg" id="description" rows="4" placeholder="Gig Description..."></textarea>
+                                <textarea class="form-control form-control-lg" id="description" rows="4" placeholder="{{ translate('Gig Description...') }}"></textarea>
                             </div>
 
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <select id="service" class="form-control form-control-lg">
-                                            <option disabled selected>Category</option>
+                                            <option disabled selected>{{ translate('Category') }}</option>
                                             @foreach($categories as $category)
                                                 <optgroup label="{{ $category->name }}">
                                                     @foreach($category->services as $service)
@@ -35,26 +35,26 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <input type="number" id="day" class="form-control form-control-lg" placeholder="Days 1">
+                                        <input type="number" id="day" class="form-control form-control-lg" placeholder="{{ translate('Days 1') }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                 <div class="form-group">
-                                    <input type="text" id="tags" class="form-control form-control-lg" placeholder="Search tags">
+                                    <input type="text" id="tags" class="form-control form-control-lg" placeholder="{{ translate('Search tags') }}">
                                 </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <input type="number" id="price" class="form-control form-control-lg" placeholder="Price">
+                                        <input type="number" id="price" class="form-control form-control-lg" placeholder="{{ translate('Price') }}">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <button type="button" id="gig-submit-button" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">Post Gig</button>
+                                        <button type="button" id="gig-submit-button" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ translate('Post Gig') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -77,12 +77,12 @@
                             <h5 class="font-weight-normal mb-1"><b>{{ Illuminate\Support\Str::limit($gig->title, 27)  }}</b></h5>
                             <div class="row text-center">
                                 <div class="col-5 text-center color-border">
-                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                    <p class="text text-success mb-2">{{ translate('Created') }}</p>
                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/y', strtotime($gig->created_at)) }}</p>
                                 </div>
                                 <div class="col-3 text-center color-border">
                                     <p class="text text-success mb-2">{{ $gig->customerBids->where('status', '!=', 'cancelled')->count() }}</p>
-                                    <p class="text-mute small text-secondary mb-2">{{ 'Orders' }}</p>
+                                    <p class="text-mute small text-secondary mb-2">{{ translate('Orders') }}</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showWorkerGig', \Illuminate\Support\Facades\Crypt::encryptString($gig->id)) }}'">

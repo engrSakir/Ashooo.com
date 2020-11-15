@@ -136,6 +136,7 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
       <path value="$PROJECT_DIR$/vendor/smasif/shurjopay-laravel-package" />
+      <path value="$PROJECT_DIR$/vendor/stichoza/google-translate-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gUY4lz6VioPifuGncHBEX8MPrs" />
@@ -260,7 +261,7 @@
       <workItem from="1605217521273" duration="1307000" />
       <workItem from="1605219388346" duration="8977000" />
       <workItem from="1605259721681" duration="6733000" />
-      <workItem from="1605350357641" duration="121000" />
+      <workItem from="1605350357641" duration="3272000" />
     </task>
     <servers />
   </component>

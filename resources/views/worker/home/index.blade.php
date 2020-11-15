@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') Home @endpush
+@push('title') {{ translate('Home') }} @endpush
 @push('head')
 
 @endpush
@@ -7,7 +7,7 @@
         <!-- Start title -->
         <div>
             <div class="alert alert-success text-center" role="alert">
-                <b>Job Offer</b>
+                <b>{{ translate('Job Offer') }}</b>
             </div>
         </div>
         <!-- End title -->
@@ -28,20 +28,20 @@
                                             <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($customerGig->description, 70) }}</p>
                                             <div class="row text-center">
                                                 <div class="col-4 text-center color-border">
-                                                    <p class="text text-success mb-2">{{ 'Created' }}</p>
+                                                    <p class="text text-success mb-2">{{ translate('Created') }}</p>
                                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($customerGig->created_at)) }}</p>
                                                 </div>
                                                 <div class="col-4 text-center color-border">
-                                                    <p class="text text-success mb-2">{{ 'Budget' }}</p>
-                                                    <p class="text-mute small text-secondary mb-2">{{ $customerGig->budget }}</p>
+                                                    <p class="text text-success mb-2">{{ translate('Budget') }}</p>
+                                                    <p class="text-mute small text-secondary mb-2">{{ translate($customerGig->budget) }}</p>
                                                 </div>
                                                 <div class="col-4 text-center color-border">
-                                                    <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
-                                                    <p class="text-mute small text-secondary mb-2">{{  $customerGig->workerBids->count() }}</p>
+                                                    <p class="text text-success mb-2">{{ translate('Bid sent') }}</p>
+                                                    <p class="text-mute small text-secondary mb-2">{{ translate($customerGig->workerBids->count()) }}</p>
                                                 </div>
                                                 <div class="col-12 text-center">
                                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) ) }}'">
-                                                        <b>Bid Now</b>
+                                                        <b>{{ translate('Bid Now') }}</b>
                                                     </button>
                                                 </div>
                                             </div>
@@ -118,7 +118,7 @@
                                                         <div class="overlay bg-template"></div>
                                                         <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                                                     </div>
-                                                    <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                                                    <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ translate($category->name) }}</p></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -202,7 +202,7 @@
         @if($isCategoryShow!='yes')
             <!-- Start title -->
                 <div class="alert alert-primary text-center" role="alert">
-                    <b>Find your service by category</b>
+                    <b>{{ translate('Find your service by category') }}</b>
                 </div>
                 <!-- End title -->
                 <!-- Start worker service category -->
@@ -216,7 +216,7 @@
                                             <div class="overlay bg-template"></div>
                                             <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                                         </div>
-                                        <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $category->name }}</p></a>
+                                        <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ translate($category->name) }}</p></a>
                                     </div>
                                 </div>
                             </div>

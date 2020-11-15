@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') Gigs @endpush
+@push('title') {{ translate('Gigs') }} @endpush
 @push('head')
 
 @endpush
@@ -30,20 +30,20 @@
                                                 <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($customerGig->description, 70) }}</p>
                                                 <div class="row text-center">
                                                     <div class="col-4 text-center color-border">
-                                                        <p class="text text-success mb-2">{{ 'Created' }}</p>
-                                                        <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($customerGig->created_at)) }}</p>
+                                                        <p class="text text-success mb-2">{{ translate('Created') }}</p>
+                                                        <p class="text-mute small text-secondary mb-2">{{ translate(date('h:i a m/d/Y', strtotime($customerGig->created_at))) }}</p>
                                                     </div>
                                                     <div class="col-4 text-center color-border">
-                                                        <p class="text text-success mb-2">{{ 'Budget' }}</p>
-                                                        <p class="text-mute small text-secondary mb-2">{{ $customerGig->budget }}</p>
+                                                        <p class="text text-success mb-2">{{ translate('Budget') }}</p>
+                                                        <p class="text-mute small text-secondary mb-2">{{ translate($customerGig->budget) }}</p>
                                                     </div>
                                                     <div class="col-4 text-center color-border">
-                                                        <p class="text text-success mb-2">{{ 'Bid sent' }}</p>
-                                                        <p class="text-mute small text-secondary mb-2">{{  $customerGig->workerBids->count() }}</p>
+                                                        <p class="text text-success mb-2">{{ translate('Bid sent') }}</p>
+                                                        <p class="text-mute small text-secondary mb-2">{{ translate($customerGig->workerBids->count()) }}</p>
                                                     </div>
                                                     <div class="col-12 text-center">
                                                         <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) ) }}'">
-                                                            <b>Bid Now</b>
+                                                            <b>{{ translate('Bid Now') }}</b>
                                                         </button>
                                                     </div>
                                                 </div>

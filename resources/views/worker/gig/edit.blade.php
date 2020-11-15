@@ -1,23 +1,10 @@
 @extends('worker.layout.app')
-@push('title') Gigs @endpush
+@push('title') {{ translate('Gigs') }} @endpush
 @push('head')
 
 @endpush
 @section('content')
     <div class="wrapper homepage">
-        <!-- header -->
-        <div class="header">
-            <div class="row no-gutters">
-                <div class="col-auto">
-                    <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
-                </div>
-                <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
-                <div class="col-auto">
-                    <a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a>
-                </div>
-            </div>
-        </div>
-        <!-- header ends -->
         <!-- Start job posting area -->
         <div class="container">
             <div class="card bg-danger shadow mt-4 h-500">
@@ -35,7 +22,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <select id="service" class="form-control form-control-lg">
-                                            <option disabled selected>Category</option>
+                                            <option disabled selected>{{ translate('Category') }}</option>
                                             @foreach($categories as $category)
                                                 <optgroup label="{{ $category->name }}">
                                                     @foreach($category->services as $service)
@@ -66,7 +53,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="button" id="gig-submit-button" value="{{ $workerGig->id }}" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">Done</button>
+                                        <button type="button" id="gig-submit-button" value="{{ $workerGig->id }}" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ translate('Done') }}</button>
                                     </div>
                                 </div>
                             </div>

@@ -54,104 +54,41 @@
             <form class="form-signin mt-3" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <input type="number" id="inputPhone" class="form-control form-control-lg text-center" name="phone" placeholder="Phone" required autofocus>
+                    <input type="number" id="inputPhone" class="form-control form-control-lg text-center" name="phone" placeholder="{{ translate('Phone') }}" required autofocus>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="inputPassword" class="form-control form-control-lg text-center" name="password" placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control form-control-lg text-center" name="password" placeholder="{{ translate('Password') }}" required>
                 </div>
-                <a href="#" class="mt-4 d-block" data-toggle="modal" data-target="#exampleModalCenter">Forgot Password?</a>
+                <a href="#" class="mt-4 d-block" data-toggle="modal" data-target="#exampleModalCenter">{{ translate('Forgot Password?') }}</a>
                 <!-- login buttons -->
-                <input type="submit" class="mt-4 d-block btn btn-default btn-lg btn-rounded shadow btn-block" value="Login">
+                <input type="submit" class="mt-4 d-block btn btn-default btn-lg btn-rounded shadow btn-block" value="{{ translate('Login') }}">
                 <!-- login buttons -->
             </form>
         </div>
     </div>
-
-
 </div>
-
-
-<!-- color chooser menu start -->
-<div class="modal fade " id="colorscheme" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content ">
-            <div class="modal-header theme-header border-0">
-                <h6 class="">Color Picker</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body pt-0">
-                <div class="text-center theme-color">
-                    <button class="m-1 btn red-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="red-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn blue-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="blue-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn yellow-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="yellow-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn green-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="green-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn pink-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="pink-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn orange-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="orange-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn purple-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="purple-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn deeppurple-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="deeppurple-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn lightblue-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="lightblue-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn teal-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="teal-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn lime-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="lime-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn deeporange-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="deeporange-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn gray-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="gray-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                    <button class="m-1 btn black-theme-bg text-white btn-rounded-54 shadow-sm" data-theme="black-theme"><i class="material-icons w-50">color_lens_outline</i></button>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="col-6 text-left">
-                    <div class="row">
-                        <div class="col-auto text-right align-self-center"><i class="material-icons text-warning vm">wb_sunny</i></div>
-                        <div class="col-auto text-center align-self-center px-0">
-                            <div class="custom-control custom-switch float-right">
-                                <input type="checkbox" name="themelayout" class="custom-control-input" id="theme-dark">
-                                <label class="custom-control-label" for="theme-dark"></label>
-                            </div>
-                        </div>
-                        <div class="col-auto text-left align-self-center"><i class="material-icons text-dark vm">brightness_2</i></div>
-                    </div>
-                </div>
-                <div class="col-6 text-right">
-                    <div class="row">
-                        <div class="col-auto text-right align-self-center">LTR</div>
-                        <div class="col-auto text-center align-self-center px-0">
-                            <div class="custom-control custom-switch float-right">
-                                <input type="checkbox" name="rtllayout" class="custom-control-input" id="theme-rtl">
-                                <label class="custom-control-label" for="theme-rtl"></label>
-                            </div>
-                        </div>
-                        <div class="col-auto text-left align-self-center">RTL</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- color chooser menu ends -->
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content shadow">
             <div class="modal-header">
-                <h5 class="header-title mb-0">Login</h5>
+                <h5 class="header-title mb-0">{{ translate('Reset password') }}</h5>
             </div>
             <div class="modal-body text-center pr-4 pl-4">
                 <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
                     <img src="{{ asset('assets/mobile/img/change-password.png') }}" alt="user image">
                 </figure>
-                <h5 class="my-3">Type your phone number</h5>
+                <h5 class="my-3">{{ translate('Type your phone number') }}</h5>
 
                 <div class="form-group text-left float-label">
                     <div class="error"></div>
-                    <input type="number" class="form-control text-center" id="phone-number" placeholder="Phone number">
+                    <input type="number" class="form-control text-center" id="phone-number" placeholder="{{ translate('Phone number') }}">
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-default btn-rounded btn-block col" id="reset-btn">Reset Password</button>
+                    <button class="btn btn-default btn-rounded btn-block col" id="reset-btn">{{ translate('Reset Password') }}</button>
                     <br>
-                    <a href="#" data-dismiss="modal">Remember your password? Sign in</a>
+                    <a href="#" data-dismiss="modal">{{ translate('Remember your password? Sign in') }}</a>
                 </div>
                 <br>
             </div>
