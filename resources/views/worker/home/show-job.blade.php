@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') {{ translate('Job') }} @endpush
+@push('title') {{ __('Job') }} @endpush
 @push('head')
     <style>
         .color-border{
@@ -23,7 +23,7 @@
         <!-- Start title -->
         <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> {{ translate('BID JOB') }}</b>
+                    <b id=""> {{ __('BID JOB') }}</b>
                 </div>
             </div>
         <!-- End title -->
@@ -47,7 +47,7 @@
             <div class="card-body border-bottom">
                 <div class="row">
                     <div class="col">
-                        <h3 class="mb-0 font-weight-normal">{{ translate('Price ৳ ') }}</h3>
+                        <h3 class="mb-0 font-weight-normal">{{ __('Price ৳ ') }}</h3>
                     </div>
                     <div class="col-auto">
                         <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $customerGig->budget }}</b> </button>
@@ -66,12 +66,12 @@
         <!--End owner info & price-->
         <!--Start work detail , address, day-->
         <div class="container">
-            <h4 class="mb-3"><b>{{ translate('Work detail:') }}</b></h4>
+            <h4 class="mb-3"><b>{{ __('Work detail:') }}</b></h4>
             <pre>{{ $customerGig->description }}</pre>
-            <h4 class="mb-3"><b>{{ translate('Address:') }}</b></h4>
+            <h4 class="mb-3"><b>{{ __('Address:') }}</b></h4>
             <p>{{ $customerGig->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                <button disabled type="button" class="btn btn-outline-success active col"><small> {{ translate('Time') }} </small>{{ $customerGig->day }}<small> {{ translate('Days') }}</small></button>
+                <button disabled type="button" class="btn btn-outline-success active col"><small> {{ __('Time') }} </small>{{ $customerGig->day }}<small> {{ __('Days') }}</small></button>
                 <button disabled type="button" class="btn btn-success col">{{  date('h:i a m/d/Y', strtotime($customerGig->created_at)) }}</button>
             </div>
         </div>
@@ -82,7 +82,7 @@
             <!-- Start bid title -->
             <div class="">
                 <div class="alert alert-danger text-center" role="alert">
-                    <b id=""> {{ translate('BID ALREADY SUBMITTED') }}</b>
+                    <b id=""> {{ __('BID ALREADY SUBMITTED') }}</b>
                 </div>
             </div>
         <!-- End title -->
@@ -90,7 +90,7 @@
                 <!-- Start bid title -->
                 <div class="">
                     <div class="alert alert-info text-center" role="alert">
-                        <b id=""> {{ translate('Bid Now') }}</b>
+                        <b id=""> {{ __('Bid Now') }}</b>
                     </div>
                 </div>
                 <!-- End title -->
@@ -99,14 +99,14 @@
                     <div class="row">
                         <div class="container">
                             <div class="form-group">
-                                <input type="number" id="budget" class="form-control bg-secondary form-control-lg text-success text-center" placeholder="{{ translate('Your Budget') }}">
+                                <input type="number" id="budget" class="form-control bg-secondary form-control-lg text-success text-center" placeholder="{{ __('Your Budget') }}">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control form-control-lg bg-secondary text-success" id="description" rows="6" placeholder="{{ translate('Job Description') }}"></textarea>
+                                <textarea class="form-control form-control-lg bg-secondary text-success" id="description" rows="6" placeholder="{{ __('Job Description') }}"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" id="job-id" value="{{ \Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) }}">
-                                <button type="button" id="bid-submit-button" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ translate('Submit Now') }}</button>
+                                <button type="button" id="bid-submit-button" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ __('Submit Now') }}</button>
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
 <!-- Start bid title -->
     <div class="">
         <div class="alert alert-info text-center" role="alert">
-            <b id=""> {{ translate('All BIDS') }}/b>
+            <b id=""> {{ __('All BIDS') }}/b>
         </div>
     </div>
     <!-- End title -->
@@ -141,7 +141,7 @@
                 <div class="card-body border-bottom">
                     <div class="row">
                         <div class="col">
-                            <h3 class="mb-0 font-weight-normal">{{ translate('Price ৳ ') }}</h3>
+                            <h3 class="mb-0 font-weight-normal">{{ __('Price ৳ ') }}</h3>
                         </div>
                         <div class="col-auto">
                             <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $bid->budget }}</b> </button>

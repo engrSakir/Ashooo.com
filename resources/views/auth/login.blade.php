@@ -8,7 +8,7 @@
     <meta name="author" content="Ashooo">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Login | {{ $setting->name }}</title>
+    <title>Login | {{ setting('name') }}</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css')}}">
@@ -48,21 +48,21 @@
     <div class="row no-gutters login-row">
         <div class="col align-self-center px-3 text-center">
             <br>
-            <img src="{{ asset('uploads/images/'.$setting->logo_login) }}" alt="logo" class="logo-small">
+            <img src="{{ asset('uploads/images/'.setting('logo_login')) }}" alt="logo" class="logo-small">
             <!--Show error & session message -->
             @include('includes.message')
             <form class="form-signin mt-3" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <input type="number" id="inputPhone" class="form-control form-control-lg text-center" name="phone" placeholder="{{ translate('Phone') }}" required autofocus>
+                    <input type="number" id="inputPhone" class="form-control form-control-lg text-center" name="phone" placeholder="{{ __('Phone') }}" required autofocus>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="inputPassword" class="form-control form-control-lg text-center" name="password" placeholder="{{ translate('Password') }}" required>
+                    <input type="password" id="inputPassword" class="form-control form-control-lg text-center" name="password" placeholder="{{ __('Password') }}" required>
                 </div>
-                <a href="#" class="mt-4 d-block" data-toggle="modal" data-target="#exampleModalCenter">{{ translate('Forgot Password?') }}</a>
+                <a href="#" class="mt-4 d-block" data-toggle="modal" data-target="#exampleModalCenter">{{ __('Forgot Password?') }}</a>
                 <!-- login buttons -->
-                <input type="submit" class="mt-4 d-block btn btn-default btn-lg btn-rounded shadow btn-block" value="{{ translate('Login') }}">
+                <input type="submit" class="mt-4 d-block btn btn-default btn-lg btn-rounded shadow btn-block" value="{{ __('Login') }}">
                 <!-- login buttons -->
             </form>
         </div>
@@ -73,22 +73,22 @@
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content shadow">
             <div class="modal-header">
-                <h5 class="header-title mb-0">{{ translate('Reset password') }}</h5>
+                <h5 class="header-title mb-0">{{ __('Reset password') }}</h5>
             </div>
             <div class="modal-body text-center pr-4 pl-4">
                 <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
                     <img src="{{ asset('assets/mobile/img/change-password.png') }}" alt="user image">
                 </figure>
-                <h5 class="my-3">{{ translate('Type your phone number') }}</h5>
+                <h5 class="my-3">{{ __('Type your phone number') }}</h5>
 
                 <div class="form-group text-left float-label">
                     <div class="error"></div>
-                    <input type="number" class="form-control text-center" id="phone-number" placeholder="{{ translate('Phone number') }}">
+                    <input type="number" class="form-control text-center" id="phone-number" placeholder="{{ __('Phone number') }}">
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-default btn-rounded btn-block col" id="reset-btn">{{ translate('Reset Password') }}</button>
+                    <button class="btn btn-default btn-rounded btn-block col" id="reset-btn">{{ __('Reset Password') }}</button>
                     <br>
-                    <a href="#" data-dismiss="modal">{{ translate('Remember your password? Sign in') }}</a>
+                    <a href="#" data-dismiss="modal">{{ __('Remember your password? Sign in') }}</a>
                 </div>
                 <br>
             </div>

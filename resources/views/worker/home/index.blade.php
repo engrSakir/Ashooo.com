@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') {{ translate('Home') }} @endpush
+@push('title') {{ __('Home') }} @endpush
 @push('head')
 
 @endpush
@@ -7,7 +7,7 @@
         <!-- Start title -->
         <div>
             <div class="alert alert-success text-center" role="alert">
-                <b>{{ translate('Job Offer') }}</b>
+                <b>{{ __('Job Offer') }}</b>
             </div>
         </div>
         <!-- End title -->
@@ -28,20 +28,20 @@
                                             <p class="text text-warning mb-2">{{ Illuminate\Support\Str::limit($customerGig->description, 70) }}</p>
                                             <div class="row text-center">
                                                 <div class="col-4 text-center color-border">
-                                                    <p class="text text-success mb-2">{{ translate('Created') }}</p>
+                                                    <p class="text text-success mb-2">{{ __('Created') }}</p>
                                                     <p class="text-mute small text-secondary mb-2">{{ date('h:i a m/d/Y', strtotime($customerGig->created_at)) }}</p>
                                                 </div>
                                                 <div class="col-4 text-center color-border">
-                                                    <p class="text text-success mb-2">{{ translate('Budget') }}</p>
-                                                    <p class="text-mute small text-secondary mb-2">{{ translate($customerGig->budget) }}</p>
+                                                    <p class="text text-success mb-2">{{ __('Budget') }}</p>
+                                                    <p class="text-mute small text-secondary mb-2">{{ __($customerGig->budget) }}</p>
                                                 </div>
                                                 <div class="col-4 text-center color-border">
-                                                    <p class="text text-success mb-2">{{ translate('Bid sent') }}</p>
-                                                    <p class="text-mute small text-secondary mb-2">{{ translate($customerGig->workerBids->count()) }}</p>
+                                                    <p class="text text-success mb-2">{{ __('Bid sent') }}</p>
+                                                    <p class="text-mute small text-secondary mb-2">{{ __($customerGig->workerBids->count()) }}</p>
                                                 </div>
                                                 <div class="col-12 text-center">
                                                     <button type="button" class="mb-2 btn btn-lg btn-success view-btn" onclick="window.location.href='{{ route('worker.showJob',\Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) ) }}'">
-                                                        <b>{{ translate('Bid Now') }}</b>
+                                                        <b>{{ __('Bid Now') }}</b>
                                                     </button>
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
                         <!-- End controller notice box -->
                             <!-- Start top ads. by controller this upazila -->
                             <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
-                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                <div class="swiper-wrapper" style="transform: __3d(0px, 0px, 0px); transition-duration: 0ms;">
                                     @foreach(auth()->user()->upazila->controllers as $controller)
                                         @foreach($controller->controllerAds as $controllerAds)
                                             <div class="swiper-slide swiper-slide-active">
@@ -118,7 +118,7 @@
                                                         <div class="overlay bg-template"></div>
                                                         <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                                                     </div>
-                                                    <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ translate($category->name) }}</p></a>
+                                                    <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ __($category->name) }}</p></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@
                             <!-- End worker service category -->
                             <!-- Start middle ads. by admin for all-->
                             <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
-                                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                <div class="swiper-wrapper" style="transform: __3d(0px, 0px, 0px); transition-duration: 0ms;">
                                     @foreach($adminAds as $adminAds)
                                         <div class="swiper-slide swiper-slide-active">
                                             <div class="card shadow border-0 bg-template">
@@ -178,7 +178,7 @@
             <!-- End controller notice box -->
                 <!-- Start top ads. by controller this upazila -->
                 <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
-                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                    <div class="swiper-wrapper" style="transform: __3d(0px, 0px, 0px); transition-duration: 0ms;">
                         @foreach(auth()->user()->upazila->controllers as $controller)
                             @foreach($controller->controllerAds as $controllerAds)
                                 <div class="swiper-slide swiper-slide-active">
@@ -202,7 +202,7 @@
         @if($isCategoryShow!='yes')
             <!-- Start title -->
                 <div class="alert alert-primary text-center" role="alert">
-                    <b>{{ translate('Find your service by category') }}</b>
+                    <b>{{ __('Find your service by category') }}</b>
                 </div>
                 <!-- End title -->
                 <!-- Start worker service category -->
@@ -216,7 +216,7 @@
                                             <div class="overlay bg-template"></div>
                                             <img src="{{ asset('uploads/images/worker/service-category/'.$category->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
                                         </div>
-                                        <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ translate($category->name) }}</p></a>
+                                        <a href="{{ route('worker.showServices',\Illuminate\Support\Facades\Crypt::encryptString($category->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ __($category->name) }}</p></a>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
 
                 <!-- Start middle ads. by admin for all-->
                 <div class="swiper-container offer-slide swiper-container-horizontal swiper-container-android">
-                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                    <div class="swiper-wrapper" style="transform: __3d(0px, 0px, 0px); transition-duration: 0ms;">
                         @foreach($adminAds as $adminAds)
                             <div class="swiper-slide swiper-slide-active">
                                 <div class="card shadow border-0 bg-template">

@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') {{ translate('Gigs') }} @endpush
+@push('title') {{ __('Gigs') }} @endpush
 @push('head')
 
 @endpush
@@ -7,7 +7,7 @@
         <!-- Start title -->
         <div class="">
             <div class="alert alert-primary text-center active-job" role="alert">
-                <b id="">{{ translate('Gigs') }}</b>
+                <b id="">{{ __('Gigs') }}</b>
             </div>
         </div>
         <!-- End title -->
@@ -19,7 +19,7 @@
                        <div class="card-body">
                            <div class="row no-gutters h-100">
                                <div class="col">
-                                   <p>{{ $workerGig->customerBids->where('status','!=', 'cancelled')->count() }}<br><small class="text-secondary">{{ translate('Orders') }}</small></p>
+                                   <p>{{ $workerGig->customerBids->where('status','!=', 'cancelled')->count() }}<br><small class="text-secondary">{{ __('Orders') }}</small></p>
                                </div>
                            </div>
                        </div>
@@ -30,7 +30,7 @@
                        <div class="card-body">
                            <div class="row no-gutters h-100">
                                <div class="col">
-                                   <p>{{ $workerGig->budget }}<br><small class="text-secondary">{{ translate('Price') }}</small></p>
+                                   <p>{{ $workerGig->budget }}<br><small class="text-secondary">{{ __('Price') }}</small></p>
                                </div>
                            </div>
                        </div>
@@ -44,21 +44,21 @@
         <br>
         <!--Start work detail , address, day-->
         <div class="container">
-            <h4 class="mb-3"><b>{{ translate('About this gig:') }}</b></h4>
+            <h4 class="mb-3"><b>{{ __('About this gig:') }}</b></h4>
             <pre>{{ $workerGig->description }}</pre>
-            <h4 class="mb-3"><b>{{ translate('Tags:') }}</b></h4>
+            <h4 class="mb-3"><b>{{ __('Tags:') }}</b></h4>
             <p>{{ $workerGig->tags }}</p>
             <div class="row">
                 <div class="col">
                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                        <button disabled type="button" class="btn btn-outline-success active"><b>{{ $workerGig->day }}</b> <br> <small>  {{ translate('Day') }} </small></button>
-                        <button disabled type="button" class="btn btn-outline-success active"><b>{{ $workerGig->customerBids->where('status', '!=', 'cancelled')->count() }}</b> <br> <small> {{ translate('Click') }} </small></button>
+                        <button disabled type="button" class="btn btn-outline-success active"><b>{{ $workerGig->day }}</b> <br> <small>  {{ __('Day') }} </small></button>
+                        <button disabled type="button" class="btn btn-outline-success active"><b>{{ $workerGig->customerBids->where('status', '!=', 'cancelled')->count() }}</b> <br> <small> {{ __('Click') }} </small></button>
                     </div>
                 </div>
                 <div class="col">
                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                        <button type="button" onclick="window.location.href='{{ route('worker.editWorkerGig', \Illuminate\Support\Facades\Crypt::encryptString($workerGig->id)) }}'" class="btn btn-success edit-btn"><b>{{ translate('Edit') }} &nbsp;</b></button>
-                        <button type="button" value="{{ $workerGig->id }}" class="btn btn-danger delete-btn"><b>{{ translate('Delete') }}</b></button>
+                        <button type="button" onclick="window.location.href='{{ route('worker.editWorkerGig', \Illuminate\Support\Facades\Crypt::encryptString($workerGig->id)) }}'" class="btn btn-success edit-btn"><b>{{ __('Edit') }} &nbsp;</b></button>
+                        <button type="button" value="{{ $workerGig->id }}" class="btn btn-danger delete-btn"><b>{{ __('Delete') }}</b></button>
                     </div>
                 </div>
             </div>

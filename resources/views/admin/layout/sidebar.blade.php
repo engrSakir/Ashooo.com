@@ -2,7 +2,7 @@
     <div class="brand-logo">
         <a href="{{ route('admin.dashboard.index') }}">
             &nbsp;
-            <img src="{{ asset('uploads/images/'.$setting->logo) }}" width="200px" class="logo center" alt="Ashooo">
+            <img src="{{ asset('uploads/images/'.setting('logo')) }}" width="200px" class="logo center" alt="Ashooo">
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">
@@ -95,6 +95,7 @@
                 <li><a href="{{ route('admin.showHelpLine') }}"><i class="fa fa-circle-o"></i> Help Line</a></li>
             </ul>
         </li>
+        <li><a href="{{ url('/language-management/bn/translations') }}" target="_blank" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Translation</span></a></li>
         <li><a href="{{ route('admin.showAbout') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>About</span></a></li>
         <li><a href="{{ route('admin.showFaq') }}" class="waves-effect"><i class="fa fa-circle-o text-yellow"></i> <span>FAQ</span></a></li>
         <li><a href="{{ route('admin.showTermsAndCondition') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i> <span>Terms & Conditions</span></a></li>

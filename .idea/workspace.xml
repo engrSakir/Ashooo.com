@@ -137,6 +137,7 @@
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
       <path value="$PROJECT_DIR$/vendor/smasif/shurjopay-laravel-package" />
       <path value="$PROJECT_DIR$/vendor/stichoza/google-translate-php" />
+      <path value="$PROJECT_DIR$/vendor/joedixon/laravel-translation" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gUY4lz6VioPifuGncHBEX8MPrs" />
@@ -262,6 +263,8 @@
       <workItem from="1605219388346" duration="8977000" />
       <workItem from="1605259721681" duration="6733000" />
       <workItem from="1605350357641" duration="3272000" />
+      <workItem from="1607869995543" duration="3785000" />
+      <workItem from="1607919257525" duration="687000" />
     </task>
     <servers />
   </component>

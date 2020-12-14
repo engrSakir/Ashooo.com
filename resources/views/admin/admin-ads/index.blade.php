@@ -9,16 +9,16 @@
             <!-- Breadcrumb-->
             <div class="row pt-2 pb-2">
                 <div class="col-sm-9">
-                    <h4 class="page-title">Admin ads. </h4>
+                    <h4 class="page-title">{{ __('Admin ads. ') }}</h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javaScript:void();">Ashooo</a></li>
-                        <li class="breadcrumb-item"><a href="javaScript:void();">Admin</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">ads.</li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">{{ __('Ashooo') }}</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">{{ __('Admin') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('ads.') }}</li>
                     </ol>
                 </div>
                 <div class="col-sm-3">
                     <div class="btn-group float-sm-right">
-                        <button type="button" id="add-new" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-plus"></i> Add admin ads.</button>
+                        <button type="button" id="add-new" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-plus"></i> {{ __('Add admin ads.') }}</button>
                     </div>
                 </div>
             </div>
@@ -33,25 +33,25 @@
                                         <div class="card">
                                             <img src="{{ asset('uploads/images/ads/admin/'.$ads->image) }}" class="card-img-top" alt="Card image cap">
                                             <div class="card-body">
-                                                <h5 class="card-title text-dark">Card Sample title</h5>
+                                                <h5 class="card-title text-dark">{{ __('Card Sample title') }}</h5>
                                             </div>
                                             <ul class="list-group list-group-flush list shadow-none">
                                                 @if($ads->status == 0)
-                                                    <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-danger badge-pill"> Inactive </span></li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">{{ __('Status') }} <span class="badge badge-danger badge-pill"> Inactive </span></li>
                                                 @elseif($ads->starting < \Carbon\Carbon::today()->addDays(1) && $ads->ending > \Carbon\Carbon::today()->addDays(-1))
-                                                    <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-success badge-pill"> Running </span></li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">{{ __('Status') }} <span class="badge badge-success badge-pill"> Running </span></li>
                                                 @else
-                                                    <li class="list-group-item d-flex justify-content-between align-items-center">Status <span class="badge badge-info badge-pill"> Completed </span></li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">{{ __('Status') }} <span class="badge badge-info badge-pill"> Completed </span></li>
                                                 @endif
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">Starting <span class="badge badge-success badge-pill start">{{ $ads->starting  }}</span></li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">Ending <span class="badge badge-danger badge-pill end">{{ $ads->ending }}</span></li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center">Created at <span class="badge badge-dark badge-pill">{{ date('d/m/Y h-m-s', strtotime($ads->created_at)) }}</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">{{ __('Starting') }} <span class="badge badge-success badge-pill start">{{ $ads->starting  }}</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">{{ __('Ending') }} <span class="badge badge-danger badge-pill end">{{ $ads->ending }}</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">{{ __('Created at') }} <span class="badge badge-dark badge-pill">{{ date('d/m/Y h-m-s', strtotime($ads->created_at)) }}</span></li>
                                             </ul>
                                             <div class="card-body">
                                                 <input type="hidden" class="hidden-url" value="{{ $ads->url }}">
                                                 <input type="hidden" class="hidden-id" value="{{ $ads->id }}">
-                                                <a @if($ads->url) href="{{ $ads->url }}" target="_blank" @else  href="#" @endif  class="card-link">Ads. Link</a>
-                                                <a href="javascript:void();" class="card-link edit-button">Edit Now</a>
+                                                <a @if($ads->url) href="{{ $ads->url }}" target="_blank" @else  href="#" @endif  class="card-link">{{ __('Ads. Link') }}</a>
+                                                <a href="javascript:void();" class="card-link edit-button">{{ __('Edit Now') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -79,19 +79,19 @@
                         <input type="hidden" id="ads-id">
                         <div class="input-group input-group-lg mb-3">
                            <div class="input-group-prepend">
-                           <span class="input-group-text">URL</span>
+                           <span class="input-group-text">{{ __('URL') }}</span>
                            </div>
                            <input type="text" class="form-control" name="url" id="url">
                          </div>
                         <div class="input-group input-group-lg mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Start at</span>
+                                <span class="input-group-text">{{ __('Start at') }}</span>
                             </div>
                             <input type="text" id="starting-date" class="form-control" data-date-format='yyyy/mm/dd' autocomplete="false" placeholder="Starting Date">
                         </div>
                         <div class="input-group input-group-lg mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Ending at</span>
+                                <span class="input-group-text">{{ __('Ending at') }}</span>
                             </div>
                             <input type="text" id="ending-date" class="form-control" data-date-format='yyyy/mm/dd' autocomplete="false" placeholder="Ending Date">
                         </div>
@@ -100,14 +100,14 @@
                         </div>
                         <div class="input-group input-group-lg mb-3">
                             <input type="checkbox" id="activation" value="" class="filled-in chk-col-success">
-                            <label for="activation" class="btn-round btn-danger waves-effect waves-light">Is activated !!!!</label>
+                            <label for="activation" class="btn-round btn-danger waves-effect waves-light">{{ __('Is activated !!!!') }}</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer" id="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" ><i class="fa fa-times"></i> Close</button>
-                    <button type="button" class="btn btn-primary" id="add-submit-button"><i class="fa fa-check-square-o"></i> Add new ads.</button>
-                    <button type="button" class="btn btn-primary" id="edit-submit-button"><i class="fa fa-check-square-o"></i> Edit ads.</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" ><i class="fa fa-times"></i> {{ __('Close') }}</button>
+                    <button type="button" class="btn btn-primary" id="add-submit-button"><i class="fa fa-check-square-o"></i> {{ __('Add new ads.') }}</button>
+                    <button type="button" class="btn btn-primary" id="edit-submit-button"><i class="fa fa-check-square-o"></i> {{ __('Edit ads.') }}</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @extends('worker.layout.app')
-@push('title') {{ translate('Gigs') }} @endpush
+@push('title') {{ __('Gigs') }} @endpush
 @push('head')
 
 @endpush
@@ -22,7 +22,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <select id="service" class="form-control form-control-lg">
-                                            <option disabled selected>{{ translate('Category') }}</option>
+                                            <option disabled selected>{{ __('Category') }}</option>
                                             @foreach($categories as $category)
                                                 <optgroup label="{{ $category->name }}">
                                                     @foreach($category->services as $service)
@@ -53,7 +53,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="button" id="gig-submit-button" value="{{ $workerGig->id }}" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ translate('Done') }}</button>
+                                        <button type="button" id="gig-submit-button" value="{{ $workerGig->id }}" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ __('Done') }}</button>
                                     </div>
                                 </div>
                             </div>
