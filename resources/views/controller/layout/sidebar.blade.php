@@ -6,11 +6,15 @@
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">
-        <li class="sidebar-header">CONTROLLER DASHBOARD</li>
-        <li><a href="{{ route('controller.dashboard.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Dashboard</span></a></li>
-        <li><a href="{{ route('controller.user.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Users</span></a></li>
-        <li><a href="{{ route('controller.notice.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Notice</span></a></li>
-        <li><a href="{{ route('controller.ads.index') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i> <span>Ads.</span></a></li>
+        <li class="sidebar-header">{{ __('CONTROLLER DASHBOARD') }}</li>
+        <li><a href="{{ route('controller.dashboard.index') }}" class="waves-effect">
+                <i class="fa fa-circle-o text-red"></i> <span>{{ __('Dashboard') }}</span></a></li>
+        <li><a href="{{ route('controller.user.index') }}" class="waves-effect">
+                <i class="fa fa-circle-o text-red"></i> <span>{{ __('Users') }}</span></a></li>
+        <li><a href="{{ route('controller.notice.index') }}" class="waves-effect">
+                <i class="fa fa-circle-o text-red"></i> <span>{{ __('Notice') }}</span></a></li>
+        <li><a href="{{ route('controller.ads.index') }}" class="waves-effect">
+                <i class="fa fa-circle-o text-red"></i> <span>{{ __('Ads') }}.</span></a></li>
 
     </ul>
 
