@@ -17,6 +17,10 @@ if (!function_exists('random_code')){
             return false;
         }
     }
+
+    function current_language(){
+        return Session::get('language');
+    }
 }
 
 ?>

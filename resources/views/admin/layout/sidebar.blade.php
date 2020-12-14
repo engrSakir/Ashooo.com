@@ -6,7 +6,7 @@
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">
-        <li class="sidebar-header">ADMIN DASHBOARD</li>
+        <li class="sidebar-header">{{ __('ADMIN DASHBOARD') }} </li>
         <li>
             <a href="{{ route('admin.dashboard.index') }}" class="waves-effect">
                 <i class="icon-home"></i> <span>Dashboard</span>
@@ -18,8 +18,8 @@
                 <span>Area</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="sidebar-submenu">
-                <li><a href="{{ route('admin.district.index') }}"><i class="fa fa-circle-o"></i> District</a></li>
-                <li><a href="{{ route('admin.upazila.index') }}"><i class="fa fa-circle-o"></i> Upazila</a></li>
+                <li><a href="{{ route('admin.district.index') }}"><i class="fa fa-circle-o"></i> {{ __('District') }} </a></li>
+                <li><a href="{{ route('admin.upazila.index') }}"><i class="fa fa-circle-o"></i> {{ __('Upazila') }} </a></li>
             </ul>
         </li>
         <li>
