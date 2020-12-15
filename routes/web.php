@@ -34,7 +34,8 @@ Route::get('/language', function (){
     }else{
         Session::put('language', 'en');
     }
-    App::setLocale(Session::get('language'));
+    //App::setLocale(Session::get('language'));
+    App::setLocale('bn');
     return redirect()->back();
 })->name('language');
 

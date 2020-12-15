@@ -16,10 +16,4 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
-    'logout_confirmation' => 'Are you sure?',
-    'logout_text' => 'You can login again in this system!',
-    'logout_confirm_btn' => 'Yes, logout it!',
-    'logout_success_alert' => 'Logout!',
-    'logout_success_test' => 'Successfully logout from this system.',
-
 ];

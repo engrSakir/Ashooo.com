@@ -15,7 +15,7 @@
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="icon-briefcase"></i>
-                <span>Area</span> <i class="fa fa-angle-left pull-right"></i>
+                <span>{{ __('Area') }}</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('admin.district.index') }}"><i class="fa fa-circle-o"></i> {{ __('District') }} </a></li>
@@ -95,8 +95,8 @@
                 <li><a href="{{ route('admin.showHelpLine') }}"><i class="fa fa-circle-o"></i>{{ __(' Help Line') }}</a></li>
             </ul>
         </li>
-        <li><a href="{{ url('/language-management/bn/translations') }}" target="_blank" class="waves-effect"><i class="fa fa-circle-o text-red"></i>
-                <span>{{ __('Translation') }}</span></a></li>
+        <li><a href="javascript:0" target="_blank" class="waves-effect translation-btn"><i class="fa fa-circle-o text-red"></i>
+                <span>{{ __('Translation') }} ({{ current_language() }})</span></a></li>
         <li><a href="{{ route('admin.showAbout') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i>
                 <span>{{ __('About') }}</span></a></li>
         <li><a href="{{ route('admin.showFaq') }}" class="waves-effect"><i class="fa fa-circle-o text-yellow"></i>
@@ -107,3 +107,15 @@
                 <span>{{ __('Privacy Policy') }}</span></a></li>
     </ul>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        //Show modal
+        $('.translation-btn').click(function(){
+            let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+            width=0,height=0,left=-1000,top=-1000`;
+            open('{{ url('/language-management/'. current_language() .'/translations') }}', 'test', params);
+        });
+    });
+</script>

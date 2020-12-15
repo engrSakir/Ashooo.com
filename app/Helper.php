@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
@@ -19,7 +21,8 @@ if (!function_exists('random_code')){
     }
 
     function current_language(){
-        return Session::get('language');
+        //return Session::get('language');
+        return App::getLocale();
     }
 }
 

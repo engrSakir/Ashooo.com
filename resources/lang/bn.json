@@ -1,4 +1,33 @@
+
 {
-    "Key One": "Key One !!!",
-    "another_one": "Another One"
+    "ADMIN DASHBOARD": "ড্যাশবোর্ড",
+    "Dashboard": "ড্যাশবোর্ড",
+    "Area": "এলাকা",
+    "District": "ড্যাশবোর্ড",
+    "Upazila": "ড্যাশবোর্ড",
+    "Worker | Service": "ড্যাশবোর্ড",
+    "Category": "ড্যাশবোর্ড",
+    "Service": "ড্যাশবোর্ড",
+    "Member. | Service": "ড্যাশবোর্ড",
+
+    "Notices": "ড্যাশবোর্ড",
+    "Admin notices": "ড্যাশবোর্ড",
+    "Controller notices": "ড্যাশবোর্ড",
+    "Ads.": "ড্যাশবোর্ড",
+    "Admin ads": "ড্যাশবোর্ড",
+    "Controller ads": "ড্যাশবোর্ড",
+    "Membership": "ড্যাশবোর্ড",
+    "Memberships": "ড্যাশবোর্ড",
+    "More": "ড্যাশবোর্ড",
+    "Offer": "ড্যাশবোর্ড",
+    "Referral Income System": "ড্যাশবোর্ড",
+    "Video Training": "ড্যাশবোর্ড",
+    "Help Line": "ড্যাশবোর্ড",
+    "Translation": "ড্যাশবোর্ড",
+    "About": "ড্যাশবোর্ড",
+    "FAQ": "ড্যাশবোর্ড",
+    "Terms & Conditions": "ড্যাশবোর্ড",
+    "Privacy Policy": "ড্যাশবোর্ড",
+
+    "00": "0"
 }

@@ -1,4 +1,34 @@
 {
-    "Key One": "Key One !!!",
-    "another_one": "Another One"
+    "ADMIN DASHBOARD": "ADMIN DASHBOARD",
+    "Dashboard": "Dashboard",
+    "Area": "Area",
+    "District": "District",
+    "Upazila": "Upazila",
+    "Worker | Service": "Worker | Service",
+    "Category": "Category",
+    "Service": "Service",
+    "Member. | Service": "Member. | Service",
+
+    "Notices": "Notices",
+    "Admin notices": "Admin notices",
+    "Controller notices": "Controller notices",
+    "Ads.": "Ads.",
+    "Admin ads": "Admin ads",
+    "Controller ads": "Controller ads",
+    "Membership": "Membership",
+    "Memberships": "Memberships",
+    "More": "More",
+    "Offer": "Offer",
+    "Referral Income System": "Referral Income System",
+    "Video Training": "Video Training",
+    "Help Line": "Help Line",
+    "Translation": "Translation",
+    "About": "About",
+    "FAQ": "FAQ",
+    "Terms & Conditions": "Terms & Conditions",
+    "Privacy Policy": "Privacy Policy",
+
+    "Login": "Login",
+    "Register": "Register",
+    "00": "0"
 }

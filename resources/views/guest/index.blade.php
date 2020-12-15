@@ -53,10 +53,10 @@
     <!-- login buttons -->
     <div class="row mx-0 bottom-button-container">
         <div class="col">
-            <a href="{{ route('login') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">Login</a>
+            <a href="{{ route('login') }}" class="btn btn-default btn-lg btn-rounded shadow btn-block">{{ __('Login') }}</a>
         </div>
         <div class="col">
-            <a href="{{ route('register') }}" class="btn btn-white bg-white btn-lg btn-rounded shadow btn-block">Register</a>
+            <a href="{{ route('register') }}" class="btn btn-white bg-white btn-lg btn-rounded shadow btn-block">{{ __('Register') }}</a>
         </div>
     </div>
     <!-- login buttons -->

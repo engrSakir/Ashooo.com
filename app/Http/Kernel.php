@@ -80,7 +80,5 @@ class Kernel extends HttpKernel
         'worker'            =>  WorkerMiddleware::class,
         'membership'        =>  MembershipMiddleware::class,
         'customer'          =>  CustomerMiddleware::class,
-
-        'language'          => LanguageMiddleware::class,
     ];
 }

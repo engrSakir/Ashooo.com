@@ -150,22 +150,22 @@
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
-      <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
-      <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Ashooo\resources\lang" />
       <recent name="D:\laragon\www\Ashooo\resources\lang\en" />
       <recent name="D:\laragon\www\Ashooo\resources\lang\en\customer" />
       <recent name="D:\laragon\www\Ashooo\resources\views\controller" />
       <recent name="D:\laragon\www\Ashooo\resources\views\worker\home" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\msaki\Desktop\Ashooo\resources\views\customer\service" />
+      <recent name="D:\laragon\www\Ashooo\app\Http\Controllers\Guest" />
       <recent name="D:\laragon\www\Ashooo\resources\views\admin" />
     </key>
   </component>
@@ -267,7 +267,7 @@
       <workItem from="1607919257525" duration="2923000" />
       <workItem from="1607924823942" duration="1815000" />
       <workItem from="1608005629232" duration="5532000" />
-      <workItem from="1608016640602" duration="2834000" />
+      <workItem from="1608016640602" duration="10911000" />
     </task>
     <servers />
   </component>
@@ -278,43 +278,5 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599278823259">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599278823259" />
-    <state x="711" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602745218389">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="711" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602745218389" />
-    <state x="640" y="260" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602943461158">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="640" y="260" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602943461158" />
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605219071183">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="690" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1605219071183" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1599283710311">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1599283710311" />
-    <state x="794" y="448" key="NewPhpFileDialog" timestamp="1602646285829">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602646285829" />
-    <state x="461" y="169" key="SettingsEditor" timestamp="1598932714781">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598932714781" />
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1598954492025">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1598954492025" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1602920986056">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1366.305.1366.738@0.0.1920.1050" timestamp="1602920986056" />
   </component>
 </project>
