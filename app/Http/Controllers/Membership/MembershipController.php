@@ -24,6 +24,7 @@ class MembershipController extends Controller
         }else{
             return redirect()->back();
         }
+
         //return redirect()->route('membership.pay', $paymentAmount);
         $shurjopay_service = new ShurjopayService(); //Initiate the object
 

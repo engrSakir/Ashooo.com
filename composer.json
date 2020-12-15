@@ -20,7 +20,8 @@
         "mckenziearts/laravel-notify": "^2.1",
         "pusher/pusher-php-server": "~4.0",
         "smasif/shurjopay-laravel-package": "^1.0",
-        "stichoza/google-translate-php": "^4.1"
+        "stichoza/google-translate-php": "^4.1",
+      "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",

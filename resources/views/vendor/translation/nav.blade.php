@@ -3,9 +3,16 @@
     <h1 class="text-lg px-6">{{ config('app.name') }}</h1>
 
     <ul class="flex-grow justify-end pr-2">
+        <li style="display: none">
+            <a href="{{ route('languages.index') }}" class="{{ set_active('') }}{{ set_active('/create') }}">
+                @include('translation::icons.globe')
+                {{ __('translation::translation.languages') }}
+            </a>
+        </li>
         <li>
-            <a href="javascript:0;" class="" onclick="window.open('', '_self', ''); window.close();">
-               {{ __('CLOSE') }}
+            <a href="{{ route('languages.translations.index', config('app.locale')) }}" class="{{ set_active('*/translations') }}">
+                @include('translation::icons.translate')
+                {{ __('translation::translation.translations') }}
             </a>
         </li>
     </ul>
