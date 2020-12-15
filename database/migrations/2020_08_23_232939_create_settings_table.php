@@ -25,15 +25,17 @@ class CreateSettingsTable extends Migration
             $table->string('fav')->default('default.png');
             $table->string('motto')->default('service marketplace');
 
-            $table->string('sms_username')->nullable()->comment('SMS API User name | alpha.net.bd/SMS');
-            $table->string('sms_key')->nullable()->comment('SMS API User hash | alpha.net.bd/SMS');
+            $table->string('sms_username')->nullable()->comment('SMS API User name');
+            $table->string('sms_key')->nullable()->comment('SMS API User hash');
 
             $table->integer('reset_sms_count')->nullable()->default(3)->comment('Per day available reset message');
             $table->string('reset_sms_template')->nullable()->default('আপনার নতুন পাসওয়ার্ডঃ ')->comment('Password sms template');
             $table->string('welcome_sms_template')->nullable()->default('স্বাগতম')->comment('Welcome sms template');
 
             $table->double('worker_activation_price')->default('50');
-            $table->double('per_user_referral_price')->default('50');
+            $table->double('per_customer_referral_price')->default('0');
+            $table->double('per_worker_referral_price')->default('50');
+            $table->double('per_membership_referral_price')->default('0');
             $table->double('admin_percent_on_worker_job')->default('10');
 
             $table->text('en_about')->nullable('About description ....');

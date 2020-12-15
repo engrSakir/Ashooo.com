@@ -146,4 +146,21 @@ class SettingController extends Controller
         $setting->save();
         return $setting;
     }
+
+    public function showGeneralInformation(){
+       $setting = Setting::find(1);
+       return view('admin.setting.general-information', compact('setting'));
+   }
+
+    public function updateGeneralInformation(Request $request){
+        $request->validate([
+            'english_description' => 'required|min:10',
+            'bengali_description' => 'required|min:10'
+        ]);
+        $setting = Setting::find(1);
+        $setting->en_privacy_policy = $request->input('english_description');
+        $setting->bn_privacy_policy = $request->input('bengali_description');
+        $setting->save();
+        return $setting;
+    }
 }

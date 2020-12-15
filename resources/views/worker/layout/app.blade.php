@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="en" class="deeppurple-theme">
-<!-- This system developed by DataTech BD ltd. Phone: 01304734623-25 | info@datatechbd.com | 28-08-2020-->
+<html lang="{{  App::getLocale() }}" class="deeppurple-theme">
+<!-- This system developed by DataTech BD ltd. Phone: 01304734623-25 | info@datatechbd.com | 23-08-2020-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <title>{{ config('app.name') }} | @stack('title') </title>
+    <meta name="author" content="{{ get_static_option('author_name') ?? 'No author' }}">
+    <meta name="description" content="{{ get_static_option('author_description') ?? 'No description' }}"/>
+    <meta property="og:image" content="{{ asset(get_static_option('meta_image')) }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@stack('title')</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css') }}">
@@ -50,7 +51,7 @@
             <div class="col-auto">
                 <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification"></span></button>
             </div>
-            <div class="col text-center"><img src="{{ asset('uploads/images/'.$setting->logo_header) }}" alt="" class="header-logo"></div>
+            <div class="col text-center"><img src="{{ asset( get_static_option('header_logo')  ?? 'uploads/images/defaults/header-logo.png') }}" alt="" class="header-logo"></div>
             <div class="col-auto">
                 <a href="{{ route('worker.notifications') }}" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">{{ auth()->user()->unreadNotifications->count() }}</span></a>
             </div>

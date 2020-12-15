@@ -2,7 +2,7 @@
     <div class="brand-logo">
         <a href="{{ route('admin.dashboard.index') }}">
             &nbsp;
-            <img src="{{ asset('uploads/images/'.setting('logo')) }}" width="200px" class="logo center" alt="Ashooo">
+            <img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" width="200px" class="logo center" alt="Ashooo">
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">
@@ -98,13 +98,24 @@
         <li><a href="javascript:0" target="_blank" class="waves-effect translation-btn"><i class="fa fa-circle-o text-red"></i>
                 <span>{{ __('Translation') }} ({{ current_language() }})</span></a></li>
         <li><a href="{{ route('admin.showAbout') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i>
-                <span>{{ __('About') }}</span></a></li>
+                <span>{{ __('About') }}</span></a>
+        </li>
         <li><a href="{{ route('admin.showFaq') }}" class="waves-effect"><i class="fa fa-circle-o text-yellow"></i>
-                <span>{{ __('FAQ') }}</span></a></li>
+                <span>{{ __('FAQ') }}</span></a>
+        </li>
         <li><a href="{{ route('admin.showTermsAndCondition') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
-                <span>{{ __('Terms & Conditions') }}</span></a></li>
-        <li><a href="{{ route('admin.showPrivacyPolicy') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
-                <span>{{ __('Privacy Policy') }}</span></a></li>
+                <span>{{ __('Terms & Conditions') }}</span></a>
+        </li>
+        <li><a href="{{ route('admin.showGeneralInformation') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
+                <span>{{ __('Privacy Policy') }}</span></a>
+        </li>
+        <li><a href="{{ route('admin.updateGeneralInformation') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
+                <span>{{ __('Setting') }}</span></a>
+        </li>
+        <br>
+        <br>
+        <br>
+        <br>
     </ul>
 </div>
 

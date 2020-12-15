@@ -2,11 +2,11 @@
     <div class="mt-4 mb-3">
         <div class="row">
             <div class="col-auto">
-                <figure class="avatar avatar-60 border-0"><img src="{{ asset('assets/mobile/img/user1.png') }}" alt=""></figure>
+                <figure class="avatar avatar-60 border-0"><img src="{{ asset(auth()->user()->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
             </div>
             <div class="col pl-0 align-self-center">
-                <h5 class="mb-1">Ammy Jahnson</h5>
-                <p class="text-mute small">Work, London, UK</p>
+                <h5 class="mb-1">{{ auth()->user()->full_name }} </h5>
+                <p class="text-mute small">{{ auth()->user()->phone }}</p>
             </div>
         </div>
     </div>

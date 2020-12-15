@@ -20,7 +20,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Image;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class RegisterController extends Controller
 {
@@ -58,18 +60,15 @@ class RegisterController extends Controller
         $customer->upazila_id   =   $request->input('upazila');
         $customer->password     =   Hash::make($request->input('password'));
 
-        //Auto resize with 20 wide/ 20 height
         if($request->hasFile('profilePicture')){
-            $image              = $request->file('profilePicture');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-profile-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/users');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('profilePicture');
+            $folder_path       = 'uploads/images/users/';
+            $image_new_name    = Str::random(8).'-profile-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(250, 250, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $customer->image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $customer->image    = $folder_path.$image_new_name;
         }
 
         $customer->save();
@@ -99,7 +98,7 @@ class RegisterController extends Controller
         //Balance updated of referral owner
         if ($request->input('referralCode')){
             $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
-            $selectedReferralOwnerBalance->referral_income += Setting::find(1)->per_user_referral_price;
+            $selectedReferralOwnerBalance->referral_income +=  get_static_option('per_customer_referral_price');
             $selectedReferralOwnerBalance->save();
         }
 
@@ -184,43 +183,38 @@ class RegisterController extends Controller
         $worker->number    = $request->input('nidNumber');
         //NID Front
         if($request->hasFile('nidFrontImage')){
-            $image              = $request->file('nidFrontImage');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-nid-front-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/nid');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('nidFrontImage');
+            $folder_path       = 'uploads/images/nid/';
+            $image_new_name    = Str::random(8).'-nid-front-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(500, 300, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $worker->front_image    = $image_name;
-        }
-        //NID Back
-        if($request->hasFile('nidBackImage')){
-            $image              = $request->file('nidBackImage');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-nid-back-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/nid');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
-                $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $worker->back_image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $worker->front_image    = $folder_path.$image_new_name;
         }
 
-        //Auto resize with 20 wide/ 20 height
-        if($request->hasFile('profilePicture')){
-            $image              = $request->file('profilePicture');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-profile-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/users');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+        //NID Back
+        if($request->hasFile('nidBackImage')){
+            $image             = $request->file('nidBackImage');
+            $folder_path       = 'uploads/images/nid/';
+            $image_new_name    = Str::random(8).'-nid-back-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(500, 300, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $worker->image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $worker->back_image    = $folder_path.$image_new_name;
+        }
+
+
+        if($request->hasFile('profilePicture')){
+            $image             = $request->file('profilePicture');
+            $folder_path       = 'uploads/images/users/';
+            $image_new_name    = Str::random(8).'-profile-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(250, 250, function($constraint){
+                $constraint->aspectRatio();
+            })->save($folder_path.$image_new_name);
+            $worker->image    = $folder_path.$image_new_name;
         }
         $worker->save();
 
@@ -264,7 +258,7 @@ class RegisterController extends Controller
         //Balance updated of referral owner
         if ($request->input('referralCode')){
             $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
-            $selectedReferralOwnerBalance->referral_income += Setting::find(1)->per_user_referral_price;
+            $selectedReferralOwnerBalance->referral_income +=  get_static_option('per_worker_referral_price');
             $selectedReferralOwnerBalance->save();
         }
 
@@ -341,18 +335,16 @@ class RegisterController extends Controller
         $membership->upazila_id   =   $request->input('upazila');
         $membership->password     =   Hash::make($request->input('password'));
 
-        //Auto resize with 20 wide/ 20 height
+
         if($request->hasFile('profilePicture')){
-            $image              = $request->file('profilePicture');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-profile-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/users');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('profilePicture');
+            $folder_path       = 'uploads/images/users/';
+            $image_new_name    = Str::random(8).'-profile-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(250, 250, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $membership->image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $membership->image    = $folder_path.$image_new_name;
         }
         $membership->save();
 
@@ -381,29 +373,26 @@ class RegisterController extends Controller
         $nid->number    = $request->input('nidNumber');
         //NID Front
         if($request->hasFile('nidFrontImage')){
-            $image              = $request->file('nidFrontImage');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-nid-front-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/nid');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('nidFrontImage');
+            $folder_path       = 'uploads/images/nid/';
+            $image_new_name    = Str::random(8).'-nid-front-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(500, 300, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $nid->front_image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $membership->front_image    = $folder_path.$image_new_name;
         }
+
         //NID Back
         if($request->hasFile('nidBackImage')){
-            $image              = $request->file('nidBackImage');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         =$request->input('userName').'-nid-back-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/nid');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('nidBackImage');
+            $folder_path       = 'uploads/images/nid/';
+            $image_new_name    = Str::random(8).'-nid-back-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(500, 300, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $nid->back_image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $membership->back_image    = $folder_path.$image_new_name;
         }
         $nid->save();
 
@@ -431,7 +420,7 @@ class RegisterController extends Controller
         //Balance updated of referral owner
         if ($request->input('referralCode')){
             $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
-            $selectedReferralOwnerBalance->referral_income += Setting::find(1)->per_user_referral_price;
+            $selectedReferralOwnerBalance->referral_income += get_static_option('per_membership_referral_price');
             $selectedReferralOwnerBalance->save();
         }
 

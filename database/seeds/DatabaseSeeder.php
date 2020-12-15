@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
          $this->call(ControllerNoticeSeeder::class);
          $this->call(JobSeeder::class);
          $this->call(MembershipPackageSeeder::class);
+         $this->call(StaticOptionSeeder::class);
     }
 }

@@ -115,6 +115,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix'=>'admin', 'midd
     Route::get('/setting/privacy-policy','SettingController@showPrivacyPolicy')->name('showPrivacyPolicy');
     Route::post('/setting/privacy-policy','SettingController@updatePrivacyPolicy')->name('updatePrivacyPolicy');
 
+    Route::get('/setting/general','SettingController@showGeneralInformation')->name('showGeneralInformation');
+    Route::post('/setting/general','SettingController@updateGeneralInformation')->name('updateGeneralInformation');
+
 });
 
 Route::get('/controller', function (){

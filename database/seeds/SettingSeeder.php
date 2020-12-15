@@ -14,6 +14,7 @@ class SettingSeeder extends Seeder
     {
         DB::table('settings')->insert([
             'name' => 'Ashooo',
+            'sms_key' => 'ab5821e83a99eb9ec4774c962cb768a0',
         ]);
     }
 }

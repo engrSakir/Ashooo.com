@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" class="deeppurple-theme">
+<html lang="{{  App::getLocale() }}" class="deeppurple-theme">
 <!-- This system developed by DataTech BD ltd. Phone: 01304734623-25 | info@datatechbd.com | 23-08-2020-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="Ashooo">
+    <title>{{ config('app.name') }} | Login </title>
+    <meta name="author" content="{{ get_static_option('author_name') ?? 'No author' }}">
+    <meta name="description" content="{{ get_static_option('author_description') ?? 'No description' }}"/>
+    <meta property="og:image" content="{{ asset(get_static_option('meta_image')) }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Login | {{ setting('name') }}</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css')}}">
@@ -48,7 +48,7 @@
     <div class="row no-gutters login-row">
         <div class="col align-self-center px-3 text-center">
             <br>
-            <img src="{{ asset('uploads/images/'.setting('logo_login')) }}" alt="logo" class="logo-small">
+            <img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt="logo" class="logo-small">
             <!--Show error & session message -->
             @include('includes.message')
             <form class="form-signin mt-3" method="POST" action="{{ route('login') }}">

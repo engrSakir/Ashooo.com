@@ -41,9 +41,10 @@
             "dont-discover": []
         }
     },
-    "autoload": {"files": [
-        "app/Helper.php"
-    ],
+    "autoload": {
+        "files": [
+            "app/Helpers/Helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },
