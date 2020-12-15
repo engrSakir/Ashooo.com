@@ -98,7 +98,7 @@ class RegisterController extends Controller
         //Balance updated of referral owner
         if ($request->input('referralCode')){
             $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
-            $selectedReferralOwnerBalance->referral_income +=  get_static_option('per_customer_referral_price');
+            $selectedReferralOwnerBalance->referral_income +=  get_static_option('per_customer_referral_price') ?? 0;
             $selectedReferralOwnerBalance->save();
         }
 
@@ -258,7 +258,7 @@ class RegisterController extends Controller
         //Balance updated of referral owner
         if ($request->input('referralCode')){
             $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
-            $selectedReferralOwnerBalance->referral_income +=  get_static_option('per_worker_referral_price');
+            $selectedReferralOwnerBalance->referral_income +=  get_static_option('per_worker_referral_price') ?? 0;
             $selectedReferralOwnerBalance->save();
         }
 
@@ -420,7 +420,7 @@ class RegisterController extends Controller
         //Balance updated of referral owner
         if ($request->input('referralCode')){
             $selectedReferralOwnerBalance = Referral::where('own', $request->input('referralCode'))->first()->user->balance;
-            $selectedReferralOwnerBalance->referral_income += get_static_option('per_membership_referral_price');
+            $selectedReferralOwnerBalance->referral_income += get_static_option('per_membership_referral_price') ?? 0;
             $selectedReferralOwnerBalance->save();
         }
 
@@ -441,7 +441,4 @@ class RegisterController extends Controller
             ]);
         }
     }
-
-
-
 }
