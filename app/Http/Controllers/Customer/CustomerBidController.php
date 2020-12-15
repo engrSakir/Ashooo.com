@@ -12,7 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Image;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CustomerBidController extends Controller
 {
@@ -114,16 +115,14 @@ class CustomerBidController extends Controller
             ]);
         }else{
             if($request->hasFile('image')){
-                $image              = $request->file('image');
-                $OriginalExtension  = $image->getClientOriginalExtension();
-                $image_name         ='Customer bid no.-'.$bid->id.'-image-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-                $destinationPath    = ('uploads/images/jobs');
-                $resize_image       = Image::make($image->getRealPath());
-                $resize_image->resize(500, 500, function($constraint){
+                $image             = $request->file('image');
+                $folder_path       = 'uploads/images/jobs/';
+                $image_new_name    = Str::random(8).'-jobs-'.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+                //resize and save to server
+                Image::make($image->getRealPath())->fit(500, 500, function($constraint){
                     $constraint->aspectRatio();
-                });
-                $resize_image->save($destinationPath . '/' . $image_name);
-                $bid->image    = $image_name;
+                })->save($folder_path.$image_new_name);
+                $bid->image    = $folder_path.$image_new_name;
             }
             $bid->save();
             return response()->json([
@@ -148,7 +147,7 @@ class CustomerBidController extends Controller
 
             //Worker balance update
             $bid->workerGig->worker->balance->job_income += $bid->budget;
-            $bid->workerGig->worker->balance->due += (Setting::find(1)->admin_percent_on_worker_job/100) * $bid->budget;
+            $bid->workerGig->worker->balance->due += (get_static_option('admin_percent_on_worker_job')/100) * $bid->budget;
             $bid->workerGig->worker->balance->save();
 
             /*

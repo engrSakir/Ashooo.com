@@ -2,10 +2,12 @@
     <div class="brand-logo">
         <a href="{{ route('admin.dashboard.index') }}">
             &nbsp;
-            <img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" width="200px" class="logo center" alt="Ashooo">
+            <img src="{{ asset( get_static_option('logo_white')  ?? 'uploads/images/defaults/logo-white.png') }}" width="200px" class="logo center" alt="Ashooo">
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">
+        <br>
+        <br>
         <li class="sidebar-header">{{ __('ADMIN DASHBOARD') }} </li>
         <li>
             <a href="{{ route('admin.dashboard.index') }}" class="waves-effect">

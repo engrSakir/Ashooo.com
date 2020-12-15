@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Customer;
 
 use App\CustomerGig;
 use App\Http\Controllers\Controller;
-use App\Job;
 use App\Referral;
 use App\Setting;
 use App\WorkerBid;
@@ -12,14 +11,14 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Image;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CustomerGigController extends Controller
 {
     /**
-     * Store job from customer 'HOME'
      * @param Request $request
-     * @return Job
+     * @return CustomerGig
      */
     public function store(Request $request)
     {
@@ -149,16 +148,14 @@ class CustomerGigController extends Controller
             ]);
         }else{
             if($request->hasFile('image')){
-                $image              = $request->file('image');
-                $OriginalExtension  = $image->getClientOriginalExtension();
-                $image_name         ='Customer gig no.-'.$customerGig->id.'-image-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-                $destinationPath    = ('uploads/images/jobs');
-                $resize_image       = Image::make($image->getRealPath());
-                $resize_image->resize(500, 500, function($constraint){
+                $image             = $request->file('image');
+                $folder_path       = 'uploads/images/jobs/';
+                $image_new_name    = Str::random(8).'-jobs-'.'-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+                //resize and save to server
+                Image::make($image->getRealPath())->fit(500, 300, function($constraint){
                     $constraint->aspectRatio();
-                });
-                $resize_image->save($destinationPath . '/' . $image_name);
-                $customerGig->image    = $image_name;
+                })->save($folder_path.$image_new_name);
+                $customerGig->image    = $folder_path.$image_new_name;
             }
             $customerGig->save();
             return response()->json([
@@ -188,7 +185,7 @@ class CustomerGigController extends Controller
 
                 //Worker balance update
                 $bid->worker->balance->job_income += $bid->budget;
-                $bid->worker->balance->due += (Setting::find(1)->admin_percent_on_worker_job/100) * $bid->budget;
+                $bid->worker->balance->due += (get_static_option('admin_percent_on_worker_job')/100) * $bid->budget;
                 $bid->worker->balance->save();
 
                 return response()->json([
