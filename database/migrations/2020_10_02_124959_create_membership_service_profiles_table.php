@@ -15,6 +15,28 @@ class CreateMembershipServiceProfilesTable extends Migration
     {
         Schema::create('membership_service_profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('logo')->nullable();
+            $table->string('name')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('title')->nullable();
+            $table->string('sub_category_id')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('address')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
+            $table->string('image6')->nullable();
+            $table->string('image7')->nullable();
+            $table->string('image8')->nullable();
+            $table->string('image9')->nullable();
+            $table->string('image10')->nullable();
+            $table->string('image11')->nullable();
+            $table->string('image12')->nullable();
+            $table->string('image13')->nullable();
+            $table->string('image14')->nullable();
+            $table->string('image15')->nullable();
             $table->timestamps();
         });
     }

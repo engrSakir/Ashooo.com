@@ -163,6 +163,8 @@ Route::group(['namespace' => 'Membership', 'as' => 'membership.', 'prefix'=>'mem
     Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
     Route::post('/buy-membership', 'MembershipController@purchaseRequest')->name('buyMembership');
     Route::post('/response-membership-payment/{membership}/{duration}', 'MembershipController@purchaseResponse')->name('paymentResponse');
+    Route::get('page', 'PageController@index')->name('page.index');
+    Route::get('page/create', 'PageController@create')->name('page.create');
 });
 
 Route::get('/customer', function (){
