@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerBid->workerGig->worker->image) }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset($customerBid->workerGig->worker->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">{{ $customerBid->workerGig->worker->full_name }}</h5>
@@ -119,7 +119,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-success text-center" role="alert">
-                    <b id=""> {{ __('system.running') }}</b>
+                    <b id=""> {{ __('Running') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -134,7 +134,7 @@
                                     <div class="col-auto align-self-center text-center">
                                         <i class="material-icons text-template-primary">
                                             <figure class="avatar avatar-60 border-0">
-                                                <img src="{{ asset('uploads/images/users/'.$customerBid->workerGig->worker->image) }}" alt="">
+                                                <img src="{{ asset($customerBid->workerGig->worker->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                             </figure>
                                         </i>
                                     </div>
@@ -223,21 +223,21 @@
                                 <b>{{ 'Image:' }}</b>
                                 <div class="custom-file">
                                     <input type="file" accept="image/*" class="custom-file-input" @if($customerBid->image) disabled readonly @endif id="image" required="">
-                                    <label class="custom-file-label" for="image">@if($customerBid->image) {{ __('system.already_uploaded') }} @else {{ __('system.chose_file') }} @endif</label>
+                                    <label class="custom-file-label" for="image">@if($customerBid->image) {{ __('Already uploaded') }} @else {{ __('Chose file') }} @endif</label>
                                 </div>
                                 <hr>
                                 <div class="row text-center">
                                     <div class="col-6">
-                                        <h4><b>{{ $customerBid->workerGig->day }} <br> <small> {{ __('system.day') }}</small></b></h4>
+                                        <h4><b>{{ $customerBid->workerGig->day }} <br> <small> {{ __('Day') }}</small></b></h4>
                                     </div>
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-success mb-2" id="completed-btn"><b>{{ __('system.rating_and_completed') }}</b></button>
+                                        <button type="button" class="btn btn-success mb-2" id="completed-btn"><b>{{ __('Rate and Complete') }}</b></button>
                                     </div>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
-                                    <button type="button" class="mb-2 w-100 btn btn-lg btn-danger">{{ __('system.complain') }}</button>
+                                    <button type="button" class="mb-2 w-100 btn btn-lg btn-danger">{{ __('Complain') }}</button>
                                 </div>
 
                             </div>
@@ -252,7 +252,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-success text-center" role="alert">
-                    <b id=""> {{ __('system.completed') }}</b>
+                    <b id=""> {{ __('Completed') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -267,7 +267,7 @@
                                     <div class="col-auto align-self-center text-center">
                                         <i class="material-icons text-template-primary">
                                             <figure class="avatar avatar-60 border-0">
-                                                <img src="{{ asset('uploads/images/users/'.$customerBid->workerGig->worker->image) }}" alt="">
+                                                <img src="{{ asset($customerBid->workerGig->worker->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                             </figure>
                                         </i>
                                     </div>
@@ -323,7 +323,7 @@
                                 <hr>
                                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                                     <button disabled type="button" class="btn btn-outline-success active">
-                                        <b>{{ __('system.delivery_date') }}</b> <br>
+                                        <b>{{ __('Delivery date') }}</b> <br>
                                         <small>
                                             {{ date('h:i:s a m/d/Y', strtotime($customerBid->updated_at)) }}
                                         </small>
@@ -340,7 +340,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-danger text-center" role="alert">
-                    <b id="">{{ __('system.cancelled') }}</b>
+                    <b id="">{{ __('Cancelled') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -350,7 +350,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerBid->customer->image) }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset($customerBid->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">{{ $customerBid->customer->full_name }}</h5>
@@ -364,7 +364,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">{{ __('system.price') }} ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal">{{ __('Price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-danger btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $customerBid->budget }}</b> </button>
@@ -383,9 +383,9 @@
             <!--End owner info & price-->
             <!--Start work detail , address, day-->
             <div class="container">
-                <h4 class="mb-3"><b>{{ __('system.details') }}:</b></h4>
+                <h4 class="mb-3"><b>{{ __('Details') }}:</b></h4>
                 <pre>{{ $customerBid->description }}</pre>
-                <h4 class="mb-3"><b>{{ __('system.address') }}:</b></h4>
+                <h4 class="mb-3"><b>{{ __('Address') }}:</b></h4>
                 <p>{{ $customerBid->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                     <button disabled type="button" class="btn btn-outline-danger active">

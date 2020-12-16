@@ -22,7 +22,7 @@
         <!-- Start title -->
         <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> {{ __('system.bid_job') }}</b>
+                    <b id=""> {{ __('Bid Job') }}</b>
                 </div>
         </div>
         <!-- End title -->
@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$gig->customer->image) }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset($gig->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">{{ $gig->customer->full_name }}</h5>
@@ -47,7 +47,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">{{ __('system.price') }} ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal">{{ __('Price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
@@ -66,14 +66,14 @@
         <!--End owner info & price-->
         <!--Start work detail , address, day-->
         <div class="container">
-            <h4 class="mb-3"><b>{{ __('system.details') }}:</b></h4>
+            <h4 class="mb-3"><b>{{ __('Details') }}:</b></h4>
             <pre>{{ $gig->description }}</pre>
-            <h4 class="mb-3"><b>{{ __('system.address') }}:</b></h4>
+            <h4 class="mb-3"><b>{{ __('Address') }}:</b></h4>
             <p>{{ $gig->address }}</p>
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
                 <input type="hidden" id="gig-id" value="{{ $gig->id }}">
-                <button disabled type="button" class="btn btn-outline-success active"><small>{{ __('system.time') }} </small>{{ $gig->day }}<small> {{ __('system.day') }}</small></button>
-                <button id="job-cancel" type="button" class="btn btn-danger">{{ __('system.cancel') }}</button>
+                <button disabled type="button" class="btn btn-outline-success active"><small>{{ __('Time') }} </small>{{ $gig->day }}<small> {{ __('Day') }}</small></button>
+                <button id="job-cancel" type="button" class="btn btn-danger">{{ __('Cancel') }}</button>
             </div>
         </div>
         <!--End work detail , address, day-->
@@ -81,7 +81,7 @@
         <!-- Start bid title -->
         <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> {{ __('system.all_bid') }}</b>
+                    <b id=""> {{ __('All Bid') }}</b>
                 </div>
             </div>
         <!-- End title -->
@@ -98,7 +98,7 @@
                                                 &nbsp;
                                                 <i class="material-icons text-template-primary">
                                                     <figure class="avatar avatar-60 border-0">
-                                                        <img src="{{ asset('uploads/images/users/'.$bid->worker->image) }}" alt="">
+                                                        <img src="{{ asset($bid->worker->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                                     </figure>
                                                 </i>
                                             </div>
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="row">
                                                 &nbsp;
-                                                <button type="button" class="mb-2 btn btn-sm btn-success order-now">{{ __('system.order') }}</button>
+                                                <button type="button" class="mb-2 btn btn-sm btn-success order-now">{{ __('Order') }}</button>
                                                 <input type="hidden" class="worker-bid-id" value="{{ $bid->id }}">
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                         <div class="col-auto align-self-center text-center">
                                             <i class="material-icons text-template-primary">
                                                 <figure class="avatar avatar-60 border-0">
-                                                    <img src="{{ asset('uploads/images/users/'.$bid->worker->image) }}" alt="">
+                                                    <img src="{{ asset($bid->worker->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                                 </figure>
                                             </i>
                                         </div>
@@ -208,13 +208,13 @@
                                                 <input type="text" class="form-control" id="phone" placeholder="phone" readonly value="{{ $bid->worker->phone }}">
                                                 <div class="input-group-prepend">
                                                     <a href="tel:{{ $bid->worker->phone }}">
-                                                        <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">Call</span>
+                                                        <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">{{ __('Call') }}</span>
                                                     </a>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="{{ __('system.order_price') }}">
+                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="{{ __('Order price') }}">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-info text-white" id="budget">
                                                         {{ $bid->budget }} ৳
@@ -230,19 +230,19 @@
                                             <div class="row">
                                                 <div class="container">
                                                     <div class="row container">
-                                                        {{ __('system.change_your_price') }}
+                                                        {{ __('Your price') }}
                                                         <hr>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                           <b> {{ __('system.new_price') }} ৳</b>
+                                                           <b> {{ __('New price') }} ৳</b>
                                                         </div>
                                                         <div class="col text-right">
                                                             <div class="form-group mb-2 ">
                                                                 <input type="number" class="form-control text-center" id="price" placeholder="550">
                                                             </div>
                                                             <input type="hidden" id="bid-id" value="{{ $bid->id }}">
-                                                            <button type="button" class="btn btn-success mb-2" id="new-price"><b>{{ __('system.submit') }}</b></button>
+                                                            <button type="button" class="btn btn-success mb-2" id="new-price"><b>{{ __('SUBMIT') }}</b></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -252,30 +252,30 @@
                                     <!-- work detail -->
                                     <pre><b>{{ $bid->description }}</b></pre>
                                     <hr>
-                                    <b>{{ __('system.details') }}</b>
+                                    <b>{{ __('Details') }}</b>
                                     <pre>{{ $bid->customerGig->description }}</pre>
                                     <br>
-                                    <b>{{ __('system.address') }}</b>
+                                    <b>{{ __('Address') }}</b>
                                     <p>{{ $bid->customerGig->address }}</p>
                                     <br>
-                                    <b>{{ __('system.image') }}</b>
+                                    <b>{{ __('Image') }}</b>
                                     <div class="custom-file">
                                         <input type="file" accept="image/*" class="custom-file-input" @if($bid->customerGig->image) disabled readonly @endif id="image" required="">
-                                        <label class="custom-file-label" for="image">@if($bid->customerGig->image) {{ __('system.already_uploaded') }} @else {{ __('system.chose_file') }}.. @endif</label>
+                                        <label class="custom-file-label" for="image">@if($bid->customerGig->image) {{ __('Already uploaded') }} @else {{ __('Chose file') }}.. @endif</label>
                                     </div>
                                     <hr>
                                     <div class="row text-center">
                                         <div class="col-6">
-                                            <h4><b>{{ $bid->customerGig->day }} <br> <small> {{ __('system.day') }}</small></b></h4>
+                                            <h4><b>{{ $bid->customerGig->day }} <br> <small> {{ __('Day') }}</small></b></h4>
                                         </div>
                                         <div class="col-6">
-                                            <button type="button" class="btn btn-success mb-2" id="completed-btn"><b>{{ __('system.rating_and_completed') }}</b></button>
+                                            <button type="button" class="btn btn-success mb-2" id="completed-btn"><b>{{ __('Rating and completed') }}</b></button>
                                         </div>
                                         <br>
                                         <br>
                                         <br>
                                         <br>
-                                        <button type="button" class="mb-2 w-100 btn btn-lg btn-danger">{{ __('system.complain') }}</button>
+                                        <button type="button" class="mb-2 w-100 btn btn-lg btn-danger">{{ __('COMPLAIN') }}</button>
                                     </div>
 
                                 </div>
@@ -290,7 +290,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-success text-center" role="alert">
-                    <b id=""> {{ __('system.completed') }}</b>
+                    <b id=""> {{ __('Completed') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -306,7 +306,7 @@
                                         <div class="col-auto align-self-center text-center">
                                             <i class="material-icons text-template-primary">
                                                 <figure class="avatar avatar-60 border-0">
-                                                    <img src="{{ asset('uploads/images/users/'.$bid->worker->image) }}" alt="">
+                                                    <img src="{{ asset($bid->worker->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                                 </figure>
                                             </i>
                                         </div>
@@ -340,7 +340,7 @@
                                             </div>
 
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="{{ __('system.order_price') }}">
+                                                <input type="text" class="form-control" id="budget" placeholder="budget" readonly value="{{ __('Order price') }}">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-info text-white" id="budget">
                                                         {{ $bid->budget }} ৳
@@ -362,7 +362,7 @@
                                     <br>
                                     <hr>
                                     <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                                        <button disabled type="button" class="btn btn-outline-success active"><b> {{ __('system.delivery_date') }}</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
+                                        <button disabled type="button" class="btn btn-outline-success active"><b> {{ __('Date') }}</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
                                     </div>
 
                                 </div>
@@ -376,7 +376,7 @@
             <!-- Start title -->
             <div class="">
                 <div class="alert alert-danger text-center" role="alert">
-                    <b id=""> {{ __('system.cancelled_order') }}</b>
+                    <b id=""> {{ __('Cancel order') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -422,7 +422,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">{{ __('system.price') }} ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal">{{ __('Price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-danger btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
@@ -442,12 +442,12 @@
             <hr>
             <!--Start work detail , address, day-->
             <div class="container">
-                <h4 class="mb-3"><b>{{ __('system.details') }}:</b></h4>
+                <h4 class="mb-3"><b>{{ __('Detail') }}:</b></h4>
                 <pre>{{ $gig->description }}</pre>
-                <h4 class="mb-3"><b>{{ __('system.address') }}:</b></h4>
+                <h4 class="mb-3"><b>{{ __('Address') }}:</b></h4>
                 <p>{{ $gig->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-danger active"><b>{{ __('system.cancelled_date') }}</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
+                    <button disabled type="button" class="btn btn-outline-danger active"><b>{{ __('Cancel date') }}</b> <br> <small> {{ date('h:i:s a m/d/Y', strtotime($gig->updated_at)) }}</small></button>
                 </div>
             </div>
     @endif

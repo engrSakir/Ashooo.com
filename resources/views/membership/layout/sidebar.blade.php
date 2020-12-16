@@ -18,7 +18,7 @@
                 <a href="#" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">find_in_page</i>History</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">view_quilt<span class="new-notification"></span></i>Pages Controls</a>
                 <a href="{{ route('language') }}" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">language</i>@if(current_language() == 'bn') {{ __('English') }} @else {{ __('বাংলা') }} @endif</a>
-                <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>{{ __('customer/sidebar.color_change') }}</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>{{ __('Color') }}</a>
                 <a href="#" onclick="logout()" class="list-group-item list-group-item-action"><i class="material-icons icons-raised bg-danger">power_settings_new</i>{{ __('Logout') }}</a>
             </div>
         </div>

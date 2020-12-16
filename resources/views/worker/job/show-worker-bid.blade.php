@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto">
-                                    <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerGig->customer->image) }}" alt=""></figure>
+                                    <figure class="avatar avatar-60"><img src="{{ asset($customerGig->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                                 </div>
                                 <div class="col pl-0 align-self-center">
                                     <h5 class="mb-1">{{ $customerGig->customer->full_name }}</h5>
@@ -143,7 +143,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto">
-                                    <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$bid->worker->image) }}" alt=""></figure>
+                                    <figure class="avatar avatar-60"><img src="{{ asset($bid->worker->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                                 </div>
                                 <div class="col pl-0 align-self-center">
                                     <h5 class="mb-1">{{ $bid->worker->full_name }}</h5>
@@ -196,7 +196,7 @@
                                         <div class="col-auto align-self-center text-center">
                                             <i class="material-icons text-template-primary">
                                                 <figure class="avatar avatar-60 border-0">
-                                                    <img src="{{ asset('uploads/images/users/'.$bid->customerGig->customer->image) }}" alt="">
+                                                    <img src="{{ asset($bid->customerGig->customer->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                                 </figure>
                                             </i>
                                         </div>
@@ -286,7 +286,7 @@
                                     <b>{{ 'Image:' }}</b><br>
 
                                     @if($bid->customerGig->image)
-                                        <img src="{{ asset('uploads/images/jobs/'.$bid->customerGig->image) }}" class="text-center" style="width: 100%; max-height: 2000px; border: 10px solid darkred; border-radius: 25px;">
+                                        <img src="{{ asset($bid->customerGig->image) }}" class="text-center" style="width: 100%; max-height: 2000px; border: 10px solid darkred; border-radius: 25px;">
                                     @else
                                         <b>Image not uploaded</b>
                                     @endif
@@ -323,7 +323,7 @@
                                         <div class="col-auto align-self-center text-center">
                                             <i class="material-icons text-template-primary">
                                                 <figure class="avatar avatar-60 border-0">
-                                                    <img src="{{ asset('uploads/images/users/'.$bid->customerGig->customer->image) }}" alt="">
+                                                    <img src="{{ asset($bid->customerGig->customer->image?? 'uploads/images/defaults/user.png') }}" alt="">
                                                 </figure>
                                             </i>
                                         </div>
@@ -407,7 +407,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-auto">
-                                    <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerGig->customer->image) }}" alt=""></figure>
+                                    <figure class="avatar avatar-60"><img src="{{ asset($customerGig->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                                 </div>
                                 <div class="col pl-0 align-self-center">
                                     <h5 class="mb-1">{{ $customerGig->customer->full_name }}</h5>

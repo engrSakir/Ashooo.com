@@ -4,6 +4,7 @@ use App\Page;
 use App\StaticOption;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use smasif\ShurjopayLaravelPackage\ShurjopayService;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 if (!function_exists('random_code')){
@@ -81,7 +82,6 @@ if (!function_exists('random_code')){
             ]);
             return true;
         }
-        return false;
     }
 
     function delete_static_option($key)
@@ -142,6 +142,12 @@ if (!function_exists('random_code')){
 
     function get_all_static_pages(){
         return Page::all();
+    }
+
+    function pay($amount, $success_route){
+        $shurjopay_service = new ShurjopayService(); //Initiate the object
+        $shurjopay_service->generateTxId(); // Get transaction id. You can use custom id like: $shurjopay_service->generateTxId('123456');
+        $shurjopay_service->sendPayment($amount, $success_route); // You can call simply $shurjopay_service->sendPayment(2) without success route
     }
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use smasif\ShurjopayLaravelPackage\ShurjopayService;
@@ -160,8 +161,8 @@ Route::get('/membership', function (){
 //Membership Routes
 Route::group(['namespace' => 'Membership', 'as' => 'membership.', 'prefix'=>'membership', 'middleware'=>['membership', 'auth']], function (){
     Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
-    Route::post('/buy-membership', 'MembershipController@buy')->name('buyMembership');
-    Route::get('/response/{membership}/{duration}', 'PaymentController@response')->name('paymentResponse');
+    Route::post('/buy-membership', 'MembershipController@purchaseRequest')->name('buyMembership');
+    Route::post('/response-membership-payment/{membership}/{duration}', 'MembershipController@purchaseResponse')->name('paymentResponse');
 });
 
 Route::get('/customer', function (){

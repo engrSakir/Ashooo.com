@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-auto">
-                            <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerGig->customer->image) }}" alt=""></figure>
+                            <figure class="avatar avatar-60"><img src="{{ asset($customerGig->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                         </div>
                         <div class="col pl-0 align-self-center">
                             <h5 class="mb-1">{{ $customerGig->customer->full_name }}</h5>
@@ -99,10 +99,10 @@
                     <div class="row">
                         <div class="container">
                             <div class="form-group">
-                                <input type="number" id="budget" class="form-control bg-secondary form-control-lg text-success text-center" placeholder="{{ __('Your Budget') }}">
+                                <input type="number" id="budget" class="form-control form-control-lg text-success text-center" placeholder="{{ __('Your Budget') }}">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control form-control-lg bg-secondary text-success" id="description" rows="6" placeholder="{{ __('Job Description') }}"></textarea>
+                                <textarea class="form-control form-control-lg text-success" id="description" rows="6" placeholder="{{ __('Job Description') }}"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" id="job-id" value="{{ \Illuminate\Support\Facades\Crypt::encryptString($customerGig->id) }}">
@@ -116,7 +116,7 @@
 <!-- Start bid title -->
     <div class="">
         <div class="alert alert-info text-center" role="alert">
-            <b id=""> {{ __('All BIDS') }}/b>
+            <b id=""> {{ __('All BIDS') }}</b>
         </div>
     </div>
     <!-- End title -->
@@ -127,7 +127,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-auto">
-                            <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$bid->worker->image) }}" alt=""></figure>
+                            <figure class="avatar avatar-60"><img src="{{ asset($bid->worker->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                         </div>
                         <div class="col pl-0 align-self-center">
                             <h5 class="mb-1">{{ $bid->worker->full_name }}</h5>

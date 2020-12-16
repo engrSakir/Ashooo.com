@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerBid->customer->image) }}" alt=""></figure>
+                                <figure class="avatar avatar-60 border-0"><img src="{{ asset($customerBid->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">{{ $customerBid->customer->full_name }}</h5>
@@ -140,7 +140,7 @@
                                         <div class="col-auto align-self-center text-center">
                                             <i class="material-icons text-template-primary">
                                                 <figure class="avatar avatar-60 border-0">
-                                                    <img src="{{ asset('uploads/images/users/'.$customerBid->customer->image) }}" alt="">
+                                                    <img src="{{ asset($customerBid->customer->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                                 </figure>
                                             </i>
                                         </div>
@@ -265,7 +265,7 @@
                                         <div class="col-auto align-self-center text-center">
                                             <i class="material-icons text-template-primary">
                                                 <figure class="avatar avatar-60 border-0">
-                                                    <img src="{{ asset('uploads/images/users/'.$customerBid->customer->image) }}" alt="">
+                                                    <img src="{{ asset($customerBid->customer->image ?? 'uploads/images/defaults/user.png') }}" alt="">
                                                 </figure>
                                             </i>
                                         </div>
@@ -348,7 +348,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.$customerBid->customer->image) }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset($customerBid->customer->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">{{ $customerBid->customer->full_name }}</h5>
