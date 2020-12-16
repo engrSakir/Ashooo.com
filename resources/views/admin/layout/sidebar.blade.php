@@ -82,37 +82,19 @@
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="icon-briefcase"></i>
-                <span>{{ __('More') }}</span> <i class="fa fa-angle-left pull-right"></i>
+                <span>{{ __('Pages') }}</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
-            <ul class="sidebar-submenu">
-                <li><a href="{{ route('admin.showOffer') }}"><i class="fa fa-circle-o"></i>{{ __('Offer') }}</a></li>
-            </ul>
-            <ul class="sidebar-submenu">
-                <li><a href="{{ route('admin.showReferralIncome') }}"><i class="fa fa-circle-o"></i> {{ __('Referral Income System') }}</a></li>
-            </ul>
-            <ul class="sidebar-submenu">
-                <li><a href="{{ route('admin.showVideoTraining') }}"><i class="fa fa-circle-o"></i> {{ __('Video Training') }}</a></li>
-            </ul>
-            <ul class="sidebar-submenu">
-                <li><a href="{{ route('admin.showHelpLine') }}"><i class="fa fa-circle-o"></i>{{ __(' Help Line') }}</a></li>
-            </ul>
-        </li>
-        <li><a href="javascript:0" target="_blank" class="waves-effect translation-btn"><i class="fa fa-circle-o text-red"></i>
-                <span>{{ __('Translation') }} ({{ current_language() }})</span></a></li>
-        <li><a href="{{ route('admin.showAbout') }}" class="waves-effect"><i class="fa fa-circle-o text-red"></i>
-                <span>{{ __('About') }}</span></a>
-        </li>
-        <li><a href="{{ route('admin.showFaq') }}" class="waves-effect"><i class="fa fa-circle-o text-yellow"></i>
-                <span>{{ __('FAQ') }}</span></a>
-        </li>
-        <li><a href="{{ route('admin.showTermsAndCondition') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
-                <span>{{ __('Terms & Conditions') }}</span></a>
-        </li>
-        <li><a href="{{ route('admin.showGeneralInformation') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
-                <span>{{ __('Privacy Policy') }}</span></a>
+            @foreach(get_all_static_pages() as $page)
+                <ul class="sidebar-submenu">
+                    <li><a href="{{ route('admin.page.edit',$page->id) }}"><i class="fa fa-circle-o"></i> @if(current_language() == 'bn'){{ ($page->bn_name) }} @else {{ ($page->en_name) }} @endif</a></li>
+                </ul>
+            @endforeach
         </li>
         <li><a href="{{ route('admin.updateGeneralInformation') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
-                <span>{{ __('Setting') }}</span></a>
+                <span>{{ __() }}</span></a>
+        </li>
+        <li><a href="javascript:0" target="_blank" class="waves-effect translation-btn"><i class="fa fa-circle-o text-red"></i>
+                <span>{{ __('Translation') }} ({{ current_language() }})</span></a>
         </li>
         <br>
         <br>

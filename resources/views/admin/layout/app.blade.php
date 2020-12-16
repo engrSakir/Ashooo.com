@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- This system developed by DataTech BD ltd. Phone: 01304734623-25 | info@datatechbd.com | 24-08-2020-->
+<!doctype html>
+<html lang="{{  App::getLocale() }}" class="deeppurple-theme">
+<!-- This system developed by DataTech BD ltd. Phone: 01304734623-25 | info@datatechbd.com | 23-08-2020-->
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content=""/>
-  <meta name="author" content=""/>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@stack('title') | Ashooo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>{{ config('app.name') }} | @stack('title') </title>
+    <meta name="author" content="{{ get_static_option('author_name') ?? 'No author' }}">
+    <meta name="description" content="{{ get_static_option('author_description') ?? 'No description' }}"/>
+    <meta property="og:image" content="{{ asset(get_static_option('meta_image')) }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   <!--favicon-->
-  <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset(get_static_option('fav') ?? 'uploads/images/defaults/fav.png') }}" type="image/x-icon">
     <!-- simplebar CSS-->
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet"/>
     <!-- Bootstrap core CSS-->
@@ -30,7 +31,7 @@
     @stack('head')
 </head>
 
-<body onload="info_noti()">
+<body>
 
 <!--Start logout-->
 @include('includes.logout')

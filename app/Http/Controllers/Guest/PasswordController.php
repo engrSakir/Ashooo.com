@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use App\SmsSender;
 use App\User;
 use Carbon\Carbon;

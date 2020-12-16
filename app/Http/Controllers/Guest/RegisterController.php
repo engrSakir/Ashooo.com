@@ -11,7 +11,7 @@ use App\MembershipServiceCategory;
 use App\Nid;
 use App\Rating;
 use App\Referral;
-use App\Setting;
+
 use App\User;
 use App\WorkerAndService;
 use App\WorkerService;
@@ -120,10 +120,10 @@ class RegisterController extends Controller
 
     //getWorkerRegisterForm
     public function getWorkerRegisterForm(){
-        $setting = Setting::find(1);
+
         $districts = District::all();
         $categories= WorkerServiceCategory::all();
-        return view('auth.worker-register',compact('setting', 'districts', 'categories'));
+        return view('auth.worker-register',compact(, 'districts', 'categories'));
     }
 
     //Submit worker register
@@ -275,10 +275,10 @@ class RegisterController extends Controller
 
     //getMembershipRegisterForm
     public function getMembershipRegisterForm(){
-        $setting = Setting::find(1);
+
         $districts = District::all();
         $categories= MembershipServiceCategory::all();
-        return view('auth.membership-register',compact('setting', 'districts', 'categories'));
+        return view('auth.membership-register',compact(, 'districts', 'categories'));
     }
 
     //Submit membership register

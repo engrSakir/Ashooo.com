@@ -6,7 +6,7 @@ use App\CustomerBid;
 use App\Http\Controllers\Controller;
 use App\Notifications\CustomerBidNotification;
 use App\Referral;
-use App\Setting;
+
 use App\WorkerGig;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,10 +39,10 @@ class CustomerBidController extends Controller
     }
 
     public function show($id){
-        $setting = Setting::find(1);
+
         $customerBid = CustomerBid::find(Crypt::decryptString($id));
         if ($customerBid->customer->id == Auth::user()->id){
-            return view('customer.job.show-customer-bid', compact('setting', 'customerBid'));
+            return view('customer.job.show-customer-bid', compact(, 'customerBid'));
         }else{
             return redirect()->back();
         }

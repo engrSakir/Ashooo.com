@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Controller;
 
 use App\ControllerNotice;
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +17,8 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
-        return view('controller.notice.index', compact('setting'));
+
+        return view('controller.notice.index', compact());
     }
 
     /**

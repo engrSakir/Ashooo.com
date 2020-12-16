@@ -4,163 +4,88 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Setting;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class SettingController extends Controller
 {
-   public function showOffer(){
-       $setting = Setting::find(1);
-       return view('admin.setting.offer', compact('setting'));
-   }
-
-   public function updateOffer(Request $request){
-       $request->validate([
-           'english_description' => 'required|min:15',
-           'bengali_description' => 'required|min:15'
-       ]);
-       $setting = Setting::find(1);
-       $setting->en_offer = $request->input('english_description');
-       $setting->bn_offer = $request->input('bengali_description');
-       $setting->save();
-       return $setting;
-   }
-
-   public function showReferralIncome(){
-       $setting = Setting::find(1);
-       return view('admin.setting.referral-income-system', compact('setting'));
-   }
-
-   public function updateReferralIncome(Request $request){
-       $request->validate([
-           'english_description' => 'required|min:10',
-           'bengali_description' => 'required|min:10'
-       ]);
-       $setting = Setting::find(1);
-       $setting->en_referral_income_system = $request->input('english_description');
-       $setting->bn_referral_income_system = $request->input('bengali_description');
-       $setting->save();
-       return $setting;
-   }
-
-   public function showVideoTraining(){
-       $setting = Setting::find(1);
-       return view('admin.setting.video-training', compact('setting'));
-   }
-
-   public function updateVideoTraining(Request $request){
-       $request->validate([
-           'customer_video_training_url' => 'required|min:3',
-           'worker_video_training_url' => 'required|min:3',
-           'membership_video_training_url' => 'required|min:3'
-       ]);
-       $setting = Setting::find(1);
-       $setting->customer_video_training_url = $request->input('customer_video_training_url');
-       $setting->worker_video_training_url = $request->input('worker_video_training_url');
-       $setting->membership_video_training_url = $request->input('membership_video_training_url');
-       $setting->save();
-       return $setting;
-   }
-
-   public function showHelpLine(){
-       $setting = Setting::find(1);
-       return view('admin.setting.help-line', compact('setting'));
-   }
-
-   public function updateHelpLine(Request $request){
-       $request->validate([
-           'english_description' => 'required|min:10',
-           'bengali_description' => 'required|min:10'
-       ]);
-       $setting = Setting::find(1);
-       $setting->en_help_line = $request->input('english_description');
-       $setting->bn_help_line = $request->input('bengali_description');
-       $setting->save();
-       return $setting;
-   }
-
-
-   public function showAbout(){
-       $setting = Setting::find(1);
-       return view('admin.setting.about', compact('setting'));
-   }
-
-   public function updateAbout(Request $request){
-       $request->validate([
-           'english_description' => 'required|min:10',
-           'bengali_description' => 'required|min:10'
-       ]);
-       $setting = Setting::find(1);
-       $setting->en_about = $request->input('english_description');
-       $setting->bn_about = $request->input('bengali_description');
-       $setting->save();
-       return $setting;
-   }
-
-   public function showFaq(){
-       $setting = Setting::find(1);
-       return view('admin.setting.faq', compact('setting'));
-   }
-
-    public function updateFaq(Request $request){
-        $request->validate([
-            'english_description' => 'required|min:10',
-            'bengali_description' => 'required|min:10'
-        ]);
-        $setting = Setting::find(1);
-        $setting->en_faq = $request->input('english_description');
-        $setting->bn_faq = $request->input('bengali_description');
-        $setting->save();
-        return $setting;
-    }
-
-   public function showTermsAndCondition(){
-       $setting = Setting::find(1);
-       return view('admin.setting.terms-and-condition', compact('setting'));
-   }
-
-    public function updateTermsAndCondition(Request $request){
-        $request->validate([
-            'english_description' => 'required|min:10',
-            'bengali_description' => 'required|min:10'
-        ]);
-        $setting = Setting::find(1);
-        $setting->en_terms_and_condition = $request->input('english_description');
-        $setting->bn_terms_and_condition = $request->input('bengali_description');
-        $setting->save();
-        return $setting;
-    }
-
-   public function showPrivacyPolicy(){
-       $setting = Setting::find(1);
-       return view('admin.setting.privacy-policy', compact('setting'));
-   }
-
-    public function updatePrivacyPolicy(Request $request){
-        $request->validate([
-            'english_description' => 'required|min:10',
-            'bengali_description' => 'required|min:10'
-        ]);
-        $setting = Setting::find(1);
-        $setting->en_privacy_policy = $request->input('english_description');
-        $setting->bn_privacy_policy = $request->input('bengali_description');
-        $setting->save();
-        return $setting;
-    }
-
     public function showGeneralInformation(){
-       $setting = Setting::find(1);
-       return view('admin.setting.general-information', compact('setting'));
-   }
+        return view('admin.setting.general-information');
+    }
 
     public function updateGeneralInformation(Request $request){
-        $request->validate([
-            'english_description' => 'required|min:10',
-            'bengali_description' => 'required|min:10'
-        ]);
-        $setting = Setting::find(1);
-        $setting->en_privacy_policy = $request->input('english_description');
-        $setting->bn_privacy_policy = $request->input('bengali_description');
-        $setting->save();
-        return $setting;
+
+        update_static_option('name', $request->input('name'));
+
+        if($request->hasFile('logo')){
+            $image             = $request->file('logo');
+            $folder_path       = 'uploads/images/';
+            $image_new_name    = Str::random(8).'-logo-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(280, 84, function($constraint){
+                $constraint->aspectRatio();
+            })->save($folder_path.$image_new_name);
+            update_static_option('logo', $folder_path.$image_new_name);
+        }
+
+        if($request->hasFile('logo_white')){
+            $image             = $request->file('logo_white');
+            $folder_path       = 'uploads/images/';
+            $image_new_name    = Str::random(8).'-logo_white-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(280, 84, function($constraint){
+                $constraint->aspectRatio();
+            })->save($folder_path.$image_new_name);
+            update_static_option('logo_white', $folder_path.$image_new_name);
+        }
+
+        if($request->hasFile('header_logo')){
+            $image             = $request->file('header_logo');
+            $folder_path       = 'uploads/images/';
+            $image_new_name    = Str::random(8).'-header_logo-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(133, 51, function($constraint){
+                $constraint->aspectRatio();
+            })->save($folder_path.$image_new_name);
+            update_static_option('header_logo', $folder_path.$image_new_name);
+        }
+
+        if($request->hasFile('header_logo_white')){
+            $image             = $request->file('header_logo_white');
+            $folder_path       = 'uploads/images/';
+            $image_new_name    = Str::random(8).'-header_logo_white-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(133, 51, function($constraint){
+                $constraint->aspectRatio();
+            })->save($folder_path.$image_new_name);
+            update_static_option('header_logo_white', $folder_path.$image_new_name);
+        }
+
+        if($request->hasFile('fav')){
+            $image             = $request->file('fav');
+            $folder_path       = 'uploads/images/';
+            $image_new_name    = Str::random(8).'-fav-'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->fit(68, 68, function($constraint){
+                $constraint->aspectRatio();
+            })->save($folder_path.$image_new_name);
+            update_static_option('fav', $folder_path.$image_new_name);
+        }
+
+
+        update_static_option('motto', $request->input('motto'));
+        update_static_option('sms_username', $request->input('sms_username'));
+        update_static_option('sms_key', $request->input('sms_key'));
+        update_static_option('reset_sms_count', $request->input('reset_sms_count'));
+        update_static_option('reset_sms_template', $request->input('reset_sms_template'));
+        update_static_option('welcome_sms_template', $request->input('welcome_sms_template'));
+        update_static_option('worker_activation_price', $request->input('worker_activation_price'));
+        update_static_option('per_customer_referral_price', $request->input('per_customer_referral_price'));
+        update_static_option('per_worker_referral_price', $request->input('per_worker_referral_price'));
+        update_static_option('per_membership_referral_price', $request->input('per_membership_referral_price'));
+        update_static_option('admin_percent_on_worker_job', $request->input('admin_percent_on_worker_job'));
+        return redirect()->back();
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Controller;
 use App\AdminAds;
 use App\ControllerAds;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +19,8 @@ class AdsController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
-        return view('controller.ads.index', compact('setting'));
+
+        return view('controller.ads.index');
     }
 
     /**

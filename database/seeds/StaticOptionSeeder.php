@@ -12,13 +12,13 @@ class StaticOptionSeeder extends Seeder
     public function run()
     {
         set_static_option('name', 'Ashooo');
+
         set_static_option('logo', null);
-        set_static_option('logo_login', null);
-        set_static_option('logo_login_white', null);
-        set_static_option('logo_header', null);
-        set_static_option('logo_header_white', null);
-        set_static_option('search', null);
+        set_static_option('logo_white', null);
+        set_static_option('header_logo', null);
+        set_static_option('header_logo_white', null);
         set_static_option('fav', null);
+
         set_static_option('motto', 'service marketplace');
         set_static_option('sms_username', '');
         set_static_option('sms_key', 'ab5821e83a99eb9ec4774c962cb768a0');

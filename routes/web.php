@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/controller-list/{upazila_id}', function ($upazila_id){
    $setting = \App\Setting::find(1);
    $upazila = \App\Upazila::find($upazila_id);
-   return view('guest.controller', compact('setting', 'upazila'));
+   return view('guest.controller', compact(, 'upazila'));
 })->name('controller-list');
 
 Route::get('/language', function (){
@@ -90,33 +90,11 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix'=>'admin', 'midd
     Route::resource('membership-package', 'MembershipPackageController')->except(['create','show', 'edit', 'update', 'destroy']);
     Route::post('membership-package/update','MembershipPackageController@update')->name('updateMembershipPackage');
 
-    //Setting
-    Route::get('/setting/offer','SettingController@showOffer')->name('showOffer');
-    Route::post('/setting/offer','SettingController@updateOffer')->name('updateOffer');
-
-    Route::get('/setting/referral-income','SettingController@showReferralIncome')->name('showReferralIncome');
-    Route::post('/setting/referral-income','SettingController@updateReferralIncome')->name('updateReferralIncome');
-
-    Route::get('/setting/video-training','SettingController@showVideoTraining')->name('showVideoTraining');
-    Route::post('/setting/video-training','SettingController@updateVideoTraining')->name('updateVideoTraining');
-
-    Route::get('/setting/help-line','SettingController@showHelpLine')->name('showHelpLine');
-    Route::post('/setting/help-line','SettingController@updateHelpLine')->name('updateHelpLine');
-
-    Route::get('/setting/about','SettingController@showAbout')->name('showAbout');
-    Route::post('/setting/about','SettingController@updateAbout')->name('updateAbout');
-
-    Route::get('/setting/faq','SettingController@showFaq')->name('showFaq');
-    Route::post('/setting/faq','SettingController@updateFaq')->name('updateFaq');
-
-    Route::get('/setting/terms-and-condition','SettingController@showTermsAndCondition')->name('showTermsAndCondition');
-    Route::post('/setting/terms-and-condition','SettingController@updateTermsAndCondition')->name('updateTermsAndCondition');
-
-    Route::get('/setting/privacy-policy','SettingController@showPrivacyPolicy')->name('showPrivacyPolicy');
-    Route::post('/setting/privacy-policy','SettingController@updatePrivacyPolicy')->name('updatePrivacyPolicy');
-
     Route::get('/setting/general','SettingController@showGeneralInformation')->name('showGeneralInformation');
     Route::post('/setting/general','SettingController@updateGeneralInformation')->name('updateGeneralInformation');
+
+    Route::post('/page', 'PagesController@update')->name('page.update');
+    Route::get('/page/{slug}', 'PagesController@edit')->name('page.edit');
 
 });
 

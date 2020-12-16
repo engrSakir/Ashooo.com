@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Membership;
 use App\Http\Controllers\Controller;
 use App\Membership;
 use App\Payment;
-use App\Setting;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use smasif\ShurjopayLaravelPackage\ShurjopayService;
@@ -33,8 +33,8 @@ class PaymentController extends Controller
 
         }
 
-        $setting = Setting::find(1);
-        return view('payment-response', compact('setting'))->with('status', $request->all()['status']);
+
+        return view('payment-response', compact())->with('status', $request->all()['status']);
 
 
         //dd($request->all());

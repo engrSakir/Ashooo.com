@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Worker;
 
 use App\Gig;
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use App\WorkerGig;
 use App\WorkerServiceCategory;
 use Illuminate\Http\Request;
@@ -15,9 +15,9 @@ class WorkerGigController extends Controller
 {
     public function index()
     {
-        $setting = Setting::find(1);
+
         $categories = WorkerServiceCategory::all();
-        return view('worker.gig.index', compact('setting', 'categories'));
+        return view('worker.gig.index', compact(, 'categories'));
     }
 
 
@@ -47,21 +47,21 @@ class WorkerGigController extends Controller
     }
 
     public function show($id){
-        $setting = Setting::find(1);
+
         $workerGig = WorkerGig::find(Crypt::decryptString($id));
         if ($workerGig->worker->id == Auth::user()->id){
-            return view('worker.gig.show', compact('setting', 'workerGig'));
+            return view('worker.gig.show', compact(, 'workerGig'));
         }else{
             return redirect()->back();
         }
     }
 
     public function edit($id){
-        $setting = Setting::find(1);
+
         $workerGig = WorkerGig::find(Crypt::decryptString($id));
         $categories = WorkerServiceCategory::all();
         if ($workerGig->worker->id == Auth::user()->id){
-            return view('worker.gig.edit', compact('setting', 'workerGig','categories'));
+            return view('worker.gig.edit', compact(, 'workerGig','categories'));
         }else{
             return redirect()->back();
         }

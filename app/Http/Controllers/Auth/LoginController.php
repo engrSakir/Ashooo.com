@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -50,8 +49,7 @@ class LoginController extends Controller
     //Over write login view
     public function showLoginForm()
     {
-        $setting = Setting::find(1);
-        return view('auth.login',compact('setting'));
+        return view('auth.login');
     }
 
     //Over write login

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Controller;
 
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,8 +11,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $setting = Setting::find(1);
-        return view('controller.user.index', compact('setting'));
+
+        return view('controller.user.index', compact());
     }
 
     public function userStatus(Request $request)

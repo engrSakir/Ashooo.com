@@ -6,7 +6,7 @@ use App\AdminAds;
 use App\GigOrder;
 use App\Http\Controllers\Controller;
 use App\Job;
-use App\Setting;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +21,12 @@ class JobController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
+
 
         $adminAds = AdminAds::where('status', '1')
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('worker.job.index', compact('setting', 'adminAds'));
+        return view('worker.job.index', compact(, 'adminAds'));
     }
 }

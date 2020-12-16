@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\PaymentGateway;
 
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use Illuminate\Http\Request;
 use smasif\ShurjopayLaravelPackage\ShurjopayService;
 
@@ -20,14 +20,14 @@ class ShurjoPayController extends Controller
     }
 
     public function getPaymentSuccessView(){
-        $setting = Setting::find(1);
-       return view('payment-response', compact('setting'));
+
+       return view('payment-response', compact());
     }
 
     public function response(Request $request)
     {
-        $setting = Setting::find(1);
-        return view('payment-response', compact('setting'))->with('status', $request->all()['status']);
+
+        return view('payment-response', compact())->with('status', $request->all()['status']);
 
         /**
         dd($request->all());
@@ -55,8 +55,8 @@ class ShurjoPayController extends Controller
                 break;
         }
 
-        $setting = Setting::find(1);
-        return view('payment-response', compact('setting'))->with('status', $status);;
+
+        return view('payment-response', compact())->with('status', $status);;
 
         /*
         $success_url = $request->get('success_url');

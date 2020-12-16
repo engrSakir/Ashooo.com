@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Worker;
 
 use App\CustomerBid;
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use App\WorkerBid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,9 @@ class CustomerBidController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id){
-        $setting = Setting::find(1);
+
         $customerBid = CustomerBid::find(Crypt::decryptString($id));
-        return view('worker.job.show-customer-bid',compact('setting', 'customerBid'));
+        return view('worker.job.show-customer-bid',compact(, 'customerBid'));
     }
 
     /**

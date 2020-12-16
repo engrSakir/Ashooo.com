@@ -9,7 +9,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-auto">
-                        <figure class="avatar avatar-60"><img src="{{ asset('uploads/images/users/'.auth()->user()->image) }}" alt=""></figure>
+                        <figure class="avatar avatar-60 border-0"><img src="{{ asset(auth()->user()->image ?? 'uploads/images/defaults/user.png') }}" alt=""></figure>
                     </div>
                     <div class="col pl-0 align-self-center">
                         <h5 class="mb-1">{{ auth()->user()->full_name }}</h5>
@@ -136,33 +136,11 @@
     <div class="container">
         <h6 class="subtitle text-center"> Useful Function </h6>
             <div class="list-group list-group-flush">
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal">Favorite <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal offer-modal-btn">Offers <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal referral-income-system-btn">Referral income system <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal video-training-btn">Video training <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal help-line-btn">Help line <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal about-btn">About <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal faq-btn">FAQ <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal terms-and-condition-btn">Terms and condition <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
-                <a href="javaScript:void();" class="list-group-item">
-                    <h6 class="text-dark mb-0 font-weight-normal privacy-policy-btn">Privacy policy <i class="material-icons float-right">chevron_right</i></h6>
-                </a>
+                @foreach(get_all_static_pages() as $page)
+                    <a href="javaScript:void();" class="list-group-item" data-toggle="modal" data-target="#{{ $page->slug }}">
+                        <h6 class="text-dark mb-0 font-weight-normal">@if(current_language() == 'bn') {{ $page->bn_name }} @else {{ $page->en_name }} @endif <i class="material-icons float-right">chevron_right</i></h6>
+                    </a>
+                @endforeach
                 <a href="javaScript:void();" onclick="logout()" class="list-group-item bg-dark text-white">
                     <h6 class="text-white mb-0 font-weight-normal">Logout <i class="material-icons float-right">chevron_right</i></h6>
                 </a>

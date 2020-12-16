@@ -7,7 +7,7 @@ use App\AdminNotice;
 use App\Gig;
 use App\GigOrder;
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use App\WorkerService;
 use App\WorkerServiceCategory;
 use Carbon\Carbon;
@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
+
         $categories = WorkerServiceCategory::all();
         $adminNotice = AdminNotice::orderBy('id', 'desc')
             ->take(1)
@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
         notify()->success('Laravel Notify is awesome!');
-        return view('customer.home.index', compact('setting', 'categories', 'adminNotice', 'adminAds'));
+        return view('customer.home.index', compact(, 'categories', 'adminNotice', 'adminAds'));
     }
 
     /**
@@ -45,12 +45,12 @@ class HomeController extends Controller
      */
     public function showServices($id)
     {
-        $setting = Setting::find(1);
+
         $category = WorkerServiceCategory::find(Crypt::decryptString($id));
         $adminAds = AdminAds::where('status', '1')
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('customer.home.services',compact('setting', 'category','adminAds'));
+        return view('customer.home.services',compact(, 'category','adminAds'));
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\CustomerGig;
 use App\Http\Controllers\Controller;
 use App\Referral;
-use App\Setting;
+
 use App\WorkerBid;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -50,10 +50,10 @@ class CustomerGigController extends Controller
      */
     public function show($id)
     {
-        $setting = Setting::find(1);
+
         $gig = CustomerGig::find(Crypt::decryptString($id));
         if ($gig->customer_id == Auth::user()->id){
-            return view('customer.job.show-customer-gig', compact('setting', 'gig'));
+            return view('customer.job.show-customer-gig', compact(, 'gig'));
         }else{
             return redirect()->back();
         }

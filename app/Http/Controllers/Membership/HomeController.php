@@ -6,7 +6,7 @@ use App\AdminAds;
 use App\AdminNotice;
 use App\Http\Controllers\Controller;
 use App\MembershipPackage;
-use App\Setting;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
+
         $packages = MembershipPackage::all();
         $adminAds = AdminAds::where('status', '1')
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
@@ -28,7 +28,7 @@ class HomeController extends Controller
         $adminNotice = AdminNotice::orderBy('id', 'desc')
             ->take(1)
             ->get();
-        return view('membership.home.index', compact('setting', 'packages', 'adminAds', 'adminNotice'));
+        return view('membership.home.index', compact(, 'packages', 'adminAds', 'adminNotice'));
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Worker;
 use App\CustomerGig;
 use App\Http\Controllers\Controller;
 use App\Notifications\WorkerBidNotification;
-use App\Setting;
+
 use App\WorkerBid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,9 @@ class WorkerBidController extends Controller
 
     public function show($id)
     {
-        $setting = Setting::find(1);
+
         $customerGig = CustomerGig::find(Crypt::decryptString($id));
-        return view('worker.job.show-worker-bid', compact('setting', 'customerGig'));
+        return view('worker.job.show-worker-bid', compact(, 'customerGig'));
     }
 
     public function store(Request $request)

@@ -1,5 +1,6 @@
 <?php
 
+use App\Page;
 use App\StaticOption;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -12,14 +13,7 @@ if (!function_exists('random_code')){
         return $tr->translate($text);
     }*/
 
-    function setting($kay){
-        $setting = \App\Setting::find(1)->$kay;
-        if ($setting){
-            return $setting;
-        }else{
-            return false;
-        }
-    }
+
 
     function current_language(){
         return App::getLocale();
@@ -27,7 +21,7 @@ if (!function_exists('random_code')){
 
     function send_sms($to, $message){
         //$to = "01304734623";
-        $token = setting('sms_key');
+        $token = get_static_option('sms_key');
         //"ab5821e83a99eb9ec4774c962cb768a0";
         //$message = "Test SMS From Using API";
 
@@ -144,6 +138,10 @@ if (!function_exists('random_code')){
             return false;
         }
 
+    }
+
+    function get_all_static_pages(){
+        return Page::all();
     }
 }
 

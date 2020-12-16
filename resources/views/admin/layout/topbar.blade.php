@@ -86,7 +86,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="dropdown-item"> <a onclick="logout()" style="cursor: pointer;"><i class="icon-power mr-2"></i> Logout</a> </li>
+                    <li class="dropdown-item" onclick="logout()"> <a  style="cursor: pointer;"><i class="icon-power mr-2"></i> Logout</a> </li>
                 </ul>
             </li>
         </ul>

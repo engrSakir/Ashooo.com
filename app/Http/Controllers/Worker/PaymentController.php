@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Worker;
 
 use App\Http\Controllers\Controller;
 use App\Payment;
-use App\Setting;
+
 use Illuminate\Http\Request;
 use smasif\ShurjopayLaravelPackage\ShurjopayService;
 
@@ -37,8 +37,8 @@ class PaymentController extends Controller
             $balance->save();
         }
 
-        $setting = Setting::find(1);
-        return view('payment-response', compact('setting'))->with('status', $request->all()['status']);
+
+        return view('payment-response', compact())->with('status', $request->all()['status']);
 
 
         //dd($request->all());

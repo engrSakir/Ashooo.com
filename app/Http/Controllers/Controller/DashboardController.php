@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Controller;
 
 use App\Http\Controllers\Controller;
-use App\Setting;
+
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,8 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
-        return view('controller.dashboard.index', compact('setting'));
+
+        return view('controller.dashboard.index', compact());
     }
 
     /**
