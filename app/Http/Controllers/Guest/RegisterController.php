@@ -123,7 +123,7 @@ class RegisterController extends Controller
 
         $districts = District::all();
         $categories= WorkerServiceCategory::all();
-        return view('auth.worker-register',compact(, 'districts', 'categories'));
+        return view('auth.worker-register',compact('districts', 'categories'));
     }
 
     //Submit worker register
@@ -278,7 +278,7 @@ class RegisterController extends Controller
 
         $districts = District::all();
         $categories= MembershipServiceCategory::all();
-        return view('auth.membership-register',compact(, 'districts', 'categories'));
+        return view('auth.membership-register',compact('districts', 'categories'));
     }
 
     //Submit membership register

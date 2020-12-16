@@ -38,7 +38,7 @@ class PaymentController extends Controller
         }
 
 
-        return view('payment-response', compact())->with('status', $request->all()['status']);
+        return view('payment-response')->with('status', $request->all()['status']);
 
 
         //dd($request->all());

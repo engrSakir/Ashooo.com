@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
         notify()->success('Laravel Notify is awesome!');
-        return view('customer.home.index', compact(, 'categories', 'adminNotice', 'adminAds'));
+        return view('customer.home.index', compact('categories', 'adminNotice', 'adminAds'));
     }
 
     /**
@@ -51,6 +51,6 @@ class HomeController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('customer.home.services',compact(, 'category','adminAds'));
+        return view('customer.home.services',compact('category','adminAds'));
     }
 }

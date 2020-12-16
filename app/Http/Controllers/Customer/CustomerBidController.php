@@ -42,7 +42,7 @@ class CustomerBidController extends Controller
 
         $customerBid = CustomerBid::find(Crypt::decryptString($id));
         if ($customerBid->customer->id == Auth::user()->id){
-            return view('customer.job.show-customer-bid', compact(, 'customerBid'));
+            return view('customer.job.show-customer-bid', compact('customerBid'));
         }else{
             return redirect()->back();
         }

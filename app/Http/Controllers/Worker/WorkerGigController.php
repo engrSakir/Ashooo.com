@@ -17,7 +17,7 @@ class WorkerGigController extends Controller
     {
 
         $categories = WorkerServiceCategory::all();
-        return view('worker.gig.index', compact(, 'categories'));
+        return view('worker.gig.index', compact('categories'));
     }
 
 
@@ -50,7 +50,7 @@ class WorkerGigController extends Controller
 
         $workerGig = WorkerGig::find(Crypt::decryptString($id));
         if ($workerGig->worker->id == Auth::user()->id){
-            return view('worker.gig.show', compact(, 'workerGig'));
+            return view('worker.gig.show', compact('workerGig'));
         }else{
             return redirect()->back();
         }
@@ -61,7 +61,7 @@ class WorkerGigController extends Controller
         $workerGig = WorkerGig::find(Crypt::decryptString($id));
         $categories = WorkerServiceCategory::all();
         if ($workerGig->worker->id == Auth::user()->id){
-            return view('worker.gig.edit', compact(, 'workerGig','categories'));
+            return view('worker.gig.edit', compact('workerGig','categories'));
         }else{
             return redirect()->back();
         }

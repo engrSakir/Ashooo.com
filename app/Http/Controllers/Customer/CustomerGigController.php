@@ -53,7 +53,7 @@ class CustomerGigController extends Controller
 
         $gig = CustomerGig::find(Crypt::decryptString($id));
         if ($gig->customer_id == Auth::user()->id){
-            return view('customer.job.show-customer-gig', compact(, 'gig'));
+            return view('customer.job.show-customer-gig', compact('gig'));
         }else{
             return redirect()->back();
         }

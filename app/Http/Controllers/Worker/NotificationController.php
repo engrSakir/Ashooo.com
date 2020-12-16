@@ -11,6 +11,6 @@ class NotificationController extends Controller
     public function index()
     {
 
-        return view('worker.notification.index', compact());
+        return view('worker.notification.index');
     }
 }

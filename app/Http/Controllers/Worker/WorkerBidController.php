@@ -19,7 +19,7 @@ class WorkerBidController extends Controller
     {
 
         $customerGig = CustomerGig::find(Crypt::decryptString($id));
-        return view('worker.job.show-worker-bid', compact(, 'customerGig'));
+        return view('worker.job.show-worker-bid', compact('customerGig'));
     }
 
     public function store(Request $request)

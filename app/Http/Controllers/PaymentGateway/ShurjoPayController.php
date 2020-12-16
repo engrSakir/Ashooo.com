@@ -21,13 +21,13 @@ class ShurjoPayController extends Controller
 
     public function getPaymentSuccessView(){
 
-       return view('payment-response', compact());
+       return view('payment-response');
     }
 
     public function response(Request $request)
     {
 
-        return view('payment-response', compact())->with('status', $request->all()['status']);
+        return view('payment-response')->with('status', $request->all()['status']);
 
         /**
         dd($request->all());
@@ -56,7 +56,7 @@ class ShurjoPayController extends Controller
         }
 
 
-        return view('payment-response', compact())->with('status', $status);;
+        return view('payment-response')->with('status', $status);;
 
         /*
         $success_url = $request->get('success_url');

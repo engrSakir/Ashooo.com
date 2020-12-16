@@ -28,7 +28,7 @@ class HomeController extends Controller
         $adminNotice = AdminNotice::orderBy('id', 'desc')
             ->take(1)
             ->get();
-        return view('membership.home.index', compact(, 'packages', 'adminAds', 'adminNotice'));
+        return view('membership.home.index', compact('packages', 'adminAds', 'adminNotice'));
     }
 
     /**

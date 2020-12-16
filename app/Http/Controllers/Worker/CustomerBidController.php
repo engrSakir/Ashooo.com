@@ -19,7 +19,7 @@ class CustomerBidController extends Controller
     public function show($id){
 
         $customerBid = CustomerBid::find(Crypt::decryptString($id));
-        return view('worker.job.show-customer-bid',compact(, 'customerBid'));
+        return view('worker.job.show-customer-bid',compact('customerBid'));
     }
 
     /**

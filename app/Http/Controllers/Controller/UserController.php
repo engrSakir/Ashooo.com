@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
 
-        return view('controller.user.index', compact());
+        return view('controller.user.index');
     }
 
     public function userStatus(Request $request)

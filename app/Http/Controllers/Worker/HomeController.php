@@ -44,7 +44,7 @@ class HomeController extends Controller
                 })->get();
             dd($c_gigs);
             */
-        return view('worker.home.index', compact(, 'categories', 'adminNotice', 'adminAds'));
+        return view('worker.home.index', compact('categories', 'adminNotice', 'adminAds'));
     }
 
 
@@ -54,7 +54,7 @@ class HomeController extends Controller
     public function showJob($id){
 
         $customerGig = CustomerGig::find(Crypt::decryptString($id));
-        return view('worker.home.show-job',compact(, 'customerGig'));
+        return view('worker.home.show-job',compact('customerGig'));
     }
 
     /**
@@ -67,12 +67,12 @@ class HomeController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('worker.home.show-service',compact(, 'category','adminAds'));
+        return view('worker.home.show-service',compact('category','adminAds'));
     }
 
     public function showCustomerGigs($service_id){
 
         $service = WorkerService::find(Crypt::decryptString($service_id));
-        return view('worker.home.gigs',compact(, 'service'));
+        return view('worker.home.gigs',compact('service'));
     }
 }

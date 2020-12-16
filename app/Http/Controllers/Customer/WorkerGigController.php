@@ -32,7 +32,7 @@ class WorkerGigController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('customer.home.gigs',compact(, 'service','adminAds'));
+        return view('customer.home.gigs',compact('service','adminAds'));
     }
 
     /**
@@ -44,7 +44,7 @@ class WorkerGigController extends Controller
     {
 
         $gig = WorkerGig::find(Crypt::decryptString($id));
-        return view('customer.home.gig-detail',compact(, 'gig'));
+        return view('customer.home.gig-detail',compact('gig'));
     }
 
     /**
@@ -55,7 +55,7 @@ class WorkerGigController extends Controller
     {
 
         $gig = WorkerGig::find(Crypt::decryptString($id));
-        return view('customer.home.order-form',compact(, 'gig'));
+        return view('customer.home.order-form',compact('gig'));
     }
 
 }

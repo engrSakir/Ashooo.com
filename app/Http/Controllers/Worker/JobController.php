@@ -27,6 +27,6 @@ class JobController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('worker.job.index', compact(, 'adminAds'));
+        return view('worker.job.index', compact('adminAds'));
     }
 }
