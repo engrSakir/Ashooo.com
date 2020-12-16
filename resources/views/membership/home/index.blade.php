@@ -55,87 +55,111 @@
         <!-- Start title -->
         <div class="">
             <div class="alert alert-info text-center" role="alert">
-                <b id=""> {{ __('My PACKAGE') }} </b>
+                <b id=""> {{ __('My PACKAGE : '.auth()->user()->membership->membershipPackage->name) }} </b>
             </div>
-        </div>
-        <!-- End title -->
-        <div class="alert" role="">
-            <h4 class="alert-heading">{{ auth()->user()->membership->membershipPackage->name }}</h4>
-            <div class="row package-detail">
-                <div class="col-8">
-                    <li>{{ __('Mobile number') }}</li>
-                    <li>{{ __('Description') }}</li>
-                    <li>{{ __('Images') }}</li>
-                    <li>{{ __('Rank') }}</li>
-                </div>
-                <div class="col-4">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center active">
+                    {{ __('Mobile number') }}
                     @if(auth()->user()->membership->membershipPackage->mobile_availability == 1)
                         <span class="badge badge-success shadow-success m-1">{{ __('Yes') }}</span>
                     @else
                         <span class="badge badge-danger shadow-danger m-1">{{ __('No') }}</span>
                     @endif
-                    <br>
-                    @if(auth()->user()->membership->membershipPackage->description_availability == 1)
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ __('Description') }}
+                     @if(auth()->user()->membership->membershipPackage->description_availability == 1)
                         <span class="badge badge-success shadow-success m-1">{{ __('Yes') }}</span>
                     @else
                         <span class="badge badge-danger shadow-danger m-1">{{ __('No') }}</span>
                     @endif
-                    <br>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ __('Images') }}
                     <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->membershipPackage->image_count }}</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->membershipPackage->position }}</span>
-                </div>
-            </div>
-            <hr>
-            <h4 class="alert-heading">{{ 'Duration' }}</h4>
-            <div class="row package-detail">
-                <div class="col-7 bg-warning">
-                    <li>{{ __('Duration') }}</li>
-                    <li>{{ __('Start/Renew') }}</li>
-                    <li>{{ __('Ending Date') }}</li>
-                </div>
-                <div class="col-5">
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} months</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
-                </div>
-            </div>
-            <hr>
-            <h4 class="alert-heading">{{ 'Update' }}</h4>
-            <div class="row package-detail">
-                <div class="col-7 bg-warning">
-                    <li>{{ __('Duration') }}</li>
-                    <li>{{ __('Start/Renew') }}</li>
-                    <li>{{ __('Ending Date') }}</li>
-                </div>
-                <div class="col-5">
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} months</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
-                </div>
-            </div>
-            <hr>
-            <h4 class="alert-heading">{{ __('Change Package') }}</h4>
-            <div class="row package-detail">
-                <div class="col-7 bg-warning">
-                    <li>{{ __('Duration') }}</li>
-                    <li>{{ __('Start/Renew') }}</li>
-                    <li>{{ __('Ending Date') }}</li>
-                </div>
-                <div class="col-5">
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} {{ __('months') }}</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
-                    <br>
-                    <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
-        <hr>
+        <!-- End title -->
+        {{--End my package--}}
+        {{--Start duration--}}
+        <br>
+        <br>
+        <br>
+        <div class="">
+            <div class="alert alert-danger text-center" role="alert">
+                <b id=""> {{ __('Duration') }} </b>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center active">
+                    {{ __('Duration') }}
+                     <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} months</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ __('Start/Renew') }}
+                     <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ __('Ending Date') }}
+                     <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
+                </li>
+            </ul>
+        </div>
+        {{--End duration--}}
+        {{--Start Update--}}
+        <br>
+        <br>
+        <br>
+        <div class="">
+            <div class="alert alert-success text-center" role="alert">
+                <b id=""> {{ __('Update') }} </b>
+            </div>
+            <form action="{{ route('membership.buyMembership') }}" method="post">
+                @csrf
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center active">
+                        {{ __('3 months') }}
+
+                        <button type="submit" name="duration" class="btn badge badge-success shadow-success m-1" value="3">Buy</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ __('6 months') }}
+
+                        <button type="submit" name="duration" class="btn badge badge-success shadow-success m-1" value="6">Buy</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ __('12 months') }}
+
+                        <button type="submit" name="duration" class="btn badge badge-success shadow-success m-1" value="12">Buy</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        {{--End Update--}}
+        {{--Start Change Package--}}
+        <br>
+        <br>
+        <br>
+        <div class="">
+            <div class="alert alert-warning text-center" role="alert">
+                <b id=""> {{ __('Change Package') }} </b>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center active">
+                    {{ __('Duration') }}
+                      <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->duration }} {{ __('months') }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ __('Start/Renew') }}
+                      <span class="badge badge-success shadow-success m-1">{{ auth()->user()->membership->created_at->format('d/m/Y') }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ __('Ending Date') }}
+                      <span class="badge badge-success shadow-success m-1">{{  date('d/m/Y', strtotime(auth()->user()->membership->ending_at)) }}</span>
+                </li>
+            </ul>
+        </div>
+        {{--End Change Package--}}
         <!-- Start admin notice box -->
         @foreach($adminNotice as $adminNotice)
             <section class="jumbotron text-center mt-3 bg-white shadow-sm">
@@ -199,7 +223,6 @@
         </div>
         <!-- End middle ads. by admin for all-->
     @endif
-
     <script>
         $(document).ready(function (){
             $('.select-package-btn').click(function (){
