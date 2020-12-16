@@ -62,10 +62,6 @@
     @include('customer.layout.footer')
 </div>
 
-<!-- notification -->
-@include('customer.layout.notification')
-<!-- notification ends -->
-
 <!-- color chooser menu start -->
 @include('customer.layout.color-choser')
 <!-- color chooser menu ends -->

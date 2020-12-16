@@ -63,10 +63,6 @@
     @include('membership.layout.footer')
 </div>
 
-<!-- notification -->
-@include('membership.layout.notification')
-<!-- notification ends -->
-
 <!-- color chooser menu start -->
 @include('membership.layout.color-choser')
 <!-- color chooser menu ends -->

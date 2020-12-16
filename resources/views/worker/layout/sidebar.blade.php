@@ -17,8 +17,9 @@
                 <a href="{{ route('worker.job.index') }}" class="list-group-item list-group-item-action @if(Route::is('worker.job.index')) active @endif"><i class="material-icons icons-raised">work</i>My Job</a>
                 <a href="{{ route('worker.gig.index') }}" class="list-group-item list-group-item-action @if(Route::is('worker.gig.index')) active @endif"><i class="material-icons icons-raised">add_to_queue</i>Gigs</a>
                 <a href="{{ route('worker.profile.index') }}" class="list-group-item list-group-item-action @if(Route::is('worker.profile.index')) active @endif"><i class="material-icons icons-raised">face</i>More</a>
-                <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>Color scheme</a>
-                <a href="#" onclick="logout()" class="list-group-item list-group-item-action"><i class="material-icons icons-raised bg-danger">power_settings_new</i>Logout</a>
+                <a href="{{ route('language') }}" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">language</i>@if(current_language() == 'bn') {{ __('English') }} @else {{ __('বাংলা') }} @endif</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>{{ __('Color') }}</a>
+                <a href="#" onclick="logout()" class="list-group-item list-group-item-action"><i class="material-icons icons-raised bg-danger">power_settings_new</i>{{ __('Logout') }}</a>
             </div>
         </div>
     </div>

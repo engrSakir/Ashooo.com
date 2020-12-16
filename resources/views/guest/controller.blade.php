@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Ashooo">
 
-    <title>Area Controller | {{ get_static_option('name')e }}</title>
+    <title>Area Controller | {{ get_static_option('name') }}</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/mobile/vendor/materializeicon/material-icons.css') }}">
