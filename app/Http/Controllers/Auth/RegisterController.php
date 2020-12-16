@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\District;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Setting;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -46,9 +45,8 @@ class RegisterController extends Controller
     //Over write register view
     public function showRegistrationForm()
     {
-        $setting = Setting::find(1);
         $districts = District::all();
-        return view('auth.register',compact('setting', 'districts'));
+        return view('auth.register',compact('districts'));
     }
 
     /**

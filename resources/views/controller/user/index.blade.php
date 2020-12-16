@@ -11,7 +11,7 @@
                 <div class="col-sm-9">
                     <h4 class="page-title">Users of {{ auth()->user()->upazila->name }}</h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javaScript:void();">{{ $setting->name }}</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">{{ get_static_option('name') }}</a></li>
                         <li class="breadcrumb-item"><a href="javaScript:void();">Users of</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ auth()->user()->upazila->name }}</li>
                     </ol>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\MembershipService;
 use App\MembershipServiceCategory;
-use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Image;
@@ -19,10 +18,9 @@ class MembershipServiceController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $services = MembershipService::all();//orderBy('id', 'desc')->get()
         $categories = MembershipServiceCategory::orderBy('id', 'desc')->get();
-        return view('admin.membership-service.index', compact('setting', 'services', 'categories'));
+        return view('admin.membership-service.index', compact('services', 'categories'));
     }
 
     /**

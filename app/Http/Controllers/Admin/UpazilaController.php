@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\District;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use App\Upazila;
 use Illuminate\Http\Request;
 
@@ -17,10 +16,9 @@ class UpazilaController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $upazilas = Upazila::orderBy('id', 'desc')->get();
         $districts = District::orderBy('id', 'desc')->get();
-        return view('admin.upazila.index', compact('setting', 'upazilas', 'districts'));
+        return view('admin.upazila.index', compact('upazilas', 'districts'));
     }
 
     /**

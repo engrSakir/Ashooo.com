@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\MembershipPackage;
-use App\Setting;
 use Illuminate\Http\Request;
 
 class MembershipPackageController extends Controller
@@ -16,9 +15,8 @@ class MembershipPackageController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $packages = MembershipPackage::all(); //orderBy('id', 'desc')->get()
-        return view('admin.membership.index', compact('setting', 'packages'));
+        return view('admin.membership.index', compact('packages'));
     }
 
     /**

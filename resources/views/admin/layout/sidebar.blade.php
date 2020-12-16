@@ -91,7 +91,7 @@
             @endforeach
         </li>
         <li><a href="{{ route('admin.updateGeneralInformation') }}" class="waves-effect"><i class="fa fa-circle-o text-aqua"></i>
-                <span>{{ __() }}</span></a>
+                <span>{{ __('Static Options') }}</span></a>
         </li>
         <li><a href="javascript:0" target="_blank" class="waves-effect translation-btn"><i class="fa fa-circle-o text-red"></i>
                 <span>{{ __('Translation') }} ({{ current_language() }})</span></a>

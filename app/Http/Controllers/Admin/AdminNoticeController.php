@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\AdminNotice;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,9 +16,8 @@ class AdminNoticeController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $notices = AdminNotice::orderBy('id', 'desc')->get();
-        return view('admin.admin-notice.index', compact('setting', 'notices'));
+        return view('admin.admin-notice.index', compact( 'notices'));
     }
 
     /**

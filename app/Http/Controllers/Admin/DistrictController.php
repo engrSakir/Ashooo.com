@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\District;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller
@@ -16,9 +15,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $districts = District::orderBy('id', 'desc')->get();
-        return view('admin.district.index', compact('setting', 'districts'));
+        return view('admin.district.index', compact('districts'));
     }
 
     /**

@@ -25,14 +25,14 @@ class PasswordController extends Controller
 */
         $user = User::where('phone', $request->input('phone'))->first();
 
-        if ($user->reset_date != Carbon::today() || $user->reset_count < Setting::find(1)->reset_sms_count){
+        if ($user->reset_date != Carbon::today() || $user->reset_count < get_static_option('reset_sms_count')){
             //under available reset sms
             $user->reset_count++; // reset sms counting
             $password = Str::random(4);
             $user->reset_date = Carbon::today();
             $user->password = Hash::make($password);
             $smsSender = new SmsSender();
-            $readySms = Setting::find(1)->reset_sms_template.$password.' লগিন করুনঃ '.Setting::find(1)->website;
+            $readySms = get_static_option('reset_sms_template').$password.' লগিন করুনঃ '.get_static_option('website');
             $messageResponse = $smsSender->smsSender($user->phone, $readySms);
             if (strpos($messageResponse, 'Successfully')){
                 $user->save();

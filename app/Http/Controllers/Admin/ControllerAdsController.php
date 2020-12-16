@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\ControllerAds;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Image;
@@ -18,9 +17,8 @@ class ControllerAdsController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $ads = ControllerAds::orderBy('id', 'desc')->get();
-        return view('admin.controller-ads.index', compact('setting', 'ads'));
+        return view('admin.controller-ads.index', compact('ads'));
     }
 
     /**

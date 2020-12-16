@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Setting;
 use App\WorkerServiceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,9 +17,8 @@ class WorkerServiceCategoryController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $categories = WorkerServiceCategory::all();//orderBy('id', 'desc')->get()
-        return view('admin.worker-service-category.index', compact('setting', 'categories'));
+        return view('admin.worker-service-category.index', compact('categories'));
     }
 
     /**

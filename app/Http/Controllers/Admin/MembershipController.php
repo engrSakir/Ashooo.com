@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Membership;
 use App\MembershipPackage;
-use App\Setting;
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller

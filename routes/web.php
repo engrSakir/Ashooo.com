@@ -23,7 +23,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/controller-list/{upazila_id}', function ($upazila_id){
-   $setting = \App\Setting::find(1);
    $upazila = \App\Upazila::find($upazila_id);
    return view('guest.controller', compact('upazila'));
 })->name('controller-list');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\District;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,8 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
-        return view('admin.dashboard.index', compact('setting'));
+        return view('admin.dashboard.index');
     }
 
     /**

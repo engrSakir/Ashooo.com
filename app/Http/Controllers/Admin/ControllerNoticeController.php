@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\ControllerNotice;
 use App\Http\Controllers\Controller;
-use App\Setting;
 use Illuminate\Http\Request;
 
 class ControllerNoticeController extends Controller
@@ -16,9 +15,8 @@ class ControllerNoticeController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
         $notices = ControllerNotice::orderBy('id', 'desc')->get();
-        return view('admin.controller-notice.index', compact('setting', 'notices'));
+        return view('admin.controller-notice.index', compact('notices'));
     }
 
     /**

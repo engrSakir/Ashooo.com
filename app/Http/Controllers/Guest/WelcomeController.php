@@ -15,6 +15,6 @@ class WelcomeController extends Controller
 
     public function index(){
 
-        return view('guest.index',compact());
+        return view('guest.index');
     }
 }
