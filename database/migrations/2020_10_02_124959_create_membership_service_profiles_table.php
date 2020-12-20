@@ -15,11 +15,13 @@ class CreateMembershipServiceProfilesTable extends Migration
     {
         Schema::create('membership_service_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->nullable()->comment('user-id');
+            //$table->foreignId('membership_id')->nullable();
+            $table->foreignId('membership_service_id')->nullable();
             $table->string('logo')->nullable();
             $table->string('name')->nullable();
             $table->string('mobile')->nullable();
             $table->string('title')->nullable();
-            $table->string('sub_category_id')->nullable();
             $table->longText('description')->nullable();
             $table->string('address')->nullable();
             $table->string('image1')->nullable();

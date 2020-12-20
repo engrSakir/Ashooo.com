@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Membership;
 
 use App\Http\Controllers\Controller;
+use App\MembershipServiceProfile;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -12,18 +13,20 @@ class PageController extends Controller
      */
     public function index()
     {
-        return redirect()->route('membership.page.create');
+        if (auth()->user()->membershipPages->count() > 0){
+            return redirect()->route('membership.page.edit', auth()->user()->membershipPages->first()->id);
+        }else{
+            return redirect()->route('membership.page.create');
+        }
         //return view('membership.page.index');
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('membership.page.create');
     }
 
     /**
@@ -49,14 +52,13 @@ class PageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $memberPage = MembershipServiceProfile::find($id);
+        return view('membership.page.edit', compact('memberPage'));
     }
 
     /**
