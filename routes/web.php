@@ -165,6 +165,9 @@ Route::group(['namespace' => 'Membership', 'as' => 'membership.', 'prefix'=>'mem
     Route::post('/response-membership-payment/{membership}/{duration}', 'MembershipController@purchaseResponse')->name('paymentResponse');
     Route::get('page', 'PageController@index')->name('page.index');
     Route::get('page/create', 'PageController@create')->name('page.create');
+    Route::post('page/store', 'PageController@store')->name('page.store');
+    Route::post('page/update', 'PageController@update')->name('page.update');
+    Route::get('page/edit/{page_id}', 'PageController@edit')->name('page.edit');
 });
 
 Route::get('/customer', function (){

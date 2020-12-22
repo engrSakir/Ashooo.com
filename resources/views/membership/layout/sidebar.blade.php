@@ -15,7 +15,11 @@
             <div class="list-group main-menu">
                 <a href="{{ route('membership.home.index') }}" class="list-group-item list-group-item-action active"><i class="material-icons icons-raised">home</i>Home</a>
                 @if(auth()->user()->membership)
-                <a href="{{ route('membership.page.index') }}" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">edit</i> {{ __('Create page') }}</a>
+                    @if(auth()->user()->membershipPages->count() > 0)
+                        <a href="{{ route('membership.page.index') }}" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">edit</i> {{ __('Update page') }}</a>
+                    @else
+                        <a href="{{ route('membership.page.index') }}" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">edit</i> {{ __('Create page') }}</a>
+                    @endif
                 @else
                     <a href="#" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">find_in_page</i> {{ __('Buy a package') }} </a>
                 @endif

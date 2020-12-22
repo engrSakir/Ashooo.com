@@ -53,7 +53,7 @@
     <div class="row no-gutters login-row">
         <div class="col align-self-center px-3 text-center">
             <br>
-            <img src="{{ asset(get_static_option('logo') ?? 'uploads/images/uploads/logo.png') }}" alt="logo" class="logo-small">
+            <img src="{{ asset(get_static_option('logo') ?? 'uploads/images/defaults/logo.png') }}" alt="logo" class="logo-small">
             <form class="form-signin mt-3" method="post" id="upload_form" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

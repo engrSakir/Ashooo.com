@@ -15,8 +15,8 @@ class CreateWorkerAndServicesTable extends Migration
     {
         Schema::create('worker_and_services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('worker_id');
-            $table->foreignId('service_id');
+            $table->foreignId('worker_id')->comment('worker type user');;
+            $table->foreignId('service_id')->comment('service');;
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateMembershipAndServicesTable extends Migration
     {
         Schema::create('membership_and_services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membership_id');
-            $table->foreignId('service_id');
+            $table->foreignId('membership_id')->comment('membership type user');
+            $table->foreignId('service_id')->comment('service');
             $table->timestamps();
         });
     }

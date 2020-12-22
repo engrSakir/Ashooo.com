@@ -1,5 +1,5 @@
 @extends('membership.layout.app')
-@push('title') Create @endpush
+@push('title') Edit @endpush
 @section('content')
     <!-- Start job posting area -->
     <div class="container">
@@ -12,43 +12,46 @@
                                 <lable>Logo</lable>
                                 <!--Image upload with preview start -->
                                 <div class="figure-profile shadow my-4">
-                                    <figure><img alt="" class="image-display"></figure>
+                                    <figure><img src="{{ asset($myPage->logo) }}" alt="" class="image-display"></figure>
                                     <div class="btn btn-dark text-white floating-btn image-chose-btn">
                                         <i class="material-icons">camera_alt</i>
-                                        <input type="file" id="logo" accept="image/*" class="float-file image-importer">
+                                        <input type="file" id="logo" accept="image/*" value="{{ $myPage->logo }}" class="float-file image-importer">
                                     </div>
                                 </div>
                                 <!--Image upload with preview end -->
                             </div>
                             <div class="form-group">
                                 <lable>Brand name</lable>
-                                <input type="text" id="name" class="form-control form-control-lg" placeholder="{{ __('Brand name') }}...">
+                                <input type="text" id="name" class="form-control form-control-lg" value="{{ $myPage->name }}" placeholder="{{ __('Brand name') }}...">
                             </div>
                             <div class="form-group">
                                 <lable>Mobile no.</lable>
-                                <input type="text" id="mobile" class="form-control form-control-lg" placeholder="{{ __('Mobile no.') }}...">
+                                <input type="text" id="mobile" class="form-control form-control-lg" value="{{ $myPage->mobile }}" placeholder="{{ __('Mobile no.') }}...">
                             </div>
                             <div class="form-group">
                                 <lable>Title</lable>
-                                <input type="text" id="title" class="form-control form-control-lg" placeholder="{{ __('Title') }}...">
+                                <input type="text" id="title" class="form-control form-control-lg" value="{{ $myPage->title }}" placeholder="{{ __('Title') }}...">
                             </div>
                             <div class="form-group">
                                 <lable>Description</lable>
-                                <textarea class="form-control form-control-lg" id="description" rows="6" placeholder="{{ __('Description') }}"></textarea>
+                                <textarea class="form-control form-control-lg" id="description" rows="6" placeholder="{{ __('Description') }}">{{ $myPage->description }}</textarea>
                             </div>
                             <div class="form-group">
                                 <lable>Address</lable>
-                                <input type="text" id="address" class="form-control form-control-lg" placeholder="{{ __('Address') }}">
+                                <input type="text" id="address" class="form-control form-control-lg" value="{{ $myPage->address }}" placeholder="{{ __('Address') }}">
                             </div>
                             @for($image_amount=1; $image_amount <= auth()->user()->membership->membershipPackage->image_count; $image_amount++)
                                 <div class="form-group">
                                     <lable>Image- {{ $image_amount }}</lable>
                                     <!--Image upload with preview start -->
                                     <div class="figure-profile shadow my-4">
-                                        <figure><img alt="" class="image-display"></figure>
+                                        @php
+                                        $img = 'image'.$image_amount;
+                                        @endphp
+                                        <figure><img alt="" src="{{ asset($myPage->$img) }}" class="image-display"></figure>
                                         <div class="btn btn-dark text-white floating-btn image-chose-btn">
                                             <i class="material-icons">camera_alt</i>
-                                            <input type="file" accept="image/*" id="image-{{ $image_amount }}" class="float-file image-importer">
+                                            <input type="file" accept="image/*" id="image-{{ $image_amount }}" value="{{ $myPage->logo.$image_amount }}" class="float-file image-importer">
                                         </div>
                                     </div>
                                     <!--Image upload with preview end -->
@@ -59,7 +62,7 @@
                                 <select id="service" class="form-control form-control-lg">
                                     <option disabled selected>{{ __('Select service') }}</option>
                                     @foreach(auth()->user()->membershipService as $service)
-                                        <option value="{{ $service->service->id }}">{{ $service->service->name }}</option>
+                                        <option value="{{ $service->service->id }}" @if($service->service->id == $myPage->membership_service_id) selected style="background-color: maroon;" @endif>{{ $service->service->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -105,7 +108,7 @@
 
                 $.ajax({
                     method: 'POST',
-                    url: "{{ route('membership.page.store') }}",
+                    url: "{{ route('membership.page.update') }}",
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data: formData,
                     processData: false,
