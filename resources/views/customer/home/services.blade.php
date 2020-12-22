@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') {{ __('system.find_your_service') }} @endpush
+@push('title') {{ __('Find your service') }} @endpush
 @push('head')
 
 @endpush
@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col text-center">
                 <h5 class="subtitle mb-1">{{ $category->name }}</h5>
-                <p class="">{{ __('system.find_your_service') }}</p>
+                <p class="">{{ __('Find your service') }}</p>
             </div>
         </div>
         <div class="row text-center mt-4">

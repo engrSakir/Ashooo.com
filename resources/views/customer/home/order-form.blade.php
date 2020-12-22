@@ -23,7 +23,7 @@
         <!-- Start title -->
         <div class="">
             <div class="alert alert-info text-center" role="alert">
-                <b id="">  {{ __('system.all_gig') }} </b>
+                <b id="">  {{ __('All Gig') }} </b>
             </div>
         </div>
         <!-- End title -->
@@ -69,7 +69,7 @@
                 <div class="card-body border-bottom">
                     <div class="row">
                         <div class="col">
-                            <h3 class="mb-0 font-weight-normal"> {{ __('system.price') }} ৳ </h3>
+                            <h3 class="mb-0 font-weight-normal"> {{ __('price') }} ৳ </h3>
                         </div>
                         <div class="col-auto">
                             <button disabled class="btn btn-info btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"> <b>{{ $gig->budget }}</b> </button>
@@ -108,9 +108,9 @@
         <!-- End order now area -->
         <div class="container">
             <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                <button disabled type="button" class="btn btn-outline-success active"><small> {{ __('system.time') }} </small>{{ $gig->day }}<small>  {{ __('system.day') }}</small></button>
+                <button disabled type="button" class="btn btn-outline-success active"><small> {{ __('time') }} </small>{{ $gig->day }}<small>  {{ __('day') }}</small></button>
                 <button id="job-submit" type="button" class="btn btn-success">
-                    {{ __('system.order_now') }}
+                    {{ __('order_now') }}
                 </button>
             </div>
         </div>

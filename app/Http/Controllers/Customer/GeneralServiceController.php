@@ -20,7 +20,7 @@ class GeneralServiceController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('customer.others.category',compact(,'adminAds', 'categories'));
+        return view('customer.others.category',compact('adminAds', 'categories'));
     }
 
     public function showMembershipServices($id){
@@ -34,7 +34,6 @@ class GeneralServiceController extends Controller
     }
 
     public function showMembers($id){
-
         $service = MembershipService::find(Crypt::decryptString($id));
         return view('customer.others.member',compact('service'));
     }

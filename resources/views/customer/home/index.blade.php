@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title')  {{ __('system.home') }} @endpush
+@push('title')  {{ __('Home') }} @endpush
 @push('head')
 
 @endpush
@@ -11,19 +11,19 @@
                 <div class="row">
                     <div class="container">
                         <div class="form-group">
-                            <input type="text" id="title" class="form-control form-control-lg" placeholder="{{ __('customer/home.title') }}...">
+                            <input type="text" id="title" class="form-control form-control-lg" placeholder="{{ __('Title') }}...">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control form-control-lg" id="description" rows="6" placeholder="{{ __('customer/home.description') }}"></textarea>
+                            <textarea class="form-control form-control-lg" id="description" rows="6" placeholder="{{ __('Description') }}"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="address" class="form-control form-control-lg" placeholder="{{ __('customer/home.address') }}">
+                            <input type="text" id="address" class="form-control form-control-lg" placeholder="{{ __('Address') }}">
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <select id="service" class="form-control form-control-lg">
-                                        <option disabled selected>{{ __('customer/home.category') }}</option>
+                                        <option disabled selected>{{ __('Category') }}</option>
                                         @foreach($categories as $category)
                                             <optgroup label="{{ $category->name }}">
                                                 @foreach($category->services as $service)
@@ -36,19 +36,19 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="number" id="day" class="form-control form-control-lg" placeholder="{{ __('customer/home.days') }}">
+                                    <input type="number" id="day" class="form-control form-control-lg" placeholder="{{ __('Days') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="number" id="budget" class="form-control form-control-lg" placeholder="{{ __('customer/home.budget') }}">
+                                    <input type="number" id="budget" class="form-control form-control-lg" placeholder="{{ __('Budget') }}">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <button type="button" id="job-submit-button" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ __('customer/home.post_btn') }}</button>
+                                    <button type="button" id="job-submit-button" class="mb-2 btn btn-lg btn-success w-100 btn-rounded">{{ __('SUBMIT') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center" role="alert">
-        <b>{{ __('system.find_your_service_by_category') }}</b>
+        <b>{{ __('Find your service by category') }}</b>
     </div>
     <!-- End title -->
     <!-- Start worker service category -->

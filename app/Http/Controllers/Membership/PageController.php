@@ -32,7 +32,7 @@ class PageController extends Controller
         if (auth()->user()->membershipPages->count() > 0){
             return redirect()->route('membership.page.edit', auth()->user()->membershipPages->first()->id);
         }else{
-            return redirect()->route('membership.page.create');
+            return view('membership.page.create');
         }
     }
 

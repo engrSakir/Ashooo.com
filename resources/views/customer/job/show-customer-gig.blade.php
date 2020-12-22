@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') {{ __('system.job') }} @endpush
+@push('title') {{ __('job') }} @endpush
 @push('head')
     <style>
         .color-border{
@@ -354,10 +354,10 @@
                                     <!-- work detail -->
                                     <pre><b>{{ $bid->description }}</b></pre>
                                     <hr>
-                                    <b>{{ __('system.details') }}</b>
+                                    <b>{{ __('details') }}</b>
                                     <pre>{{ $bid->customerGig->description }}</pre>
                                     <br>
-                                    <b>{{ __('system.address') }}</b>
+                                    <b>{{ __('address') }}</b>
                                     <p>{{ $bid->customerGig->address }}</p>
                                     <br>
                                     <hr>

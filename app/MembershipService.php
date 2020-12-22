@@ -18,4 +18,9 @@ class MembershipService extends Model
     public function category(){
         return $this->belongsTo(MembershipServiceCategory::class,'category_id','id');
     }
+
+    //membershipPages
+    public function membershipPages(){
+        return $this->hasMany(MembershipServiceProfile::class,'membership_service_id','id');
+    }
 }

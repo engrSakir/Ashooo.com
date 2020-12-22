@@ -31,32 +31,30 @@
             <div class="row">
                 <div class="col-12 px-0">
                     <div class="list-group list-group-flush ">
-
-
+                        @foreach($service->membershipPages as $membershipPage)
                             <a class="list-group-item border-top text-dark" href="">
                                 <div class="row">
                                     <div class="col-auto align-self-center">
                                         <i class="material-icons text-template-primary">
                                             <figure class="avatar avatar-60 border-0">
-                                                <img src="{{ asset('uploads/images/users/'.'default.png') }}" alt="">
+                                                <img src="{{ asset($membershipPage->logo ?? 'uploads/images/defaults/default.png') }}" alt="">
                                             </figure>
                                         </i>
                                     </div>
                                     <div class="col pl-0">
                                         <div class="row mb-1">
                                             <div class="col">
-                                                <p class="mb-0">{{ 'Name' }}</p>
+                                                <p class="mb-0">{{ $membershipPage->name }}</p>
                                             </div>
                                             <div class="col-auto pl-0">
                                                 <p class="small text-mute text-trucated mt-1">****</p>
                                             </div>
                                         </div>
-                                        <p class="small text-mute">{{ 'Title' }}</p>
+                                        <p class="small text-mute">{{ $membershipPage->title }}</p>
                                     </div>
                                 </div>
                             </a>
-
-
+                        @endforeach
                     </div>
 
                 </div>

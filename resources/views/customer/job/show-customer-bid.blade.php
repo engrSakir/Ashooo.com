@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') {{ __('system.job') }} @endpush
+@push('title') {{ __('job') }} @endpush
 @push('head')
     <style>
         .color-border{
@@ -22,7 +22,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> {{ __('system.gig_order') }}</b>
+                    <b id=""> {{ __('gig_order') }}</b>
                 </div>
             </div>
             <!-- End title -->
@@ -69,7 +69,7 @@
                     <div class="card-body border-bottom">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-0 font-weight-normal">{{ __('system.price') }} ৳ </h3>
+                                <h3 class="mb-0 font-weight-normal">{{ __('price') }} ৳ </h3>
                             </div>
                             <div class="col-auto">
                                 <button disabled class="btn btn-info btn-rounded-54 shadow"> <b>{{ $customerBid->budget }}</b> </button>
@@ -78,19 +78,19 @@
                     </div>
                     <div class="card-footer bg-none">
                         <div class="row">
-                            <p class="container">{{ __('system.change_your_price') }}d</p>
+                            <p class="container">{{ __('change_your_price') }}d</p>
                             <br>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <br>
-                                <p><b>{{ __('system.new_price') }}</b></p>
+                                <p><b>{{ __('new_price') }}</b></p>
                             </div>
                             <div class="col text-center">
                                 <input type="hidden" id="bid-id" value="{{ $customerBid->id }}">
                                 <input type="number" id="budget" placeholder="250" class="form-control form-control-lg text-center">
                                 <br>
-                                <button type="button" id="update-budget" class="mb-2 btn btn-lg btn-info" style="width: 100%">{{ __('system.submit') }}</button>
+                                <button type="button" id="update-budget" class="mb-2 btn btn-lg btn-info" style="width: 100%">{{ __('submit') }}</button>
                             </div>
 
                         </div>
@@ -108,8 +108,8 @@
                 <h4 class="mb-3"><b>Address:</b></h4>
                 <p>{{ $customerBid->address }}</p>
                 <div class="btn-group btn-group-lg btn-group w-100 mb-2 text-center" role="group" aria-label="Basic example">
-                    <button disabled type="button" class="btn btn-outline-success active"><small>{{ __('system.time') }} </small>{{ $customerBid->workerGig->day }}<small> {{ __('system.day') }}</small></button>
-                    <button id="job-cancel" type="button" class="btn btn-danger">{{ __('system.cancel') }}</button>
+                    <button disabled type="button" class="btn btn-outline-success active"><small>{{ __('time') }} </small>{{ $customerBid->workerGig->day }}<small> {{ __('day') }}</small></button>
+                    <button id="job-cancel" type="button" class="btn btn-danger">{{ __('cancel') }}</button>
                 </div>
             </div>
             <!--End work detail , address, day-->
@@ -171,7 +171,7 @@
                                             <input type="text" class="form-control" id="phone" placeholder="phone" readonly value="{{ $customerBid->workerGig->worker->phone }}">
                                             <div class="input-group-prepend">
                                                 <a href="tel:{{ $customerBid->workerGig->worker->phone }}">
-                                                    <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">{{ __('system.call') }}</span>
+                                                    <span class="input-group-text bg-success text-white dz-clickable" onclick="" id="phone">{{ __('call') }}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -193,18 +193,18 @@
                                         <div class="row">
                                             <div class="container">
                                                 <div class="row container">
-                                                    {{ __('system.change_your_price') }}
+                                                    {{ __('change_your_price') }}
                                                     <hr>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <b> {{ __('system.new_price') }} ৳</b>
+                                                        <b> {{ __('new_price') }} ৳</b>
                                                     </div>
                                                     <div class="col text-center">
                                                         <input type="hidden" id="bid-id" value="{{ $customerBid->id }}">
                                                         <input type="number" id="budget" placeholder="250" class="form-control form-control-lg text-center">
                                                         <br>
-                                                        <button type="button" id="update-budget" class="mb-2 btn btn-lg btn-info" style="width: 100%">{{ __('system.submit') }}</button>
+                                                        <button type="button" id="update-budget" class="mb-2 btn btn-lg btn-info" style="width: 100%">{{ __('submit') }}</button>
                                                     </div>
                                                 </div>
                                             </div>
