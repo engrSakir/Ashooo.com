@@ -213,6 +213,7 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
     Route::get('/general-services', 'GeneralServiceController@showGeneralServiceCategory')->name('showGeneralServiceCategory');
     Route::get('/general-services/{id}','GeneralServiceController@showMembershipServices')->name('showMembershipServices');
     Route::get('/members/{id}','GeneralServiceController@showMembers')->name('showMembers');
+    Route::get('/members/page/{id}','GeneralServiceController@showMembershipPageDetail')->name('showMembershipPageDetail');
 
 });
 

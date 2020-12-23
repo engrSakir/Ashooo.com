@@ -1,5 +1,5 @@
 @extends('customer.layout.app')
-@push('title') Gigs @endpush
+@push('title') Details @endpush
 @push('head')
 
 @endpush
@@ -18,49 +18,47 @@
             </div>
         </div>
         <!-- header ends -->
-        <!-- Start title -->
-        <div>
-            <div class="alert alert-primary text-center" role="alert">
-                <b>{{ $service->name }}</b>
-            </div>
+        <div class="container">
+            <!-- page content here -->
+            <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                <div class="container">
+                    <img src="{{ asset($membershipPage->logo) }}" alt="" class="header-logo">
+                    <h1 class="jumbotron-heading font-weight-normal"><b>{{ $membershipPage->name }}</b></h1>
+                    <p class="lead">{{ $membershipPage->title ?? 'Title Empty' }}</p>
+                    <p class="text-secondary text-mute small"></p>
+                    <p>
+                        <a @if($membershipPage->mobile) href="tel:{{ $membershipPage->mobile }}" @endif class="btn btn-default btn-rounded shadow my-2">Call {{ $membershipPage->mobile ?? '+880 xxxx-xxxxxx' }}</a>
+                    </p>
+                </div>
+            </section>
+            <h3 class="mb-3">{{ __('Description') }}</h3>
+            <p>{{ $membershipPage->description }}</p>
+            <br>
+            <br>
         </div>
 
-
-        <!-- Start worker's bid of this area-->
-        <div class="container">
+        <div class="container bg-template">
             <div class="row">
-                <div class="col-12 px-0">
-                    <div class="list-group list-group-flush ">
-                        @foreach($service->membershipPages as $membershipPage)
-                            <a class="list-group-item border-top text-dark" href="{{ route('customer.showMembershipPageDetail', Crypt::encryptString($membershipPage->id)) }}">
-                                <div class="row">
-                                    <div class="col-auto align-self-center">
-                                        <i class="material-icons text-template-primary">
-                                            <figure class="avatar avatar-60 border-0">
-                                                <img src="{{ asset($membershipPage->logo ?? 'uploads/images/defaults/default.png') }}" alt="">
-                                            </figure>
-                                        </i>
-                                    </div>
-                                    <div class="col pl-0">
-                                        <div class="row mb-1">
-                                            <div class="col">
-                                                <p class="mb-0">{{ $membershipPage->name }}</p>
-                                            </div>
-                                            <div class="col-auto pl-0">
-                                                <p class="small text-mute text-trucated mt-1">****</p>
-                                            </div>
-                                        </div>
-                                        <p class="small text-mute">{{ $membershipPage->title }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-
+                <div class="col text-center">
+                    <h5 class="subtitle mb-1">Most Exciting Feature</h5>
+                    <p class="">Take a look at our services</p>
                 </div>
             </div>
+            @for($image_amount=1; $image_amount <= $membershipPage->user->membership->membershipPackage->image_count; $image_amount++)
+                @php
+                    $img = 'image'.$image_amount;
+                @endphp
+                <div class="row text-center mt-4">
+                    <div class="col-12 col-md-12">
+                        <div class="card shadow border-0 mb-3">
+                            <div class="card-body">
+                                <img src="{{ asset($membershipPage->$img) }}" alt="" width="200px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endfor
         </div>
-        <!-- End worker's bid of this area-->
         <!-- footer-->
         <div class="footer">
             <div class="no-gutters">

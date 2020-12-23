@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\MembershipService;
 use App\MembershipServiceCategory;
 
+use App\MembershipServiceProfile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -36,5 +37,10 @@ class GeneralServiceController extends Controller
     public function showMembers($id){
         $service = MembershipService::find(Crypt::decryptString($id));
         return view('customer.others.member',compact('service'));
+    }
+
+    public function showMembershipPageDetail($id){
+        $membershipPage = MembershipServiceProfile::find(Crypt::decryptString($id));
+        return view('customer.others.details',compact('membershipPage'));
     }
 }
