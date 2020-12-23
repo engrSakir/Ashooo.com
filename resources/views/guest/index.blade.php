@@ -38,16 +38,16 @@
         <!-- login buttons -->
         <hr class="bg-success">
         <div class="row mx-0">
-            <div class="container text-center mb-5">
-                <h3 class="btn btn-default btn-lg btn-rounded shadow my-2"><b>{{ __('লোকাল সার্ভিস অন ডিমান্ড') }}</b></h3>
-            </div>
             <div class="container">
+                <div class="text-center">
+                    <h3 class="btn btn-default btn-lg btn-rounded shadow my-2"><b>{{ __('লোকাল সার্ভিস অন ডিমান্ড') }}</b></h3>
+                </div>
                 <div class="card shadow border-0 mb-3">
                     {{--# ১ --}}
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-pest.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">জব পোস্ট ও অর্ডার</h5>
@@ -59,7 +59,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-box.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">গিগ অর্ডার</h5>
@@ -71,7 +71,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-auto">
-                                <figure class="avatar avatar-60"><img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt=""></figure>
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-call.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">মোবাইল ফোনে অর্ডার</h5>
@@ -81,11 +81,133 @@
                     </div>
                 </div>
             </div>
-            <div class="container text-center mb-5">
-                <h3 class="btn btn-default btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('ভিডিও টিউটোরিয়াল') }}</b></h3>
+            <div class="container">
+                <div class="text-center">
+                    <h3 class="btn btn-default btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('ভিডিও টিউটোরিয়াল') }}</b></h3>
+                </div>
+                <div class="card shadow border-0 mb-3">
+                    {{--# ১ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">কি কি ধরনের সার্ভিস পাওয়া যাবে।</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">কিভাবে কাস্টমার সার্ভিস গ্রহণ করবে।</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">কিভাবে ওয়ার্কার সার্ভিস প্রদান করবে। </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">কিভাবে মেম্বারশিপ সার্ভিস প্রোভাইডার সার্ভিস প্রদান করবে।</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="text-center">
+                    <h3 class="btn btn-default btn-lg btn-rounded bg-success shadow my-2"><b>{{ __('কেন "ashooo" সার্ভিস মার্কেটপ্লেস ব্যবহার করবেন? ') }}</b></h3>
+                </div>
+                <div class="card shadow border-0 mb-3">
+                    {{--# ১ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-ok.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">লোকাল সার্ভিস</h5>
+                                <p class="text-mute small">উপজেলা/মেট্রোপলিটন থানা ভিত্তিক লোকাল এরিয়াতে লোকাল ওয়ার্কার দ্বারা সার্ভিস প্রদান।</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{--# ২ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-ok.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">নমনীয় বাজেট প্রাইস</h5>
+                                <p class="text-mute small">প্রয়োজন অনুযায়ী কাজের/অর্ডার এর মূল্য পরিবর্তনযোগ্য।</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{--# ৩ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-ok.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">ক্যাশ অন ডেলিভারি</h5>
+                                <p class="text-mute small">কাজ/অর্ডার কমপ্লিট করার পর সরাসরি নগর টাকা পেমেন্ট করার সুবিধা।</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{--# ৪ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-ok.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">নিরাপত্তা ও বিশ্বাসযোগ্যতা</h5>
+                                <p class="text-mute small">কাস্টমারের নিরাপত্তার স্বার্থে ওয়ার্কার ও মেম্বারশিপ সার্ভিস প্রোভাইডারদের এনআইডি সহ প্রয়োজনীয় ডকুমেন্ট সংরক্ষণ কাজের পারফরম্যান্স অনুযায়ী ওয়ার্কারদের রেটিং প্রদান।</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{--# ৫ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-ok.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">সাপোর্ট</h5>
+                                <p class="text-mute small">২৪/৭ ডেডিকেটেড লোকাল এরিয়া ভিত্তিক সাপোর্ট টিম। গুরুত্বসহকারে অভিযোগ বা সমস্যার সমাধান।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="text-center">
+                    <h3 class="btn btn-default col-12 btn-lg btn-rounded shadow my-2"><b>{{ __('Upcoming Services') }}</b></h3>
+                </div>
+                <div class="text-center">
+                    <h3 class="btn btn-default col-12 btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('এসক্রো সার্ভিস') }}</b></h3>
+                </div>
+                <div class="text-center">
+                    <h3 class="btn btn-default col-12 btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('ড্রপ শিপিং সার্ভিস') }}</b></h3>
+                </div>
             </div>
         </div>
-        <!-- login buttons -->
         <hr>
     </div>
 @endsection
