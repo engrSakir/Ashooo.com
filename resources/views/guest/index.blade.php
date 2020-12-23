@@ -37,11 +37,11 @@
         </div>
         <!-- login buttons -->
         <hr class="bg-success">
-        <div class="row mx-0 container">
+        <div class="row mx-0">
             <div class="container text-center mb-5">
                 <h3 class="btn btn-default btn-lg btn-rounded shadow my-2"><b>{{ __('লোকাল সার্ভিস অন ডিমান্ড') }}</b></h3>
             </div>
-            
+
         </div>
         <!-- login buttons -->
         <hr>
