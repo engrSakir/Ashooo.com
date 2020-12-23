@@ -275,7 +275,7 @@
       <workItem from="1608563697042" duration="838000" />
       <workItem from="1608606838940" duration="4211000" />
       <workItem from="1608624993561" duration="4252000" />
-      <workItem from="1608638429486" duration="17131000" />
+      <workItem from="1608638429486" duration="18414000" />
     </task>
     <servers />
   </component>
@@ -286,5 +286,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/guest/controller.blade.php</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
