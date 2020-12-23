@@ -41,7 +41,49 @@
             <div class="container text-center mb-5">
                 <h3 class="btn btn-default btn-lg btn-rounded shadow my-2"><b>{{ __('লোকাল সার্ভিস অন ডিমান্ড') }}</b></h3>
             </div>
-
+            <div class="container">
+                <div class="card shadow border-0 mb-3">
+                    {{--# ১ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">জব পোস্ট ও অর্ডার</h5>
+                                <p class="text-mute small">প্রয়োজন অনুযায়ী কাজের পোষ্ট দিন এবং বিড সমূহ থেকে বেস্ট ওয়ার্কার নির্বাচন করে কাজের জন্য অর্ডার করুন।</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{--# ২ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">গিগ অর্ডার</h5>
+                                <p class="text-mute small">প্রয়োজন অনুযায়ী ওয়ার্কারদের গিগ নির্বাচন করে কাজের জন্য অর্ডার করুন।</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{--# ৩ --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <figure class="avatar avatar-60"><img src="{{ asset( get_static_option('logo')  ?? 'uploads/images/defaults/logo.png') }}" alt=""></figure>
+                            </div>
+                            <div class="col pl-0 align-self-center">
+                                <h5 class="mb-1">মোবাইল ফোনে অর্ডার</h5>
+                                <p class="text-mute small">সার্ভিস প্রোভাইডারদের সরাসরি কল করে সার্ভিস অর্ডার করুন।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center mb-5">
+                <h3 class="btn btn-default btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('ভিডিও টিউটোরিয়াল') }}</b></h3>
+            </div>
         </div>
         <!-- login buttons -->
         <hr>
