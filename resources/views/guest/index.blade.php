@@ -25,7 +25,7 @@
         <!-- login buttons -->
         <div class="row mx-0">
             <div class="col-12 container text-center small">
-                <p>{{ __('সার্ভিস নিতে অথবা সার্ভিস দিতে সাইন-ইন করুন। আপনার কোনো অ্যাকাউন্ট নেই? এখনই সাইন আপ করুন।') }}</p>
+                <p>{{ __('সার্ভিস নিতে অথবা সার্ভিস দিতে সাইন ইন করুন। আপনার কোনো অ্যাকাউন্ট নেই? এখনই সাইন আপ করুন।') }}</p>
                 <br>
             </div>
             <div class="col">
@@ -93,7 +93,7 @@
                                 <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
-                                <h5 class="mb-1">কি কি ধরনের সার্ভিস পাওয়া যাবে।</h5>
+                                <h5 class="mb-1">কি কি ধরনের সার্ভিস পাওয়া যাবে</h5>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                                 <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
-                                <h5 class="mb-1">কিভাবে কাস্টমার সার্ভিস গ্রহণ করবে।</h5>
+                                <h5 class="mb-1">কিভাবে কাস্টমার সার্ভিস গ্রহণ করবে</h5>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                 <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
-                                <h5 class="mb-1">কিভাবে ওয়ার্কার সার্ভিস প্রদান করবে। </h5>
+                                <h5 class="mb-1">কিভাবে ওয়ার্কার সার্ভিস প্রদান করবে </h5>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                                 <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
-                                <h5 class="mb-1">কিভাবে মেম্বারশিপ সার্ভিস প্রোভাইডার সার্ভিস প্রদান করবে।</h5>
+                                <h5 class="mb-1">কিভাবে মেম্বারশিপ সার্ভিস প্রোভাইডার সার্ভিস প্রদান করবে</h5>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">নমনীয় বাজেট প্রাইস</h5>
-                                <p class="text-mute small">প্রয়োজন অনুযায়ী কাজের/অর্ডার এর মূল্য পরিবর্তনযোগ্য।</p>
+                                <p class="text-mute small">প্রয়োজন অনুযায়ী কাজের/অর্ডারের মূল্য পরিবর্তনযোগ্য।</p>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">ক্যাশ অন ডেলিভারি</h5>
-                                <p class="text-mute small">কাজ/অর্ডার কমপ্লিট করার পর সরাসরি নগর টাকা পেমেন্ট করার সুবিধা।</p>
+                                <p class="text-mute small">কাজ/অর্ডার কমপ্লিট করার পর সরাসরি নগদ টাকা পেমেন্ট করার সুবিধা।</p>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                             </div>
                             <div class="col pl-0 align-self-center">
                                 <h5 class="mb-1">নিরাপত্তা ও বিশ্বাসযোগ্যতা</h5>
-                                <p class="text-mute small">কাস্টমারের নিরাপত্তার স্বার্থে ওয়ার্কার ও মেম্বারশিপ সার্ভিস প্রোভাইডারদের এনআইডি সহ প্রয়োজনীয় ডকুমেন্ট সংরক্ষণ কাজের পারফরম্যান্স অনুযায়ী ওয়ার্কারদের রেটিং প্রদান।</p>
+                                <p class="text-mute small">কাস্টমারের নিরাপত্তার স্বার্থে ওয়ার্কার ও মেম্বারশীপ সার্ভিস প্রোভাইডারদের এন.আই.ডি সহ প্রয়োজনীয় ডকুমেন্ট সংরক্ষণ। কাজের পারফরমেন্স অনুযায়ী ওয়ার্কারদের রেটিং প্রদান।</p>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                     <h3 class="btn btn-default col-12 btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('এসক্রো সার্ভিস') }}</b></h3>
                 </div>
                 <div class="text-center">
-                    <h3 class="btn btn-default col-12 btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('ড্রপ শিপিং সার্ভিস') }}</b></h3>
+                    <h3 class="btn btn-default col-12 btn-lg btn-rounded shadow my-2 bg-success"><b>{{ __('ড্রপশিপিং সার্ভিস') }}</b></h3>
                 </div>
             </div>
         </div>
