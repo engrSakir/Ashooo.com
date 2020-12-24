@@ -31,9 +31,9 @@
                                 @foreach($ads as $ads)
                                     <div class="col-lg-4">
                                         <div class="card">
-                                            <img src="{{ asset('uploads/images/ads/admin/'.$ads->image) }}" class="card-img-top" alt="Card image cap">
+                                            <img src="{{ asset($ads->image) }}" class="card-img-top" alt="">
                                             <div class="card-body">
-                                                <h5 class="card-title text-dark">{{ __('Card Sample title') }}</h5>
+                                                <h5 class="card-title text-dark">{{ __('') }}</h5>
                                             </div>
                                             <ul class="list-group list-group-flush list shadow-none">
                                                 @if($ads->status == 0)

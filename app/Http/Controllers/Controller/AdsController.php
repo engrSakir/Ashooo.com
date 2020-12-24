@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Image;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class AdsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -34,10 +34,8 @@ class AdsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return ControllerAds
      */
     public function store(Request $request)
     {
@@ -47,6 +45,7 @@ class AdsController extends Controller
             'endingDate'    => 'required',
             'image'         => 'required|image',
         ]);
+
         $ads = new ControllerAds();
         $ads->controller_id = Auth::user()->id;
         $ads->url = $request->input('url');
@@ -59,21 +58,17 @@ class AdsController extends Controller
         }else{
             $ads->status = 0;
         }
-
-
-        //Auto resize with 500 wide/ 500 height
         if($request->hasFile('image')){
-            $image              = $request->file('image');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         ='controller-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/ads/admin');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('image');
+            $folder_path       = 'uploads/images/ads/controller/';
+            $image_new_name    = Str::random(8).'-controller-ads--'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->resize(500, 300, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $ads->image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $ads->image    = $folder_path.$image_new_name;
         }
+
         $ads->save();
         return $ads;
     }
@@ -126,19 +121,15 @@ class AdsController extends Controller
         }else{
             $ads->status = 0;
         }
-
-        //Auto resize with 500 wide/ 500 height
         if($request->hasFile('image')){
-            $image              = $request->file('image');
-            $OriginalExtension  = $image->getClientOriginalExtension();
-            $image_name         ='controller-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/ads/controller');
-            $resize_image       = Image::make($image->getRealPath());
-            $resize_image->resize(500, 500, function($constraint){
+            $image             = $request->file('image');
+            $folder_path       = 'uploads/images/ads/controller/';
+            $image_new_name    = Str::random(8).'-controller-ads--'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
+            //resize and save to server
+            Image::make($image->getRealPath())->resize(500, 300, function($constraint){
                 $constraint->aspectRatio();
-            });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $ads->image    = $image_name;
+            })->save($folder_path.$image_new_name);
+            $ads->image    = $folder_path.$image_new_name;
         }
         $ads->save();
         return $ads;

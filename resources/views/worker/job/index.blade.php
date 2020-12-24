@@ -226,7 +226,7 @@
                         <div class="card shadow border-0 bg-template">
                             <div class="card-body">
                                 <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
-                                    <img src="{{ asset('uploads/images/ads/controller/'.$controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                    <img src="{{ asset($controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
                                 </a>
                             </div>
                         </div>
@@ -381,7 +381,7 @@
                     <div class="card shadow border-0 bg-template">
                         <div class="card-body">
                             <a  @if($adminAds->url) href="{{ $adminAds->url }}" target="_blank" @endif >
-                                <img src="{{ asset('uploads/images/ads/admin/'.$adminAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
+                                <img src="{{ asset($adminAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
                             </a>
                         </div>
                     </div>

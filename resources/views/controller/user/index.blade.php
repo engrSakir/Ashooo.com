@@ -55,7 +55,7 @@
                                                     <tr>
                                                         <td scope="row">{{ $loop->iteration }}</td>
                                                         <td>
-                                                            <span class="user-profile"><img src="{{ asset('uploads/images/users/'.$worker->image) }}" class="img-circle" alt="user avatar"></span>
+                                                            <span class="user-profile"><img src="{{ asset($worker->image) }}" class="img-circle" alt=""></span>
                                                         </td>
                                                         <td>{{ $worker->full_name }}</td>
                                                         <td>{{ $worker->phone }}</td>
@@ -87,18 +87,18 @@
                                                                 <div class="modal-body" id="modal-body">
                                                                     <div class="row">
                                                                         <div class="col-md-6 col-lg-3 col-xl-3">
-                                                                            <a href="{{ asset('uploads/images/users/'.$worker->image) }}" data-fancybox="images">
-                                                                                <img src="{{ asset('uploads/images/users/'.$worker->image) }}" class="lightbox-thumb img-thumbnail">
+                                                                            <a href="{{ asset($worker->image) }}" data-fancybox="images">
+                                                                                <img src="{{ asset($worker->image) }}" class="lightbox-thumb img-thumbnail">
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-3 col-xl-3">
-                                                                            <a href="{{ asset('uploads/images/nid/'.$worker->front_image) }}" data-fancybox="images">
-                                                                                <img src="{{ asset('uploads/images/nid/'.$worker->front_image) }}" class="lightbox-thumb img-thumbnail">
+                                                                            <a href="{{ asset($worker->front_image) }}" data-fancybox="images">
+                                                                                <img src="{{ asset($worker->front_image) }}" class="lightbox-thumb img-thumbnail">
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-md-6 col-lg-3 col-xl-3">
-                                                                            <a href="{{ asset('uploads/images/nid/'.$worker->back_image) }}" data-fancybox="images">
-                                                                                <img src="{{ asset('uploads/images/nid/'.$worker->back_image) }}" class="lightbox-thumb img-thumbnail">
+                                                                            <a href="{{ asset($worker->back_image) }}" data-fancybox="images">
+                                                                                <img src="{{ asset($worker->back_image) }}" class="lightbox-thumb img-thumbnail">
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -131,7 +131,7 @@
                                                 <tr>
                                                     <td scope="row">{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <span class="user-profile"><img src="{{ asset('uploads/images/users/'.$membership->image) }}" class="img-circle" alt="user avatar"></span>
+                                                        <span class="user-profile"><img src="{{ asset($membership->image) }}" class="img-circle" alt=""></span>
                                                     </td>
                                                     <td>{{ $membership->full_name }}</td>
                                                     <td>{{ $membership->phone }}</td>
@@ -163,18 +163,18 @@
                                                             <div class="modal-body" id="modal-body">
                                                                 <div class="row">
                                                                     <div class="col-md-6 col-lg-3 col-xl-3">
-                                                                        <a href="{{ asset('uploads/images/users/'.$membership->image) }}" data-fancybox="images">
-                                                                            <img src="{{ asset('uploads/images/users/'.$membership->image) }}" class="lightbox-thumb img-thumbnail">
+                                                                        <a href="{{ asset($membership->image) }}" data-fancybox="images">
+                                                                            <img src="{{ asset($membership->image) }}" class="lightbox-thumb img-thumbnail">
                                                                         </a>
                                                                     </div>
                                                                     <div class="col-md-6 col-lg-3 col-xl-3">
-                                                                        <a href="{{ asset('uploads/images/nid/'.$membership->front_image) }}" data-fancybox="images">
-                                                                            <img src="{{ asset('uploads/images/nid/'.$membership->front_image) }}" class="lightbox-thumb img-thumbnail">
+                                                                        <a href="{{ asset($membership->front_image) }}" data-fancybox="images">
+                                                                            <img src="{{ asset($membership->front_image) }}" class="lightbox-thumb img-thumbnail">
                                                                         </a>
                                                                     </div>
                                                                     <div class="col-md-6 col-lg-3 col-xl-3">
-                                                                        <a href="{{ asset('uploads/images/nid/'.$membership->back_image) }}" data-fancybox="images">
-                                                                            <img src="{{ asset('uploads/images/nid/'.$membership->back_image) }}" class="lightbox-thumb img-thumbnail">
+                                                                        <a href="{{ asset($membership->back_image) }}" data-fancybox="images">
+                                                                            <img src="{{ asset($membership->back_image) }}" class="lightbox-thumb img-thumbnail">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -208,7 +208,7 @@
                                                 <tr>
                                                     <td scope="row">{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <span class="user-profile"><img src="{{ asset('uploads/images/users/'.$customer->image) }}" class="img-circle" alt="user avatar"></span>
+                                                        <span class="user-profile"><img src="{{ asset($customer->image) }}" class="img-circle" alt=""></span>
                                                     </td>
                                                     <td>{{ $customer->full_name }}</td>
                                                     <td>{{ $customer->phone }}</td>

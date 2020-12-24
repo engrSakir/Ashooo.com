@@ -26,7 +26,7 @@
                                 @foreach($ads as $ads)
                                     <div class="col-lg-4">
                                         <div class="card">
-                                            <img src="{{ asset('uploads/images/ads/controller/'.$ads->image) }}" class="card-img-top" alt="Card image cap">
+                                            <img src="{{ asset($ads->image) }}" class="card-img-top" alt="Card image cap">
                                             <div class="card-body">
                                                 <h5 class="card-title text-dark">Card Sample title</h5>
                                             </div>

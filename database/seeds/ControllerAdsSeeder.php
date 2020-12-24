@@ -17,9 +17,9 @@ class ControllerAdsSeeder extends Seeder
         $ads->controller_id  = 11;
         $ads->url       = 'https://www.shwapno.com/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2020/12/01';
+        $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'shwapno.png';
+        $ads->image     = 'uploads/images/ads/controller/shwapno.png';
         $ads->save();
 
         //Teer
@@ -27,9 +27,9 @@ class ControllerAdsSeeder extends Seeder
         $ads->controller_id  = 11;
         $ads->url       = 'https://www.citygroup.com.bd/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2020/12/01';
+        $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'teer.png';
+        $ads->image     = 'uploads/images/ads/controller/teer.png';
         $ads->save();
 
         //Pathao
@@ -37,9 +37,9 @@ class ControllerAdsSeeder extends Seeder
         $ads->controller_id  = 11;
         $ads->url       = 'https://pathao.com/bn/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2020/12/01';
+        $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'pathao.png';
+        $ads->image     = 'uploads/images/ads/controller/pathao.png';
         $ads->save();
 
         //Bike
@@ -47,9 +47,9 @@ class ControllerAdsSeeder extends Seeder
         $ads->controller_id  = 11;
         $ads->url       = 'https://www.heromotocorp.com/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2020/12/01';
+        $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'bike.png';
+        $ads->image     = 'uploads/images/ads/controller/bike.png';
         $ads->save();
 
         //Tatch
@@ -57,9 +57,9 @@ class ControllerAdsSeeder extends Seeder
         $ads->controller_id  = 11;
         $ads->url       = 'https://www.tagheuer.com/int/en/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2020/12/01';
+        $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'tagheuer.png';
+        $ads->image     = 'uploads/images/ads/controller/tagheuer.png';
         $ads->save();
 
         //Internet
@@ -67,9 +67,9 @@ class ControllerAdsSeeder extends Seeder
         $ads->controller_id  = 11;
         $ads->url       = '';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2020/12/01';
+        $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'internet.png';
+        $ads->image     = 'uploads/images/ads/controller/internet.png';
         $ads->save();
     }
 }

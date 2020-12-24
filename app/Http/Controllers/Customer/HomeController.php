@@ -17,13 +17,10 @@ use Illuminate\Support\Facades\Crypt;
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-
         $categories = WorkerServiceCategory::all();
         $adminNotice = AdminNotice::orderBy('id', 'desc')
             ->take(1)
@@ -32,7 +29,7 @@ class HomeController extends Controller
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        notify()->success('Laravel Notify is awesome!');
+        //notify()->success('Laravel Notify is awesome!');
         return view('customer.home.index', compact('categories', 'adminNotice', 'adminAds'));
     }
 
@@ -45,7 +42,6 @@ class HomeController extends Controller
      */
     public function showServices($id)
     {
-
         $category = WorkerServiceCategory::find(Crypt::decryptString($id));
         $adminAds = AdminAds::where('status', '1')
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
