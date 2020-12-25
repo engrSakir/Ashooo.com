@@ -131,7 +131,7 @@
             </div>
             <div class="container">
                 <div class="text-center">
-                    <h3 class="btn btn-default btn-lg btn-rounded bg-success shadow my-2"><b>{{ __('কেন "ashooo" সার্ভিস মার্কেটপ্লেস ব্যবহার করবেন? ') }}</b></h3>
+                    <h3 class="btn-default btn-lg btn-rounded bg-success shadow my-2 lowercase"><b>{{ __('কেন "ashooo" সার্ভিস মার্কেটপ্লেস ব্যবহার করবেন? ') }}</b></h3>
                 </div>
                 <div class="card shadow border-0 mb-3">
                     {{--# ১ --}}
