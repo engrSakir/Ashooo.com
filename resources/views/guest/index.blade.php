@@ -123,7 +123,7 @@
                                 <figure class="avatar avatar-60"><img src="{{ asset('assets/mobile/img/icon-youtube.png') }}" alt=""></figure>
                             </div>
                             <div class="col pl-0 align-self-center">
-                                <h5 class="mb-1">কিভাবে মেম্বারশিপ সার্ভিস প্রোভাইডার সার্ভিস প্রদান করবে</h5>
+                                <h5 class="mb-1">কিভাবে মেম্বারশীপ সার্ভিস প্রোভাইডার সার্ভিস প্রদান করবে</h5>
                             </div>
                         </div>
                     </div>
