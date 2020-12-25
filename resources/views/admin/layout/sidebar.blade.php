@@ -2,7 +2,7 @@
     <div class="brand-logo">
         <a href="{{ route('admin.dashboard.index') }}">
             &nbsp;
-            <img src="{{ asset( get_static_option('logo_white')  ?? 'uploads/images/defaults/logo-white.png') }}" width="200px" class="logo center" alt="Ashooo">
+            <img src="{{ asset( get_static_option('logo_white')  ?? 'uploads/images/defaults/logo-white.png') }}" width="200px" class="logo center" alt="ashooo">
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">

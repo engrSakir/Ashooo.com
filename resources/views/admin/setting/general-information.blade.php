@@ -15,7 +15,7 @@
                 <div class="col-sm-9">
                     <h4 class="page-title"> General Information</h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javaScript:void();">Ashooo</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">ashooo</a></li>
                         <li class="breadcrumb-item"><a href="javaScript:void();">setting</a></li>
                         <li class="breadcrumb-item active" aria-current="page"> General Information</li>
                     </ol>

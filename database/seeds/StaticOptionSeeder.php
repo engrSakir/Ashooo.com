@@ -11,7 +11,7 @@ class StaticOptionSeeder extends Seeder
      */
     public function run()
     {
-        set_static_option('name', 'Ashooo');
+        set_static_option('name', 'ashooo');
 
         set_static_option('logo', null);
         set_static_option('logo_white', null);

@@ -15,7 +15,7 @@
                 <div class="col-sm-9">
                     <h4 class="page-title"> @if(current_language() == 'bn'){{ ($page->bn_name) }} @else {{ ($page->en_name) }} @endif</h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javaScript:void();">Ashooo</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">ashooo</a></li>
                         <li class="breadcrumb-item"><a href="javaScript:void();">setting</a></li>
                         <li class="breadcrumb-item active" aria-current="page"> @if(current_language() == 'bn'){{ ($page->bn_name) }} @else {{ ($page->en_name) }} @endif</li>
                     </ol>

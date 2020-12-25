@@ -10,7 +10,7 @@
                 <div class="col-sm-9">
                     <h4 class="page-title">Membership service categories </h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javaScript:void();">Ashooo</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">ashooo</a></li>
                         <li class="breadcrumb-item"><a href="javaScript:void();">Membership</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Membership service categories</li>
                     </ol>

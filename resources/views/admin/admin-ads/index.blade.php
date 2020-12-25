@@ -11,7 +11,7 @@
                 <div class="col-sm-9">
                     <h4 class="page-title">{{ __('Admin ads. ') }}</h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javaScript:void();">{{ __('Ashooo') }}</a></li>
+                        <li class="breadcrumb-item"><a href="javaScript:void();">{{ __('ashooo') }}</a></li>
                         <li class="breadcrumb-item"><a href="javaScript:void();">{{ __('Admin') }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ __('ads.') }}</li>
                     </ol>

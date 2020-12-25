@@ -1,7 +1,7 @@
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
     <div class="brand-logo text-center">
         <a href="{{ route('controller.dashboard.index') }}">
-            <img src="{{ asset(get_static_option('logo') ?? 'uploads/images/defaults/logo-white.png') }}" width="200px" height="80" class="logo center" alt="Ashooo">
+            <img src="{{ asset(get_static_option('logo') ?? 'uploads/images/defaults/logo-white.png') }}" width="200px" height="80" class="logo center" alt="ashooo">
 
         </a>
     </div>
