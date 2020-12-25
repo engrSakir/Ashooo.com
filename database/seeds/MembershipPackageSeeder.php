@@ -17,7 +17,7 @@ class MembershipPackageSeeder extends Seeder
         for ($i = 0; $i < 5; $i ++) {
             $package = new \App\MembershipPackage();
             $package->name =  $faker->name;
-            $package->three_month_price = '10';
+            $package->three_month_price = '1';
             $package->six_month_price = '20';
             $package->twelve_month_price = '30';
             $package->mobile_availability = $faker->boolean;
