@@ -162,7 +162,7 @@ Route::get('/membership', function (){
 Route::group(['namespace' => 'Membership', 'as' => 'membership.', 'prefix'=>'membership', 'middleware'=>['membership', 'auth']], function (){
     Route::resource('home', 'HomeController')->except(['create','store', 'show', 'edit', 'update', 'destroy']);
     Route::post('/buy-membership', 'MembershipController@purchaseRequest')->name('buyMembership');
-    Route::post('/response-membership-payment/{membership}/{duration}', 'MembershipController@purchaseResponse')->name('paymentResponse');
+    Route::get('/response-membership-payment/{membership}/{duration}', 'MembershipController@purchaseResponse')->name('paymentResponse');
     Route::get('page', 'PageController@index')->name('page.index');
     Route::get('page/create', 'PageController@create')->name('page.create');
     Route::post('page/store', 'PageController@store')->name('page.store');
