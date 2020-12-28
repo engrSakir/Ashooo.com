@@ -55,7 +55,7 @@
                                                     <tr>
                                                         <td scope="row">{{ $loop->iteration }}</td>
                                                         <td>
-                                                            <span class="user-profile"><img src="{{ asset($worker->image) }}" class="img-circle" alt=""></span>
+                                                            <span class="user-profile"><img src="{{ asset($worker->image ?? 'uploads/images/defaults/user.png') }}" class="img-circle" alt=""></span>
                                                         </td>
                                                         <td>{{ $worker->full_name }}</td>
                                                         <td>{{ $worker->phone }}</td>
@@ -131,7 +131,7 @@
                                                 <tr>
                                                     <td scope="row">{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <span class="user-profile"><img src="{{ asset($membership->image) }}" class="img-circle" alt=""></span>
+                                                        <span class="user-profile"><img src="{{ asset($membership->image ?? 'uploads/images/defaults/user.png') }}" class="img-circle" alt=""></span>
                                                     </td>
                                                     <td>{{ $membership->full_name }}</td>
                                                     <td>{{ $membership->phone }}</td>
@@ -208,7 +208,7 @@
                                                 <tr>
                                                     <td scope="row">{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <span class="user-profile"><img src="{{ asset($customer->image) }}" class="img-circle" alt=""></span>
+                                                        <span class="user-profile"><img src="{{ asset($customer->image ?? 'uploads/images/defaults/user.png') }}" class="img-circle" alt=""></span>
                                                     </td>
                                                     <td>{{ $customer->full_name }}</td>
                                                     <td>{{ $customer->phone }}</td>

@@ -26,9 +26,5 @@ class MembershipPackageSeeder extends Seeder
             $package->position = $i;
             $package->save();
         }
-
-
-
-
     }
 }

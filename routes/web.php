@@ -76,6 +76,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.', 'prefix'=>'admin', 'midd
     Route::resource('membership-service', 'MembershipServiceController')->except(['create','show', 'edit', 'update', 'destroy']);
     Route::post('membership-service/update','MembershipServiceController@update');
 
+    Route::resource('special-service', 'SpecialServiceController')->except(['create','show', 'edit', 'update', 'destroy']);
+    Route::post('special-service/update','SpecialServiceController@update');
+
     Route::resource('admin-notice', 'AdminNoticeController')->except(['create','show', 'edit', 'update', 'destroy']);
     Route::post('admin-notice/update','AdminNoticeController@update')->name('updateAdminNotice');
     Route::resource('controller-notice', 'ControllerNoticeController')->except(['store', 'create','show', 'edit', 'update', 'destroy']);

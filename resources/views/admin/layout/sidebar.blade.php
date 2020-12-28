@@ -37,11 +37,20 @@
         <li>
             <a href="javaScript:void();" class="waves-effect">
                 <i class="icon-briefcase"></i>
-                <span>{{ __('Member. | Service') }}</span> <i class="fa fa-angle-left pull-right"></i>
+                <span>{{ __('General. | Service') }}</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="sidebar-submenu">
                 <li><a href="{{ route('admin.membership-service-category.index') }}"><i class="fa fa-circle-o"></i> {{ __('Category') }}</a></li>
                 <li><a href="{{ route('admin.membership-service.index') }}"><i class="fa fa-circle-o"></i> {{ __('Service') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();" class="waves-effect">
+                <i class="icon-briefcase"></i>
+                <span>{{ __('Special. | Service') }}</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{ route('admin.special-service.index') }}"><i class="fa fa-circle-o"></i> {{ __('Service') }}</a></li>
             </ul>
         </li>
         <li>
