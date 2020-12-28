@@ -8,6 +8,7 @@ use App\MembershipService;
 use App\MembershipServiceCategory;
 
 use App\MembershipServiceProfile;
+use App\SpecialService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -17,11 +18,12 @@ class GeneralServiceController extends Controller
     public function showGeneralServiceCategory(){
 
         $categories = MembershipServiceCategory::all();
+        $specialServices = SpecialService::all();
         $adminAds = AdminAds::where('status', '1')
             ->whereDate('starting', '<', Carbon::today()->addDays(1))
             ->whereDate('ending', '>', Carbon::today()->addDays(-1))
             ->get();
-        return view('customer.others.category',compact('adminAds', 'categories'));
+        return view('customer.others.category',compact('adminAds', 'categories', 'specialServices'));
     }
 
     public function showMembershipServices($id){

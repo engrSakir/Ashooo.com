@@ -19,7 +19,7 @@ class ControllerAdsSeeder extends Seeder
         $ads->starting  = '2020/05/01';
         $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/controller/shwapno.png';
+        $ads->image     = 'uploads/images/controller/shwapno.png';
         $ads->save();
 
         //Teer
@@ -29,7 +29,7 @@ class ControllerAdsSeeder extends Seeder
         $ads->starting  = '2020/05/01';
         $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/controller/teer.png';
+        $ads->image     = 'uploads/images/controller/teer.png';
         $ads->save();
 
         //Pathao
@@ -39,7 +39,7 @@ class ControllerAdsSeeder extends Seeder
         $ads->starting  = '2020/05/01';
         $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/controller/pathao.png';
+        $ads->image     = 'uploads/images/controller/pathao.png';
         $ads->save();
 
         //Bike
@@ -49,7 +49,7 @@ class ControllerAdsSeeder extends Seeder
         $ads->starting  = '2020/05/01';
         $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/controller/bike.png';
+        $ads->image     = 'uploads/images/controller/bike.png';
         $ads->save();
 
         //Tatch
@@ -59,7 +59,7 @@ class ControllerAdsSeeder extends Seeder
         $ads->starting  = '2020/05/01';
         $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/controller/tagheuer.png';
+        $ads->image     = 'uploads/images/controller/tagheuer.png';
         $ads->save();
 
         //Internet
@@ -69,7 +69,7 @@ class ControllerAdsSeeder extends Seeder
         $ads->starting  = '2020/05/01';
         $ads->ending    = '2021/12/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/controller/internet.png';
+        $ads->image     = 'uploads/images/controller/internet.png';
         $ads->save();
     }
 }

@@ -62,7 +62,7 @@ class AdminAdsController extends Controller
 
         if($request->hasFile('image')){
             $image             = $request->file('image');
-            $folder_path       = 'uploads/images/ads/admin/';
+            $folder_path       = 'uploads/images/admin/';
             $image_new_name    = Str::random(8).'-admin-ads--'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->resize(500, 300, function($constraint){
@@ -126,7 +126,7 @@ class AdminAdsController extends Controller
 
         if($request->hasFile('image')){
             $image             = $request->file('image');
-            $folder_path       = 'uploads/images/ads/admin/';
+            $folder_path       = 'uploads/images/admin/';
             $image_new_name    = Str::random(8).'-admin-ads--'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->resize(500, 300, function($constraint){

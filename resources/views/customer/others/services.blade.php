@@ -37,7 +37,7 @@
             @foreach(auth()->user()->upazila->controllers as $controller)
                 @foreach($controller->controllerAds as $controllerAds)
                     <div class="swiper-slide swiper-slide-active">
-                        <div class="card shadow border-0 bg-template">
+                        <div class="card{{-- shadow border-0 bg-template --}}">
                             <div class="card-body">
                                 <a  @if($controllerAds->url) href="{{ $controllerAds->url }}" target="_blank" @endif >
                                     <img src="{{ asset($controllerAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">
@@ -57,7 +57,7 @@
         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
             @foreach($adminAds as $adminAds)
                 <div class="swiper-slide swiper-slide-active">
-                    <div class="card shadow border-0 bg-template">
+                    <div class="card{{-- shadow border-0 bg-template --}}">
                         <div class="card-body">
                             <a  @if($adminAds->url) href="{{ $adminAds->url }}" target="_blank" @endif >
                                 <img src="{{ asset($adminAds->image) }}" height="100%" width="100%" style="border-radius: 5px;">

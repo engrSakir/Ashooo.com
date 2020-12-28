@@ -17,9 +17,9 @@ class AdminAdsSeeder extends Seeder
         $ads->admin_id  = 1;
         $ads->url       = 'https://www8.hp.com/us/en/home.html';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2021/12/01';
+        $ads->ending    = '2021/02/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/admin/hp.png';
+        $ads->image     = 'uploads/images/admin/hp.png';
         $ads->save();
 
         //Samsung
@@ -27,9 +27,9 @@ class AdminAdsSeeder extends Seeder
         $ads->admin_id  = 1;
         $ads->url       = 'https://www.samsung.com/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2021/12/01';
+        $ads->ending    = '2021/02/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/admin/samsung.png';
+        $ads->image     = 'uploads/images/admin/samsung.png';
         $ads->save();
 
         //Bikroy
@@ -37,9 +37,9 @@ class AdminAdsSeeder extends Seeder
         $ads->admin_id  = 1;
         $ads->url       = 'https://bikroy.com/bn/ads';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2021/12/01';
+        $ads->ending    = '2021/02/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/admin/bikroy.png';
+        $ads->image     = 'uploads/images/admin/bikroy.png';
         $ads->save();
 
         //Walton
@@ -47,9 +47,9 @@ class AdminAdsSeeder extends Seeder
         $ads->admin_id  = 1;
         $ads->url       = 'https://waltonbd.com/Split-ac';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2021/12/01';
+        $ads->ending    = '2021/02/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/admin/walton.png';
+        $ads->image     = 'uploads/images/admin/walton.png';
         $ads->save();
 
         //Robi
@@ -57,9 +57,9 @@ class AdminAdsSeeder extends Seeder
         $ads->admin_id  = 1;
         $ads->url       = 'https://www.robi.com.bd/';
         $ads->starting  = '2020/05/01';
-        $ads->ending    = '2021/12/01';
+        $ads->ending    = '2021/02/01';
         $ads->status    = 1;
-        $ads->image     = 'uploads/images/ads/admin/robi.png';
+        $ads->image     = 'uploads/images/admin/robi.png';
         $ads->save();
 
 

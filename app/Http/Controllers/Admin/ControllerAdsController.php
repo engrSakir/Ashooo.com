@@ -96,13 +96,13 @@ class ControllerAdsController extends Controller
             $image              = $request->file('image');
             $OriginalExtension  = $image->getClientOriginalExtension();
             $image_name         ='controller-ads-'. Carbon::now()->format('d-m-Y H-i-s') .'.'. $OriginalExtension;
-            $destinationPath    = ('uploads/images/ads/controller');
+            $destinationPath    = ('uploads/images/controller/');
             $resize_image       = Image::make($image->getRealPath());
             $resize_image->resize(500, 500, function($constraint){
                 $constraint->aspectRatio();
             });
-            $resize_image->save($destinationPath . '/' . $image_name);
-            $ads->image    = $image_name;
+            $resize_image->save($destinationPath . $image_name);
+            $ads->image    = $destinationPath.$image_name;
         }
         $ads->save();
         return $ads;

@@ -56,7 +56,7 @@
             <div class="card-footer bg-none">
                 <div class="row">
                     <div class="col-6 text-center">
-                        <div class="card shadow border-0 bg-template">
+                        <div class="card{{-- shadow border-0 bg-template --}}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col align-self-center">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="col-6 text-center">
-                        <div class="card shadow border-0 bg-template">
+                        <div class="card{{-- shadow border-0 bg-template --}}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col align-self-center">
@@ -84,7 +84,7 @@
             <div class="card-footer bg-none">
                 <div class="row">
                     <div class="col-6 text-center">
-                        <div class="card shadow border-0 bg-template">
+                        <div class="card{{-- shadow border-0 bg-template --}}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col align-self-center">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="col-6 text-center">
-                        <div class="card shadow border-0 bg-template">
+                        <div class="card{{-- shadow border-0 bg-template --}}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col align-self-center">

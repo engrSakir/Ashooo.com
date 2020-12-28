@@ -60,7 +60,7 @@ class AdsController extends Controller
         }
         if($request->hasFile('image')){
             $image             = $request->file('image');
-            $folder_path       = 'uploads/images/ads/controller/';
+            $folder_path       = 'uploads/images/controller/';
             $image_new_name    = Str::random(8).'-controller-ads--'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->resize(500, 300, function($constraint){
@@ -123,7 +123,7 @@ class AdsController extends Controller
         }
         if($request->hasFile('image')){
             $image             = $request->file('image');
-            $folder_path       = 'uploads/images/ads/controller/';
+            $folder_path       = 'uploads/images/controller/';
             $image_new_name    = Str::random(8).'-controller-ads--'.Carbon::now()->format('d-m-Y H-i-s') .'.'. $image->getClientOriginalExtension();
             //resize and save to server
             Image::make($image->getRealPath())->resize(500, 300, function($constraint){
