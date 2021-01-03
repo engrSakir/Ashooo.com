@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
          $this->call(MembershipPackageSeeder::class);
          $this->call(StaticOptionSeeder::class);
          $this->call(PaseSeeder::class);
+         $this->call(SpecialServiceSeeder::class);
     }
 }

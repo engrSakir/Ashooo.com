@@ -16,7 +16,7 @@
                 <i class="fa fa-circle-o text-red"></i> <span>{{ __('Notice') }}</span></a></li>
         <li><a href="{{ route('controller.ads.index') }}" class="waves-effect">
                 <i class="fa fa-circle-o text-red"></i> <span>{{ __('Ads') }}.</span></a></li>
-        <li><a href="{{ route('controller.ads.index') }}" class="waves-effect">
+        <li><a href="{{ route('controller.special-profile.index') }}" class="waves-effect">
                 <i class="fa fa-circle-o text-red"></i> <span>{{ __('Special') }}</span></a></li>
 
     </ul>

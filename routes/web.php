@@ -113,6 +113,8 @@ Route::group(['namespace' => 'Controller', 'as' => 'controller.', 'prefix'=>'con
     Route::post('controller/ads/update', 'AdsController@update')->name('ads.update');
     Route::resource('notice', 'NoticeController');
     Route::post('controller/notice/update', 'NoticeController@update')->name('notice.update');
+    Route::resource('special-profile', 'SpecialProfileController');
+    Route::post('controller/special-profile/update', 'SpecialProfileController@update')->name('special-profile.update');
 });
 
 Route::get('/worker', function (){

@@ -44,6 +44,11 @@ class Upazila extends Model
         return $this->hasMany(User::class,'upazila_id','id')->where('role','membership')->orderBy('id','desc');
     }
 
+    //Special profile
+    public function special_profiles(){
+        return $this->hasMany(SpecialProfile::class,'upazila_id','id');
+    }
+
 
 
 

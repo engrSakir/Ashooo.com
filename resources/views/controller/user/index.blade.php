@@ -32,9 +32,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#customer"><i class="icon-envelope-open"></i> <span class="hidden-xs">Customer</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#general"><i class="icon-envelope-open"></i> <span class="hidden-xs">General</span></a>
-                                </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -225,9 +222,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                                <div id="general" class="container tab-pane fade">
-                                    <h1><b>Upcomming</b></h1>
                                 </div>
                             </div>
                         </div>

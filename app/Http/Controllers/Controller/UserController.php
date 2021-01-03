@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Controller;
 
 use App\Http\Controllers\Controller;
 
+use App\SpecialService;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,8 @@ class UserController extends Controller
 {
     public function index()
     {
-
-        return view('controller.user.index');
+        $special_services = SpecialService::all();
+        return view('controller.user.index', compact('special_services'));
     }
 
     public function userStatus(Request $request)

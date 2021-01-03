@@ -17,7 +17,6 @@ class CreateSpecialServicesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('icon')->default('default.png');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

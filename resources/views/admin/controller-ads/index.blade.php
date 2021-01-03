@@ -28,7 +28,7 @@
                                         <div class="card">
                                             <img src="{{ asset($ads->image) }}" class="card-img-top" alt="Card image cap">
                                             <div class="card-body">
-                                                <h5 class="card-title text-dark">Card Sample title</h5>
+                                                <h5 class="card-title text-dark">{{-- Card Sample title --}}</h5>
                                             </div>
                                             <ul class="list-group list-group-flush list shadow-none">
                                                 @if($ads->status == 0)
