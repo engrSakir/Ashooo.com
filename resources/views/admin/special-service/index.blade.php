@@ -41,7 +41,7 @@
                                     @foreach($services as $service)
                                     <tr>
                                         <td scope="row">{{ $loop->iteration }}</td>
-                                        <td><img src="{{ asset('uploads/images/special/service/'.$service->icon) }}" height="50px" width="50px" style="border-radius: 15px;"></td>
+                                        <td><img src="{{ asset($service->icon) }}" height="50px" width="50px" style="border-radius: 15px;"></td>
                                         <td>{{ $service->name }}</td>
                                         <td>
                                             <input type="hidden" class="hidden-id" value="{{ $service->id }}">

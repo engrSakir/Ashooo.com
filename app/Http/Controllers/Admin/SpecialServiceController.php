@@ -56,7 +56,7 @@ class SpecialServiceController extends Controller
                 $constraint->aspectRatio();
             });
             $resize_image->save($destinationPath . '/' . $image_name);
-            $service->icon    = $image_name;
+            $service->icon    = $destinationPath . '/' . $image_name;
         }
         $service->save();
         return $service;
@@ -111,7 +111,7 @@ class SpecialServiceController extends Controller
                 $constraint->aspectRatio();
             });
             $resize_image->save($destinationPath . '/' . $image_name);
-            $service->icon    = $image_name;
+            $service->icon    = $destinationPath . '/' . $image_name;
         }
         $service->save();
         return $service;

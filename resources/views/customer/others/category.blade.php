@@ -54,7 +54,7 @@
         </div>
         <!-- End title -->
 
-        <!-- Start worker service category -->
+        <!-- Start special service category -->
         <div class="container">
             <div class="row text-center mt-4">
                 @foreach($specialServices as $specialService)
@@ -63,9 +63,9 @@
                             <div class="card-body">
                                 <div class="avatar avatar-60 no-shadow border-0">
                                     <div class="overlay bg-template"></div>
-                                    <img src="{{ asset('uploads/images/special/service/'.$specialService->icon) }}" height="50px" width="50px" style="border-radius: 15px;">
+                                    <img src="{{ asset($specialService->icon ?? '') }}" height="50px" width="50px" style="border-radius: 15px;">
                                 </div>
-                                <a href="{{ route('customer.showMembershipServices',\Illuminate\Support\Facades\Crypt::encryptString($specialService->id)) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $specialService->name }}</p></a>
+                                <a href="{{ route('customer.showSpecialProfiles',$specialService->id) }}"> <p class="mt-3 mb-0 font-weight-bold">{{ $specialService->name }}</p></a>
                             </div>
                         </div>
                     </div>

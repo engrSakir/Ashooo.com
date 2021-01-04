@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">{{ __('active_order') }}
+                                    <button id="active-job-btn" type="button" class="mb-2 btn btn-success">{{ __('active order') }}
                                         ({{ count(auth()->user()->customerGigs->where('status', 'active')) + count(auth()->user()->customerBids->where('status', 'active')) }})
                                     </button>
                                 </div>
@@ -65,7 +65,7 @@
     <hr>
     <!-- Start title -->
     <div class="alert alert-primary text-center active-job" role="alert">
-        <b id="bid-job">{{ __('bid_order') }}</b>
+        <b id="bid-job">{{ __('Bid order') }}</b>
     </div>
     <!-- End title -->
 
@@ -368,8 +368,8 @@
 <script>
     $(document).ready(function() {
         //Show only active
-        $('#bid-job').html('{{ __('bid_order') }}');
-        $('#gig-job').html('{{ __('gig_order') }}');
+        $('#bid-job').html('{{ __('Bid order') }}');
+        $('#gig-job').html('{{ __('Gig order') }}');
         $('.active-job').show();
         $('.completed-job').hide();
         $('.running-job').hide();

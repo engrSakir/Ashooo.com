@@ -149,19 +149,20 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql_aurora&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/customer/others" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Ashooo\resources\views\customer\others" />
       <recent name="D:\Ashooo\resources\views\controller" />
       <recent name="D:\Ashooo\resources\views\admin" />
       <recent name="D:\ashooo\resources\views\membership\page" />
       <recent name="D:\ashooo\resources\views\admin\setting" />
-      <recent name="D:\ashooo\resources\lang" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\msaki\Desktop\ashooo\resources\views\customer\service" />
@@ -286,6 +287,9 @@
       <workItem from="1609354370798" duration="583000" />
       <workItem from="1609560688793" duration="4159000" />
       <workItem from="1609647120352" duration="9441000" />
+      <workItem from="1609734105066" duration="2062000" />
+      <workItem from="1609768500406" duration="1475000" />
+      <workItem from="1609773927970" duration="4915000" />
     </task>
     <servers />
   </component>

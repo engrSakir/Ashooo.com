@@ -104,13 +104,35 @@ class SpecialProfileController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+
+    public function destroy(Request $request)
     {
+        $request->validate([
+            'profile' => 'required|exists:special_profiles,id'
+        ]);
+        $special_profile = SpecialProfile::find($request->input('profile'));
+        if ($special_profile->upazila_id == auth()->user()->upazila->id){
+            try {
+                $special_profile->delete();
+                return response()->json([
+                    'type' => 'success',
+                    'message' => 'Successfully deleted.',
+                ]);
+            }catch (\Exception $exception){
+                return response()->json([
+                    'type' => 'danger',
+                    'message' => 'Sorry we are unable for this action.',
+                ]);
+            }
+        }else{
+            return response()->json([
+                'type' => 'danger',
+                'message' => 'You have not permission to delete this special profile.',
+            ]);
+        }
         //
     }
 }

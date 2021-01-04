@@ -25,7 +25,7 @@
             <!-- End Breadcrumb-->
             <div class="row">
                 @foreach(auth()->user()->upazila->special_profiles as $profile)
-                <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="profile-card-2">
                         <div class="card profile-primary">
                             <div class="card-body text-center">
@@ -47,12 +47,13 @@
                                     </ul>
                                 </div>
                                 <div class="list-inline mt-2">
-                                    <a href="javascript:void()" class="list-inline-item btn-social btn-facebook waves-effect waves-light"><i class="fa fa-smile-o"></i></a>
-                                    <a href="javascript:void()" class="list-inline-item btn-social btn-google-plus waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
-                                    <a href="javascript:void()" class="list-inline-item btn-social btn-twitter waves-effect waves-light"><i class="fa ti-face-sad"></i></a>
+                                    <input type="hidden" class="hidden-id" value="{{ $profile->id }}">
+                                    <a href="javascript:void()" style="display: none" class="list-inline-item btn-social btn-facebook waves-effect waves-light"><i class="fa fa-smile-o"></i></a>
+                                    <a href="javascript:void()" id="" class="delete-special-user-btn list-inline-item btn-social btn-google-plus waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
+                                    <a href="javascript:void()" style="display: none" class="list-inline-item btn-social btn-twitter waves-effect waves-light"><i class="fa ti-face-sad"></i></a>
                                 </div>
-                                <hr>
-                                <a href="javascript:void():" class="list-inline-item btn btn-primary btn-block waves-effect waves-light">View Profile</a>
+                                <hr class="success">
+                                <a href="javascript:void():" style="display: none" class="list-inline-item btn btn-primary btn-block waves-effect waves-light">View Profile</a>
                             </div>
                         </div>
                     </div>
@@ -170,6 +171,64 @@
                             footer: errorMessage
                         })
                     },
+                })
+            });
+            $('.delete-special-user-btn').click(function(){
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var formData = new FormData();
+                        formData.append('profile',  $(this).parent().find('.hidden-id').val());
+                        $.ajax({
+                            method: 'POST',
+                            url: '{{ route('controller.special-profile.delete') }}',
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                if (data.type == 'success'){
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Your file has been deleted.',
+                                        'success'
+                                    )
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 800);//
+                                }else{
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        footer: data.message
+                                    })
+                                }
+                            },
+                            error: function (xhr) {
+                                var errorMessage = '<div class="card bg-danger">\n' +
+                                    '                        <div class="card-body text-center p-5">\n' +
+                                    '                            <span class="text-white">';
+                                $.each(xhr.responseJSON.errors, function(key,value) {
+                                    errorMessage +=(''+value+'<br>');
+                                });
+                                errorMessage +='</span>\n' +
+                                    '                        </div>\n' +
+                                    '                    </div>';
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    footer: errorMessage
+                                })
+                            },
+                        })
+                    }
                 })
             });
 

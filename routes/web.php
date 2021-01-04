@@ -115,6 +115,7 @@ Route::group(['namespace' => 'Controller', 'as' => 'controller.', 'prefix'=>'con
     Route::post('controller/notice/update', 'NoticeController@update')->name('notice.update');
     Route::resource('special-profile', 'SpecialProfileController');
     Route::post('controller/special-profile/update', 'SpecialProfileController@update')->name('special-profile.update');
+    Route::post('controller/special-profile/delete', 'SpecialProfileController@destroy')->name('special-profile.delete');
 });
 
 Route::get('/worker', function (){
@@ -219,6 +220,7 @@ Route::group(['namespace' => 'Customer', 'as' => 'customer.', 'prefix'=>'custome
     Route::get('/general-services/{id}','GeneralServiceController@showMembershipServices')->name('showMembershipServices');
     Route::get('/members/{id}','GeneralServiceController@showMembers')->name('showMembers');
     Route::get('/members/page/{id}','GeneralServiceController@showMembershipPageDetail')->name('showMembershipPageDetail');
+    Route::get('/special-profiles/{id}','SpecialServiceController@showSpecialProfiles')->name('showSpecialProfiles');
 
 });
 

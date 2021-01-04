@@ -22,7 +22,7 @@
         <!-- Start title -->
             <div class="">
                 <div class="alert alert-info text-center" role="alert">
-                    <b id=""> {{ __('gig_order') }}</b>
+                    <b id=""> {{ __('Gig order') }}</b>
                 </div>
             </div>
             <!-- End title -->
